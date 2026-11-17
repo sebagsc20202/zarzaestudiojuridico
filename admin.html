@@ -36,7 +36,6 @@ img{display:block;max-width:100%}
 .ic{width:19px;height:19px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .ic-fill{fill:currentColor;stroke:none}
 .mono{font-family:var(--mono)}
-/* Botones */
 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 20px;border-radius:8px;font-weight:600;font-size:14px;transition:transform .25s var(--ease),box-shadow .25s,border-color .25s,background .25s,color .25s;white-space:nowrap;overflow:hidden}
 .btn:active{transform:scale(.97)}
 .btn .ic{width:16px;height:16px}
@@ -56,7 +55,6 @@ img{display:block;max-width:100%}
 .icon-btn:hover{color:var(--gold-2);border-color:var(--gold)}
 .icon-btn.danger:hover{color:#F49B93;border-color:var(--red)}
 .icon-btn .ic{width:16px;height:16px}
-/* Campos */
 .field{display:flex;flex-direction:column;gap:7px}
 .field label,.flabel{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--tx-dim)}
 .field label b{color:var(--gold)}
@@ -69,7 +67,7 @@ img{display:block;max-width:100%}
 .txa{resize:vertical;min-height:88px;line-height:1.6}
 .hint{font-size:11.5px;color:var(--tx-mute);line-height:1.55}
 .hint code{font-family:var(--mono);color:var(--gold-2);background:rgba(201,162,92,.08);padding:1px 5px;border-radius:4px}
-/* Switch */
+/* Interruptor (label clicable) */
 .switch{position:relative;display:inline-block;width:46px;height:26px;flex:none}
 .switch input{position:absolute;opacity:0;pointer-events:none}
 .switch span{position:absolute;inset:0;background:var(--ink-700);border:1px solid rgba(226,72,61,.4);border-radius:20px;cursor:pointer;transition:all .3s}
@@ -78,7 +76,6 @@ img{display:block;max-width:100%}
 .switch input:checked+span::before{transform:translateX(20px);background:var(--green)}
 .switch input:focus-visible+span{outline:2px solid var(--gold-2);outline-offset:2px}
 .switch-lbl{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--tx-dim);cursor:pointer}
-/* Chips */
 .chip{display:inline-flex;font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:20px;border:1px solid}
 .ch-gold{color:var(--gold-2);border-color:rgba(201,162,92,.4);background:rgba(201,162,92,.08)}
 .ch-blue{color:#9DBBFF;border-color:rgba(62,123,250,.4);background:rgba(62,123,250,.1)}
@@ -86,7 +83,6 @@ img{display:block;max-width:100%}
 .ch-amber{color:#F7C780;border-color:rgba(240,166,60,.4);background:rgba(240,166,60,.1)}
 .ch-red{color:#F49B93;border-color:rgba(226,72,61,.4);background:rgba(226,72,61,.1)}
 .ch-violet{color:#C7A9FF;border-color:rgba(154,107,255,.4);background:rgba(154,107,255,.1)}
-/* LOGIN */
 .auth{position:relative;min-height:100vh;display:grid;place-items:center;padding:30px 16px;overflow:hidden}
 .glow{position:absolute;border-radius:50%;filter:blur(95px);pointer-events:none}
 .g1{width:480px;height:480px;top:-14%;right:-6%;background:rgba(201,162,92,.14);animation:drift 20s ease-in-out infinite alternate}
@@ -105,7 +101,6 @@ img{display:block;max-width:100%}
 .auth-note b{color:var(--gold-2)}
 .proj-chip{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-family:var(--mono);font-size:10.5px;color:var(--tx-mute);border:1px dashed var(--line);border-radius:7px;padding:7px 12px}
 .proj-chip i{width:7px;height:7px;border-radius:50%;background:var(--green);font-style:normal}
-/* SHELL */
 .shell{display:none;grid-template-columns:256px 1fr;min-height:100vh}
 .shell.on{display:grid}
 .side{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;background:linear-gradient(180deg,var(--ink-900),var(--ink-950));border-right:1px solid var(--line-soft);padding:22px 16px;overflow-y:auto}
@@ -122,7 +117,6 @@ img{display:block;max-width:100%}
 .nav-btn.active .cnt{color:var(--gold-2);border-color:var(--line)}
 .side-foot{border-top:1px solid var(--line-soft);padding-top:16px;display:grid;gap:10px}
 .side-user{font-family:var(--mono);font-size:10.5px;color:var(--tx-mute);word-break:break-all;padding:0 4px}
-/* MAIN */
 .main{min-width:0;padding:0 0 60px}
 .topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:16px;padding:16px 30px;background:rgba(6,9,15,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft)}
 .topbar h2{font-family:var(--serif);font-weight:560;font-size:22px}
@@ -140,18 +134,16 @@ img{display:block;max-width:100%}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
 .full{grid-column:1/-1}
-.stack{display:grid;gap:16px}
 .row-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line-soft)}
 .sec-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
 .sec-head p{font-size:13px;color:var(--tx-mute)}
-/* Listas CRUD */
 .rows{display:grid;gap:10px}
 .row{display:grid;grid-template-columns:46px 1fr 74px auto auto auto;gap:14px;align-items:center;background:var(--ink-900);border:1px solid var(--ink-700);border-radius:11px;padding:12px 16px;transition:border-color .25s}
 .row:hover{border-color:var(--line)}
 .row.off{opacity:.55}
-.row-ico{width:46px;height:46px;display:grid;place-items:center;border:1px solid var(--line);border-radius:9px;background:rgba(201,162,92,.05);color:var(--gold);overflow:hidden}
+.row-ico{position:relative;width:46px;height:46px;display:grid;place-items:center;border:1px solid var(--line);border-radius:9px;background:rgba(201,162,92,.05);color:var(--gold);overflow:hidden}
 .row-ico .ic{width:24px;height:24px}
-.row-ico img{width:100%;height:100%;object-fit:cover}
+.row-ico img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .row-ico b{font-family:var(--serif);font-style:italic;font-size:17px;color:rgba(201,162,92,.7)}
 .row-info{min-width:0}
 .row-info b{display:block;font-size:14.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -164,7 +156,6 @@ img{display:block;max-width:100%}
 .row-state em{font-family:var(--mono);font-style:normal;font-size:8.5px;letter-spacing:.14em;color:var(--tx-mute)}
 .empty{border:1px dashed var(--line);border-radius:12px;padding:34px 24px;text-align:center;color:var(--tx-mute);font-size:14px;display:grid;gap:14px;justify-items:center}
 .empty .ic{width:30px;height:30px;color:var(--gold)}
-/* Repeater */
 .rep{display:grid;gap:10px}
 .rep-row{display:grid;gap:10px;align-items:end;background:var(--ink-900);border:1px solid var(--ink-700);border-radius:10px;padding:14px}
 .rep-badge{grid-template-columns:1fr auto}
@@ -173,7 +164,6 @@ img{display:block;max-width:100%}
 .rep-row .inp{padding:9px 11px;font-size:13.5px}
 .rep-check{display:flex;flex-direction:column;align-items:center;gap:5px}
 .rep-check em{font-family:var(--mono);font-style:normal;font-size:8.5px;letter-spacing:.12em;color:var(--tx-mute)}
-/* Ayuda */
 .steps{counter-reset:p;display:grid;gap:14px;margin:6px 0 4px}
 .steps li{counter-increment:p;position:relative;padding-left:46px;font-size:14px;color:var(--tx-dim);line-height:1.7}
 .steps li::before{content:counter(p,decimal-leading-zero);position:absolute;left:0;top:2px;font-family:var(--mono);font-size:12px;font-weight:600;color:var(--gold);border:1px solid var(--line);border-radius:7px;width:32px;height:26px;display:grid;place-items:center;background:rgba(201,162,92,.06)}
@@ -181,7 +171,6 @@ img{display:block;max-width:100%}
 pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radius:10px;padding:18px;font-family:var(--mono);font-size:12px;line-height:1.7;color:#B7C3DA;overflow-x:auto;margin:12px 0}
 .warn{display:flex;gap:11px;border:1px solid rgba(240,166,60,.45);background:rgba(240,166,60,.07);border-radius:10px;padding:13px 16px;font-size:13px;color:#F7C780;line-height:1.6;margin-top:16px}
 .warn .ic{color:var(--amber);margin-top:2px}
-/* Modales */
 .mroot{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:18px}
 .mroot.open{display:flex}
 .mback{position:absolute;inset:0;background:rgba(4,7,13,.82);backdrop-filter:blur(6px);animation:fade .25s}
@@ -194,14 +183,12 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 .mfoot{display:flex;justify-content:flex-end;gap:12px;padding:18px 26px;border-top:1px solid var(--line-soft)}
 .confirm-msg{font-size:14.5px;color:var(--tx-dim);line-height:1.7}
 .confirm-msg b{color:var(--tx)}
-/* Toasts */
 .toasts{position:fixed;left:20px;bottom:20px;z-index:500;display:flex;flex-direction:column;gap:10px;max-width:min(360px,86vw)}
 .toast{display:flex;align-items:center;gap:11px;background:linear-gradient(150deg,var(--ink-800),var(--ink-850));border:1px solid var(--line);border-radius:10px;padding:12px 16px;font-size:13.5px;box-shadow:0 18px 50px rgba(0,0,0,.55);animation:up .35s var(--ease)}
 .toast .ic{width:17px;height:17px;color:var(--green)}
 .toast.err .ic{color:var(--red)}
 .toast.gold .ic{color:var(--gold)}
 .toast.out{opacity:0;transform:translateY(8px);transition:all .3s}
-/* Responsive */
 @media (max-width:960px){
   .shell.on{grid-template-columns:1fr}
   .side{position:static;height:auto;flex-direction:column;border-right:none;border-bottom:1px solid var(--line-soft)}
@@ -267,7 +254,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
       <button type="submit" class="btn btn-primary btn-block" id="loginBtn"><span class="lbl" style="display:inline-flex;align-items:center;gap:9px"><svg class="ic"><use href="#i-lock"/></svg>Ingresar al panel</span></button>
     </form>
     <p class="auth-note">El acceso se gestiona con <b>Firebase Authentication</b>. Cree el usuario administrador en la consola de Firebase → <b>Authentication → Users → Add user</b> (proveedor Correo/Contraseña habilitado). Las escrituras quedan protegidas por las reglas de Firestore indicadas en la pestaña <b>Ayuda</b>.</p>
-    <span class="proj-chip"><i></i>Proyecto: zarza-estudio-juridico</span>
+    <span class="proj-chip"><i></i>Proyecto: zarzaasociados</span>
   </div>
 </section>
 
@@ -318,7 +305,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
         </div>
         <div class="card">
           <h3><svg class="ic"><use href="#i-check"/></svg>Sellos de confianza bajo los botones</h3>
-          <p class="desc">Incluya o excluya cada sello. interruptor general para mostrar u ocultar la fila completa.</p>
+          <p class="desc">Incluya o excluya cada sello. Interruptor general para mostrar u ocultar la fila completa.</p>
           <label class="switch-lbl" style="margin-bottom:16px"><span class="switch"><input type="checkbox" id="i-showBadges"><span></span></span>Mostrar sellos en la portada</label>
           <div class="rep" id="i-badges"></div>
           <div style="margin-top:12px"><button type="button" class="btn btn-ghost btn-sm" id="addBadge"><svg class="ic"><use href="#i-plus"/></svg>Agregar sello</button></div>
@@ -398,19 +385,22 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
         <div class="card">
           <h3><svg class="ic"><use href="#i-help"/></svg>Puesta en marcha (una sola vez)</h3>
           <ol class="steps">
-            <li>En la <b>consola de Firebase</b> del proyecto <b>zarza-estudio-juridico</b>: abra <b>Authentication → Sign-in method</b> y habilite <b>Correo electrónico/Contraseña</b>. Luego, en <b>Users → Add user</b>, cree el email y la contraseña del administrador (los mismos que usa para ingresar aquí).</li>
+            <li>En la <b>consola de Firebase</b> del proyecto <b>zarzaasociados</b>: abra <b>Authentication → Sign-in method</b> y habilite <b>Correo electrónico/Contraseña</b>. Luego, en <b>Users → Add user</b>, cree el email y la contraseña del administrador (los mismos que usa para ingresar aquí).</li>
             <li>Abra <b>Firestore Database → Crear base de datos</b> (modo producción, región <code class="mono">southamerica-east1</code> sugerida). En la pestaña <b>Reglas</b>, pegue las reglas de abajo y publique.</li>
             <li>Pulse <b>“Cargar contenido inicial”</b> aquí abajo: siembra todas las secciones con el contenido actual de <b>Zarza &amp; Asociados</b> (6 áreas, 4 abogados, 6 posts, portada y contacto).</li>
             <li>En su <b>index.html</b> público, pegue el <b>script conector</b> provisto junto a este panel, justo antes de <code class="mono">&lt;/body&gt;</code>. Ese script renombra el estudio y conecta las 5 secciones a Firestore en vivo.</li>
             <li>Publique ambos archivos en el mismo hosting (Firebase Hosting, Netlify, etc.). El panel también funciona abriéndolo como archivo local.</li>
           </ol>
-          <div class="warn"><svg class="ic"><use href="#i-alert"/></svg><span>Las reglas permiten <b>lectura pública</b> (el sitio la necesita) y <b>escritura solo con sesión iniciada</b>. Sin ellas, el panel no podrá guardar.</span></div>
+          <div class="warn"><svg class="ic"><use href="#i-alert"/></svg><span>Las reglas permiten <b>lectura pública</b> (el sitio la necesita) y <b>escritura solo con sesión iniciada</b>; el resto de las colecciones permanece bloqueado. Sin ellas, el panel no podrá guardar.</span></div>
         </div>
         <div class="card">
           <h3><svg class="ic"><use href="#i-lock"/></svg>Reglas de seguridad de Firestore</h3>
-          <pre class="rules" id="rulesPre">rules_version = '2';
+<pre class="rules" id="rulesPre">rules_version = '2';
+
 service cloud.firestore {
   match /databases/{database}/documents {
+
+    // Contenido del sitio: lectura pública, escritura solo autenticado (admin)
     match /sitio/{documento} {
       allow read: if true;
       allow write: if request.auth != null;
@@ -426,6 +416,11 @@ service cloud.firestore {
     match /blog/{documento} {
       allow read: if true;
       allow write: if request.auth != null;
+    }
+
+    // Cualquier otra colección permanece bloqueada
+    match /{document=**} {
+      allow read, write: if false;
     }
   }
 }</pre>
@@ -486,14 +481,15 @@ import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/10
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { getFirestore, collection, doc, onSnapshot, setDoc, addDoc, updateDoc, deleteDoc, serverTimestamp, writeBatch } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+/* ═══ SDK FIREBASE — PROYECTO zarzaasociados ═══ */
 const firebaseConfig = {
-  apiKey: "AIzaSyDJPSPPmvRx_1cV7LZEQmJ5cERhvnEiHbk",
-  authDomain: "zarza-estudio-juridico.firebaseapp.com",
-  projectId: "zarza-estudio-juridico",
-  storageBucket: "zarza-estudio-juridico.firebasestorage.app",
-  messagingSenderId: "154487987429",
-  appId: "1:154487987429:web:dd81b50ff031b328ba480c",
-  measurementId: "G-YD4T2S0P5Z"
+  apiKey: "AIzaSyDGx9T9I1ZRV32vby5kaKI1jmps4vbzRKE",
+  authDomain: "zarzaasociados.firebaseapp.com",
+  projectId: "zarzaasociados",
+  storageBucket: "zarzaasociados.firebasestorage.app",
+  messagingSenderId: "177641854130",
+  appId: "1:177641854130:web:f41e67698b40d2992825ab",
+  measurementId: "G-4TH14EY7WP"
 };
 const app = initializeApp(firebaseConfig);
 isSupported().then(ok => { if (ok) getAnalytics(app); }).catch(() => {});
@@ -659,10 +655,15 @@ let unsubs = [], view = "inicio";
 const AUTH_ERRS = {
   "auth/invalid-credential":"Credenciales incorrectas. Verifique email y contraseña.",
   "auth/wrong-password":"Contraseña incorrecta.",
-  "auth/user-not-found":"No existe un usuario con ese email. Créelo en Firebase → Authentication.",
+  "auth/user-not-found":"No existe un usuario con ese email. Créelo en Firebase → Authentication → Users.",
   "auth/invalid-email":"El email no es válido.",
-  "auth/too-many-requests":"Demasiados intentos. Espere unos minutos.",
-  "auth/network-request-failed":"Sin conexión con Firebase. Verifique su red."
+  "auth/missing-password":"Ingrese la contraseña.",
+  "auth/user-disabled":"Este usuario fue deshabilitado en Firebase Authentication.",
+  "auth/too-many-requests":"Demasiados intentos. Espere unos minutos y vuelva a probar.",
+  "auth/network-request-failed":"Sin conexión con Firebase. Verifique su red.",
+  "auth/operation-not-allowed":"El proveedor Correo/Contraseña no está habilitado. Actívelo en Firebase → Authentication → Sign-in method.",
+  "auth/configuration-not-found":"Firebase Authentication no está configurado en el proyecto. Abra Authentication en la consola y complete la configuración inicial.",
+  "auth/invalid-api-key":"La clave API del proyecto no es válida. Revise la configuración del SDK."
 };
 $("#loginForm").addEventListener("submit", async e => {
   e.preventDefault();
@@ -694,6 +695,7 @@ function snapOK(key){ state.loaded[key] = true; if (Object.keys(state.loaded).le
 function snapErr(e){ console.warn(e); setConn("bad", "Sin acceso — revise reglas"); }
 
 function subscribe(){
+  unsubs.forEach(u => { try{u();}catch(_){}} ); unsubs = []; state.loaded = {};
   unsubs.push(onSnapshot(doc(db,"sitio","inicio"), s => { state.inicio = s.exists() ? s.data() : null; snapOK("i"); if (view==="inicio") renderInicio(); }, snapErr));
   unsubs.push(onSnapshot(doc(db,"sitio","contacto"), s => { state.contacto = s.exists() ? s.data() : null; snapOK("c"); if (view==="contacto") renderContacto(); }, snapErr));
   ["areas","equipo","blog"].forEach(col => {
@@ -738,7 +740,7 @@ function cifraRow(c){
     '<div class="field"><label>Sufijo</label><input class="inp c-suf" value="' + esc(c.suf) + '"></div>' +
     '<div class="field"><label>Rótulo</label><input class="inp c-label" value="' + esc(c.label) + '"></div>' +
     '<div class="field"><label>Descripción</label><input class="inp c-desc" value="' + esc(c.desc) + '"></div>' +
-    '<div class="rep-check"><em>INCLUIR</em><span class="switch"><input type="checkbox" class="c-act"' + (c.activo!==false?" checked":"") + '><span></span></span></div>' +
+    '<div class="rep-check"><em>INCLUIR</em><label class="switch"><input type="checkbox" class="c-act" aria-label="Incluir cifra"' + (c.activo!==false?" checked":"") + '><span></span></label></div>' +
     '<button type="button" class="icon-btn danger rm" aria-label="Quitar"><svg class="ic"><use href="#i-trash"/></svg></button>';
   d.querySelector(".rm").addEventListener("click", () => d.remove());
   return d;
@@ -812,7 +814,7 @@ function rowHTML(col, d){
     ico = '<svg class="ic"><use href="#' + esc(d.icono || "i-brief") + '"/></svg>';
     info = "<b>" + esc(d.nombre) + "</b><span>/" + esc(d.id) + " · " + esc((d.tags||[]).join(" · ")) + "</span>";
   } else if (col === "equipo"){
-    ico = d.foto ? '<img src="' + esc(d.foto) + '" alt="" onerror="this.outerHTML=\'<b>' + esc(d.iniciales||"··") + '</b>\'">' : "<b>" + esc(d.iniciales || "··") + "</b>";
+    ico = "<b>" + esc(d.iniciales || "··") + "</b>" + (d.foto ? '<img src="' + esc(d.foto) + '" alt="" loading="lazy" onerror="this.remove()">' : "");
     info = "<b>" + esc(d.nombre) + "</b><span>" + esc(d.rol || "") + " · " + esc(d.matricula || "") + "</span>";
   } else {
     ico = '<svg class="ic"><use href="#i-post"/></svg>';
@@ -823,7 +825,7 @@ function rowHTML(col, d){
     '<span class="row-ico">' + ico + "</span>" +
     '<span class="row-info">' + info + (extra ? "<span style='margin-top:5px'>" + extra + "</span>" : "") + "</span>" +
     '<span class="row-orden"><label>ORDEN</label><input type="number" value="' + esc(d.orden ?? 99) + '" data-orden="' + col + '" data-id="' + esc(d.id) + '"></span>' +
-    '<span class="row-state"><em>' + (col === "blog" ? "PUBLICADO" : "INCLUIDO") + '</em><span class="switch"><input type="checkbox" data-toggle="' + col + '" data-id="' + esc(d.id) + '"' + (d.activo !== false ? " checked" : "") + '><span></span></span></span>' +
+    '<span class="row-state"><em>' + (col === "blog" ? "PUBLICADO" : "INCLUIDO") + '</em><label class="switch"><input type="checkbox" aria-label="Incluir o excluir" data-toggle="' + col + '" data-id="' + esc(d.id) + '"' + (d.activo !== false ? " checked" : "") + '><span></span></label></span>' +
     '<button type="button" class="icon-btn" data-act="edit" data-type="' + col + '" data-id="' + esc(d.id) + '" aria-label="Editar"><svg class="ic"><use href="#i-edit"/></svg></button>' +
     '<button type="button" class="icon-btn danger" data-act="del" data-type="' + col + '" data-id="' + esc(d.id) + '" aria-label="Eliminar"><svg class="ic"><use href="#i-trash"/></svg></button></div>';
 }
@@ -876,7 +878,7 @@ function openEditor(type, id){
     title = isEdit ? "Editar área" : "Nueva área";
     html = '<div class="grid2">' +
       fld("e-nombre","Nombre del área <b>*</b>",inp("e-nombre",d?.nombre)) +
-      fld("e-slug","Identificador (slug)",inp("e-slug",d?.id), isEdit ? "El identificador no se modifica." : "Vacío = se genera del nombre.") +
+      fld("e-slug","Identificador (slug)",'<input class="inp" id="e-slug" value="' + esc(d?.id || "") + '"' + (isEdit ? " disabled" : "") + '>', isEdit ? "El identificador no se modifica." : "Vacío = se genera del nombre.") +
       fld("e-icono","Icono",sel("e-icono",ICONS,d?.icono||"i-brief")) +
       fld("e-color","Color de acento",sel("e-color",COLORS,d?.color||"gold")) +
       '<div class="full">' + fld("e-descripcion","Descripción breve (tarjeta)",txa("e-descripcion",d?.descripcion,2)) + "</div>" +
@@ -986,9 +988,10 @@ function openConfirm(title, msg, fn){
   confirmRoot.classList.add("open");
 }
 $("#confirmYes").addEventListener("click", async () => {
-  confirmRoot.classList.remove("open");
-  if (confirmFn) await confirmFn();
+  const fn = confirmFn; if (!fn) return;
   confirmFn = null;
+  confirmRoot.classList.remove("open");
+  await fn();
 });
 $$("[data-close-confirm]").forEach(el => el.addEventListener("click", () => confirmRoot.classList.remove("open")));
 document.addEventListener("keydown", e => {
