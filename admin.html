@@ -28,6 +28,7 @@ body::after{content:"";position:fixed;inset:-40px;z-index:900;pointer-events:non
 ::-webkit-scrollbar{width:10px;height:10px}
 ::-webkit-scrollbar-track{background:var(--ink-950)}
 ::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold-deep),var(--gold));border-radius:8px;border:2px solid var(--ink-950)}
+::-webkit-scrollbar-thumb:hover{background:var(--gold-2)}
 *{scrollbar-width:thin;scrollbar-color:var(--gold-deep) var(--ink-950)}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}
@@ -50,6 +51,7 @@ img{display:block;max-width:100%}
 .btn.loading{pointer-events:none;opacity:.75}
 .btn.loading .lbl{visibility:hidden}
 .btn.loading::before{content:"";position:absolute;width:18px;height:18px;border:2.5px solid rgba(6,9,15,.3);border-top-color:var(--ink-950);border-radius:50%;animation:spin .7s linear infinite}
+.btn-ghost.loading::before,.btn-danger.loading::before{border-color:rgba(237,231,218,.25);border-top-color:var(--gold-2)}
 @keyframes spin{to{transform:rotate(360deg)}}
 .icon-btn{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--ink-700);border-radius:8px;color:var(--tx-dim);transition:all .25s}
 .icon-btn:hover{color:var(--gold-2);border-color:var(--gold)}
@@ -65,9 +67,9 @@ img{display:block;max-width:100%}
 .sel{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='%23C9A25C' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:38px;cursor:pointer}
 .sel option{background:var(--ink-900)}
 .txa{resize:vertical;min-height:88px;line-height:1.6}
+.txa.code{font-family:var(--mono);font-size:12px;min-height:150px}
 .hint{font-size:11.5px;color:var(--tx-mute);line-height:1.55}
 .hint code{font-family:var(--mono);color:var(--gold-2);background:rgba(201,162,92,.08);padding:1px 5px;border-radius:4px}
-/* Interruptor (label clicable) */
 .switch{position:relative;display:inline-block;width:46px;height:26px;flex:none}
 .switch input{position:absolute;opacity:0;pointer-events:none}
 .switch span{position:absolute;inset:0;background:var(--ink-700);border:1px solid rgba(226,72,61,.4);border-radius:20px;cursor:pointer;transition:all .3s}
@@ -115,6 +117,7 @@ img{display:block;max-width:100%}
 .nav-btn .ic{width:17px;height:17px;color:var(--gold)}
 .nav-btn .cnt{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--tx-mute);border:1px solid var(--ink-700);border-radius:12px;padding:1px 8px}
 .nav-btn.active .cnt{color:var(--gold-2);border-color:var(--line)}
+.nav-btn .cnt.bad{color:#F49B93;border-color:rgba(226,72,61,.5)}
 .side-foot{border-top:1px solid var(--line-soft);padding-top:16px;display:grid;gap:10px}
 .side-user{font-family:var(--mono);font-size:10.5px;color:var(--tx-mute);word-break:break-all;padding:0 4px}
 .main{min-width:0;padding:0 0 60px}
@@ -132,7 +135,6 @@ img{display:block;max-width:100%}
 .card>h3 .ic{color:var(--gold);width:18px;height:18px}
 .card>.desc{font-size:13px;color:var(--tx-mute);margin-bottom:20px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
 .full{grid-column:1/-1}
 .row-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line-soft)}
 .sec-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
@@ -156,6 +158,12 @@ img{display:block;max-width:100%}
 .row-state em{font-family:var(--mono);font-style:normal;font-size:8.5px;letter-spacing:.14em;color:var(--tx-mute)}
 .empty{border:1px dashed var(--line);border-radius:12px;padding:34px 24px;text-align:center;color:var(--tx-mute);font-size:14px;display:grid;gap:14px;justify-items:center}
 .empty .ic{width:30px;height:30px;color:var(--gold)}
+.empty.err{border-color:rgba(226,72,61,.5);background:rgba(226,72,61,.05)}
+.empty.err .ic{color:var(--red)}
+.empty .btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.skel{display:grid;gap:10px}
+.skel div{height:70px;border-radius:11px;background:linear-gradient(100deg,var(--ink-900) 30%,var(--ink-800) 50%,var(--ink-900) 70%);background-size:220% 100%;animation:sh 1.3s linear infinite}
+@keyframes sh{to{background-position:-220% 0}}
 .rep{display:grid;gap:10px}
 .rep-row{display:grid;gap:10px;align-items:end;background:var(--ink-900);border:1px solid var(--ink-700);border-radius:10px;padding:14px}
 .rep-badge{grid-template-columns:1fr auto}
@@ -170,7 +178,34 @@ img{display:block;max-width:100%}
 .steps b{color:var(--tx)}
 pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radius:10px;padding:18px;font-family:var(--mono);font-size:12px;line-height:1.7;color:#B7C3DA;overflow-x:auto;margin:12px 0}
 .warn{display:flex;gap:11px;border:1px solid rgba(240,166,60,.45);background:rgba(240,166,60,.07);border-radius:10px;padding:13px 16px;font-size:13px;color:#F7C780;line-height:1.6;margin-top:16px}
-.warn .ic{color:var(--amber);margin-top:2px}
+.warn .ic{color:var(--amber);margin-top:2px;flex:none}
+.warn.bad{border-color:rgba(226,72,61,.5);background:rgba(226,72,61,.07);color:#F49B93}
+.warn.bad .ic{color:var(--red)}
+.warn.good{border-color:rgba(47,191,113,.45);background:rgba(47,191,113,.07);color:#8FE0B4}
+.warn.good .ic{color:var(--green)}
+.warn.info{border-color:rgba(62,123,250,.45);background:rgba(62,123,250,.07);color:#9DBBFF}
+.warn.info .ic{color:var(--blue)}
+/* Diagnóstico */
+.diag{display:grid;gap:10px}
+.diag-row{display:grid;grid-template-columns:150px 1fr auto;gap:14px;align-items:center;background:var(--ink-900);border:1px solid var(--ink-700);border-radius:10px;padding:13px 16px}
+.diag-row b{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--tx)}
+.diag-row .meta{font-size:12.5px;color:var(--tx-mute);line-height:1.5;word-break:break-word}
+.diag-row .meta strong{color:var(--tx-dim);font-weight:600}
+.pill{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:20px;border:1px solid;white-space:nowrap}
+.pill i{width:7px;height:7px;border-radius:50%;background:currentColor;font-style:normal}
+.p-ok{color:#8FE0B4;border-color:rgba(47,191,113,.45);background:rgba(47,191,113,.1)}
+.p-bad{color:#F49B93;border-color:rgba(226,72,61,.45);background:rgba(226,72,61,.1)}
+.p-wait{color:#F7C780;border-color:rgba(240,166,60,.45);background:rgba(240,166,60,.1)}
+.p-idle{color:var(--tx-mute);border-color:var(--ink-700)}
+.imp-head{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:end}
+.imp-secs{display:grid;gap:9px;margin:16px 0}
+.imp-sec{display:grid;grid-template-columns:auto 1fr auto;gap:13px;align-items:center;background:var(--ink-900);border:1px solid var(--ink-700);border-radius:10px;padding:12px 15px}
+.imp-sec.off{opacity:.5}
+.imp-sec b{font-size:14px;font-weight:600;display:block}
+.imp-sec span{font-family:var(--mono);font-size:10.5px;color:var(--tx-mute);display:block;margin-top:2px}
+.imp-count{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--gold-2);line-height:1}
+.imp-prev{border:1px dashed var(--line);border-radius:10px;padding:14px 16px;font-size:13px;color:var(--tx-dim);line-height:1.8;max-height:190px;overflow:auto}
+.imp-prev b{color:var(--tx)}
 .mroot{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:18px}
 .mroot.open{display:flex}
 .mback{position:absolute;inset:0;background:rgba(4,7,13,.82);backdrop-filter:blur(6px);animation:fade .25s}
@@ -185,22 +220,24 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 .confirm-msg b{color:var(--tx)}
 .toasts{position:fixed;left:20px;bottom:20px;z-index:500;display:flex;flex-direction:column;gap:10px;max-width:min(360px,86vw)}
 .toast{display:flex;align-items:center;gap:11px;background:linear-gradient(150deg,var(--ink-800),var(--ink-850));border:1px solid var(--line);border-radius:10px;padding:12px 16px;font-size:13.5px;box-shadow:0 18px 50px rgba(0,0,0,.55);animation:up .35s var(--ease)}
-.toast .ic{width:17px;height:17px;color:var(--green)}
+.toast .ic{width:17px;height:17px;color:var(--green);flex:none}
 .toast.err .ic{color:var(--red)}
 .toast.gold .ic{color:var(--gold)}
 .toast.out{opacity:0;transform:translateY(8px);transition:all .3s}
 @media (max-width:960px){
   .shell.on{grid-template-columns:1fr}
-  .side{position:static;height:auto;flex-direction:column;border-right:none;border-bottom:1px solid var(--line-soft)}
+  .side{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line-soft)}
   .side-nav{flex-direction:row;overflow-x:auto;padding-bottom:6px}
   .nav-btn{flex:none}
   .nav-btn .cnt{display:none}
   .side-foot{grid-template-columns:1fr auto auto;align-items:center}
-  .grid2,.grid3{grid-template-columns:1fr}
+  .grid2{grid-template-columns:1fr}
   .rep-cifra{grid-template-columns:1fr 1fr 1fr;grid-auto-rows:auto}
   .row{grid-template-columns:46px 1fr auto;grid-auto-rows:auto}
   .row-orden{grid-column:2}
   .row-state{grid-column:3;grid-row:1}
+  .diag-row{grid-template-columns:1fr;gap:8px}
+  .imp-head{grid-template-columns:1fr}
   .views{padding:20px 16px}
   .topbar{padding:14px 16px}
 }
@@ -223,6 +260,8 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 <symbol id="i-post" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h5"/></symbol>
 <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
 <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></symbol>
+<symbol id="i-pulse" viewBox="0 0 24 24"><path d="M2 12h4l3-8 4 16 3-8h6"/></symbol>
+<symbol id="i-import" viewBox="0 0 24 24"><path d="M12 3v12M8 11l4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></symbol>
 <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
 <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
 <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
@@ -235,7 +274,8 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4.03 3-9 3s-9-1.34-9-3M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/></symbol>
 <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3l10 18H2zM12 10v4M12 18h.01"/></symbol>
 <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
-<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
 </defs></svg>
 
 <!-- ══════════ LOGIN ══════════ -->
@@ -253,7 +293,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
       <div class="auth-err" id="loginErr"><svg class="ic"><use href="#i-alert"/></svg><span id="loginErrMsg"></span></div>
       <button type="submit" class="btn btn-primary btn-block" id="loginBtn"><span class="lbl" style="display:inline-flex;align-items:center;gap:9px"><svg class="ic"><use href="#i-lock"/></svg>Ingresar al panel</span></button>
     </form>
-    <p class="auth-note">El acceso se gestiona con <b>Firebase Authentication</b>. Cree el usuario administrador en la consola de Firebase → <b>Authentication → Users → Add user</b> (proveedor Correo/Contraseña habilitado). Las escrituras quedan protegidas por las reglas de Firestore indicadas en la pestaña <b>Ayuda</b>.</p>
+    <p class="auth-note">Acceso con <b>Firebase Authentication</b>. Cree el usuario en la consola → <b>Authentication → Users → Add user</b> (proveedor Correo/Contraseña habilitado). Si el equipo del sitio no aparece aquí, ingrese y abra <b>Diagnóstico → Importar desde el sitio publicado</b>.</p>
     <span class="proj-chip"><i></i>Proyecto: zarzaasociados</span>
   </div>
 </section>
@@ -267,11 +307,12 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
     </div>
     <nav class="side-nav" id="sideNav" aria-label="Secciones editables">
       <button type="button" class="nav-btn active" data-view="inicio"><svg class="ic"><use href="#i-home"/></svg>Inicio</button>
-      <button type="button" class="nav-btn" data-view="areas"><svg class="ic"><use href="#i-grid"/></svg>Áreas de Práctica<span class="cnt" id="cnt-areas">0</span></button>
-      <button type="button" class="nav-btn" data-view="equipo"><svg class="ic"><use href="#i-users"/></svg>Equipo<span class="cnt" id="cnt-equipo">0</span></button>
-      <button type="button" class="nav-btn" data-view="blog"><svg class="ic"><use href="#i-post"/></svg>Blog<span class="cnt" id="cnt-blog">0</span></button>
+      <button type="button" class="nav-btn" data-view="areas"><svg class="ic"><use href="#i-grid"/></svg>Áreas de Práctica<span class="cnt" id="cnt-areas">·</span></button>
+      <button type="button" class="nav-btn" data-view="equipo"><svg class="ic"><use href="#i-users"/></svg>Equipo<span class="cnt" id="cnt-equipo">·</span></button>
+      <button type="button" class="nav-btn" data-view="blog"><svg class="ic"><use href="#i-post"/></svg>Blog<span class="cnt" id="cnt-blog">·</span></button>
       <button type="button" class="nav-btn" data-view="contacto"><svg class="ic"><use href="#i-phone"/></svg>Contacto</button>
-      <button type="button" class="nav-btn" data-view="ayuda"><svg class="ic"><use href="#i-help"/></svg>Ayuda / Configuración</button>
+      <button type="button" class="nav-btn" data-view="diagnostico"><svg class="ic"><use href="#i-pulse"/></svg>Diagnóstico</button>
+      <button type="button" class="nav-btn" data-view="ayuda"><svg class="ic"><use href="#i-help"/></svg>Ayuda</button>
     </nav>
     <div class="side-foot">
       <p class="side-user" id="userEmail">—</p>
@@ -295,30 +336,28 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
           <div class="grid2">
             <div class="field full"><label for="i-eyebrow">Línea superior (eyebrow)</label><input class="inp" id="i-eyebrow"></div>
             <div class="field full"><label for="i-titulo">Titular principal (H1) <b>*</b></label><input class="inp" id="i-titulo">
-              <span class="hint">Use <code>*palabra*</code> para destacar en cursiva dorada. Ej.: <code>Soluciones *integrales*</code></span></div>
+              <span class="hint">Use <code>*palabra*</code> para destacar en cursiva dorada.</span></div>
             <div class="field full"><label for="i-subtitulo">Subtítulo</label><textarea class="txa" id="i-subtitulo" rows="2"></textarea></div>
             <div class="field"><label for="i-cta1">Botón primario</label><input class="inp" id="i-cta1"></div>
             <div class="field"><label for="i-cta2">Botón secundario (WhatsApp)</label><input class="inp" id="i-cta2"></div>
-            <div class="field full"><label for="i-imagen">Imagen de fondo (URL)</label><input class="inp" id="i-imagen" placeholder="https://…"><span class="hint">Vacío = sin fotografía (solo degradados institucionales).</span></div>
+            <div class="field full"><label for="i-imagen">Imagen de fondo (URL)</label><input class="inp" id="i-imagen" placeholder="https://…"></div>
             <div class="field full"><label for="i-mision">Misión (pie de página)</label><textarea class="txa" id="i-mision" rows="2"></textarea></div>
           </div>
         </div>
         <div class="card">
-          <h3><svg class="ic"><use href="#i-check"/></svg>Sellos de confianza bajo los botones</h3>
-          <p class="desc">Incluya o excluya cada sello. Interruptor general para mostrar u ocultar la fila completa.</p>
+          <h3><svg class="ic"><use href="#i-check"/></svg>Sellos de confianza</h3>
           <label class="switch-lbl" style="margin-bottom:16px"><span class="switch"><input type="checkbox" id="i-showBadges"><span></span></span>Mostrar sellos en la portada</label>
           <div class="rep" id="i-badges"></div>
           <div style="margin-top:12px"><button type="button" class="btn btn-ghost btn-sm" id="addBadge"><svg class="ic"><use href="#i-plus"/></svg>Agregar sello</button></div>
         </div>
         <div class="card">
           <h3><svg class="ic"><use href="#i-db"/></svg>Franja de cifras clave</h3>
-          <p class="desc">Métricas animadas. Agregue, edite, reordene o excluya cada cifra con su interruptor.</p>
           <label class="switch-lbl" style="margin-bottom:16px"><span class="switch"><input type="checkbox" id="i-showCifras"><span></span></span>Mostrar franja de cifras</label>
           <div class="rep" id="i-cifras"></div>
           <div style="margin-top:12px"><button type="button" class="btn btn-ghost btn-sm" id="addCifra"><svg class="ic"><use href="#i-plus"/></svg>Agregar cifra</button></div>
         </div>
         <div class="card">
-          <h3><svg class="ic"><use href="#i-grid"/></svg>Marquesina de especialidades</h3>
+          <h3><svg class="ic"><use href="#i-grid"/></svg>Marquesina</h3>
           <label class="switch-lbl" style="margin-bottom:16px"><span class="switch"><input type="checkbox" id="i-showMarquee"><span></span></span>Mostrar marquesina desplazante</label>
           <div class="field"><label for="i-marquee">Ítems (separados por coma)</label><input class="inp" id="i-marquee"></div>
         </div>
@@ -328,7 +367,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
       <!-- ÁREAS -->
       <section class="view" id="view-areas">
         <div class="sec-head">
-          <p>Departamentos jurídicos. El interruptor <b style="color:var(--gold-2)">incluye o excluye</b> el área del sitio público al instante.</p>
+          <p>Departamentos jurídicos. El interruptor <b style="color:var(--gold-2)">incluye o excluye</b> el área del sitio público.</p>
           <button type="button" class="btn btn-primary btn-sm" data-act="new" data-type="areas"><svg class="ic"><use href="#i-plus"/></svg>Nueva área</button>
         </div>
         <div class="rows" id="list-areas"></div>
@@ -337,7 +376,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
       <!-- EQUIPO -->
       <section class="view" id="view-equipo">
         <div class="sec-head">
-          <p>Abogados del estudio. Excluya un profesional para ocultarlo del sitio sin eliminar su ficha.</p>
+          <p>Abogados del estudio. Excluya un profesional para ocultarlo sin eliminar su ficha.</p>
           <button type="button" class="btn btn-primary btn-sm" data-act="new" data-type="equipo"><svg class="ic"><use href="#i-plus"/></svg>Nuevo abogado</button>
         </div>
         <div class="rows" id="list-equipo"></div>
@@ -346,7 +385,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
       <!-- BLOG -->
       <section class="view" id="view-blog">
         <div class="sec-head">
-          <p>Publicaciones. El interruptor equivale a <b style="color:var(--gold-2)">Publicado / Borrador</b>. Los 3 primeros (por orden) se muestran destacados.</p>
+          <p>Publicaciones. El interruptor equivale a <b style="color:var(--gold-2)">Publicado / Borrador</b>.</p>
           <button type="button" class="btn btn-primary btn-sm" data-act="new" data-type="blog"><svg class="ic"><use href="#i-plus"/></svg>Nuevo post</button>
         </div>
         <div class="rows" id="list-blog"></div>
@@ -356,23 +395,23 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
       <section class="view" id="view-contacto">
         <div class="card">
           <h3><svg class="ic"><use href="#i-phone"/></svg>Datos de contacto</h3>
-          <p class="desc">Se aplican al encabezado, formulario, mapa, pie de página y todos los enlaces de teléfono / WhatsApp / email del sitio.</p>
+          <p class="desc">Se aplican al encabezado, formulario, mapa, pie de página y todos los enlaces del sitio.</p>
           <div class="grid2">
-            <div class="field"><label for="k-direccion">Dirección (calle, número, piso)</label><input class="inp" id="k-direccion"></div>
+            <div class="field"><label for="k-direccion">Dirección</label><input class="inp" id="k-direccion"></div>
             <div class="field"><label for="k-ciudad">Ciudad / Código postal</label><input class="inp" id="k-ciudad"></div>
             <div class="field"><label for="k-horario">Horario de atención</label><input class="inp" id="k-horario"></div>
             <div class="field"><label for="k-guardiaNota">Nota de guardia</label><input class="inp" id="k-guardiaNota"></div>
-            <div class="field"><label for="k-telefono">Teléfono fijo (visible)</label><input class="inp" id="k-telefono" placeholder="+54 11 4372-8900"></div>
+            <div class="field"><label for="k-telefono">Teléfono fijo (visible)</label><input class="inp" id="k-telefono"></div>
             <div class="field"><label for="k-email">Email institucional</label><input class="inp" id="k-email" type="email"></div>
-            <div class="field"><label for="k-waDisplay">WhatsApp (texto visible)</label><input class="inp" id="k-waDisplay" placeholder="+54 9 11 5555-0134"></div>
-            <div class="field"><label for="k-waNum">WhatsApp (solo dígitos, para wa.me) <b>*</b></label><input class="inp mono" id="k-waNum" placeholder="5491155550134"><span class="hint">Código de país + área + número, sin espacios ni signos.</span></div>
+            <div class="field"><label for="k-waDisplay">WhatsApp (texto visible)</label><input class="inp" id="k-waDisplay"></div>
+            <div class="field"><label for="k-waNum">WhatsApp (solo dígitos) <b>*</b></label><input class="inp mono" id="k-waNum" placeholder="5491155550134"></div>
             <div class="field full"><label for="k-waMsg">Mensaje predeterminado de WhatsApp</label><input class="inp" id="k-waMsg"></div>
-            <div class="field full"><label for="k-mapa">Consulta del mapa (Google Maps)</label><input class="inp" id="k-mapa"><span class="hint">Dirección que se geolocaliza en el mapa interactivo.</span></div>
-            <div class="field"><label for="k-linkedin">URL LinkedIn</label><input class="inp" id="k-linkedin"><span class="hint">Vacío = se oculta el enlace.</span></div>
-            <div class="field"><label for="k-instagram">URL Instagram</label><input class="inp" id="k-instagram"><span class="hint">Vacío = se oculta el enlace.</span></div>
+            <div class="field full"><label for="k-mapa">Consulta del mapa (Google Maps)</label><input class="inp" id="k-mapa"></div>
+            <div class="field"><label for="k-linkedin">URL LinkedIn</label><input class="inp" id="k-linkedin"></div>
+            <div class="field"><label for="k-instagram">URL Instagram</label><input class="inp" id="k-instagram"></div>
             <div class="field"><label for="k-cuit">CUIT del estudio</label><input class="inp mono" id="k-cuit"></div>
-            <div class="field"><label for="k-notaForm">Nota bajo el título del formulario</label><input class="inp" id="k-notaForm"></div>
-            <div class="field full"><label for="k-badge">Sello de confidencialidad</label><input class="inp" id="k-badge"><span class="hint"><code>**texto**</code> se muestra en negrita dorada.</span></div>
+            <div class="field"><label for="k-notaForm">Nota del formulario</label><input class="inp" id="k-notaForm"></div>
+            <div class="field full"><label for="k-badge">Sello de confidencialidad</label><input class="inp" id="k-badge"><span class="hint"><code>**texto**</code> = negrita dorada.</span></div>
             <label class="switch-lbl"><span class="switch"><input type="checkbox" id="k-showMapa"><span></span></span>Mostrar mapa</label>
             <label class="switch-lbl"><span class="switch"><input type="checkbox" id="k-showBadge"><span></span></span>Mostrar sello de confidencialidad</label>
           </div>
@@ -380,18 +419,50 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
         </div>
       </section>
 
+      <!-- DIAGNÓSTICO -->
+      <section class="view" id="view-diagnostico">
+        <div class="card">
+          <h3><svg class="ic"><use href="#i-pulse"/></svg>Estado de la conexión</h3>
+          <p class="desc">Verifica proyecto, sesión y permisos reales de lectura y escritura sobre cada colección.</p>
+          <div class="diag" id="diagBox"></div>
+          <div class="row-actions">
+            <button type="button" class="btn btn-ghost" id="diagRead"><svg class="ic"><use href="#i-refresh"/></svg>Reverificar lecturas</button>
+            <button type="button" class="btn btn-primary" id="diagWrite"><svg class="ic"><use href="#i-lock"/></svg>Probar escritura</button>
+          </div>
+          <div id="diagWriteMsg"></div>
+        </div>
+
+        <div class="card" id="importCard">
+          <h3><svg class="ic"><use href="#i-import"/></svg>Importar desde el sitio publicado</h3>
+          <p class="desc">Lee el <b>index.html</b> que está online y convierte su equipo, áreas, publicaciones, portada y contacto en registros de Firestore. Es la solución cuando el sitio muestra contenido que el panel no ve.</p>
+          <div class="imp-head">
+            <div class="field"><label for="imp-url">URL del index publicado</label>
+              <input class="inp" id="imp-url" value="index.html" placeholder="index.html  ·  https://susitio.com/index.html">
+              <span class="hint">Si el panel está junto al index, deje <code>index.html</code>. Si están en distintos orígenes, el navegador puede bloquear la lectura: use el pegado manual.</span></div>
+            <button type="button" class="btn btn-primary" id="impFetch"><span class="lbl" style="display:inline-flex;align-items:center;gap:9px"><svg class="ic"><use href="#i-search"/></svg>Leer sitio</span></button>
+          </div>
+          <label class="switch-lbl" style="margin-top:16px"><span class="switch"><input type="checkbox" id="imp-brand" checked><span></span></span>Aplicar marca Zarza &amp; Asociados a los textos importados</label>
+          <div id="impPaste" hidden style="margin-top:18px">
+            <div class="warn"><svg class="ic"><use href="#i-alert"/></svg><span id="impPasteWhy">No se pudo leer la URL.</span></div>
+            <div class="field" style="margin-top:14px"><label for="imp-src">Pegue el código fuente del index publicado</label>
+              <textarea class="txa code" id="imp-src" rows="8" placeholder="Abra el sitio online → Ctrl+U (ver código fuente) → Ctrl+A → Ctrl+C → pegue aquí"></textarea>
+              <span class="hint">El análisis se hace en su navegador; el código no se ejecuta, solo se leen los datos.</span></div>
+            <div style="margin-top:12px"><button type="button" class="btn btn-ghost btn-sm" id="impParse"><svg class="ic"><use href="#i-import"/></svg>Analizar código pegado</button></div>
+          </div>
+          <div id="impResult"></div>
+        </div>
+      </section>
+
       <!-- AYUDA -->
       <section class="view" id="view-ayuda">
         <div class="card">
-          <h3><svg class="ic"><use href="#i-help"/></svg>Puesta en marcha (una sola vez)</h3>
+          <h3><svg class="ic"><use href="#i-help"/></svg>Por qué el equipo del sitio no aparece en el panel</h3>
           <ol class="steps">
-            <li>En la <b>consola de Firebase</b> del proyecto <b>zarzaasociados</b>: abra <b>Authentication → Sign-in method</b> y habilite <b>Correo electrónico/Contraseña</b>. Luego, en <b>Users → Add user</b>, cree el email y la contraseña del administrador (los mismos que usa para ingresar aquí).</li>
-            <li>Abra <b>Firestore Database → Crear base de datos</b> (modo producción, región <code class="mono">southamerica-east1</code> sugerida). En la pestaña <b>Reglas</b>, pegue las reglas de abajo y publique.</li>
-            <li>Pulse <b>“Cargar contenido inicial”</b> aquí abajo: siembra todas las secciones con el contenido actual de <b>Zarza &amp; Asociados</b> (6 áreas, 4 abogados, 6 posts, portada y contacto).</li>
-            <li>En su <b>index.html</b> público, pegue el <b>script conector</b> provisto junto a este panel, justo antes de <code class="mono">&lt;/body&gt;</code>. Ese script renombra el estudio y conecta las 5 secciones a Firestore en vivo.</li>
-            <li>Publique ambos archivos en el mismo hosting (Firebase Hosting, Netlify, etc.). El panel también funciona abriéndolo como archivo local.</li>
+            <li>El <b>index.html</b> trae el equipo escrito en su propio HTML como contenido base. Si Firestore está vacío, el sitio <b>igual se ve completo</b>, pero el panel —que solo lee Firestore— muestra la lista vacía.</li>
+            <li>Solución definitiva: abra <b>Diagnóstico → Importar desde el sitio publicado</b>. El panel lee el index online y escribe esos abogados en la colección <code class="mono">equipo</code>. A partir de ahí se editan, incluyen y excluyen desde aquí.</li>
+            <li>Si el diagnóstico marca <b>permiso denegado</b>, pegue las reglas de abajo en Firestore. Si marca <b>otro proyecto</b>, el index publicado apunta a una base distinta: actualice su configuración o importe el contenido aquí.</li>
+            <li>Alternativa rápida: use <b>Cargar contenido inicial</b> para escribir el equipo completo de Zarza &amp; Asociados (4 abogados con biografía, formación y trayectoria).</li>
           </ol>
-          <div class="warn"><svg class="ic"><use href="#i-alert"/></svg><span>Las reglas permiten <b>lectura pública</b> (el sitio la necesita) y <b>escritura solo con sesión iniciada</b>; el resto de las colecciones permanece bloqueado. Sin ellas, el panel no podrá guardar.</span></div>
         </div>
         <div class="card">
           <h3><svg class="ic"><use href="#i-lock"/></svg>Reglas de seguridad de Firestore</h3>
@@ -428,18 +499,9 @@ service cloud.firestore {
         </div>
         <div class="card">
           <h3><svg class="ic"><use href="#i-db"/></svg>Contenido inicial</h3>
-          <p class="desc">Escribe en Firestore el contenido completo del sitio ya renombrado a Zarza &amp; Asociados. Puede ejecutarlo las veces que necesite.</p>
-          <div class="warn" style="margin:0 0 16px"><svg class="ic"><use href="#i-alert"/></svg><span>Esto <b>sobrescribe</b> los documentos con los identificadores iniciales (áreas, abogados, posts, portada y contacto). Sus documentos nuevos con otros IDs no se tocan.</span></div>
+          <p class="desc">Escribe en Firestore el contenido completo del sitio con la marca Zarza &amp; Asociados.</p>
+          <div class="warn" style="margin:0 0 16px"><svg class="ic"><use href="#i-alert"/></svg><span>Sobrescribe los documentos con los identificadores iniciales. Los documentos creados por usted con otros IDs no se tocan.</span></div>
           <button type="button" class="btn btn-primary" id="seedBtn"><svg class="ic"><use href="#i-db"/></svg>Cargar contenido inicial de Zarza &amp; Asociados</button>
-        </div>
-        <div class="card">
-          <h3><svg class="ic"><use href="#i-eye"/></svg>Cómo se refleja en el sitio</h3>
-          <ol class="steps">
-            <li><b>Interruptores</b> (incluido/excluido): ocultan o muestran cada área, abogado, post o dato al instante, sin borrar nada.</li>
-            <li><b>Orden</b>: número menor aparece primero. En Blog, los 3 primeros activos forman la portada de publicaciones.</li>
-            <li><b>Eliminar</b> borra el documento en forma definitiva (se pide confirmación). Si una colección queda sin documentos, el sitio muestra su contenido base de respaldo.</li>
-            <li>Los cambios se sincronizan <b>en vivo</b> en cualquier pestaña abierta del sitio público.</li>
-          </ol>
         </div>
       </section>
 
@@ -479,7 +541,7 @@ service cloud.firestore {
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, collection, doc, onSnapshot, setDoc, addDoc, updateDoc, deleteDoc, serverTimestamp, writeBatch } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, doc, onSnapshot, setDoc, addDoc, updateDoc, deleteDoc, getDocs, serverTimestamp, writeBatch } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 /* ═══ SDK FIREBASE — PROYECTO zarzaasociados ═══ */
 const firebaseConfig = {
@@ -504,12 +566,14 @@ const slugify = s => String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"
 const lines = t => String(t||"").split("\n").map(x=>x.trim()).filter(Boolean);
 const commas = t => String(t||"").split(",").map(x=>x.trim()).filter(Boolean);
 const MESES = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
-const fdate = iso => { if(!iso) return "—"; const [y,m,d]=iso.split("-"); return `${d} · ${MESES[parseInt(m,10)-1]||""} · ${y}`; };
+const fdate = iso => { if(!iso) return "—"; const p=String(iso).split("-"); return p.length===3 ? `${p[2]} · ${MESES[parseInt(p[1],10)-1]||""} · ${p[0]}` : "—"; };
 const ICONS = [["i-brief","Maletín / Balanza"],["i-doc","Documento con sello"],["i-family","Grupo familiar"],["i-building","Edificio corporativo"],["i-gavel","Mazo de juez"],["i-shieldcart","Escudo / Consumidor"]];
 const COLORS = [["gold","Dorado"],["blue","Azul"],["green","Verde"],["amber","Ámbar"],["red","Rojo"],["violet","Violeta"]];
 const CATS = ["Laboral","Civil y Comercial","Familia","Penal y Tránsito","Empresario","Consumidor"];
 const CATCLS = {"Laboral":"ch-gold","Civil y Comercial":"ch-blue","Familia":"ch-green","Penal y Tránsito":"ch-red","Empresario":"ch-amber","Consumidor":"ch-violet"};
+const TAG2COLOR = {"tag-gold":"gold","tag-blue":"blue","tag-green":"green","tag-amber":"amber","tag-red":"red","tag-violet":"violet"};
 const byOrden = (a,b) => (a.orden??999)-(b.orden??999);
+const COLS = ["areas","equipo","blog"];
 
 function toast(msg, type){
   const box = $("#toasts");
@@ -518,11 +582,11 @@ function toast(msg, type){
   t.className = "toast" + (type ? " " + type : "");
   t.innerHTML = '<svg class="ic"><use href="#' + (type==="err"?"i-alert":type==="gold"?"i-lock":"i-check") + '"/></svg><span>' + esc(msg) + "</span>";
   box.appendChild(t);
-  setTimeout(() => { t.classList.add("out"); setTimeout(() => t.remove(), 320); }, 3600);
+  setTimeout(() => { t.classList.add("out"); setTimeout(() => t.remove(), 320); }, 3800);
 }
-const fsErr = e => { console.warn(e); toast("Error de Firestore: " + (e.code || e.message) + ". Revise las reglas de seguridad.", "err"); };
+const fsErr = e => { console.warn(e); toast("Error de Firestore: " + (e.code || e.message), "err"); };
 
-/* ───────── Contenido inicial (Zarza & Asociados) ───────── */
+/* ───────── Contenido inicial ───────── */
 const SEED = {
 inicio:{
   eyebrow:"Estudio Jurídico Multipráctica · Buenos Aires · Desde 2004",
@@ -649,7 +713,11 @@ blog:[
 ]};
 
 /* ───────── Estado & sesión ───────── */
-const state = { inicio:null, contacto:null, areas:[], equipo:[], blog:[], loaded:{} };
+const state = {
+  inicio:null, contacto:null, areas:[], equipo:[], blog:[],
+  status:{inicio:"loading",contacto:"loading",areas:"loading",equipo:"loading",blog:"loading"},
+  err:{}
+};
 let unsubs = [], view = "inicio";
 
 const AUTH_ERRS = {
@@ -659,17 +727,16 @@ const AUTH_ERRS = {
   "auth/invalid-email":"El email no es válido.",
   "auth/missing-password":"Ingrese la contraseña.",
   "auth/user-disabled":"Este usuario fue deshabilitado en Firebase Authentication.",
-  "auth/too-many-requests":"Demasiados intentos. Espere unos minutos y vuelva a probar.",
+  "auth/too-many-requests":"Demasiados intentos. Espere unos minutos.",
   "auth/network-request-failed":"Sin conexión con Firebase. Verifique su red.",
-  "auth/operation-not-allowed":"El proveedor Correo/Contraseña no está habilitado. Actívelo en Firebase → Authentication → Sign-in method.",
-  "auth/configuration-not-found":"Firebase Authentication no está configurado en el proyecto. Abra Authentication en la consola y complete la configuración inicial.",
-  "auth/invalid-api-key":"La clave API del proyecto no es válida. Revise la configuración del SDK."
+  "auth/operation-not-allowed":"El proveedor Correo/Contraseña no está habilitado. Actívelo en Authentication → Sign-in method.",
+  "auth/configuration-not-found":"Firebase Authentication no está configurado. Abra Authentication en la consola y complete la configuración inicial.",
+  "auth/invalid-api-key":"La clave API del proyecto no es válida."
 };
 $("#loginForm").addEventListener("submit", async e => {
   e.preventDefault();
   const btn = $("#loginBtn"), err = $("#loginErr");
-  err.classList.remove("show");
-  btn.classList.add("loading");
+  err.classList.remove("show"); btn.classList.add("loading");
   try { await signInWithEmailAndPassword(auth, $("#l-email").value.trim(), $("#l-pass").value); }
   catch(ex){ $("#loginErrMsg").textContent = AUTH_ERRS[ex.code] || ("No se pudo ingresar: " + ex.code); err.classList.add("show"); }
   finally { btn.classList.remove("loading"); }
@@ -681,7 +748,7 @@ onAuthStateChanged(auth, user => {
     $("#authView").style.display = "none";
     $("#appView").classList.add("on");
     $("#userEmail").textContent = user.email;
-    subscribe();
+    subscribe(); renderDiag();
   } else {
     unsubs.forEach(u => { try{u();}catch(_){}} ); unsubs = [];
     $("#appView").classList.remove("on");
@@ -691,35 +758,57 @@ onAuthStateChanged(auth, user => {
 });
 
 function setConn(cls, txt){ const c = $("#conn"); c.className = "conn " + cls; $("#connTxt").textContent = txt; }
-function snapOK(key){ state.loaded[key] = true; if (Object.keys(state.loaded).length >= 5) setConn("ok", "En línea · sincronizado"); }
-function snapErr(e){ console.warn(e); setConn("bad", "Sin acceso — revise reglas"); }
-
+function refreshConn(){
+  const st = Object.values(state.status);
+  if (st.some(s => s === "loading")) return setConn("", "Conectando…");
+  if (st.some(s => s === "error")) return setConn("bad", "Sin acceso — ver Diagnóstico");
+  setConn("ok", "En línea · sincronizado");
+}
 function subscribe(){
-  unsubs.forEach(u => { try{u();}catch(_){}} ); unsubs = []; state.loaded = {};
-  unsubs.push(onSnapshot(doc(db,"sitio","inicio"), s => { state.inicio = s.exists() ? s.data() : null; snapOK("i"); if (view==="inicio") renderInicio(); }, snapErr));
-  unsubs.push(onSnapshot(doc(db,"sitio","contacto"), s => { state.contacto = s.exists() ? s.data() : null; snapOK("c"); if (view==="contacto") renderContacto(); }, snapErr));
-  ["areas","equipo","blog"].forEach(col => {
+  unsubs.forEach(u => { try{u();}catch(_){}} ); unsubs = [];
+  ["inicio","contacto"].forEach(k => {
+    unsubs.push(onSnapshot(doc(db,"sitio",k), s => {
+      state[k] = s.exists() ? s.data() : null;
+      state.status[k] = "ok"; delete state.err[k];
+      refreshConn(); renderDiag();
+      if (view === k) (k === "inicio" ? renderInicio() : renderContacto());
+    }, e => { state.status[k] = "error"; state.err[k] = e.code || e.message; refreshConn(); renderDiag(); }));
+  });
+  COLS.forEach(col => {
     unsubs.push(onSnapshot(collection(db,col), qs => {
       state[col] = qs.docs.map(d => ({ id:d.id, ...d.data() })).sort(byOrden);
-      snapOK(col); updateCounts();
-      if (view===col) renderList(col);
-    }, snapErr));
+      state.status[col] = "ok"; delete state.err[col];
+      updateCounts(); refreshConn(); renderDiag();
+      if (view === col) renderList(col);
+    }, e => {
+      state.status[col] = "error"; state.err[col] = e.code || e.message;
+      updateCounts(); refreshConn(); renderDiag();
+      if (view === col) renderList(col);
+    }));
   });
 }
-function updateCounts(){ ["areas","equipo","blog"].forEach(c => { $("#cnt-"+c).textContent = state[c].length; }); }
+function updateCounts(){
+  COLS.forEach(c => {
+    const el = $("#cnt-"+c);
+    el.textContent = state.status[c] === "error" ? "!" : state[c].length;
+    el.classList.toggle("bad", state.status[c] === "error");
+  });
+}
 
 /* ───────── Navegación ───────── */
-const TITLES = { inicio:"Inicio", areas:"Áreas de Práctica", equipo:"Equipo / Abogados", blog:"Blog / Publicaciones", contacto:"Contacto", ayuda:"Ayuda / Configuración" };
+const TITLES = { inicio:"Inicio", areas:"Áreas de Práctica", equipo:"Equipo / Abogados", blog:"Blog / Publicaciones", contacto:"Contacto", diagnostico:"Diagnóstico y reparación", ayuda:"Ayuda / Configuración" };
 $("#sideNav").addEventListener("click", e => {
   const b = e.target.closest("[data-view]"); if (!b) return;
   view = b.dataset.view;
   $$(".nav-btn").forEach(x => x.classList.toggle("active", x === b));
   $$(".view").forEach(v => v.classList.toggle("on", v.id === "view-" + view));
   $("#viewTitle").textContent = TITLES[view];
-  if (view==="inicio") renderInicio();
-  else if (view==="contacto") renderContacto();
-  else if (["areas","equipo","blog"].includes(view)) renderList(view);
+  if (view === "inicio") renderInicio();
+  else if (view === "contacto") renderContacto();
+  else if (view === "diagnostico") renderDiag();
+  else if (COLS.includes(view)) renderList(view);
 });
+const goView = v => { const b = document.querySelector('[data-view="'+v+'"]'); if (b) b.click(); };
 
 /* ───────── INICIO ───────── */
 function badgeRow(v){
@@ -784,30 +873,29 @@ $("#saveInicio").addEventListener("click", async () => {
 });
 
 /* ───────── CONTACTO ───────── */
+const KMAP = {direccion:"k-direccion",ciudad:"k-ciudad",horario:"k-horario",guardiaNota:"k-guardiaNota",telefono:"k-telefono",email:"k-email",waDisplay:"k-waDisplay",waNum:"k-waNum",waMsg:"k-waMsg",mapa:"k-mapa",linkedin:"k-linkedin",instagram:"k-instagram",cuit:"k-cuit",notaForm:"k-notaForm",badge:"k-badge"};
 function renderContacto(){
   const d = state.contacto || SEED.contacto;
-  const map = {direccion:"k-direccion",ciudad:"k-ciudad",horario:"k-horario",guardiaNota:"k-guardiaNota",telefono:"k-telefono",email:"k-email",waDisplay:"k-waDisplay",waNum:"k-waNum",waMsg:"k-waMsg",mapa:"k-mapa",linkedin:"k-linkedin",instagram:"k-instagram",cuit:"k-cuit",notaForm:"k-notaForm",badge:"k-badge"};
-  for (const k in map) $("#" + map[k]).value = d[k] || "";
+  for (const k in KMAP) $("#" + KMAP[k]).value = d[k] || "";
   $("#k-showMapa").checked = d.showMapa !== false;
   $("#k-showBadge").checked = d.showBadge !== false;
 }
 $("#saveContacto").addEventListener("click", async () => {
   const waNum = $("#k-waNum").value.replace(/\D/g,"");
   if (!waNum) return toast("El número de WhatsApp (solo dígitos) es obligatorio.", "err");
-  const data = {
-    direccion:$("#k-direccion").value.trim(), ciudad:$("#k-ciudad").value.trim(),
-    horario:$("#k-horario").value.trim(), guardiaNota:$("#k-guardiaNota").value.trim(),
-    telefono:$("#k-telefono").value.trim(), email:$("#k-email").value.trim(),
-    waDisplay:$("#k-waDisplay").value.trim(), waNum, waMsg:$("#k-waMsg").value.trim(),
-    mapa:$("#k-mapa").value.trim(), linkedin:$("#k-linkedin").value.trim(), instagram:$("#k-instagram").value.trim(),
-    cuit:$("#k-cuit").value.trim(), notaForm:$("#k-notaForm").value.trim(), badge:$("#k-badge").value.trim(),
-    showMapa:$("#k-showMapa").checked, showBadge:$("#k-showBadge").checked, updatedAt:serverTimestamp()
-  };
+  const data = { waNum, showMapa:$("#k-showMapa").checked, showBadge:$("#k-showBadge").checked, updatedAt:serverTimestamp() };
+  for (const k in KMAP) if (k !== "waNum") data[k] = $("#" + KMAP[k]).value.trim();
   try { await setDoc(doc(db,"sitio","contacto"), data); toast("Datos de contacto guardados y publicados."); } catch(ex){ fsErr(ex); }
 });
 
 /* ───────── LISTAS CRUD ───────── */
-const emptyHTML = col => '<div class="empty"><svg class="ic"><use href="#i-db"/></svg><span>No hay documentos en <b>' + col + '</b>. Cree el primero o cargue el contenido inicial.</span><button type="button" class="btn btn-ghost btn-sm" data-goto-ayuda>Ir a Ayuda → Cargar contenido inicial</button></div>';
+function listState(col){
+  const st = state.status[col];
+  if (st === "loading") return '<div class="skel"><div></div><div></div><div></div></div>';
+  if (st === "error") return '<div class="empty err"><svg class="ic"><use href="#i-alert"/></svg><span><b style="color:#F49B93">No se pudo leer la colección <span class="mono">' + col + '</span>.</b><br>Código: ' + esc(state.err[col]||"desconocido") + '. Normalmente son las reglas de Firestore o el proyecto equivocado.</span><div class="btns"><button type="button" class="btn btn-ghost btn-sm" data-goto="diagnostico">Abrir Diagnóstico</button><button type="button" class="btn btn-ghost btn-sm" data-goto="ayuda">Ver reglas</button></div></div>';
+  if (!state[col].length) return '<div class="empty"><svg class="ic"><use href="#i-db"/></svg><span><b style="color:var(--tx-dim)">Firestore no tiene documentos en <span class="mono">' + col + '</span>.</b><br>Si el sitio online igual muestra este contenido, es el contenido base del HTML: impórtelo para poder editarlo aquí.</span><div class="btns"><button type="button" class="btn btn-primary btn-sm" data-goto="diagnostico"><svg class="ic"><use href="#i-import"/></svg>Importar desde el sitio</button><button type="button" class="btn btn-ghost btn-sm" data-goto="ayuda">Cargar contenido inicial</button></div></div>';
+  return "";
+}
 function rowHTML(col, d){
   let ico = "", info = "", extra = "";
   if (col === "areas"){
@@ -831,10 +919,12 @@ function rowHTML(col, d){
 }
 function renderList(col){
   const el = $("#list-" + col);
-  el.innerHTML = state[col].length ? state[col].map(d => rowHTML(col, d)).join("") : emptyHTML(col);
+  const s = listState(col);
+  el.innerHTML = s || state[col].map(d => rowHTML(col, d)).join("");
 }
 $("#mainArea").addEventListener("click", e => {
-  if (e.target.closest("[data-goto-ayuda]")){ $('[data-view="ayuda"]').click(); return; }
+  const g = e.target.closest("[data-goto]");
+  if (g){ goView(g.dataset.goto); return; }
   const b = e.target.closest("[data-act]"); if (!b) return;
   const { act, type, id } = b.dataset;
   if (act === "new") openEditor(type, null);
@@ -892,7 +982,7 @@ function openEditor(type, id){
     editorSaveFn = async () => {
       const nombre = $("#e-nombre").value.trim();
       if (!nombre) return toast("El nombre del área es obligatorio.","err"), false;
-      let slug = isEdit ? id : (slugify($("#e-slug").value) || slugify(nombre));
+      const slug = isEdit ? id : (slugify($("#e-slug").value) || slugify(nombre));
       if (!slug) return toast("Identificador inválido.","err"), false;
       if (!isEdit && state.areas.some(a => a.id === slug)) return toast("Ya existe un área con ese identificador.","err"), false;
       const data = { nombre, icono:$("#e-icono").value, color:$("#e-color").value,
@@ -949,7 +1039,7 @@ function openEditor(type, id){
       fld("e-lectura","Tiempo de lectura",inp("e-lectura",d?.lectura||"5 min")) +
       '<div class="full">' + fld("e-extracto","Extracto (tarjeta)",txa("e-extracto",d?.extracto,2)) + "</div>" +
       '<div class="full">' + fld("e-cuerpo","Cuerpo del artículo",txa("e-cuerpo",d?.cuerpo,12),
-        "Formato: línea en blanco = nuevo párrafo · <code>## Texto</code> = subtítulo · <code>- texto</code> = viñeta · <code>1. texto</code> = lista numerada · <code>**texto**</code> = negrita.") + "</div>" +
+        "Línea en blanco = párrafo · <code>## Texto</code> = subtítulo · <code>- texto</code> = viñeta · <code>1. texto</code> = lista numerada · <code>**texto**</code> = negrita.") + "</div>" +
       fld("e-orden","Orden",inp("e-orden",d?.orden ?? (state.blog.length+1),"number")) +
       '<div class="field"><span class="flabel">Estado</span>' + switchFld("e-activo",d?.activo,"Publicado (visible en el sitio)") + "</div></div>";
     editorSaveFn = async () => {
@@ -981,16 +1071,16 @@ $$("[data-close-editor]").forEach(el => el.addEventListener("click", () => edito
 /* ───────── Confirmación ───────── */
 const confirmRoot = $("#confirmRoot");
 let confirmFn = null;
-function openConfirm(title, msg, fn){
+function openConfirm(title, msg, fn, label){
   $("#confirmTitle").textContent = title;
   $("#confirmMsg").innerHTML = msg;
+  $("#confirmYes").textContent = label || "Confirmar";
   confirmFn = fn;
   confirmRoot.classList.add("open");
 }
 $("#confirmYes").addEventListener("click", async () => {
   const fn = confirmFn; if (!fn) return;
-  confirmFn = null;
-  confirmRoot.classList.remove("open");
+  confirmFn = null; confirmRoot.classList.remove("open");
   await fn();
 });
 $$("[data-close-confirm]").forEach(el => el.addEventListener("click", () => confirmRoot.classList.remove("open")));
@@ -1000,6 +1090,357 @@ document.addEventListener("keydown", e => {
   else if (editorRoot.classList.contains("open")) editorRoot.classList.remove("open");
 });
 
+/* ───────── DIAGNÓSTICO ───────── */
+const pill = (cls,txt) => '<span class="pill ' + cls + '"><i></i>' + esc(txt) + "</span>";
+function renderDiag(){
+  const box = $("#diagBox"); if (!box) return;
+  const u = auth.currentUser;
+  let h = '<div class="diag-row"><b>PROYECTO</b><div class="meta"><strong>' + esc(firebaseConfig.projectId) + '</strong> · authDomain ' + esc(firebaseConfig.authDomain) + '</div>' + pill("p-ok","SDK") + "</div>";
+  h += '<div class="diag-row"><b>SESIÓN</b><div class="meta">' + (u ? "Autenticado como <strong>" + esc(u.email) + "</strong>" : "Sin sesión iniciada") + "</div>" + (u ? pill("p-ok","Activa") : pill("p-bad","Sin sesión")) + "</div>";
+  ["inicio","contacto"].forEach(k => {
+    const st = state.status[k];
+    const p = st === "ok" ? pill("p-ok","Lectura OK") : st === "error" ? pill("p-bad","Denegado") : pill("p-wait","Leyendo");
+    const meta = st === "error" ? "Error: <strong>" + esc(state.err[k]||"") + "</strong>"
+      : state[k] ? "Documento <strong>sitio/" + k + "</strong> presente" : "Documento <strong>sitio/" + k + "</strong> inexistente (el sitio usa su contenido base)";
+    h += '<div class="diag-row"><b>SITIO/' + k.toUpperCase() + '</b><div class="meta">' + meta + "</div>" + p + "</div>";
+  });
+  COLS.forEach(c => {
+    const st = state.status[c];
+    const p = st === "ok" ? pill("p-ok","Lectura OK") : st === "error" ? pill("p-bad","Denegado") : pill("p-wait","Leyendo");
+    const n = state[c].length, act = state[c].filter(x => x.activo !== false).length;
+    const meta = st === "error" ? "Error: <strong>" + esc(state.err[c]||"") + "</strong>"
+      : n ? "<strong>" + n + "</strong> documento(s) · <strong>" + act + "</strong> incluidos en el sitio"
+      : "Colección <strong>vacía</strong>. El sitio muestra su contenido base: use el importador de abajo.";
+    h += '<div class="diag-row"><b>' + c.toUpperCase() + '</b><div class="meta">' + meta + "</div>" + p + "</div>";
+  });
+  box.innerHTML = h;
+}
+$("#diagRead").addEventListener("click", async () => {
+  const btn = $("#diagRead"); btn.classList.add("loading");
+  try {
+    for (const c of COLS){
+      try { const qs = await getDocs(collection(db,c)); state.status[c] = "ok"; delete state.err[c];
+        state[c] = qs.docs.map(d => ({ id:d.id, ...d.data() })).sort(byOrden); }
+      catch(e){ state.status[c] = "error"; state.err[c] = e.code || e.message; }
+    }
+    updateCounts(); refreshConn(); renderDiag();
+    if (COLS.includes(view)) renderList(view);
+    toast("Lecturas reverificadas.", "gold");
+  } finally { btn.classList.remove("loading"); }
+});
+$("#diagWrite").addEventListener("click", async () => {
+  const btn = $("#diagWrite"), out = $("#diagWriteMsg");
+  btn.classList.add("loading"); out.innerHTML = "";
+  try {
+    const ref = doc(db,"sitio","_diagnostico");
+    await setDoc(ref, { ts:serverTimestamp(), by:auth.currentUser?.email || "" });
+    await deleteDoc(ref);
+    out.innerHTML = '<div class="warn good"><svg class="ic"><use href="#i-check"/></svg><span><b>Escritura correcta.</b> Las reglas permiten guardar y el proyecto es el adecuado. Si alguna lista sigue vacía, es porque no hay documentos: importe el contenido del sitio.</span></div>';
+  } catch(e){
+    out.innerHTML = '<div class="warn bad"><svg class="ic"><use href="#i-alert"/></svg><span><b>Escritura bloqueada (' + esc(e.code||e.message) + ').</b> Publique las reglas de la pestaña Ayuda y verifique haber iniciado sesión en este proyecto.</span></div>';
+  } finally { btn.classList.remove("loading"); }
+});
+
+/* ───────── IMPORTADOR DESDE EL SITIO PUBLICADO ───────── */
+const MESES_FULL = {enero:1,febrero:2,marzo:3,abril:4,mayo:5,junio:6,julio:7,agosto:8,septiembre:9,setiembre:9,octubre:10,noviembre:11,diciembre:12};
+function esDateToISO(s){
+  const m = String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").match(/(\d{1,2})\s+de\s+([a-z]+)\s+de\s+(\d{4})/);
+  if (!m) return "";
+  const mo = MESES_FULL[m[2]];
+  return mo ? m[3] + "-" + String(mo).padStart(2,"0") + "-" + String(m[1]).padStart(2,"0") : "";
+}
+const BRAND_PAIRS = [["Rossi & Asociados","Zarza & Asociados"],["Rossi y Asociados","Zarza y Asociados"],["ROSSI & ASOCIADOS","ZARZA & ASOCIADOS"],["rossiyasociados","zarzaasociados"],["Alejandro Rossi","Alejandro Zarza"],["a.rossi@","a.zarza@"],["rossi-asociados","zarza-asociados"],["Rossi","Zarza"]];
+const brandify = s => { let t = String(s ?? ""); for (const [a,b] of BRAND_PAIRS) t = t.split(a).join(b); return t; };
+const brandId = s => String(s||"") === "rossi" ? "zarza" : String(s||"");
+function deepBrand(v, on){
+  if (!on) return v;
+  if (typeof v === "string") return brandify(v);
+  if (Array.isArray(v)) return v.map(x => deepBrand(x, on));
+  if (v && typeof v === "object"){ const o = {}; for (const k in v) o[k] = deepBrand(v[k], on); return o; }
+  return v;
+}
+const T = el => (el?.textContent || "").replace(/\s+/g," ").trim();
+const colorOf = el => { const t = el?.className?.baseVal ?? el?.className ?? ""; for (const k in TAG2COLOR) if (String(t).includes(k)) return TAG2COLOR[k]; return "gold"; };
+function nodeToLite(node){
+  let s = "";
+  node.childNodes.forEach(n => {
+    if (n.nodeType === 3) s += n.nodeValue;
+    else if (n.nodeType === 1){
+      const t = n.tagName.toLowerCase(), inner = nodeToLite(n);
+      if (t === "b" || t === "strong") s += "**" + inner + "**";
+      else if (t === "em" || t === "i") s += "*" + inner + "*";
+      else if (t === "br") s += "\n";
+      else s += inner;
+    }
+  });
+  return s;
+}
+const lite = el => el ? nodeToLite(el).replace(/[ \t]+/g," ").trim() : "";
+function extractObject(src, name){
+  const m = new RegExp("const\\s+" + name + "\\s*=\\s*\\{").exec(src);
+  if (!m) return null;
+  const start = m.index + m[0].length - 1;
+  let depth = 0, q = null, escp = false;
+  for (let i = start; i < src.length; i++){
+    const c = src[i];
+    if (q){ if (escp) escp = false; else if (c === "\\") escp = true; else if (c === q) q = null; continue; }
+    if (c === '"' || c === "'" || c === "`"){ q = c; continue; }
+    if (c === "{") depth++;
+    else if (c === "}"){ depth--; if (depth === 0){
+      try { return new Function("return (" + src.slice(start, i+1) + ")")(); } catch(_){ return null; }
+    } }
+  }
+  return null;
+}
+let IMPORT = null;
+function parseIndex(src){
+  const dom = new DOMParser().parseFromString(src, "text/html");
+  const LAW = extractObject(src, "LAWYERS");
+  const ARE = extractObject(src, "AREAS");
+  const ART = extractObject(src, "ARTICLES");
+  const out = {
+    proyecto: (src.match(/projectId:\s*["']([^"']+)["']/) || [])[1] || null,
+    conector: /firebase-firestore\.js/.test(src),
+    equipo:[], areas:[], blog:[], inicio:null, contacto:null
+  };
+  /* EQUIPO */
+  const cards = Array.from(dom.querySelectorAll(".team-card"));
+  const cardEq = cards.map((c,i) => ({
+    id: c.querySelector("[data-open-lawyer]")?.getAttribute("data-open-lawyer") || slugify(T(c.querySelector("h3")) || "abogado-"+(i+1)),
+    nombre: T(c.querySelector("h3")),
+    areaTexto: T(c.querySelector(".team-area")),
+    rol: T(c.querySelector(".portrait-role")),
+    foto: c.querySelector(".portrait img")?.getAttribute("src") || "",
+    iniciales: T(c.querySelector(".portrait-fallback b")),
+    matricula: T(c.querySelector(".matricula")),
+    color: colorOf(c.querySelector(".tag")),
+    orden: i+1
+  }));
+  if (LAW && typeof LAW === "object"){
+    out.equipo = Object.keys(LAW).map((k,i) => {
+      const l = LAW[k] || {}, ci = cardEq.find(x => x.id === k);
+      return {
+        id:k, nombre:l.n || ci?.nombre || k, rol:l.role || ci?.rol || "",
+        matricula:l.mat || (ci?.matricula ? "CPACF · " + ci.matricula : ""),
+        areaTexto: ci?.areaTexto || (l.role||"").split("·").slice(1).join("·").trim(),
+        areaSlug: l.area || "", color: TAG2COLOR[l.tag] || ci?.color || "gold",
+        foto: ci?.foto || l.img || "", iniciales: l.ini || ci?.iniciales || "",
+        email: l.email || "", linkedin: SEED.contacto.linkedin,
+        bio: l.bio || "", formacion: l.form || [], trayectoria: l.tray || [], idiomas: l.langs || [],
+        orden: ci?.orden || i+1, activo: true
+      };
+    });
+  } else {
+    out.equipo = cardEq.map(c => ({ ...c, matricula: c.matricula ? "CPACF · " + c.matricula : "",
+      areaSlug:"", email:"", linkedin:SEED.contacto.linkedin, bio:"", formacion:[], trayectoria:[], idiomas:[], activo:true }));
+  }
+  /* ÁREAS */
+  const aCards = Array.from(dom.querySelectorAll(".area-card"));
+  const cardAr = aCards.map((c,i) => ({
+    id: c.getAttribute("data-open-area") || slugify(T(c.querySelector("h3")) || "area-"+(i+1)),
+    nombre: T(c.querySelector("h3")), descripcion: T(c.querySelector("p")),
+    color: colorOf(c.querySelector(".area-tile")) !== "gold" ? colorOf(c.querySelector(".area-tile")) : (TAG2COLOR[(c.querySelector(".tag")?.className||"").split(" ").find(x=>TAG2COLOR[x])] || "gold"),
+    styleColor: (c.getAttribute("style")||"").match(/--c:\s*var\(--([a-z]+)\)/)?.[1] || "",
+    tags: Array.from(c.querySelectorAll(".tag")).map(t => T(t)),
+    orden: i+1
+  }));
+  if (ARE && typeof ARE === "object"){
+    out.areas = Object.keys(ARE).map((k,i) => {
+      const a = ARE[k] || {}, ci = cardAr.find(x => x.id === k);
+      return { id:k, nombre:a.n || ci?.nombre || k, icono:a.icon || "i-brief",
+        color: TAG2COLOR[a.tag] || ci?.styleColor || ci?.color || "gold",
+        descripcion: ci?.descripcion || "", tags: (a.chips || ci?.tags || []).slice(0,3),
+        p1:a.p1 || "", p2:a.p2 || "", alcance:a.items || [], abogadoId:a.leadId || "",
+        orden: ci?.orden || i+1, activo:true };
+    });
+  } else {
+    out.areas = cardAr.map(c => ({ id:c.id, nombre:c.nombre, icono:"i-brief", color:c.styleColor||c.color,
+      descripcion:c.descripcion, tags:c.tags.slice(0,3), p1:"", p2:"", alcance:[], abogadoId:"", orden:c.orden, activo:true }));
+  }
+  /* BLOG */
+  const bCards = Array.from(dom.querySelectorAll("[data-open-article]"));
+  const cardBl = bCards.map((c,i) => ({
+    id: c.getAttribute("data-open-article"),
+    titulo: T(c.querySelector("h3")), extracto: T(c.querySelector(".bf-body p, p")),
+    categoria: T(c.querySelector(".chip-cat")), orden: i+1
+  }));
+  if (ART && typeof ART === "object"){
+    out.blog = Object.keys(ART).map((k,i) => {
+      const a = ART[k] || {}, ci = cardBl.find(x => x.id === k);
+      const cuerpo = (a.body || []).map(b => {
+        if (b.p) return String(b.p).replace(/<\/?(b|strong)>/g,"**").replace(/<[^>]+>/g,"");
+        if (b.h) return "## " + b.h;
+        if (b.ol) return b.ol.map(x => "1. " + String(x).replace(/<\/?(b|strong)>/g,"**").replace(/<[^>]+>/g,"")).join("\n");
+        return "";
+      }).filter(Boolean).join("\n\n");
+      return { id:k, titulo:a.t || ci?.titulo || k, categoria:a.cat || ci?.categoria || "Laboral",
+        fecha: esDateToISO(a.date) || new Date().toISOString().slice(0,10), lectura:a.read || "5 min",
+        area:a.area || "", extracto: ci?.extracto || "", cuerpo, orden: ci?.orden || i+1, activo:true };
+    });
+  } else {
+    out.blog = cardBl.map(c => ({ ...c, fecha:new Date().toISOString().slice(0,10), lectura:"5 min", area:"", cuerpo:"", activo:true }));
+  }
+  /* INICIO */
+  const h1 = dom.querySelector(".hero h1");
+  const cifras = Array.from(dom.querySelectorAll(".trust-cell")).map(c => ({
+    pref: T(c.querySelector(".fix")), valor: parseInt(c.querySelector("[data-count]")?.getAttribute("data-count")||"0",10)||0,
+    suf: T(c.querySelector(".suf")), label: T(c.querySelector(".trust-label")), desc: T(c.querySelector(".trust-desc")), activo:true
+  }));
+  const cta1 = dom.querySelector(".hero-ctas .btn-primary"), cta2 = dom.querySelector(".hero-ctas .btn-wa");
+  const btnLabel = el => { if (!el) return ""; for (const n of el.childNodes) if (n.nodeType === 3 && n.nodeValue.trim()) return n.nodeValue.trim(); return ""; };
+  out.inicio = {
+    eyebrow: T(dom.querySelector(".hero-eyebrow")) || SEED.inicio.eyebrow,
+    titulo: lite(h1) || SEED.inicio.titulo,
+    subtitulo: T(dom.querySelector(".hero-sub")),
+    cta1: btnLabel(cta1) || SEED.inicio.cta1, cta2: btnLabel(cta2) || SEED.inicio.cta2,
+    imagen: dom.querySelector(".hero-bgimg")?.getAttribute("src") || "",
+    mision: T(dom.querySelector(".foot-mission")),
+    badges: Array.from(dom.querySelectorAll(".hero-trust span")).map(s => T(s)).filter(Boolean),
+    cifras: cifras.length ? cifras : SEED.inicio.cifras,
+    marquee: Array.from(dom.querySelectorAll(".mq-set")[0]?.querySelectorAll("span") || []).map(s => T(s)).filter(Boolean),
+    showBadges:true, showCifras:true, showMarquee:true
+  };
+  /* CONTACTO */
+  const rowBy = ic => Array.from(dom.querySelectorAll(".info-row")).find(r => r.querySelector('use[href="#'+ic+'"]'));
+  const pinP = rowBy("i-pin")?.querySelector("div p");
+  const pinParts = pinP ? nodeToLite(pinP).split("\n").map(s=>s.trim()).filter(Boolean) : [];
+  const clk = rowBy("i-clock"), ph = rowBy("i-phone"), ml = rowBy("i-mail");
+  const waHref = dom.querySelector('a[href*="wa.me/"]')?.getAttribute("href") || "";
+  const waNum = (waHref.match(/wa\.me\/(\d+)/)||[])[1] || (src.match(/const\s+WA_NUM\s*=\s*["'](\d+)["']/)||[])[1] || SEED.contacto.waNum;
+  const mapaSrc = dom.querySelector(".map-frame iframe")?.getAttribute("src") || "";
+  let mapa = SEED.contacto.mapa;
+  try { const q = new URL(mapaSrc, "https://x.local").searchParams.get("q"); if (q) mapa = q; } catch(_){}
+  out.contacto = {
+    direccion: pinParts[0] || SEED.contacto.direccion, ciudad: pinParts[1] || SEED.contacto.ciudad,
+    horario: T(clk?.querySelector("div p")) || SEED.contacto.horario,
+    guardiaNota: T(clk?.querySelector(".sub")) || SEED.contacto.guardiaNota,
+    telefono: T(ph?.querySelector("a.val")) || SEED.contacto.telefono,
+    email: T(ml?.querySelector("a.val")) || SEED.contacto.email,
+    waDisplay: T(ph?.querySelector(".sub a.val")) || SEED.contacto.waDisplay,
+    waNum, waMsg: SEED.contacto.waMsg, mapa,
+    linkedin: dom.querySelector('a[aria-label="LinkedIn del estudio"]')?.getAttribute("href") || SEED.contacto.linkedin,
+    instagram: dom.querySelector('a[aria-label="Instagram del estudio"]')?.getAttribute("href") || SEED.contacto.instagram,
+    cuit: (T(dom.querySelector(".foot-legal-note")).match(/CUIT[^:]*:\s*([\d-]+)/i)||[])[1] || SEED.contacto.cuit,
+    notaForm: T(dom.querySelector(".form-note")) || SEED.contacto.notaForm,
+    badge: lite(dom.querySelector(".conf-badge span")) || SEED.contacto.badge,
+    showMapa:true, showBadge:true
+  };
+  return out;
+}
+function renderImport(){
+  const box = $("#impResult");
+  if (!IMPORT){ box.innerHTML = ""; return; }
+  const d = IMPORT.data;
+  const secs = [
+    ["equipo","Equipo / Abogados", d.equipo.length, "Colección equipo"],
+    ["areas","Áreas de Práctica", d.areas.length, "Colección areas"],
+    ["blog","Publicaciones", d.blog.length, "Colección blog"],
+    ["inicio","Portada y cifras", 1, "Documento sitio/inicio"],
+    ["contacto","Datos de contacto", 1, "Documento sitio/contacto"]
+  ];
+  let h = "";
+  if (d.proyecto && d.proyecto !== firebaseConfig.projectId)
+    h += '<div class="warn bad"><svg class="ic"><use href="#i-alert"/></svg><span><b>Proyecto distinto.</b> El index publicado usa <b>' + esc(d.proyecto) + '</b> y este panel usa <b>' + esc(firebaseConfig.projectId) + '</b>. Por eso el panel no veía lo que se ve online. Importe aquí para unificar, o corrija la configuración del index.</span></div>';
+  else if (!d.conector)
+    h += '<div class="warn info"><svg class="ic"><use href="#i-alert"/></svg><span><b>El index publicado no está conectado a Firebase.</b> Muestra contenido base escrito en el HTML. Al importar, ese contenido pasa a la base y el sitio (con el conector) lo leerá desde aquí.</span></div>';
+  else
+    h += '<div class="warn good"><svg class="ic"><use href="#i-check"/></svg><span>Sitio leído correctamente. Mismo proyecto <b>' + esc(firebaseConfig.projectId) + '</b> y conector Firebase presente.</span></div>';
+  h += '<div class="imp-secs">';
+  secs.forEach(([k,label,n,dest]) => {
+    const off = n === 0;
+    h += '<div class="imp-sec' + (off?" off":"") + '"><label class="switch"><input type="checkbox" class="imp-chk" data-sec="' + k + '"' + (off?" disabled":" checked") + ' aria-label="Importar ' + esc(label) + '"><span></span></label>' +
+      '<span><b>' + esc(label) + "</b><span>" + esc(dest) + (off ? " · sin datos detectados" : "") + "</span></span>" +
+      '<span class="imp-count">' + n + "</span></div>";
+  });
+  h += "</div>";
+  if (d.equipo.length){
+    h += '<div class="imp-prev"><b>Abogados detectados:</b><br>' +
+      d.equipo.map(l => "· <b>" + esc(brandify(l.nombre)) + "</b> — " + esc(brandify(l.rol||"—")) + " · " + esc(brandify(l.matricula||"sin matrícula")) + (l.bio ? " · ficha completa" : " · solo tarjeta")).join("<br>") + "</div>";
+  }
+  h += '<div class="row-actions"><button type="button" class="btn btn-ghost" id="impCancel">Descartar</button><button type="button" class="btn btn-primary" id="impWrite"><svg class="ic"><use href="#i-db"/></svg>Escribir en Firestore</button></div>';
+  box.innerHTML = h;
+  $("#impCancel").addEventListener("click", () => { IMPORT = null; renderImport(); $("#impPaste").hidden = true; $("#imp-src").value = ""; });
+  $("#impWrite").addEventListener("click", doImport);
+}
+function analyze(src){
+  try {
+    const data = parseIndex(src);
+    if (!data.equipo.length && !data.areas.length && !data.blog.length){
+      IMPORT = null; renderImport();
+      $("#impPaste").hidden = false;
+      $("#impPasteWhy").textContent = "El documento leído no contiene tarjetas del sitio. Verifique que la URL sea el index público (no este panel) o pegue el código fuente.";
+      toast("No se detectó contenido del sitio.", "err");
+      return;
+    }
+    IMPORT = { data };
+    $("#impPaste").hidden = true;
+    renderImport();
+    toast("Sitio analizado: " + data.equipo.length + " abogados, " + data.areas.length + " áreas, " + data.blog.length + " publicaciones.", "gold");
+  } catch(e){
+    console.warn(e);
+    IMPORT = null; renderImport();
+    $("#impPaste").hidden = false;
+    $("#impPasteWhy").textContent = "No se pudo analizar el documento (" + (e.message||e) + "). Pegue el código fuente del index.";
+    toast("No se pudo analizar el sitio.", "err");
+  }
+}
+$("#impFetch").addEventListener("click", async () => {
+  const btn = $("#impFetch"), url = $("#imp-url").value.trim() || "index.html";
+  btn.classList.add("loading");
+  try {
+    const res = await fetch(url, { cache:"no-store" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    analyze(await res.text());
+  } catch(e){
+    IMPORT = null; renderImport();
+    $("#impPaste").hidden = false;
+    $("#impPasteWhy").innerHTML = "El navegador bloqueó la lectura de <b>" + esc(url) + "</b> (" + esc(e.message||e) + "). Esto ocurre al abrir el panel como archivo local o desde otro dominio. Use el pegado manual: es igual de efectivo.";
+    $("#imp-src").focus();
+    toast("Lectura bloqueada. Use el pegado manual.", "err");
+  } finally { btn.classList.remove("loading"); }
+});
+$("#impParse").addEventListener("click", () => {
+  const src = $("#imp-src").value;
+  if (src.trim().length < 200) return toast("Pegue el código fuente completo del index.", "err");
+  analyze(src);
+});
+async function doImport(){
+  if (!IMPORT) return;
+  const chosen = $$(".imp-chk:checked").map(c => c.dataset.sec);
+  if (!chosen.length) return toast("Seleccione al menos una sección para importar.", "err");
+  const on = $("#imp-brand").checked;
+  const d = IMPORT.data;
+  const resumen = chosen.map(c => ({equipo:"Equipo",areas:"Áreas",blog:"Blog",inicio:"Inicio",contacto:"Contacto"}[c])).join(", ");
+  openConfirm("Escribir en Firestore",
+    "Se escribirán las secciones <b>" + esc(resumen) + "</b> con el contenido leído del sitio publicado" + (on ? ", aplicando la marca <b>Zarza &amp; Asociados</b>" : "") + ". Los documentos con esos identificadores se sobrescriben; los demás se conservan. ¿Continuar?",
+    async () => {
+      try {
+        const b = writeBatch(db), ts = serverTimestamp();
+        if (chosen.includes("equipo")) d.equipo.forEach(l => {
+          const { id, ...rest } = deepBrand(l, on);
+          b.set(doc(db,"equipo", brandId(id)), { ...rest, areaSlug: brandId(rest.areaSlug||""), updatedAt:ts });
+        });
+        if (chosen.includes("areas")) d.areas.forEach(a => {
+          const { id, ...rest } = deepBrand(a, on);
+          b.set(doc(db,"areas", brandId(id)), { ...rest, abogadoId: brandId(rest.abogadoId||""), updatedAt:ts });
+        });
+        if (chosen.includes("blog")) d.blog.forEach(p => {
+          const { id, ...rest } = deepBrand(p, on);
+          b.set(doc(db,"blog", brandId(id)), { ...rest, area: brandId(rest.area||""), updatedAt:ts });
+        });
+        if (chosen.includes("inicio")) b.set(doc(db,"sitio","inicio"), { ...deepBrand(d.inicio, on), updatedAt:ts });
+        if (chosen.includes("contacto")) b.set(doc(db,"sitio","contacto"), { ...deepBrand(d.contacto, on), updatedAt:ts });
+        await b.commit();
+        IMPORT = null; renderImport();
+        toast("Contenido importado y publicado. Ya puede editarlo desde el panel.");
+        renderDiag();
+        if (chosen.includes("equipo")) goView("equipo");
+        else if (chosen.includes("areas")) goView("areas");
+        else if (chosen.includes("blog")) goView("blog");
+      } catch(e){ fsErr(e); }
+    }, "Escribir");
+}
+
 /* ───────── Ayuda: reglas & semilla ───────── */
 $("#copyRules").addEventListener("click", async () => {
   const txt = $("#rulesPre").textContent;
@@ -1008,11 +1449,10 @@ $("#copyRules").addEventListener("click", async () => {
 });
 $("#seedBtn").addEventListener("click", () => {
   openConfirm("Cargar contenido inicial",
-    "Se escribirán en Firestore <b>6 áreas, 4 abogados, 6 publicaciones</b> y los documentos de <b>Inicio y Contacto</b> con el contenido de Zarza &amp; Asociados, sobrescribiendo los documentos con esos mismos identificadores. ¿Continuar?",
+    "Se escribirán <b>6 áreas, 4 abogados, 6 publicaciones</b> y los documentos de <b>Inicio y Contacto</b> con el contenido de Zarza &amp; Asociados, sobrescribiendo los documentos con esos identificadores. ¿Continuar?",
     async () => {
       try {
-        const b = writeBatch(db);
-        const ts = serverTimestamp();
+        const b = writeBatch(db), ts = serverTimestamp();
         b.set(doc(db,"sitio","inicio"), { ...SEED.inicio, updatedAt:ts });
         b.set(doc(db,"sitio","contacto"), { ...SEED.contacto, updatedAt:ts });
         SEED.areas.forEach(a => b.set(doc(db,"areas",a.slug), { ...a, updatedAt:ts }));
@@ -1020,11 +1460,13 @@ $("#seedBtn").addEventListener("click", () => {
         SEED.blog.forEach(p => { const { id, ...rest } = p; b.set(doc(db,"blog",id), { ...rest, updatedAt:ts }); });
         await b.commit();
         toast("Contenido inicial de Zarza & Asociados cargado.");
+        renderDiag(); goView("equipo");
       } catch(ex){ fsErr(ex); }
     });
 });
 
-renderInicio(); renderContacto();
+renderInicio(); renderContacto(); renderDiag();
+COLS.forEach(renderList);
 </script>
 </body>
 </html>
