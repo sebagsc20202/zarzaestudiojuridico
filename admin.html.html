@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel de Administración — Zarza &amp; Asociados</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230A0F1C'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23C9A25C' font-family='Georgia'%3E%C2%A7%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink-950:#06090F;--ink-900:#0A0F1C;--ink-850:#0D1424;--ink-800:#111A2E;--ink-700:#1B2742;
+  --gold:#C9A25C;--gold-2:#E9CF9A;--gold-deep:#8C6D2F;
+  --blue:#3E7BFA;--red:#E2483D;--amber:#F0A63C;--green:#2FBF71;--violet:#9A6BFF;
+  --tx:#EDE7DA;--tx-dim:#A9B2C6;--tx-mute:#6E7890;
+  --line:rgba(201,162,92,.22);--line-soft:rgba(201,162,92,.12);
+  --serif:"Fraunces",Georgia,serif;--sans:"Archivo",system-ui,sans-serif;--mono:"IBM Plex Mono",monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:clip}
+body{background:var(--ink-950);color:var(--tx);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::after{content:"";position:fixed;inset:-40px;z-index:900;pointer-events:none;opacity:.05;mix-blend-mode:soft-light;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+::selection{background:var(--gold);color:var(--ink-950)}
+:focus-visible{outline:2px solid var(--gold-2);outline-offset:2px;border-radius:4px}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--ink-950)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold-deep),var(--gold));border-radius:8px;border:2px solid var(--ink-950)}
+*{scrollbar-width:thin;scrollbar-color:var(--gold-deep) var(--ink-950)}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}
+ul,ol{list-style:none}
+img{display:block;max-width:100%}
+.ic{width:19px;height:19px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ic-fill{fill:currentColor;stroke:none}
+.mono{font-family:var(--mono)}
+/* Botones */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 20px;border-radius:8px;font-weight:600;font-size:14px;transition:transform .25s var(--ease),box-shadow .25s,border-color .25s,background .25s,color .25s;white-space:nowrap;overflow:hidden}
+.btn:active{transform:scale(.97)}
+.btn .ic{width:16px;height:16px}
+.btn-primary{background:linear-gradient(120deg,var(--gold),var(--gold-2) 60%,var(--gold));color:var(--ink-950);box-shadow:0 8px 24px rgba(201,162,92,.2)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(201,162,92,.32)}
+.btn-ghost{border:1px solid rgba(237,231,218,.25);color:var(--tx)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-2)}
+.btn-danger{border:1px solid rgba(226,72,61,.5);color:#F49B93;background:rgba(226,72,61,.08)}
+.btn-danger:hover{background:rgba(226,72,61,.18);border-color:var(--red)}
+.btn-sm{padding:8px 14px;font-size:13px}
+.btn-block{width:100%}
+.btn.loading{pointer-events:none;opacity:.75}
+.btn.loading .lbl{visibility:hidden}
+.btn.loading::before{content:"";position:absolute;width:18px;height:18px;border:2.5px solid rgba(6,9,15,.3);border-top-color:var(--ink-950);border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.icon-btn{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--ink-700);border-radius:8px;color:var(--tx-dim);transition:all .25s}
+.icon-btn:hover{color:var(--gold-2);border-color:var(--gold)}
+.icon-btn.danger:hover{color:#F49B93;border-color:var(--red)}
+.icon-btn .ic{width:16px;height:16px}
+/* Campos */
+.field{display:flex;flex-direction:column;gap:7px}
+.field label,.flabel{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--tx-dim)}
+.field label b{color:var(--gold)}
+.inp,.sel,.txa{width:100%;background:var(--ink-900);border:1px solid var(--ink-700);border-radius:8px;padding:12px 14px;color:var(--tx);font-family:var(--sans);font-size:14.5px;transition:border-color .25s,box-shadow .25s;appearance:none}
+.inp:focus,.sel:focus,.txa:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,92,.13)}
+.inp::placeholder,.txa::placeholder{color:var(--tx-mute)}
+.inp[disabled]{opacity:.55;cursor:not-allowed}
+.sel{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='%23C9A25C' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:38px;cursor:pointer}
+.sel option{background:var(--ink-900)}
+.txa{resize:vertical;min-height:88px;line-height:1.6}
+.hint{font-size:11.5px;color:var(--tx-mute);line-height:1.55}
+.hint code{font-family:var(--mono);color:var(--gold-2);background:rgba(201,162,92,.08);padding:1px 5px;border-radius:4px}
+/* Switch */
+.switch{position:relative;display:inline-block;width:46px;height:26px;flex:none}
+.switch input{position:absolute;opacity:0;pointer-events:none}
+.switch span{position:absolute;inset:0;background:var(--ink-700);border:1px solid rgba(226,72,61,.4);border-radius:20px;cursor:pointer;transition:all .3s}
+.switch span::before{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#F49B93;transition:all .3s var(--ease)}
+.switch input:checked+span{background:rgba(47,191,113,.18);border-color:rgba(47,191,113,.6)}
+.switch input:checked+span::before{transform:translateX(20px);background:var(--green)}
+.switch input:focus-visible+span{outline:2px solid var(--gold-2);outline-offset:2px}
+.switch-lbl{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--tx-dim);cursor:pointer}
+/* Chips */
+.chip{display:inline-flex;font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:20px;border:1px solid}
+.ch-gold{color:var(--gold-2);border-color:rgba(201,162,92,.4);background:rgba(201,162,92,.08)}
+.ch-blue{color:#9DBBFF;border-color:rgba(62,123,250,.4);background:rgba(62,123,250,.1)}
+.ch-green{color:#8FE0B4;border-color:rgba(47,191,113,.4);background:rgba(47,191,113,.1)}
+.ch-amber{color:#F7C780;border-color:rgba(240,166,60,.4);background:rgba(240,166,60,.1)}
+.ch-red{color:#F49B93;border-color:rgba(226,72,61,.4);background:rgba(226,72,61,.1)}
+.ch-violet{color:#C7A9FF;border-color:rgba(154,107,255,.4);background:rgba(154,107,255,.1)}
+/* LOGIN */
+.auth{position:relative;min-height:100vh;display:grid;place-items:center;padding:30px 16px;overflow:hidden}
+.glow{position:absolute;border-radius:50%;filter:blur(95px);pointer-events:none}
+.g1{width:480px;height:480px;top:-14%;right:-6%;background:rgba(201,162,92,.14);animation:drift 20s ease-in-out infinite alternate}
+.g2{width:420px;height:420px;bottom:-16%;left:-8%;background:rgba(62,123,250,.12);animation:drift 26s ease-in-out infinite alternate-reverse}
+@keyframes drift{to{transform:translate(-60px,50px) scale(1.15)}}
+.auth-card{position:relative;width:min(430px,94vw);background:linear-gradient(165deg,var(--ink-800),var(--ink-850));border:1px solid var(--line);border-radius:16px;padding:38px 34px;box-shadow:0 40px 100px rgba(0,0,0,.6);animation:up .6s var(--ease)}
+@keyframes up{from{opacity:0;transform:translateY(24px)}}
+.auth-seal{width:64px;height:64px;color:var(--gold);margin-bottom:18px}
+.auth-card h1{font-family:var(--serif);font-weight:560;font-size:27px;line-height:1.15}
+.auth-card .sub{font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin:8px 0 26px}
+.auth-form{display:grid;gap:16px}
+.auth-err{display:none;align-items:flex-start;gap:9px;border:1px solid rgba(226,72,61,.5);background:rgba(226,72,61,.08);color:#F49B93;border-radius:8px;padding:11px 14px;font-size:13px;line-height:1.5}
+.auth-err.show{display:flex}
+.auth-err .ic{width:16px;height:16px;margin-top:2px}
+.auth-note{margin-top:22px;padding-top:18px;border-top:1px solid var(--line-soft);font-size:12px;color:var(--tx-mute);line-height:1.7}
+.auth-note b{color:var(--gold-2)}
+.proj-chip{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-family:var(--mono);font-size:10.5px;color:var(--tx-mute);border:1px dashed var(--line);border-radius:7px;padding:7px 12px}
+.proj-chip i{width:7px;height:7px;border-radius:50%;background:var(--green);font-style:normal}
+/* SHELL */
+.shell{display:none;grid-template-columns:256px 1fr;min-height:100vh}
+.shell.on{display:grid}
+.side{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;background:linear-gradient(180deg,var(--ink-900),var(--ink-950));border-right:1px solid var(--line-soft);padding:22px 16px;overflow-y:auto}
+.side-brand{display:flex;align-items:center;gap:11px;padding:4px 8px 20px;border-bottom:1px solid var(--line-soft);margin-bottom:16px}
+.side-brand svg{width:40px;height:40px;color:var(--gold);flex:none}
+.side-brand b{font-family:var(--serif);font-weight:600;font-size:17px;display:block;line-height:1.1}
+.side-brand span{font-family:var(--mono);font-size:8px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase}
+.side-nav{display:flex;flex-direction:column;gap:4px;flex:1}
+.nav-btn{display:flex;align-items:center;gap:12px;width:100%;padding:11px 12px;border-radius:9px;font-size:14px;font-weight:500;color:var(--tx-dim);border:1px solid transparent;transition:all .25s;text-align:left}
+.nav-btn:hover{color:var(--gold-2);background:rgba(201,162,92,.05)}
+.nav-btn.active{color:var(--gold-2);background:rgba(201,162,92,.09);border-color:var(--line)}
+.nav-btn .ic{width:17px;height:17px;color:var(--gold)}
+.nav-btn .cnt{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--tx-mute);border:1px solid var(--ink-700);border-radius:12px;padding:1px 8px}
+.nav-btn.active .cnt{color:var(--gold-2);border-color:var(--line)}
+.side-foot{border-top:1px solid var(--line-soft);padding-top:16px;display:grid;gap:10px}
+.side-user{font-family:var(--mono);font-size:10.5px;color:var(--tx-mute);word-break:break-all;padding:0 4px}
+/* MAIN */
+.main{min-width:0;padding:0 0 60px}
+.topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:16px;padding:16px 30px;background:rgba(6,9,15,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft)}
+.topbar h2{font-family:var(--serif);font-weight:560;font-size:22px}
+.conn{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--tx-mute);margin-left:auto}
+.conn i{width:8px;height:8px;border-radius:50%;background:var(--amber);font-style:normal;transition:background .3s}
+.conn.ok i{background:var(--green);box-shadow:0 0 10px rgba(47,191,113,.7)}
+.conn.bad i{background:var(--red);box-shadow:0 0 10px rgba(226,72,61,.7)}
+.views{padding:30px;max-width:1060px}
+.view{display:none;animation:up .4s var(--ease)}
+.view.on{display:block}
+.card{background:linear-gradient(165deg,var(--ink-850),var(--ink-800));border:1px solid var(--line-soft);border-radius:14px;padding:26px;margin-bottom:22px}
+.card>h3{font-family:var(--serif);font-size:19px;font-weight:560;margin-bottom:4px;display:flex;align-items:center;gap:10px}
+.card>h3 .ic{color:var(--gold);width:18px;height:18px}
+.card>.desc{font-size:13px;color:var(--tx-mute);margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.full{grid-column:1/-1}
+.stack{display:grid;gap:16px}
+.row-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line-soft)}
+.sec-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.sec-head p{font-size:13px;color:var(--tx-mute)}
+/* Listas CRUD */
+.rows{display:grid;gap:10px}
+.row{display:grid;grid-template-columns:46px 1fr 74px auto auto auto;gap:14px;align-items:center;background:var(--ink-900);border:1px solid var(--ink-700);border-radius:11px;padding:12px 16px;transition:border-color .25s}
+.row:hover{border-color:var(--line)}
+.row.off{opacity:.55}
+.row-ico{width:46px;height:46px;display:grid;place-items:center;border:1px solid var(--line);border-radius:9px;background:rgba(201,162,92,.05);color:var(--gold);overflow:hidden}
+.row-ico .ic{width:24px;height:24px}
+.row-ico img{width:100%;height:100%;object-fit:cover}
+.row-ico b{font-family:var(--serif);font-style:italic;font-size:17px;color:rgba(201,162,92,.7)}
+.row-info{min-width:0}
+.row-info b{display:block;font-size:14.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row-info span{display:block;font-family:var(--mono);font-size:10px;color:var(--tx-mute);letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.row-orden{display:flex;flex-direction:column;gap:3px;align-items:center}
+.row-orden label{font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;color:var(--tx-mute)}
+.row-orden input{width:58px;background:var(--ink-850);border:1px solid var(--ink-700);border-radius:7px;color:var(--tx);font-family:var(--mono);font-size:13px;text-align:center;padding:6px 4px}
+.row-orden input:focus{outline:none;border-color:var(--gold)}
+.row-state{display:flex;flex-direction:column;align-items:center;gap:4px}
+.row-state em{font-family:var(--mono);font-style:normal;font-size:8.5px;letter-spacing:.14em;color:var(--tx-mute)}
+.empty{border:1px dashed var(--line);border-radius:12px;padding:34px 24px;text-align:center;color:var(--tx-mute);font-size:14px;display:grid;gap:14px;justify-items:center}
+.empty .ic{width:30px;height:30px;color:var(--gold)}
+/* Repeater */
+.rep{display:grid;gap:10px}
+.rep-row{display:grid;gap:10px;align-items:end;background:var(--ink-900);border:1px solid var(--ink-700);border-radius:10px;padding:14px}
+.rep-badge{grid-template-columns:1fr auto}
+.rep-cifra{grid-template-columns:70px 90px 70px 1fr 1.4fr auto auto}
+.rep-row .field label{font-size:9px}
+.rep-row .inp{padding:9px 11px;font-size:13.5px}
+.rep-check{display:flex;flex-direction:column;align-items:center;gap:5px}
+.rep-check em{font-family:var(--mono);font-style:normal;font-size:8.5px;letter-spacing:.12em;color:var(--tx-mute)}
+/* Ayuda */
+.steps{counter-reset:p;display:grid;gap:14px;margin:6px 0 4px}
+.steps li{counter-increment:p;position:relative;padding-left:46px;font-size:14px;color:var(--tx-dim);line-height:1.7}
+.steps li::before{content:counter(p,decimal-leading-zero);position:absolute;left:0;top:2px;font-family:var(--mono);font-size:12px;font-weight:600;color:var(--gold);border:1px solid var(--line);border-radius:7px;width:32px;height:26px;display:grid;place-items:center;background:rgba(201,162,92,.06)}
+.steps b{color:var(--tx)}
+pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radius:10px;padding:18px;font-family:var(--mono);font-size:12px;line-height:1.7;color:#B7C3DA;overflow-x:auto;margin:12px 0}
+.warn{display:flex;gap:11px;border:1px solid rgba(240,166,60,.45);background:rgba(240,166,60,.07);border-radius:10px;padding:13px 16px;font-size:13px;color:#F7C780;line-height:1.6;margin-top:16px}
+.warn .ic{color:var(--amber);margin-top:2px}
+/* Modales */
+.mroot{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:18px}
+.mroot.open{display:flex}
+.mback{position:absolute;inset:0;background:rgba(4,7,13,.82);backdrop-filter:blur(6px);animation:fade .25s}
+@keyframes fade{from{opacity:0}}
+.mcard{position:relative;width:min(680px,94vw);max-height:88vh;display:flex;flex-direction:column;background:linear-gradient(165deg,var(--ink-800),var(--ink-850));border:1px solid var(--line);border-radius:15px;box-shadow:0 50px 120px rgba(0,0,0,.7);animation:up .35s var(--ease);overflow:hidden}
+.mcard.small{width:min(440px,94vw)}
+.mhead{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:20px 26px;border-bottom:1px solid var(--line-soft)}
+.mhead h3{font-family:var(--serif);font-size:20px;font-weight:560}
+.mbody{overflow-y:auto;padding:24px 26px}
+.mfoot{display:flex;justify-content:flex-end;gap:12px;padding:18px 26px;border-top:1px solid var(--line-soft)}
+.confirm-msg{font-size:14.5px;color:var(--tx-dim);line-height:1.7}
+.confirm-msg b{color:var(--tx)}
+/* Toasts */
+.toasts{position:fixed;left:20px;bottom:20px;z-index:500;display:flex;flex-direction:column;gap:10px;max-width:min(360px,86vw)}
+.toast{display:flex;align-items:center;gap:11px;background:linear-gradient(150deg,var(--ink-800),var(--ink-850));border:1px solid var(--line);border-radius:10px;padding:12px 16px;font-size:13.5px;box-shadow:0 18px 50px rgba(0,0,0,.55);animation:up .35s var(--ease)}
+.toast .ic{width:17px;height:17px;color:var(--green)}
+.toast.err .ic{color:var(--red)}
+.toast.gold .ic{color:var(--gold)}
+.toast.out{opacity:0;transform:translateY(8px);transition:all .3s}
+/* Responsive */
+@media (max-width:960px){
+  .shell.on{grid-template-columns:1fr}
+  .side{position:static;height:auto;flex-direction:column;border-right:none;border-bottom:1px solid var(--line-soft)}
+  .side-nav{flex-direction:row;overflow-x:auto;padding-bottom:6px}
+  .nav-btn{flex:none}
+  .nav-btn .cnt{display:none}
+  .side-foot{grid-template-columns:1fr auto auto;align-items:center}
+  .grid2,.grid3{grid-template-columns:1fr}
+  .rep-cifra{grid-template-columns:1fr 1fr 1fr;grid-auto-rows:auto}
+  .row{grid-template-columns:46px 1fr auto;grid-auto-rows:auto}
+  .row-orden{grid-column:2}
+  .row-state{grid-column:3;grid-row:1}
+  .views{padding:20px 16px}
+  .topbar{padding:14px 16px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}}
+</style>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true"><defs>
+<symbol id="i-emblem" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="32" cy="32" r="25.5" fill="none" stroke="currentColor" stroke-width=".8" opacity=".5"/><path d="M32 17v27M23 46h18M18 23h28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="32" cy="14.5" r="2.2" fill="currentColor"/><path d="M18 23l-4.5 9M18 23l4.5 9M13.5 32a4.5 4.5 0 0 0 9 0M46 23l-4.5 9M46 23l4.5 9M41.5 32a4.5 4.5 0 0 0 9 0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="i-brief" viewBox="0 0 64 64"><rect x="8" y="20" width="48" height="30" rx="4"/><path d="M24 20v-6a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v6M32 27v15M26 42h12M24 31h16M24 31l-4 7M24 31l4 7M20 38a4 4 0 0 0 8 0M40 31l-4 7M40 31l4 7M36 38a4 4 0 0 0 8 0"/></symbol>
+<symbol id="i-doc" viewBox="0 0 64 64"><path d="M16 6h22l12 12v40H16zM38 6v12h12M24 28h16M24 36h10"/><circle cx="40" cy="45" r="6"/><path d="M37 50l-3 8 6-3 6 3-3-8"/></symbol>
+<symbol id="i-family" viewBox="0 0 64 64"><circle cx="18" cy="16" r="6"/><circle cx="46" cy="16" r="6"/><circle cx="32" cy="30" r="4.5"/><path d="M8 44c0-7 4.5-12 10-12s10 5 10 12M36 44c0-7 4.5-12 10-12s10 5 10 12M24 52c0-5 3.5-9 8-9s8 4 8 9"/></symbol>
+<symbol id="i-building" viewBox="0 0 64 64"><path d="M10 54V22h16v32M26 54V10h20v44M46 54V30h8v24M6 54h52M14 28h4M14 34h4M14 40h4M31 16h4M37 16h4M31 22h4M37 22h4M31 28h4M37 28h4M31 34h4M37 34h4M33 54v-8h6v8"/></symbol>
+<symbol id="i-gavel" viewBox="0 0 64 64"><path d="M20 16l12-12 16 16-12 12zM34 30L16 48M34 54h26M40 46h14M48 24l6-6M52 32l8-2"/></symbol>
+<symbol id="i-shieldcart" viewBox="0 0 64 64"><path d="M32 6l20 8v14c0 14-8 22-20 28C20 50 12 42 12 28V14z"/><path d="M22 26h4l3 12h12l3-9H27"/><circle cx="30" cy="44" r="2"/><circle cx="40" cy="44" r="2"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5M5 9.5V21h14V9.5M9 21v-6h6v6"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-5.5 6.5-5.5s6.5 2 6.5 5.5M16 4.6a3.5 3.5 0 0 1 0 6.8M17.5 14.7c2.3.6 4 2.3 4 5.3"/></symbol>
+<symbol id="i-post" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h5"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+<symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v6M14 11v6"/></symbol>
+<symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2zM17 21v-8H7v8M7 3v5h8"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
+<symbol id="i-out" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></symbol>
+<symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 3h7v7M21 3l-9 9M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+<symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4.03 3-9 3s-9-1.34-9-3M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3l10 18H2zM12 10v4M12 18h.01"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></symbol>
+</defs></svg>
+
+<!-- ══════════ LOGIN ══════════ -->
+<section class="auth" id="authView">
+  <div class="glow g1"></div><div class="glow g2"></div>
+  <div class="auth-card">
+    <svg class="auth-seal"><use href="#i-emblem"/></svg>
+    <h1>Zarza &amp; Asociados</h1>
+    <p class="sub">Panel de Administración · CMS</p>
+    <form class="auth-form" id="loginForm">
+      <div class="field"><label for="l-email">Email del administrador</label>
+        <input class="inp" id="l-email" type="email" autocomplete="username" placeholder="admin@zarzaasociados.com.ar" required></div>
+      <div class="field"><label for="l-pass">Contraseña</label>
+        <input class="inp" id="l-pass" type="password" autocomplete="current-password" placeholder="••••••••" required></div>
+      <div class="auth-err" id="loginErr"><svg class="ic"><use href="#i-alert"/></svg><span id="loginErrMsg"></span></div>
+      <button type="submit" class="btn btn-primary btn-block" id="loginBtn"><span class="lbl" style="display:inline-flex;align-items:center;gap:9px"><svg class="ic"><use href="#i-lock"/></svg>Ingresar al panel</span></button>
+    </form>
+    <p class="auth-note">El acceso se gestiona con <b>Firebase Authentication</b>. Cree el usuario administrador en la consola de Firebase → <b>Authentication → Users → Add user</b> (proveedor Correo/Contraseña habilitado). Las escrituras quedan protegidas por las reglas de Firestore indicadas en la pestaña <b>Ayuda</b>.</p>
+    <span class="proj-chip"><i></i>Proyecto: zarza-estudio-juridico</span>
+  </div>
+</section>
+
+<!-- ══════════ PANEL ══════════ -->
+<div class="shell" id="appView">
+  <aside class="side">
+    <div class="side-brand">
+      <svg><use href="#i-emblem"/></svg>
+      <span><b>Zarza &amp; Asociados</b><span>Administración</span></span>
+    </div>
+    <nav class="side-nav" id="sideNav" aria-label="Secciones editables">
+      <button type="button" class="nav-btn active" data-view="inicio"><svg class="ic"><use href="#i-home"/></svg>Inicio</button>
+      <button type="button" class="nav-btn" data-view="areas"><svg class="ic"><use href="#i-grid"/></svg>Áreas de Práctica<span class="cnt" id="cnt-areas">0</span></button>
+      <button type="button" class="nav-btn" data-view="equipo"><svg class="ic"><use href="#i-users"/></svg>Equipo<span class="cnt" id="cnt-equipo">0</span></button>
+      <button type="button" class="nav-btn" data-view="blog"><svg class="ic"><use href="#i-post"/></svg>Blog<span class="cnt" id="cnt-blog">0</span></button>
+      <button type="button" class="nav-btn" data-view="contacto"><svg class="ic"><use href="#i-phone"/></svg>Contacto</button>
+      <button type="button" class="nav-btn" data-view="ayuda"><svg class="ic"><use href="#i-help"/></svg>Ayuda / Configuración</button>
+    </nav>
+    <div class="side-foot">
+      <p class="side-user" id="userEmail">—</p>
+      <a class="btn btn-ghost btn-sm" href="index.html" target="_blank" rel="noopener"><svg class="ic"><use href="#i-ext"/></svg>Ver sitio</a>
+      <button type="button" class="btn btn-danger btn-sm" id="logoutBtn"><svg class="ic"><use href="#i-out"/></svg>Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <main class="main" id="mainArea">
+    <div class="topbar">
+      <h2 id="viewTitle">Inicio</h2>
+      <span class="conn" id="conn"><i></i><span id="connTxt">Conectando…</span></span>
+    </div>
+    <div class="views">
+
+      <!-- INICIO -->
+      <section class="view on" id="view-inicio">
+        <div class="card">
+          <h3><svg class="ic"><use href="#i-home"/></svg>Portada (Hero)</h3>
+          <p class="desc">Textos principales de la sección Inicio. Los cambios se publican al guardar.</p>
+          <div class="grid2">
+            <div class="field full"><label for="i-eyebrow">Línea superior (eyebrow)</label><input class="inp" id="i-eyebrow"></div>
+            <div class="field full"><label for="i-titulo">Titular principal (H1) <b>*</b></label><input class="inp" id="i-titulo">
+              <span class="hint">Use <code>*palabra*</code> para destacar en cursiva dorada. Ej.: <code>Soluciones *integrales*</code></span></div>
+            <div class="field full"><label for="i-subtitulo">Subtítulo</label><textarea class="txa" id="i-subtitulo" rows="2"></textarea></div>
+            <div class="field"><label for="i-cta1">Botón primario</label><input class="inp" id="i-cta1"></div>
+            <div class="field"><label for="i-cta2">Botón secundario (WhatsApp)</label><input class="inp" id="i-cta2"></div>
+            <div class="field full"><label for="i-imagen">Imagen de fondo (URL)</label><input class="inp" id="i-imagen" placeholder="https://…"><span class="hint">Vacío = sin fotografía (solo degradados institucionales).</span></div>
+            <div class="field full"><label for="i-mision">Misión (pie de página)</label><textarea class="txa" id="i-mision" rows="2"></textarea></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3><svg class="ic"><use href="#i-check"/></svg>Sellos de confianza bajo los botones</h3>
+          <p class="desc">Incluya o excluya cada sello. interruptor general para mostrar u ocultar la fila completa.</p>
+          <label class="switch-lbl" style="margin-bottom:16px"><span class="switch"><input type="checkbox" id="i-showBadges"><span></span></span>Mostrar sellos en la portada</label>
+          <div class="rep" id="i-badges"></div>
+          <div style="margin-top:12px"><button type="button" class="btn btn-ghost btn-sm" id="addBadge"><svg class="ic"><use href="#i-plus"/></svg>Agregar sello</button></div>
+        </div>
+        <div class="card">
+          <h3><svg class="ic"><use href="#i-db"/></svg>Franja de cifras clave</h3>
+          <p class="desc">Métricas animadas. Agregue, edite, reordene o excluya cada cifra con su interruptor.</p>
+          <label class="switch-lbl" style="margin-bottom:16px"><span class="switch"><input type="checkbox" id="i-showCifras"><span></span></span>Mostrar franja de cifras</label>
+          <div class="rep" id="i-cifras"></div>
+          <div style="margin-top:12px"><button type="button" class="btn btn-ghost btn-sm" id="addCifra"><svg class="ic"><use href="#i-plus"/></svg>Agregar cifra</button></div>
+        </div>
+        <div class="card">
+          <h3><svg class="ic"><use href="#i-grid"/></svg>Marquesina de especialidades</h3>
+          <label class="switch-lbl" style="margin-bottom:16px"><span class="switch"><input type="checkbox" id="i-showMarquee"><span></span></span>Mostrar marquesina desplazante</label>
+          <div class="field"><label for="i-marquee">Ítems (separados por coma)</label><input class="inp" id="i-marquee"></div>
+        </div>
+        <div class="row-actions"><button type="button" class="btn btn-primary" id="saveInicio"><svg class="ic"><use href="#i-save"/></svg>Guardar sección Inicio</button></div>
+      </section>
+
+      <!-- ÁREAS -->
+      <section class="view" id="view-areas">
+        <div class="sec-head">
+          <p>Departamentos jurídicos. El interruptor <b style="color:var(--gold-2)">incluye o excluye</b> el área del sitio público al instante.</p>
+          <button type="button" class="btn btn-primary btn-sm" data-act="new" data-type="areas"><svg class="ic"><use href="#i-plus"/></svg>Nueva área</button>
+        </div>
+        <div class="rows" id="list-areas"></div>
+      </section>
+
+      <!-- EQUIPO -->
+      <section class="view" id="view-equipo">
+        <div class="sec-head">
+          <p>Abogados del estudio. Excluya un profesional para ocultarlo del sitio sin eliminar su ficha.</p>
+          <button type="button" class="btn btn-primary btn-sm" data-act="new" data-type="equipo"><svg class="ic"><use href="#i-plus"/></svg>Nuevo abogado</button>
+        </div>
+        <div class="rows" id="list-equipo"></div>
+      </section>
+
+      <!-- BLOG -->
+      <section class="view" id="view-blog">
+        <div class="sec-head">
+          <p>Publicaciones. El interruptor equivale a <b style="color:var(--gold-2)">Publicado / Borrador</b>. Los 3 primeros (por orden) se muestran destacados.</p>
+          <button type="button" class="btn btn-primary btn-sm" data-act="new" data-type="blog"><svg class="ic"><use href="#i-plus"/></svg>Nuevo post</button>
+        </div>
+        <div class="rows" id="list-blog"></div>
+      </section>
+
+      <!-- CONTACTO -->
+      <section class="view" id="view-contacto">
+        <div class="card">
+          <h3><svg class="ic"><use href="#i-phone"/></svg>Datos de contacto</h3>
+          <p class="desc">Se aplican al encabezado, formulario, mapa, pie de página y todos los enlaces de teléfono / WhatsApp / email del sitio.</p>
+          <div class="grid2">
+            <div class="field"><label for="k-direccion">Dirección (calle, número, piso)</label><input class="inp" id="k-direccion"></div>
+            <div class="field"><label for="k-ciudad">Ciudad / Código postal</label><input class="inp" id="k-ciudad"></div>
+            <div class="field"><label for="k-horario">Horario de atención</label><input class="inp" id="k-horario"></div>
+            <div class="field"><label for="k-guardiaNota">Nota de guardia</label><input class="inp" id="k-guardiaNota"></div>
+            <div class="field"><label for="k-telefono">Teléfono fijo (visible)</label><input class="inp" id="k-telefono" placeholder="+54 11 4372-8900"></div>
+            <div class="field"><label for="k-email">Email institucional</label><input class="inp" id="k-email" type="email"></div>
+            <div class="field"><label for="k-waDisplay">WhatsApp (texto visible)</label><input class="inp" id="k-waDisplay" placeholder="+54 9 11 5555-0134"></div>
+            <div class="field"><label for="k-waNum">WhatsApp (solo dígitos, para wa.me) <b>*</b></label><input class="inp mono" id="k-waNum" placeholder="5491155550134"><span class="hint">Código de país + área + número, sin espacios ni signos.</span></div>
+            <div class="field full"><label for="k-waMsg">Mensaje predeterminado de WhatsApp</label><input class="inp" id="k-waMsg"></div>
+            <div class="field full"><label for="k-mapa">Consulta del mapa (Google Maps)</label><input class="inp" id="k-mapa"><span class="hint">Dirección que se geolocaliza en el mapa interactivo.</span></div>
+            <div class="field"><label for="k-linkedin">URL LinkedIn</label><input class="inp" id="k-linkedin"><span class="hint">Vacío = se oculta el enlace.</span></div>
+            <div class="field"><label for="k-instagram">URL Instagram</label><input class="inp" id="k-instagram"><span class="hint">Vacío = se oculta el enlace.</span></div>
+            <div class="field"><label for="k-cuit">CUIT del estudio</label><input class="inp mono" id="k-cuit"></div>
+            <div class="field"><label for="k-notaForm">Nota bajo el título del formulario</label><input class="inp" id="k-notaForm"></div>
+            <div class="field full"><label for="k-badge">Sello de confidencialidad</label><input class="inp" id="k-badge"><span class="hint"><code>**texto**</code> se muestra en negrita dorada.</span></div>
+            <label class="switch-lbl"><span class="switch"><input type="checkbox" id="k-showMapa"><span></span></span>Mostrar mapa</label>
+            <label class="switch-lbl"><span class="switch"><input type="checkbox" id="k-showBadge"><span></span></span>Mostrar sello de confidencialidad</label>
+          </div>
+          <div class="row-actions"><button type="button" class="btn btn-primary" id="saveContacto"><svg class="ic"><use href="#i-save"/></svg>Guardar datos de contacto</button></div>
+        </div>
+      </section>
+
+      <!-- AYUDA -->
+      <section class="view" id="view-ayuda">
+        <div class="card">
+          <h3><svg class="ic"><use href="#i-help"/></svg>Puesta en marcha (una sola vez)</h3>
+          <ol class="steps">
+            <li>En la <b>consola de Firebase</b> del proyecto <b>zarza-estudio-juridico</b>: abra <b>Authentication → Sign-in method</b> y habilite <b>Correo electrónico/Contraseña</b>. Luego, en <b>Users → Add user</b>, cree el email y la contraseña del administrador (los mismos que usa para ingresar aquí).</li>
+            <li>Abra <b>Firestore Database → Crear base de datos</b> (modo producción, región <code class="mono">southamerica-east1</code> sugerida). En la pestaña <b>Reglas</b>, pegue las reglas de abajo y publique.</li>
+            <li>Pulse <b>“Cargar contenido inicial”</b> aquí abajo: siembra todas las secciones con el contenido actual de <b>Zarza &amp; Asociados</b> (6 áreas, 4 abogados, 6 posts, portada y contacto).</li>
+            <li>En su <b>index.html</b> público, pegue el <b>script conector</b> provisto junto a este panel, justo antes de <code class="mono">&lt;/body&gt;</code>. Ese script renombra el estudio y conecta las 5 secciones a Firestore en vivo.</li>
+            <li>Publique ambos archivos en el mismo hosting (Firebase Hosting, Netlify, etc.). El panel también funciona abriéndolo como archivo local.</li>
+          </ol>
+          <div class="warn"><svg class="ic"><use href="#i-alert"/></svg><span>Las reglas permiten <b>lectura pública</b> (el sitio la necesita) y <b>escritura solo con sesión iniciada</b>. Sin ellas, el panel no podrá guardar.</span></div>
+        </div>
+        <div class="card">
+          <h3><svg class="ic"><use href="#i-lock"/></svg>Reglas de seguridad de Firestore</h3>
+          <pre class="rules" id="rulesPre">rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /sitio/{documento} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    match /areas/{documento} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    match /equipo/{documento} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    match /blog/{documento} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}</pre>
+          <button type="button" class="btn btn-ghost btn-sm" id="copyRules"><svg class="ic"><use href="#i-copy"/></svg>Copiar reglas</button>
+        </div>
+        <div class="card">
+          <h3><svg class="ic"><use href="#i-db"/></svg>Contenido inicial</h3>
+          <p class="desc">Escribe en Firestore el contenido completo del sitio ya renombrado a Zarza &amp; Asociados. Puede ejecutarlo las veces que necesite.</p>
+          <div class="warn" style="margin:0 0 16px"><svg class="ic"><use href="#i-alert"/></svg><span>Esto <b>sobrescribe</b> los documentos con los identificadores iniciales (áreas, abogados, posts, portada y contacto). Sus documentos nuevos con otros IDs no se tocan.</span></div>
+          <button type="button" class="btn btn-primary" id="seedBtn"><svg class="ic"><use href="#i-db"/></svg>Cargar contenido inicial de Zarza &amp; Asociados</button>
+        </div>
+        <div class="card">
+          <h3><svg class="ic"><use href="#i-eye"/></svg>Cómo se refleja en el sitio</h3>
+          <ol class="steps">
+            <li><b>Interruptores</b> (incluido/excluido): ocultan o muestran cada área, abogado, post o dato al instante, sin borrar nada.</li>
+            <li><b>Orden</b>: número menor aparece primero. En Blog, los 3 primeros activos forman la portada de publicaciones.</li>
+            <li><b>Eliminar</b> borra el documento en forma definitiva (se pide confirmación). Si una colección queda sin documentos, el sitio muestra su contenido base de respaldo.</li>
+            <li>Los cambios se sincronizan <b>en vivo</b> en cualquier pestaña abierta del sitio público.</li>
+          </ol>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<!-- Modal editor -->
+<div class="mroot" id="editorRoot" role="dialog" aria-modal="true">
+  <div class="mback" data-close-editor></div>
+  <div class="mcard">
+    <div class="mhead"><h3 id="editorTitle">Editar</h3><button type="button" class="icon-btn" data-close-editor aria-label="Cerrar"><svg class="ic"><use href="#i-x"/></svg></button></div>
+    <div class="mbody" id="editorBody"></div>
+    <div class="mfoot">
+      <button type="button" class="btn btn-ghost" data-close-editor>Cancelar</button>
+      <button type="button" class="btn btn-primary" id="editorSave"><svg class="ic"><use href="#i-save"/></svg>Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal confirmación -->
+<div class="mroot" id="confirmRoot" role="dialog" aria-modal="true">
+  <div class="mback" data-close-confirm></div>
+  <div class="mcard small">
+    <div class="mhead"><h3 id="confirmTitle">Confirmar</h3><button type="button" class="icon-btn" data-close-confirm aria-label="Cerrar"><svg class="ic"><use href="#i-x"/></svg></button></div>
+    <div class="mbody"><p class="confirm-msg" id="confirmMsg"></p></div>
+    <div class="mfoot">
+      <button type="button" class="btn btn-ghost" data-close-confirm>Cancelar</button>
+      <button type="button" class="btn btn-danger" id="confirmYes">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, collection, doc, onSnapshot, setDoc, addDoc, updateDoc, deleteDoc, serverTimestamp, writeBatch } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDJPSPPmvRx_1cV7LZEQmJ5cERhvnEiHbk",
+  authDomain: "zarza-estudio-juridico.firebaseapp.com",
+  projectId: "zarza-estudio-juridico",
+  storageBucket: "zarza-estudio-juridico.firebasestorage.app",
+  messagingSenderId: "154487987429",
+  appId: "1:154487987429:web:dd81b50ff031b328ba480c",
+  measurementId: "G-YD4T2S0P5Z"
+};
+const app = initializeApp(firebaseConfig);
+isSupported().then(ok => { if (ok) getAnalytics(app); }).catch(() => {});
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+/* ───────── Utilidades ───────── */
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const slugify = s => String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,60);
+const lines = t => String(t||"").split("\n").map(x=>x.trim()).filter(Boolean);
+const commas = t => String(t||"").split(",").map(x=>x.trim()).filter(Boolean);
+const MESES = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
+const fdate = iso => { if(!iso) return "—"; const [y,m,d]=iso.split("-"); return `${d} · ${MESES[parseInt(m,10)-1]||""} · ${y}`; };
+const ICONS = [["i-brief","Maletín / Balanza"],["i-doc","Documento con sello"],["i-family","Grupo familiar"],["i-building","Edificio corporativo"],["i-gavel","Mazo de juez"],["i-shieldcart","Escudo / Consumidor"]];
+const COLORS = [["gold","Dorado"],["blue","Azul"],["green","Verde"],["amber","Ámbar"],["red","Rojo"],["violet","Violeta"]];
+const CATS = ["Laboral","Civil y Comercial","Familia","Penal y Tránsito","Empresario","Consumidor"];
+const CATCLS = {"Laboral":"ch-gold","Civil y Comercial":"ch-blue","Familia":"ch-green","Penal y Tránsito":"ch-red","Empresario":"ch-amber","Consumidor":"ch-violet"};
+const byOrden = (a,b) => (a.orden??999)-(b.orden??999);
+
+function toast(msg, type){
+  const box = $("#toasts");
+  if (box.children.length >= 3) box.firstElementChild.remove();
+  const t = document.createElement("div");
+  t.className = "toast" + (type ? " " + type : "");
+  t.innerHTML = '<svg class="ic"><use href="#' + (type==="err"?"i-alert":type==="gold"?"i-lock":"i-check") + '"/></svg><span>' + esc(msg) + "</span>";
+  box.appendChild(t);
+  setTimeout(() => { t.classList.add("out"); setTimeout(() => t.remove(), 320); }, 3600);
+}
+const fsErr = e => { console.warn(e); toast("Error de Firestore: " + (e.code || e.message) + ". Revise las reglas de seguridad.", "err"); };
+
+/* ───────── Contenido inicial (Zarza & Asociados) ───────── */
+const SEED = {
+inicio:{
+  eyebrow:"Estudio Jurídico Multipráctica · Buenos Aires · Desde 2004",
+  titulo:"Soluciones legales *integrales* con el *respaldo* y la *experiencia* que su caso requiere.",
+  subtitulo:"Un equipo multidisciplinario enfocado en proteger sus derechos e intereses particulares y corporativos.",
+  cta1:"Enviar Consulta Gratuita", cta2:"Hablar por WhatsApp",
+  imagen:"https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1800&q=70",
+  mision:"Estudio jurídico multipráctica fundado en 2004. Defendemos a personas y empresas con rigor técnico, estrategia clara y confidencialidad absoluta.",
+  badges:["Primera consulta sin cargo","Secreto profesional","Respuesta < 24 hs hábiles"],
+  showBadges:true, showCifras:true, showMarquee:true,
+  marquee:["Derecho Laboral","Civil y Comercial","Familia","Empresario","Penal y Tránsito","Consumidor y Bancario","Guardia 24 hs"],
+  cifras:[
+    {pref:"+",valor:20,suf:"",label:"Años de trayectoria",desc:"Ejercicio ininterrumpido desde 2004.",activo:true},
+    {pref:"+",valor:1500,suf:"",label:"Casos y procesos resueltos",desc:"Acuerdos, sentencias y expedientes concluidos.",activo:true},
+    {pref:"",valor:6,suf:"",label:"Especialidades integradas",desc:"Departamentos con un socio a cargo de cada área.",activo:true},
+    {pref:"",valor:100,suf:"%",label:"Compromiso y confidencialidad",desc:"Secreto profesional y trato directo con el cliente.",activo:true}
+  ]
+},
+contacto:{
+  direccion:"Av. Corrientes 1234, Piso 7, Oficina “B”", ciudad:"C1043 · CABA, Argentina",
+  horario:"Lunes a Viernes de 8:00 a 18:00 hs.", guardiaNota:"Guardia penal y urgencias: 24 hs, todos los días.",
+  telefono:"+54 11 4372-8900", email:"consultas@zarzaasociados.com.ar",
+  waDisplay:"+54 9 11 5555-0134", waNum:"5491155550134",
+  waMsg:"Hola, quisiera realizar una consulta legal.",
+  mapa:"Av. Corrientes 1234, C1043 CABA, Argentina",
+  linkedin:"https://www.linkedin.com/company/zarza-asociados-estudio-juridico",
+  instagram:"https://www.instagram.com/zarzaasociados",
+  cuit:"30-71234567-9",
+  notaForm:"Complete los datos y el área correspondiente: su consulta llega directamente al socio a cargo.",
+  badge:"**Confidencialidad garantizada.** Sus datos se tratan bajo secreto profesional y la Ley 25.326 de Protección de Datos Personales.",
+  showMapa:true, showBadge:true
+},
+areas:[
+ {slug:"laboral",nombre:"Derecho Laboral",icono:"i-brief",color:"gold",orden:1,activo:true,abogadoId:"zarza",
+  descripcion:"Despidos, trabajo no registrado, accidentes de trabajo (ART) y negociación colectiva.",
+  tags:["Despidos","ART","SECLO"],
+  p1:"Defendemos a trabajadores y empleadores en todo el ciclo de la relación laboral. Reclamamos indemnizaciones por despido, diferencias salariales y sanciones por trabajo no registrado, e intervenimos ante SECLO y la justicia laboral de la Nación y la Provincia.",
+  p2:"Nuestro departamento combina negociación firme y litigio preparado: cada reclamo se construye desde el primer telegrama con la prueba que sostendrá el caso si llega a sentencia.",
+  alcance:["Despidos con y sin causa · indemnizaciones art. 245 LCT","Trabajo no registrado y registración defectuosa","Accidentes y enfermedades profesionales (ART)","Mobbing, violencia laboral y discriminación","Negociación colectiva y conflictos sindicales","Conciliaciones SECLO y juicio laboral completo"]},
+ {slug:"civil",nombre:"Derecho Civil y Comercial",icono:"i-doc",color:"blue",orden:2,activo:true,abogadoId:"santamarina",
+  descripcion:"Contratos, sucesiones, daños y perjuicios, recupero de mora y ejecuciones.",
+  tags:["Contratos","Sucesiones","Daños"],
+  p1:"Asesoramos en la prevención y resolución de conflictos patrimoniales: redactamos contratos que evitan litigios y ejecutamos con rapidez cuando el acuerdo ya no es posible.",
+  p2:"Llevamos más de 450 sucesiones ordenadas y una cartera consolidada de reclamos por daños, cobro de deudas y ejecuciones, con mediación prejudicial estratégica en cada expediente.",
+  alcance:["Redacción, revisión y negociación de contratos","Sucesiones con y sin testamento · declaratorias","Daños y perjuicios · mala praxis · incumplimientos","Cobranzas, recupero de mora y ejecuciones","Desalojos y conflictos locativos","Mediación prejudicial obligatoria"]},
+ {slug:"familia",nombre:"Derecho de Familia",icono:"i-family",color:"green",orden:3,activo:true,abogadoId:"ferreyra",
+  descripcion:"Divorcios vinculares, convenios reguladores, cuota alimentaria y régimen de comunicación.",
+  tags:["Divorcios","Alimentos","Cuidado personal"],
+  p1:"Atravesar un conflicto familiar exige firmeza legal y sensibilidad humana. Priorizamos acuerdos que protejan a las personas —especialmente a los hijos— y litigamos con decisión cuando la otra parte no coopera.",
+  p2:"Somos mediadores registrados: buscamos el convenio regulador más sólido posible, con pautas claras de actualización y ejecución para evitar conflictos futuros.",
+  alcance:["Divorcios de común acuerdo y unilaterales","Convenios reguladores completos y ejecutables","Cuota alimentaria y alimentos provisorios","Régimen de comunicación y cuidado personal","Adopciones, filiación y responsabilidad parental","Violencia familiar · medidas cautelares urgentes"]},
+ {slug:"empresario",nombre:"Derecho Empresario",icono:"i-building",color:"amber",orden:4,activo:true,abogadoId:"santamarina",
+  descripcion:"Asesoramiento societario, estatutos, cumplimiento normativo y reestructuración.",
+  tags:["Societario","Compliance","Concursos"],
+  p1:"Acompañamos a pymes, startups y grupos familiares desde la constitución societaria hasta la reestructuración, con foco en prevenir riesgos legales antes de que se conviertan en contingencias.",
+  p2:"Diseñamos estructuras societarias eficientes, acuerdos de socios que anticipan conflictos y programas de cumplimiento normativo proporcionales al tamaño de cada empresa.",
+  alcance:["Constitución de SAS, SRL y SA · trámites registrales","Estatutos y acuerdos de socios · protocolo familiar","Compliance y prevención de riesgos legales","Contratos comerciales, distribución y franquicias","Reestructuración, concursos preventivos y quiebras","Auditoría legal y due diligence"]},
+ {slug:"penal",nombre:"Derecho Penal y Tránsito",icono:"i-gavel",color:"red",orden:5,activo:true,abogadoId:"iglesias",
+  descripcion:"Defensa penal, querellas, accidentes de tránsito y actuaciones de urgencia.",
+  tags:["Defensas","Querellas","Urgencias 24 hs"],
+  p1:"La defensa penal exige presencia inmediata. Nuestra guardia funciona las 24 horas: detenemos el daño procesal en las primeras horas, que son las que definen una causa.",
+  p2:"Litigamos defensas y querellas en instrucción y juicio oral, y llevamos la doble vía —penal y civil— de los accidentes de tránsito para maximizar la reparación de las víctimas.",
+  alcance:["Defensas en instrucción y juicio oral","Querellas y representación de víctimas","Excarcelaciones y eximiciones de prisión","Delitos informáticos, estafas y defraudaciones","Accidentes de tránsito: vía penal y civil integrada","Guardia de urgencias 24 hs · todos los días"]},
+ {slug:"consumidor",nombre:"Consumidor y Bancario",icono:"i-shieldcart",color:"violet",orden:6,activo:true,abogadoId:"ferreyra",
+  descripcion:"Reclamos contra bancos, aseguradoras y comercios, fraude digital y planes de ahorro.",
+  tags:["Bancos","Seguros","COPREC"],
+  p1:"El usuario financiero tiene derechos exigibles. Reclamamos ante bancos, aseguradoras y comercios con la Ley 24.240 como herramienta y la jurisprudencia reciente como respaldo.",
+  p2:"En casos de fraude digital y phishing, la rapidez del desconocimiento y la calidad de la prueba informática determinan el recupero: intervenimos de inmediato y escalamos por todas las vías.",
+  alcance:["Defensa del consumidor · Ley 24.240","Reclamos bancarios, refinanciaciones y cobros indebidos","Seguros: rechazos de cobertura y mala liquidación","Planes de ahorro y créditos prendarios","Fraude digital, phishing y vaciamiento de cuentas","COPREC y audiencias de conciliación"]}
+],
+equipo:[
+ {id:"zarza",nombre:"Dr. Alejandro Zarza",rol:"Socio Fundador · Derecho Laboral",matricula:"CPACF · T° 112 F° 340",
+  areaTexto:"Derecho Laboral · Relaciones colectivas",areaSlug:"laboral",color:"gold",orden:1,activo:true,
+  foto:"https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&crop=faces&w=700&h=840&q=75",iniciales:"AZ",
+  email:"a.zarza@zarzaasociados.com.ar",linkedin:"https://www.linkedin.com/company/zarza-asociados-estudio-juridico",
+  bio:"Fundó el estudio en 2004 tras una década de litigio laboral en tribunales de la Nación. Dirigió más de 600 procesos individuales y colectivos, y negocia convenios y conflictos sindicales para empresas de servicios e industria. Es docente de Derecho del Trabajo y conferencista sobre registración laboral.",
+  formacion:["Abogado — Universidad de Buenos Aires (UBA)","Especialista en Derecho del Trabajo — UBA","Maestría en Relaciones Laborales — UNTreF","Docente universitario · Derecho del Trabajo"],
+  trayectoria:["+600 procesos laborales dirigidos desde 2004","Negociación colectiva en actividad servicios e industria","Litigio ante CNAT y justicia laboral bonaerense"],
+  idiomas:["Español","Inglés"]},
+ {id:"santamarina",nombre:"Dra. Valeria Santamarina",rol:"Socia · Civil, Comercial y Empresario",matricula:"CPACF · T° 118 F° 212",
+  areaTexto:"Civil, Comercial y Empresario",areaSlug:"civil",color:"blue",orden:2,activo:true,
+  foto:"https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&crop=faces&w=700&h=840&q=75",iniciales:"VS",
+  email:"v.santamarina@zarzaasociados.com.ar",linkedin:"https://www.linkedin.com/company/zarza-asociados-estudio-juridico",
+  bio:"Lidera los departamentos Civil-Comercial y Empresario. Asesora a pymes y grupos familiares en estructuración societaria, contratos y prevención de conflictos, con más de 450 sucesiones y contratos complejos gestionados. Su enfoque: documentos claros hoy para evitar juicios mañana.",
+  formacion:["Abogada — Universidad Católica Argentina (UCA)","Maestría en Derecho Empresario — Universidad de San Andrés","Posgrado en Compliance — Universidad Austral"],
+  trayectoria:["+450 sucesiones y procesos patrimoniales","Asesoramiento permanente a pymes y grupos familiares","Diseño de programas de cumplimiento normativo"],
+  idiomas:["Español","Inglés","Portugués"]},
+ {id:"iglesias",nombre:"Dr. Martín Iglesias",rol:"Socio · Penal y Tránsito",matricula:"CPACF · T° 121 F° 587",
+  areaTexto:"Penal y Tránsito · Guardia 24 hs",areaSlug:"penal",color:"red",orden:3,activo:true,
+  foto:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&crop=faces&w=700&h=840&q=75",iniciales:"MI",
+  email:"m.iglesias@zarzaasociados.com.ar",linkedin:"https://www.linkedin.com/company/zarza-asociados-estudio-juridico",
+  bio:"Tras diez años en la justicia penal, se sumó al estudio para dirigir el departamento Penal y la guardia de urgencias 24 hs. Litigó más de 300 causas y juicios orales, con especial dedicación a delitos informáticos y a la doble vía penal-civil de los accidentes de tránsito.",
+  formacion:["Abogado — Universidad de Buenos Aires (UBA)","Especialista en Derecho Penal — UBA","Posgrado en Criminología — UCASAL"],
+  trayectoria:["10 años de función judicial penal","+300 causas y juicios orales litigados","Director de la guardia de urgencias 24 hs"],
+  idiomas:["Español","Inglés"]},
+ {id:"ferreyra",nombre:"Dra. Lucía Ferreyra",rol:"Especialista Sénior · Familia y Consumidor",matricula:"CPACF · T° 130 F° 455",
+  areaTexto:"Familia · Consumidor y Bancario",areaSlug:"familia",color:"green",orden:4,activo:true,
+  foto:"https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&crop=faces&w=700&h=840&q=75",iniciales:"LF",
+  email:"l.ferreyra@zarzaasociados.com.ar",linkedin:"https://www.linkedin.com/company/zarza-asociados-estudio-juridico",
+  bio:"Mediadora registrada ante el Ministerio de Justicia, combina un enfoque conciliador con litigio firme cuando es necesario. Lleva más de 400 convenios reguladores homologados y dirige la práctica de consumidor y bancario del estudio, con foco en fraude digital y reclamos a aseguradoras.",
+  formacion:["Abogada — Universidad Nacional de La Plata (UNLP)","Especialista en Derecho de Familia — UBA","Diplomatura en Derecho del Consumidor — UCA","Mediadora registrada — Ministerio de Justicia"],
+  trayectoria:["+400 convenios reguladores homologados","Especialista en recupero por fraude bancario digital","Mediación familiar y de consumo (COPREC)"],
+  idiomas:["Español","Inglés"]}
+],
+blog:[
+ {id:"plazos-despidos",titulo:"Nuevos plazos procesales en despidos",categoria:"Laboral",fecha:"2026-11-12",lectura:"6 min",area:"laboral",orden:1,activo:true,
+  extracto:"Las últimas acordadas reordenaron los tiempos de instrucción y prueba en la justicia laboral. Qué deben revisar trabajadores y empleadores antes de enviar el primer telegrama.",
+  cuerpo:"Las recientes acordadas de la Cámara Nacional de Apelaciones del Trabajo reordenaron los plazos de las etapas de instrucción y producción de prueba, con impacto directo en la estrategia de trabajadores despedidos y de empleadores.\n\nEn la práctica, los tiempos entre el intercambio telegráfico y la demanda efectiva se han acortado. Dejar correr los plazos puede significar perder pruebas decisivas: registración deficiente, testigos clave o pericias contables que ya no podrán producirse.\n\n## Plazos que conviene tener presentes\n\n1. **Prescripción de créditos laborales:** dos años (art. 256 LCT). El reclamo debe iniciarse o interrumpirse válidamente antes de ese vencimiento.\n1. **Intercambio telegráfico:** las Leyes 23.789 y 24.635 estructuran la comunicación previa; una intimación mal redactada puede debilitar todo el reclamo posterior.\n1. **Conciliación previa (SECLO):** es instancia obligatoria en CABA; sus plazos corren y condicionan la habilitación de la demanda.\n1. **Accidentes de trabajo:** denuncie el hecho ante la empleadora y la ART de inmediato; la demora complica el nexo causal.\n\nAntes de enviar cualquier telegrama o carta documento, solicite una revisión profesional del texto. La diferencia entre un reclamo sólido y uno débil suele estar en las primeras 48 horas y en las palabras exactas de la primera intimación.\n\nEn el estudio analizamos su caso sin cargo, verificamos los plazos vigentes y definimos la vía más conveniente: acuerdo directo, SECLO o demanda."},
+ {id:"sucesion-sin-conflictos",titulo:"Cómo tramitar una sucesión sin conflictos",categoria:"Civil y Comercial",fecha:"2026-10-28",lectura:"8 min",area:"civil",orden:2,activo:true,
+  extracto:"Las tres decisiones tempranas que evitan años de disputa familiar: administrador, documentación y acuerdo de partición.",
+  cuerpo:"Una sucesión bien ordenada evita años de conflicto familiar. La clave está en tres decisiones tempranas: designar un administrador único, reunir la documentación completa y acordar la partición antes de que el expediente avance por inercia.\n\nEl proceso comienza con la denuncia de bienes y la declaración de herederos. Cuanto más completa sea la presentación inicial —títulos de propiedad, partidas, datos bancarios y registrales— menos incidencias y suspensiones tendrá el trámite.\n\n## Las cinco etapas del proceso\n\n1. **Denuncia de bienes y documentación:** títulos, partidas, DNI y datos registrales de cada bien.\n1. **Declaratoria de herederos:** resolución que reconoce quiénes suceden al causante.\n1. **Inventario y avalúo:** valuación de los bienes que integran el acervo hereditario.\n1. **Partición y adjudicación:** acuerdo entre herederos o partición judicial; el acuerdo privado homologado es la vía más rápida.\n1. **Inscripción registral:** Registro de la Propiedad Inmueble, DNRPA y entidades bancarias.\n\nLos honorarios y tasas se calculan sobre el valor de los bienes: pactarlos por escrito al inicio evita discusiones al final. Un presupuesto claro es parte de la tranquilidad familiar.\n\nCuando hay menores, bienes en el exterior o herederos en desacuerdo, el diseño del acuerdo requiere técnica específica: es el momento de consultar antes de firmar cualquier documento privado."},
+ {id:"convenio-regulador",titulo:"Convenio regulador: claves para un divorcio ordenado",categoria:"Familia",fecha:"2026-10-15",lectura:"7 min",area:"familia",orden:3,activo:true,
+  extracto:"Vivienda, alimentos, cuidado personal y bienes: qué debe contener la propuesta reguladora para ser aprobada sin observaciones.",
+  cuerpo:"El Código Civil y Comercial exige que la demanda de divorcio se acompañe de una propuesta reguladora. Aunque el otro cónyuge no la acepte, el divorcio se decreta igual: pero un convenio bien construido evita años de incidentes posteriores.\n\n## Qué debe contener la propuesta\n\n1. **Atribución de la vivienda familiar:** quién permanece y por cuánto tiempo.\n1. **Cuidado personal y régimen de comunicación:** pautas concretas, vacaciones y fechas especiales.\n1. **Alimentos:** monto, pauta de actualización automática, obra social y gastos extraordinarios.\n1. **Distribución de bienes:** liquidación de la comunidad con adjudicaciones claras.\n1. **Compensación económica:** cuando un cónyuge sufrió un desequilibrio por el proyecto familiar.\n\nLos errores más frecuentes son montos sin pauta de actualización y regímenes de comunicación ambiguos: ambos garantizan conflictos futuros. La claridad redaccional es la mejor póliza de paz familiar.\n\nComo mediadores registrados, priorizamos acuerdos ejecutables y protectores de los hijos. Si la otra parte no coopera, litigamos las medidas provisorias con la urgencia que el caso requiere."},
+ {id:"transito-48hs",titulo:"Accidente de tránsito: las primeras 48 horas deciden el caso",categoria:"Penal y Tránsito",fecha:"2026-09-30",lectura:"5 min",area:"penal",orden:4,activo:true,
+  extracto:"Denuncia a la aseguradora, constancias médicas y prueba: la guía de urgencia que todo conductor debería conocer.",
+  cuerpo:"Después de un accidente, la prueba se enfría rápido: las cámaras se sobrescriben, los testigos se dispersan y las lesiones se documentan tarde. Las primeras 48 horas concentran las decisiones que definen la reparación que podrá obtener.\n\n## Checklist de urgencia\n\n1. **Denuncia a su aseguradora:** la Ley 17.418 impone un plazo de tres días; hágala por escrito y con constancia.\n1. **Constancia policial o acta:** solicite copia y verifique que los datos sean correctos.\n1. **Prueba en el lugar:** fotos, posiciones finales, testigos identificables y pedido de preservación de cámaras.\n1. **Atención médica con constancia:** incluso lesiones leves; habilitan la vía penal por lesiones y refuerzan el daño.\n1. **No firme quitas ni recibos:** ninguna transacción sin revisión profesional previa.\n\nCuando hay lesionados, la causa penal y el reclamo civil deben coordinarse desde el inicio: la prueba producida en una vía potencia la otra. Esa doble estrategia es la que maximiza la reparación.\n\nNuestra guardia de tránsito toma intervención inmediata: preservación de prueba, denuncia y estrategia integral en el mismo día."},
+ {id:"sas-srl-2026",titulo:"SAS o SRL: qué sociedad conviene constituir en 2026",categoria:"Empresario",fecha:"2026-09-18",lectura:"6 min",area:"empresario",orden:5,activo:true,
+  extracto:"Capital, velocidad de constitución, administración y costos: una comparación práctica para emprendedores y pymes.",
+  cuerpo:"Elegir el tipo societario no es un trámite: define costos, velocidad, responsabilidad y capacidad de crecer. En 2026, con los cambios registrales de los últimos años, la comparación entre SAS y SRL exige mirar más allá del titular de moda.\n\n## Comparación práctica\n\n1. **Capital mínimo:** la SAS exige dos salarios mínimos; la SRL no tiene mínimo legal, pero requiere integración del 25% al constituir.\n1. **Velocidad:** la SAS nació digital y ágil; hoy los tiempos registrales reales deben verificarse jurisdicción por jurisdicción.\n1. **Administración y órganos:** la SRL ofrece una estructura clásica y previsible; la SAS permite diseños flexibles de administración.\n1. **Costo de mantenimiento:** publicaciones, libros y cargas formales difieren: proyecte el costo anual, no solo el de constitución.\n1. **Entrada de inversores:** los acuerdos de socios y las cláusulas de arrastre definen qué tan invertible es la estructura.\n\nPara emprendimientos que buscarán inversión, la estructura debe pensarse junto con el acuerdo de socios desde el día uno. Para operaciones estables de pocos socios, la SRL sigue siendo una opción robusta y económica.\n\nConstituimos ambas figuras con estatutos a medida y acuerdos de socios que anticipan los conflictos típicos: salidas, bloqueos y valuaciones."},
+ {id:"phishing-bancario",titulo:"Phishing bancario: cómo recuperar el dinero sustraído",categoria:"Consumidor",fecha:"2026-09-02",lectura:"6 min",area:"consumidor",orden:6,activo:true,
+  extracto:"El deber de seguridad de los bancos y la ruta de reclamos que la jurisprudencia viene convalidando con resultados favorables.",
+  cuerpo:"El vaciamiento de cuentas mediante phishing, SIM swapping o token spoofing no es una fatalidad que el cliente deba soportar: los bancos tienen un deber de seguridad (art. 42 CN y Ley 24.240) y la jurisprudencia viene convalidando reclamos con resultados favorables.\n\n## La ruta del reclamo, en orden\n\n1. **Desconocimiento inmediato por escrito:** carta documento al banco desconociendo cada operación; la fecha importa.\n1. **Denuncia penal:** constituye prueba del fraude y habilita medidas sobre las cuentas destino.\n1. **Reclamo ante BCRA:** responsabilidad directa de la entidad ante usuarios financieros.\n1. **Vía consumidor / COPREC:** audiencia y eventual demanda con daño punitivo.\n1. **Pericia informática:** preservación de logs, IPs y dispositivos: es la prueba que gana estos casos.\n\nEl banco suele alegar que las operaciones se hicieron con credenciales válidas. Ese argumento no lo exime: la cuestión es si su sistema de seguridad detectó operaciones incompatibles con el perfil del cliente y falló en bloquearlas.\n\nActúe el mismo día del hecho. Cada hora de demora reduce las chances de bloquear el circuito del dinero y debilita el desconocimiento. Nuestra práctica de fraude digital interviene de urgencia."}
+]};
+
+/* ───────── Estado & sesión ───────── */
+const state = { inicio:null, contacto:null, areas:[], equipo:[], blog:[], loaded:{} };
+let unsubs = [], view = "inicio";
+
+const AUTH_ERRS = {
+  "auth/invalid-credential":"Credenciales incorrectas. Verifique email y contraseña.",
+  "auth/wrong-password":"Contraseña incorrecta.",
+  "auth/user-not-found":"No existe un usuario con ese email. Créelo en Firebase → Authentication.",
+  "auth/invalid-email":"El email no es válido.",
+  "auth/too-many-requests":"Demasiados intentos. Espere unos minutos.",
+  "auth/network-request-failed":"Sin conexión con Firebase. Verifique su red."
+};
+$("#loginForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const btn = $("#loginBtn"), err = $("#loginErr");
+  err.classList.remove("show");
+  btn.classList.add("loading");
+  try { await signInWithEmailAndPassword(auth, $("#l-email").value.trim(), $("#l-pass").value); }
+  catch(ex){ $("#loginErrMsg").textContent = AUTH_ERRS[ex.code] || ("No se pudo ingresar: " + ex.code); err.classList.add("show"); }
+  finally { btn.classList.remove("loading"); }
+});
+$("#logoutBtn").addEventListener("click", () => signOut(auth));
+
+onAuthStateChanged(auth, user => {
+  if (user){
+    $("#authView").style.display = "none";
+    $("#appView").classList.add("on");
+    $("#userEmail").textContent = user.email;
+    subscribe();
+  } else {
+    unsubs.forEach(u => { try{u();}catch(_){}} ); unsubs = [];
+    $("#appView").classList.remove("on");
+    $("#authView").style.display = "grid";
+    setConn("", "Conectando…");
+  }
+});
+
+function setConn(cls, txt){ const c = $("#conn"); c.className = "conn " + cls; $("#connTxt").textContent = txt; }
+function snapOK(key){ state.loaded[key] = true; if (Object.keys(state.loaded).length >= 5) setConn("ok", "En línea · sincronizado"); }
+function snapErr(e){ console.warn(e); setConn("bad", "Sin acceso — revise reglas"); }
+
+function subscribe(){
+  unsubs.push(onSnapshot(doc(db,"sitio","inicio"), s => { state.inicio = s.exists() ? s.data() : null; snapOK("i"); if (view==="inicio") renderInicio(); }, snapErr));
+  unsubs.push(onSnapshot(doc(db,"sitio","contacto"), s => { state.contacto = s.exists() ? s.data() : null; snapOK("c"); if (view==="contacto") renderContacto(); }, snapErr));
+  ["areas","equipo","blog"].forEach(col => {
+    unsubs.push(onSnapshot(collection(db,col), qs => {
+      state[col] = qs.docs.map(d => ({ id:d.id, ...d.data() })).sort(byOrden);
+      snapOK(col); updateCounts();
+      if (view===col) renderList(col);
+    }, snapErr));
+  });
+}
+function updateCounts(){ ["areas","equipo","blog"].forEach(c => { $("#cnt-"+c).textContent = state[c].length; }); }
+
+/* ───────── Navegación ───────── */
+const TITLES = { inicio:"Inicio", areas:"Áreas de Práctica", equipo:"Equipo / Abogados", blog:"Blog / Publicaciones", contacto:"Contacto", ayuda:"Ayuda / Configuración" };
+$("#sideNav").addEventListener("click", e => {
+  const b = e.target.closest("[data-view]"); if (!b) return;
+  view = b.dataset.view;
+  $$(".nav-btn").forEach(x => x.classList.toggle("active", x === b));
+  $$(".view").forEach(v => v.classList.toggle("on", v.id === "view-" + view));
+  $("#viewTitle").textContent = TITLES[view];
+  if (view==="inicio") renderInicio();
+  else if (view==="contacto") renderContacto();
+  else if (["areas","equipo","blog"].includes(view)) renderList(view);
+});
+
+/* ───────── INICIO ───────── */
+function badgeRow(v){
+  const d = document.createElement("div");
+  d.className = "rep-row rep-badge";
+  d.innerHTML = '<div class="field"><label>Texto del sello</label><input class="inp" value="' + esc(v) + '"></div>' +
+    '<button type="button" class="icon-btn danger rm" aria-label="Quitar"><svg class="ic"><use href="#i-trash"/></svg></button>';
+  d.querySelector(".rm").addEventListener("click", () => d.remove());
+  return d;
+}
+function cifraRow(c){
+  c = c || {pref:"",valor:0,suf:"",label:"",desc:"",activo:true};
+  const d = document.createElement("div");
+  d.className = "rep-row rep-cifra";
+  d.innerHTML =
+    '<div class="field"><label>Prefijo</label><input class="inp c-pref" value="' + esc(c.pref) + '"></div>' +
+    '<div class="field"><label>Valor</label><input class="inp c-val" type="number" value="' + esc(c.valor) + '"></div>' +
+    '<div class="field"><label>Sufijo</label><input class="inp c-suf" value="' + esc(c.suf) + '"></div>' +
+    '<div class="field"><label>Rótulo</label><input class="inp c-label" value="' + esc(c.label) + '"></div>' +
+    '<div class="field"><label>Descripción</label><input class="inp c-desc" value="' + esc(c.desc) + '"></div>' +
+    '<div class="rep-check"><em>INCLUIR</em><span class="switch"><input type="checkbox" class="c-act"' + (c.activo!==false?" checked":"") + '><span></span></span></div>' +
+    '<button type="button" class="icon-btn danger rm" aria-label="Quitar"><svg class="ic"><use href="#i-trash"/></svg></button>';
+  d.querySelector(".rm").addEventListener("click", () => d.remove());
+  return d;
+}
+function renderInicio(){
+  const d = state.inicio || SEED.inicio;
+  $("#i-eyebrow").value = d.eyebrow || "";
+  $("#i-titulo").value = d.titulo || "";
+  $("#i-subtitulo").value = d.subtitulo || "";
+  $("#i-cta1").value = d.cta1 || "";
+  $("#i-cta2").value = d.cta2 || "";
+  $("#i-imagen").value = d.imagen || "";
+  $("#i-mision").value = d.mision || "";
+  $("#i-marquee").value = (d.marquee || []).join(", ");
+  $("#i-showBadges").checked = d.showBadges !== false;
+  $("#i-showCifras").checked = d.showCifras !== false;
+  $("#i-showMarquee").checked = d.showMarquee !== false;
+  const b = $("#i-badges"); b.innerHTML = ""; (d.badges || []).forEach(x => b.appendChild(badgeRow(x)));
+  const c = $("#i-cifras"); c.innerHTML = ""; (d.cifras || []).forEach(x => c.appendChild(cifraRow(x)));
+}
+$("#addBadge").addEventListener("click", () => $("#i-badges").appendChild(badgeRow("")));
+$("#addCifra").addEventListener("click", () => $("#i-cifras").appendChild(cifraRow()));
+$("#saveInicio").addEventListener("click", async () => {
+  const titulo = $("#i-titulo").value.trim();
+  if (!titulo) return toast("El titular principal es obligatorio.", "err");
+  const data = {
+    eyebrow:$("#i-eyebrow").value.trim(), titulo, subtitulo:$("#i-subtitulo").value.trim(),
+    cta1:$("#i-cta1").value.trim() || "Enviar Consulta Gratuita", cta2:$("#i-cta2").value.trim() || "Hablar por WhatsApp",
+    imagen:$("#i-imagen").value.trim(), mision:$("#i-mision").value.trim(),
+    marquee:commas($("#i-marquee").value),
+    showBadges:$("#i-showBadges").checked, showCifras:$("#i-showCifras").checked, showMarquee:$("#i-showMarquee").checked,
+    badges:$$("#i-badges .rep-row").map(r => r.querySelector("input").value.trim()).filter(Boolean),
+    cifras:$$("#i-cifras .rep-row").map(r => ({
+      pref:r.querySelector(".c-pref").value.trim(), valor:parseInt(r.querySelector(".c-val").value,10)||0,
+      suf:r.querySelector(".c-suf").value.trim(), label:r.querySelector(".c-label").value.trim(),
+      desc:r.querySelector(".c-desc").value.trim(), activo:r.querySelector(".c-act").checked
+    })).filter(c => c.label),
+    updatedAt:serverTimestamp()
+  };
+  try { await setDoc(doc(db,"sitio","inicio"), data); toast("Sección Inicio guardada y publicada."); } catch(ex){ fsErr(ex); }
+});
+
+/* ───────── CONTACTO ───────── */
+function renderContacto(){
+  const d = state.contacto || SEED.contacto;
+  const map = {direccion:"k-direccion",ciudad:"k-ciudad",horario:"k-horario",guardiaNota:"k-guardiaNota",telefono:"k-telefono",email:"k-email",waDisplay:"k-waDisplay",waNum:"k-waNum",waMsg:"k-waMsg",mapa:"k-mapa",linkedin:"k-linkedin",instagram:"k-instagram",cuit:"k-cuit",notaForm:"k-notaForm",badge:"k-badge"};
+  for (const k in map) $("#" + map[k]).value = d[k] || "";
+  $("#k-showMapa").checked = d.showMapa !== false;
+  $("#k-showBadge").checked = d.showBadge !== false;
+}
+$("#saveContacto").addEventListener("click", async () => {
+  const waNum = $("#k-waNum").value.replace(/\D/g,"");
+  if (!waNum) return toast("El número de WhatsApp (solo dígitos) es obligatorio.", "err");
+  const data = {
+    direccion:$("#k-direccion").value.trim(), ciudad:$("#k-ciudad").value.trim(),
+    horario:$("#k-horario").value.trim(), guardiaNota:$("#k-guardiaNota").value.trim(),
+    telefono:$("#k-telefono").value.trim(), email:$("#k-email").value.trim(),
+    waDisplay:$("#k-waDisplay").value.trim(), waNum, waMsg:$("#k-waMsg").value.trim(),
+    mapa:$("#k-mapa").value.trim(), linkedin:$("#k-linkedin").value.trim(), instagram:$("#k-instagram").value.trim(),
+    cuit:$("#k-cuit").value.trim(), notaForm:$("#k-notaForm").value.trim(), badge:$("#k-badge").value.trim(),
+    showMapa:$("#k-showMapa").checked, showBadge:$("#k-showBadge").checked, updatedAt:serverTimestamp()
+  };
+  try { await setDoc(doc(db,"sitio","contacto"), data); toast("Datos de contacto guardados y publicados."); } catch(ex){ fsErr(ex); }
+});
+
+/* ───────── LISTAS CRUD ───────── */
+const emptyHTML = col => '<div class="empty"><svg class="ic"><use href="#i-db"/></svg><span>No hay documentos en <b>' + col + '</b>. Cree el primero o cargue el contenido inicial.</span><button type="button" class="btn btn-ghost btn-sm" data-goto-ayuda>Ir a Ayuda → Cargar contenido inicial</button></div>';
+function rowHTML(col, d){
+  let ico = "", info = "", extra = "";
+  if (col === "areas"){
+    ico = '<svg class="ic"><use href="#' + esc(d.icono || "i-brief") + '"/></svg>';
+    info = "<b>" + esc(d.nombre) + "</b><span>/" + esc(d.id) + " · " + esc((d.tags||[]).join(" · ")) + "</span>";
+  } else if (col === "equipo"){
+    ico = d.foto ? '<img src="' + esc(d.foto) + '" alt="" onerror="this.outerHTML=\'<b>' + esc(d.iniciales||"··") + '</b>\'">' : "<b>" + esc(d.iniciales || "··") + "</b>";
+    info = "<b>" + esc(d.nombre) + "</b><span>" + esc(d.rol || "") + " · " + esc(d.matricula || "") + "</span>";
+  } else {
+    ico = '<svg class="ic"><use href="#i-post"/></svg>';
+    extra = '<span class="chip ' + (CATCLS[d.categoria] || "ch-gold") + '">' + esc(d.categoria || "General") + "</span>";
+    info = "<b>" + esc(d.titulo) + "</b><span>" + fdate(d.fecha) + " · " + esc(d.lectura || "") + "</span>";
+  }
+  return '<div class="row' + (d.activo === false ? " off" : "") + '">' +
+    '<span class="row-ico">' + ico + "</span>" +
+    '<span class="row-info">' + info + (extra ? "<span style='margin-top:5px'>" + extra + "</span>" : "") + "</span>" +
+    '<span class="row-orden"><label>ORDEN</label><input type="number" value="' + esc(d.orden ?? 99) + '" data-orden="' + col + '" data-id="' + esc(d.id) + '"></span>' +
+    '<span class="row-state"><em>' + (col === "blog" ? "PUBLICADO" : "INCLUIDO") + '</em><span class="switch"><input type="checkbox" data-toggle="' + col + '" data-id="' + esc(d.id) + '"' + (d.activo !== false ? " checked" : "") + '><span></span></span></span>' +
+    '<button type="button" class="icon-btn" data-act="edit" data-type="' + col + '" data-id="' + esc(d.id) + '" aria-label="Editar"><svg class="ic"><use href="#i-edit"/></svg></button>' +
+    '<button type="button" class="icon-btn danger" data-act="del" data-type="' + col + '" data-id="' + esc(d.id) + '" aria-label="Eliminar"><svg class="ic"><use href="#i-trash"/></svg></button></div>';
+}
+function renderList(col){
+  const el = $("#list-" + col);
+  el.innerHTML = state[col].length ? state[col].map(d => rowHTML(col, d)).join("") : emptyHTML(col);
+}
+$("#mainArea").addEventListener("click", e => {
+  if (e.target.closest("[data-goto-ayuda]")){ $('[data-view="ayuda"]').click(); return; }
+  const b = e.target.closest("[data-act]"); if (!b) return;
+  const { act, type, id } = b.dataset;
+  if (act === "new") openEditor(type, null);
+  else if (act === "edit") openEditor(type, id);
+  else if (act === "del"){
+    const d = state[type].find(x => x.id === id);
+    const nom = d ? (d.nombre || d.titulo || id) : id;
+    openConfirm("Eliminar definitivamente", "Se eliminará <b>" + esc(nom) + "</b> de la base de datos. Esta acción no puede deshacerse. Si solo desea ocultarlo, use el interruptor.", async () => {
+      try { await deleteDoc(doc(db, type, id)); toast("Documento eliminado."); } catch(ex){ fsErr(ex); }
+    });
+  }
+});
+$("#mainArea").addEventListener("change", async e => {
+  const t = e.target;
+  if (t.matches("[data-toggle]")){
+    try { await updateDoc(doc(db, t.dataset.toggle, t.dataset.id), { activo:t.checked, updatedAt:serverTimestamp() });
+      toast(t.checked ? "Incluido en el sitio público." : "Excluido del sitio público.", "gold"); } catch(ex){ fsErr(ex); }
+  }
+  if (t.matches("[data-orden]")){
+    try { await updateDoc(doc(db, t.dataset.orden, t.dataset.id), { orden:parseInt(t.value,10)||0, updatedAt:serverTimestamp() }); toast("Orden actualizado."); } catch(ex){ fsErr(ex); }
+  }
+});
+
+/* ───────── EDITOR ───────── */
+const editorRoot = $("#editorRoot"), editorBody = $("#editorBody");
+let editorSaveFn = null;
+const fld = (id,label,html,hint) => '<div class="field"><label for="' + id + '">' + label + "</label>" + html + (hint ? '<span class="hint">' + hint + "</span>" : "") + "</div>";
+const inp = (id,v,type) => '<input class="inp" id="' + id + '" type="' + (type||"text") + '" value="' + esc(v ?? "") + '">';
+const txa = (id,v,rows) => '<textarea class="txa" id="' + id + '" rows="' + (rows||3) + '">' + esc(v ?? "") + "</textarea>";
+const sel = (id,opts,v) => '<select class="sel" id="' + id + '">' + opts.map(o => '<option value="' + esc(o[0]) + '"' + (o[0]===v?" selected":"") + ">" + esc(o[1]) + "</option>").join("") + "</select>";
+const switchFld = (id,v,label) => '<label class="switch-lbl"><span class="switch"><input type="checkbox" id="' + id + '"' + (v!==false?" checked":"") + '><span></span></span>' + label + "</label>";
+const areaOpts = () => [["","— Sin asignar —"]].concat(state.areas.map(a => [a.id, a.nombre]));
+const equipoOpts = () => [["","— Equipo del área —"]].concat(state.equipo.map(l => [l.id, l.nombre]));
+
+function openEditor(type, id){
+  const isEdit = !!id;
+  const d = isEdit ? state[type].find(x => x.id === id) : null;
+  if (isEdit && !d) return;
+  let html = "", title = "";
+  if (type === "areas"){
+    title = isEdit ? "Editar área" : "Nueva área";
+    html = '<div class="grid2">' +
+      fld("e-nombre","Nombre del área <b>*</b>",inp("e-nombre",d?.nombre)) +
+      fld("e-slug","Identificador (slug)",inp("e-slug",d?.id), isEdit ? "El identificador no se modifica." : "Vacío = se genera del nombre.") +
+      fld("e-icono","Icono",sel("e-icono",ICONS,d?.icono||"i-brief")) +
+      fld("e-color","Color de acento",sel("e-color",COLORS,d?.color||"gold")) +
+      '<div class="full">' + fld("e-descripcion","Descripción breve (tarjeta)",txa("e-descripcion",d?.descripcion,2)) + "</div>" +
+      fld("e-tags","Etiquetas (separadas por coma)",inp("e-tags",(d?.tags||[]).join(", "))) +
+      fld("e-abogado","Abogado a cargo",sel("e-abogado",equipoOpts(),d?.abogadoId||"")) +
+      '<div class="full">' + fld("e-p1","Párrafo 1 (ficha ampliada)",txa("e-p1",d?.p1,3)) + "</div>" +
+      '<div class="full">' + fld("e-p2","Párrafo 2 (ficha ampliada)",txa("e-p2",d?.p2,3)) + "</div>" +
+      '<div class="full">' + fld("e-alcance","Alcance del departamento (uno por línea)",txa("e-alcance",(d?.alcance||[]).join("\n"),5)) + "</div>" +
+      fld("e-orden","Orden",inp("e-orden",d?.orden ?? (state.areas.length+1),"number")) +
+      '<div class="field"><span class="flabel">Visibilidad</span>' + switchFld("e-activo",d?.activo,"Incluida en el sitio") + "</div></div>";
+    editorSaveFn = async () => {
+      const nombre = $("#e-nombre").value.trim();
+      if (!nombre) return toast("El nombre del área es obligatorio.","err"), false;
+      let slug = isEdit ? id : (slugify($("#e-slug").value) || slugify(nombre));
+      if (!slug) return toast("Identificador inválido.","err"), false;
+      if (!isEdit && state.areas.some(a => a.id === slug)) return toast("Ya existe un área con ese identificador.","err"), false;
+      const data = { nombre, icono:$("#e-icono").value, color:$("#e-color").value,
+        descripcion:$("#e-descripcion").value.trim(), tags:commas($("#e-tags").value),
+        abogadoId:$("#e-abogado").value, p1:$("#e-p1").value.trim(), p2:$("#e-p2").value.trim(),
+        alcance:lines($("#e-alcance").value), orden:parseInt($("#e-orden").value,10)||0,
+        activo:$("#e-activo").checked, updatedAt:serverTimestamp() };
+      if (isEdit) await updateDoc(doc(db,"areas",id), data);
+      else await setDoc(doc(db,"areas",slug), { ...data, createdAt:serverTimestamp() });
+      return true;
+    };
+  }
+  else if (type === "equipo"){
+    title = isEdit ? "Editar abogado" : "Nuevo abogado";
+    html = '<div class="grid2">' +
+      fld("e-nombre","Nombre completo <b>*</b>",inp("e-nombre",d?.nombre)) +
+      fld("e-rol","Rol / cargo",inp("e-rol",d?.rol)) +
+      fld("e-matricula","Matrícula",inp("e-matricula",d?.matricula)) +
+      fld("e-iniciales","Iniciales (respaldo sin foto)",inp("e-iniciales",d?.iniciales)) +
+      fld("e-areaTexto","Especialidad (texto visible)",inp("e-areaTexto",d?.areaTexto)) +
+      fld("e-areaSlug","Área para consultas",sel("e-areaSlug",areaOpts(),d?.areaSlug||"")) +
+      fld("e-color","Color de acento",sel("e-color",COLORS,d?.color||"gold")) +
+      fld("e-email","Email profesional",inp("e-email",d?.email,"email")) +
+      '<div class="full">' + fld("e-foto","URL de fotografía",inp("e-foto",d?.foto),"Vacío = se muestran las iniciales.") + "</div>" +
+      '<div class="full">' + fld("e-linkedin","URL LinkedIn",inp("e-linkedin",d?.linkedin)) + "</div>" +
+      '<div class="full">' + fld("e-bio","Biografía",txa("e-bio",d?.bio,4)) + "</div>" +
+      '<div class="full">' + fld("e-formacion","Formación académica (una por línea)",txa("e-formacion",(d?.formacion||[]).join("\n"),4)) + "</div>" +
+      '<div class="full">' + fld("e-trayectoria","Trayectoria destacada (una por línea)",txa("e-trayectoria",(d?.trayectoria||[]).join("\n"),3)) + "</div>" +
+      fld("e-idiomas","Idiomas (separados por coma)",inp("e-idiomas",(d?.idiomas||[]).join(", "))) +
+      fld("e-orden","Orden",inp("e-orden",d?.orden ?? (state.equipo.length+1),"number")) +
+      '<div class="full">' + switchFld("e-activo",d?.activo,"Incluido en el sitio") + "</div></div>";
+    editorSaveFn = async () => {
+      const nombre = $("#e-nombre").value.trim();
+      if (!nombre) return toast("El nombre es obligatorio.","err"), false;
+      const data = { nombre, rol:$("#e-rol").value.trim(), matricula:$("#e-matricula").value.trim(),
+        iniciales:$("#e-iniciales").value.trim().slice(0,3) || nombre.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase(),
+        areaTexto:$("#e-areaTexto").value.trim(), areaSlug:$("#e-areaSlug").value, color:$("#e-color").value,
+        email:$("#e-email").value.trim(), foto:$("#e-foto").value.trim(), linkedin:$("#e-linkedin").value.trim(),
+        bio:$("#e-bio").value.trim(), formacion:lines($("#e-formacion").value), trayectoria:lines($("#e-trayectoria").value),
+        idiomas:commas($("#e-idiomas").value), orden:parseInt($("#e-orden").value,10)||0,
+        activo:$("#e-activo").checked, updatedAt:serverTimestamp() };
+      if (isEdit) await updateDoc(doc(db,"equipo",id), data);
+      else await addDoc(collection(db,"equipo"), { ...data, createdAt:serverTimestamp() });
+      return true;
+    };
+  }
+  else {
+    title = isEdit ? "Editar post" : "Nuevo post";
+    html = '<div class="grid2">' +
+      '<div class="full">' + fld("e-titulo","Título <b>*</b>",inp("e-titulo",d?.titulo)) + "</div>" +
+      fld("e-categoria","Categoría",sel("e-categoria",CATS.map(c=>[c,c]),d?.categoria||"Laboral")) +
+      fld("e-area","Área para la consulta (CTA)",sel("e-area",areaOpts(),d?.area||"")) +
+      fld("e-fecha","Fecha de publicación",inp("e-fecha",d?.fecha || new Date().toISOString().slice(0,10),"date")) +
+      fld("e-lectura","Tiempo de lectura",inp("e-lectura",d?.lectura||"5 min")) +
+      '<div class="full">' + fld("e-extracto","Extracto (tarjeta)",txa("e-extracto",d?.extracto,2)) + "</div>" +
+      '<div class="full">' + fld("e-cuerpo","Cuerpo del artículo",txa("e-cuerpo",d?.cuerpo,12),
+        "Formato: línea en blanco = nuevo párrafo · <code>## Texto</code> = subtítulo · <code>- texto</code> = viñeta · <code>1. texto</code> = lista numerada · <code>**texto**</code> = negrita.") + "</div>" +
+      fld("e-orden","Orden",inp("e-orden",d?.orden ?? (state.blog.length+1),"number")) +
+      '<div class="field"><span class="flabel">Estado</span>' + switchFld("e-activo",d?.activo,"Publicado (visible en el sitio)") + "</div></div>";
+    editorSaveFn = async () => {
+      const titulo = $("#e-titulo").value.trim();
+      if (!titulo) return toast("El título es obligatorio.","err"), false;
+      const data = { titulo, categoria:$("#e-categoria").value, area:$("#e-area").value,
+        fecha:$("#e-fecha").value, lectura:$("#e-lectura").value.trim(),
+        extracto:$("#e-extracto").value.trim(), cuerpo:$("#e-cuerpo").value,
+        orden:parseInt($("#e-orden").value,10)||0, activo:$("#e-activo").checked, updatedAt:serverTimestamp() };
+      if (isEdit) await updateDoc(doc(db,"blog",id), data);
+      else await addDoc(collection(db,"blog"), { ...data, createdAt:serverTimestamp() });
+      return true;
+    };
+  }
+  $("#editorTitle").textContent = title;
+  editorBody.innerHTML = html;
+  editorBody.scrollTop = 0;
+  editorRoot.classList.add("open");
+}
+$("#editorSave").addEventListener("click", async () => {
+  if (!editorSaveFn) return;
+  const btn = $("#editorSave"); btn.classList.add("loading");
+  try { const ok = await editorSaveFn(); if (ok !== false){ editorRoot.classList.remove("open"); toast("Guardado y publicado en el sitio."); } }
+  catch(ex){ fsErr(ex); }
+  finally { btn.classList.remove("loading"); }
+});
+$$("[data-close-editor]").forEach(el => el.addEventListener("click", () => editorRoot.classList.remove("open")));
+
+/* ───────── Confirmación ───────── */
+const confirmRoot = $("#confirmRoot");
+let confirmFn = null;
+function openConfirm(title, msg, fn){
+  $("#confirmTitle").textContent = title;
+  $("#confirmMsg").innerHTML = msg;
+  confirmFn = fn;
+  confirmRoot.classList.add("open");
+}
+$("#confirmYes").addEventListener("click", async () => {
+  confirmRoot.classList.remove("open");
+  if (confirmFn) await confirmFn();
+  confirmFn = null;
+});
+$$("[data-close-confirm]").forEach(el => el.addEventListener("click", () => confirmRoot.classList.remove("open")));
+document.addEventListener("keydown", e => {
+  if (e.key !== "Escape") return;
+  if (confirmRoot.classList.contains("open")) confirmRoot.classList.remove("open");
+  else if (editorRoot.classList.contains("open")) editorRoot.classList.remove("open");
+});
+
+/* ───────── Ayuda: reglas & semilla ───────── */
+$("#copyRules").addEventListener("click", async () => {
+  const txt = $("#rulesPre").textContent;
+  try { await navigator.clipboard.writeText(txt); toast("Reglas copiadas al portapapeles."); }
+  catch(_){ const ta = document.createElement("textarea"); ta.value = txt; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); toast("Reglas copiadas."); }
+});
+$("#seedBtn").addEventListener("click", () => {
+  openConfirm("Cargar contenido inicial",
+    "Se escribirán en Firestore <b>6 áreas, 4 abogados, 6 publicaciones</b> y los documentos de <b>Inicio y Contacto</b> con el contenido de Zarza &amp; Asociados, sobrescribiendo los documentos con esos mismos identificadores. ¿Continuar?",
+    async () => {
+      try {
+        const b = writeBatch(db);
+        const ts = serverTimestamp();
+        b.set(doc(db,"sitio","inicio"), { ...SEED.inicio, updatedAt:ts });
+        b.set(doc(db,"sitio","contacto"), { ...SEED.contacto, updatedAt:ts });
+        SEED.areas.forEach(a => b.set(doc(db,"areas",a.slug), { ...a, updatedAt:ts }));
+        SEED.equipo.forEach(l => { const { id, ...rest } = l; b.set(doc(db,"equipo",id), { ...rest, updatedAt:ts }); });
+        SEED.blog.forEach(p => { const { id, ...rest } = p; b.set(doc(db,"blog",id), { ...rest, updatedAt:ts }); });
+        await b.commit();
+        toast("Contenido inicial de Zarza & Asociados cargado.");
+      } catch(ex){ fsErr(ex); }
+    });
+});
+
+renderInicio(); renderContacto();
+</script>
+</body>
+</html>
