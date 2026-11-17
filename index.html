@@ -13,11 +13,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"LegalService","name":"Zarza & Asociados — Estudio Jurídico Integral","address":{"@type":"PostalAddress","streetAddress":"Av. Corrientes 1234, Piso 7, Of. B","addressLocality":"Ciudad Autónoma de Buenos Aires","postalCode":"C1043","addressCountry":"AR"},"telephone":"+541143728900","email":"consultas@Zarzayasociados.com.ar","openingHours":"Mo-Fr 08:00-18:00","foundingDate":"2004","priceRange":"Primera consulta sin cargo"}
+{"@context":"https://schema.org","@type":"LegalService","name":"Zarza & Asociados — Estudio Jurídico Integral","address":{"@type":"PostalAddress","streetAddress":"Av. Corrientes 1234, Piso 7, Of. B","addressLocality":"Ciudad Autónoma de Buenos Aires","postalCode":"C1043","addressCountry":"AR"},"telephone":"+541143728900","email":"consultas@zarzaasociados.com.ar","openingHours":"Mo-Fr 08:00-18:00","foundingDate":"2004","priceRange":"Primera consulta sin cargo"}
 </script>
 <style>
 /* ============================================================
-   Zarza & ASOCIADOS — Sistema visual "Tinta & Bronce"
+   ZARZA & ASOCIADOS — Sistema visual "Tinta & Bronce"
    ============================================================ */
 :root{
   --ink-950:#06090F; --ink-900:#0A0F1C; --ink-850:#0D1424; --ink-800:#111A2E; --ink-700:#1B2742;
@@ -43,7 +43,6 @@ body{
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
   padding-right:var(--sbw,0px);
 }
-/* Grano fílmico global */
 body::after{
   content:""; position:fixed; inset:-40px; z-index:700; pointer-events:none; opacity:.05; mix-blend-mode:soft-light;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
@@ -54,20 +53,16 @@ img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}
 ul{list-style:none}
-/* Scrollbar propia */
 ::-webkit-scrollbar{width:11px;height:11px}
 ::-webkit-scrollbar-track{background:var(--ink-950)}
 ::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold-deep),var(--gold));border-radius:8px;border:2px solid var(--ink-950)}
 ::-webkit-scrollbar-thumb:hover{background:var(--gold-2)}
 *{scrollbar-width:thin;scrollbar-color:var(--gold-deep) var(--ink-950)}
-
 .container{width:min(1240px,92vw);margin-inline:auto}
 .ic{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .ic-fill{fill:currentColor;stroke:none}
 .skip{position:fixed;top:-60px;left:16px;z-index:900;background:var(--gold);color:var(--ink-950);padding:10px 18px;border-radius:8px;font-weight:600;transition:top .25s}
 .skip:focus{top:12px}
-
-/* ---------- Tipografía / utilidades ---------- */
 .eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
 .eyebrow::before{content:"";width:44px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
 .h2{font-family:var(--serif);font-weight:480;font-size:clamp(1.9rem,3.6vw,3.15rem);line-height:1.12;letter-spacing:-.015em;margin:16px 0 14px}
@@ -80,8 +75,6 @@ ul{list-style:none}
 .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:52px;flex-wrap:wrap}
 .sec-index{font-family:var(--mono);font-size:12px;color:var(--tx-mute);letter-spacing:.2em;white-space:nowrap;padding-bottom:8px}
 .sec-index b{color:var(--gold);font-weight:600}
-
-/* ---------- Botones ---------- */
 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 28px;border-radius:8px;font-weight:600;font-size:15px;letter-spacing:.01em;transition:transform .3s var(--ease),box-shadow .3s,border-color .3s,background .3s,color .3s;overflow:hidden;white-space:nowrap}
 .btn:active{transform:scale(.97)}
 .btn .ic{width:18px;height:18px;transition:transform .3s var(--ease)}
@@ -97,8 +90,6 @@ ul{list-style:none}
 .btn-wa .ic{color:var(--wa)}
 .btn-sm{padding:11px 18px;font-size:13.5px;border-radius:7px}
 .btn-block{width:100%}
-
-/* ---------- Header ---------- */
 .progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:150;background:linear-gradient(90deg,var(--gold),var(--blue),var(--gold));transform-origin:left;transform:scaleX(0)}
 .site-head{position:fixed;top:0;left:0;right:0;z-index:120;padding-right:var(--sbw,0px);transition:background .35s,box-shadow .35s;background:linear-gradient(180deg,rgba(6,9,15,.92),rgba(6,9,15,.78));backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .site-head.scrolled{background:rgba(8,12,22,.94);box-shadow:0 12px 40px rgba(0,0,0,.45)}
@@ -123,7 +114,6 @@ ul{list-style:none}
 .nav-links>li>a:hover::after,.nav-links>li>a.active::after{transform:scaleX(1)}
 .nav-cta{flex:none}
 .nav-cta .short{display:none}
-/* Dropdown áreas */
 .dd{position:relative}
 .dd-btn .ic{width:14px;height:14px;transition:transform .3s}
 .dd.open .dd-btn{color:var(--gold-2)}
@@ -141,13 +131,11 @@ ul{list-style:none}
 .dd-foot{border-top:1px solid var(--line-soft);margin-top:10px;padding:12px 12px 4px}
 .dd-foot a{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--gold);display:inline-flex;gap:8px;align-items:center}
 .dd-foot a:hover{color:var(--gold-2)}
-/* Burger */
 .burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;padding:10px;border:1px solid var(--line);border-radius:8px;flex:none}
 .burger span{display:block;height:1.8px;background:var(--gold);border-radius:2px;transition:transform .35s var(--ease),opacity .25s}
 .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.8px) rotate(45deg)}
 .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
 .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.8px) rotate(-45deg)}
-/* Menú móvil */
 .mnav{position:fixed;inset:0;z-index:110;background:rgba(6,9,15,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:calc(var(--nav-h) + var(--top-h) + 10px) 0 30px;opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s;overflow-y:auto}
 .mnav.open{opacity:1;visibility:visible}
 .mnav-in{width:min(560px,90vw);margin-inline:auto}
@@ -169,8 +157,6 @@ ul{list-style:none}
 .mnav-foot{margin-top:26px;display:grid;gap:12px}
 .mnav-meta{margin-top:20px;font-family:var(--mono);font-size:11.5px;color:var(--tx-mute);display:flex;flex-wrap:wrap;gap:10px 22px}
 .mnav-meta a{color:var(--gold)}
-
-/* ---------- HERO ---------- */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:calc(var(--nav-h) + var(--top-h) + 56px) 0 90px}
 .hero-bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.16;filter:grayscale(1) contrast(1.1)}
 .hero-shade{position:absolute;inset:0;background:
@@ -193,7 +179,6 @@ ul{list-style:none}
 .hero-trust{display:flex;gap:22px;flex-wrap:wrap;margin-top:30px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--tx-mute)}
 .hero-trust span{display:inline-flex;align-items:center;gap:8px}
 .hero-trust .ic{width:14px;height:14px;color:var(--green)}
-/* Sello giratorio */
 .hero-art{position:relative;display:grid;place-items:center;min-height:480px}
 .seal-wrap{position:relative;width:min(460px,100%);aspect-ratio:1}
 .seal{width:100%;height:100%;color:var(--gold);overflow:visible}
@@ -222,11 +207,8 @@ ul{list-style:none}
 .scroll-cue i{width:1px;height:44px;background:linear-gradient(var(--gold),transparent);display:block;overflow:hidden;position:relative}
 .scroll-cue i::after{content:"";position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--gold-2);animation:cue 2.2s var(--ease) infinite}
 @keyframes cue{to{top:110%}}
-/* Entrada escalonada */
 .js [data-hero]{opacity:0;animation:heroIn .95s var(--ease) forwards;animation-delay:var(--hd,0s)}
 @keyframes heroIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
-
-/* ---------- Marquee ---------- */
 .marquee{border-block:1px solid var(--line-soft);background:var(--ink-900);overflow:hidden;padding:18px 0;position:relative}
 .marquee-track{display:flex;gap:0;width:max-content;animation:mq 30s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
@@ -234,8 +216,6 @@ ul{list-style:none}
 .mq-set span{font-family:var(--serif);font-style:italic;font-weight:480;font-size:24px;color:rgba(201,162,92,.65);padding:0 22px;white-space:nowrap}
 .mq-set i{font-style:normal;color:var(--blue);font-size:18px}
 @keyframes mq{to{transform:translateX(-50%)}}
-
-/* ---------- Cifras ---------- */
 .trust{position:relative;padding:80px 0;background:linear-gradient(110deg,var(--ink-850),var(--ink-800) 60%,var(--ink-850));border-bottom:1px solid var(--line-soft)}
 .trust .wm{right:-30px;top:-60px;font-size:340px;-webkit-text-stroke:1px rgba(201,162,92,.07)}
 .trust-grid{position:relative;display:grid;grid-template-columns:repeat(4,1fr)}
@@ -246,8 +226,6 @@ ul{list-style:none}
 .trust-num .suf{color:var(--gold);font-size:.62em;margin-left:2px}
 .trust-label{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--tx);margin-top:14px}
 .trust-desc{font-size:13px;color:var(--tx-mute);margin-top:6px;line-height:1.5}
-
-/* ---------- Áreas ---------- */
 #areas{--acc:var(--blue)}
 #areas .g-a{width:560px;height:560px;top:-14%;right:-12%;background:rgba(62,123,250,.09)}
 #areas .wm{left:-40px;bottom:-70px}
@@ -276,8 +254,6 @@ ul{list-style:none}
 .area-more{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:14px;color:var(--gold);padding:6px 0;transition:color .25s,gap .3s var(--ease);width:max-content}
 .area-more .ic{width:16px;height:16px}
 .area-card:hover .area-more{color:var(--gold-2);gap:14px}
-
-/* ---------- El Estudio (pergamino) ---------- */
 .estudio{background:linear-gradient(170deg,var(--paper),var(--parch) 70%,#EAE0CB);color:var(--ink-paper);position:relative}
 .estudio::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold-deep),var(--red-deep),var(--gold-deep))}
 .estudio .wm{-webkit-text-stroke:1px rgba(176,58,46,.1);right:-60px;top:30px}
@@ -312,8 +288,6 @@ ul{list-style:none}
 .proc-step::after{content:"";position:absolute;top:1px;left:0;width:9px;height:9px;border-radius:50%;background:var(--paper);border:2px solid var(--red-deep)}
 .proc-step b{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--red-deep);margin-bottom:5px}
 .proc-step span{font-size:13.5px;font-weight:600;color:var(--ink-paper)}
-
-/* ---------- Equipo ---------- */
 #equipo .g-e{width:520px;height:520px;bottom:-20%;left:-10%;background:rgba(47,191,113,.07)}
 #equipo .wm{right:-40px;top:-40px}
 .team-grid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
@@ -332,8 +306,6 @@ ul{list-style:none}
 .team-meta{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .matricula{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--tx-mute)}
 .team-btn{margin-top:4px}
-
-/* ---------- Blog ---------- */
 #blog{--acc:var(--red)}
 #blog .g-b{width:500px;height:500px;top:-16%;left:-8%;background:rgba(226,72,61,.07)}
 #blog .wm{right:-30px;bottom:-80px}
@@ -366,8 +338,6 @@ ul{list-style:none}
 .blog-expanded .blog-extra{display:grid}
 .blog-extra .blog-card h3{font-size:19px}
 .blog-toggle-row{display:flex;justify-content:center;margin-top:36px}
-
-/* ---------- Contacto ---------- */
 #contacto{--acc:var(--red)}
 #contacto .g-c1{width:520px;height:520px;top:-10%;right:-12%;background:rgba(201,162,92,.09)}
 #contacto .g-c2{width:420px;height:420px;bottom:-16%;left:-8%;background:rgba(226,72,61,.07)}
@@ -396,7 +366,6 @@ ul{list-style:none}
 .f-field.invalid .f-input,.f-field.invalid .f-select,.f-field.invalid .f-textarea{border-color:rgba(226,72,61,.65)}
 .f-count{font-family:var(--mono);font-size:10.5px;color:var(--tx-mute);text-align:right}
 .f-count.ok{color:var(--green)}
-/* Urgencia segmentada */
 .u-seg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .u-opt{position:relative}
 .u-opt input{position:absolute;opacity:0;pointer-events:none}
@@ -411,7 +380,6 @@ ul{list-style:none}
 .u-hint.h-baja{border-color:var(--green);background:rgba(47,191,113,.05)}
 .u-hint.h-alta{border-color:var(--red);background:rgba(226,72,61,.06);color:#F0B9B3}
 .u-hint a{color:var(--gold-2);font-weight:600;text-decoration:underline;text-underline-offset:3px}
-/* Consentimiento */
 .consent{display:flex;gap:12px;align-items:flex-start;cursor:pointer;font-size:13px;color:var(--tx-dim);line-height:1.55}
 .consent input{position:absolute;opacity:0;pointer-events:none}
 .cbox{flex:none;width:20px;height:20px;margin-top:2px;border:1.5px solid var(--ink-700);border-radius:5px;background:var(--ink-900);display:grid;place-items:center;transition:all .25s;color:transparent}
@@ -424,7 +392,6 @@ ul{list-style:none}
 .submit-btn.loading{pointer-events:none;opacity:.8}
 .submit-btn.loading .btn-label{visibility:hidden}
 .submit-btn.loading::before{content:"";position:absolute;width:22px;height:22px;border:2.5px solid rgba(6,9,15,.3);border-top-color:var(--ink-950);border-radius:50%;animation:spin .7s linear infinite}
-/* Éxito */
 .form-success{text-align:center;padding:14px 6px}
 .fs-check{width:74px;height:74px;margin:0 auto 20px;border-radius:50%;display:grid;place-items:center;background:rgba(47,191,113,.12);border:1.5px solid rgba(47,191,113,.5);color:var(--green);animation:popIn .5s var(--ease)}
 .fs-check .ic{width:34px;height:34px;stroke-width:2.4}
@@ -434,7 +401,6 @@ ul{list-style:none}
 .fs-rad{display:inline-block;font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.14em;color:var(--gold-2);border:1px dashed rgba(201,162,92,.5);border-radius:8px;padding:11px 20px;background:rgba(201,162,92,.06);margin-bottom:18px}
 .fs-summary{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:24px}
 .fs-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-/* Columna info */
 .info-card{background:linear-gradient(165deg,var(--ink-850),var(--ink-800));border:1px solid var(--line-soft);border-radius:15px;padding:28px;display:flex;flex-direction:column;gap:4px}
 .info-row{display:flex;gap:15px;align-items:flex-start;padding:15px 0;border-bottom:1px solid var(--line-soft)}
 .info-row:last-of-type{border-bottom:none}
@@ -455,8 +421,6 @@ ul{list-style:none}
 .map-link .ic{width:14px;height:14px}
 .conf-badge{display:flex;align-items:center;gap:11px;margin-top:18px;padding:13px 16px;border:1px dashed rgba(201,162,92,.4);border-radius:10px;background:rgba(201,162,92,.05);font-size:12.5px;color:var(--tx-dim)}
 .conf-badge .ic{color:var(--gold);flex:none}
-
-/* ---------- Footer ---------- */
 footer{background:var(--ink-950);border-top:1px solid var(--line-soft);position:relative}
 footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;padding:74px 0 46px}
@@ -473,8 +437,6 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 .foot-legal-note{margin-top:20px;padding-top:18px;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:10.5px;color:var(--tx-mute);line-height:2}
 .foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:22px 0;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:11px;color:var(--tx-mute);letter-spacing:.04em}
 .foot-bottom b{color:var(--gold)}
-
-/* ---------- Flotantes ---------- */
 .fab-stack{position:fixed;right:22px;bottom:22px;z-index:95;display:flex;flex-direction:column;align-items:center;gap:12px;padding-right:var(--sbw,0px)}
 .fab-top{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;background:var(--ink-800);border:1px solid rgba(201,162,92,.45);color:var(--gold);opacity:0;visibility:hidden;transform:translateY(10px);transition:all .35s var(--ease)}
 .fab-top.show{opacity:1;visibility:visible;transform:none}
@@ -487,8 +449,6 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 .fab-wa .ic{width:29px;height:29px}
 .fab-tip{position:absolute;right:70px;top:50%;transform:translateY(-50%) translateX(8px);white-space:nowrap;background:var(--ink-800);border:1px solid var(--line);color:var(--tx);font-size:12.5px;font-weight:600;padding:9px 15px;border-radius:8px;opacity:0;visibility:hidden;transition:all .3s var(--ease);pointer-events:none}
 .fab-wa:hover .fab-tip{opacity:1;visibility:visible;transform:translateY(-50%) translateX(0)}
-
-/* ---------- Toasts ---------- */
 .toasts{position:fixed;left:22px;bottom:22px;z-index:600;display:flex;flex-direction:column;gap:10px;max-width:min(360px,86vw)}
 .toast{display:flex;align-items:center;gap:11px;background:linear-gradient(150deg,var(--ink-800),var(--ink-850));border:1px solid var(--line);border-radius:10px;padding:13px 17px;font-size:13.5px;color:var(--tx);box-shadow:0 18px 50px rgba(0,0,0,.55);animation:toastIn .4s var(--ease)}
 .toast .ic{width:18px;height:18px;color:var(--green);flex:none}
@@ -496,8 +456,6 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 .toast.out{animation:toastOut .3s var(--ease) forwards}
 @keyframes toastIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes toastOut{to{opacity:0;transform:translateY(10px)}}
-
-/* ---------- Modal ---------- */
 .modal-root{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:20px}
 .modal-root.open{display:flex}
 .modal-backdrop{position:absolute;inset:0;background:rgba(4,7,13,.82);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);animation:fadeIn .3s}
@@ -527,7 +485,6 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 .m-icon-head{display:flex;align-items:center;gap:18px;margin-bottom:18px}
 .m-icon-head .area-tile{width:64px;height:64px}
 .m-icon-head .area-tile .ic{width:36px;height:36px}
-/* Ficha abogado */
 .lw-head{display:grid;grid-template-columns:150px 1fr;gap:24px;margin-bottom:20px}
 .lw-photo{position:relative;aspect-ratio:4/4.7;border-radius:11px;overflow:hidden;border:1px solid var(--line);background:var(--ink-900)}
 .lw-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.4)}
@@ -536,7 +493,6 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 .lw-role{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
 .lw-mat{display:inline-block;font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:var(--gold-2);border:1px dashed rgba(201,162,92,.5);border-radius:7px;padding:8px 13px;background:rgba(201,162,92,.06)}
 .lw-contact{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-/* Artículo */
 .art-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--tx-mute);margin-bottom:16px}
 .art-body p{color:var(--tx-dim);font-size:15.5px;line-height:1.8;margin-bottom:16px}
 .art-body p:first-of-type::first-letter{font-family:var(--serif);font-size:3.1em;font-weight:560;float:left;line-height:.85;padding:4px 10px 0 0;color:var(--gold-2)}
@@ -545,18 +501,13 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 .art-body ol li::before{content:counter(paso,decimal-leading-zero);position:absolute;left:0;top:1px;font-family:var(--mono);font-size:12px;font-weight:600;color:var(--gold);border:1px solid var(--line);border-radius:6px;width:30px;height:24px;display:grid;place-items:center;background:rgba(201,162,92,.06)}
 .art-body ol li b{color:var(--tx)}
 .art-disclaimer{border-left:3px solid var(--amber);background:rgba(240,166,60,.06);padding:13px 17px;font-size:12.5px;color:var(--tx-dim);border-radius:0 8px 8px 0;line-height:1.65;margin-top:6px}
-/* Tabla matrículas */
 .mat-table{width:100%;border-collapse:collapse;margin:10px 0 16px;font-size:14px}
 .mat-table th{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
 .mat-table td{padding:12px;border-bottom:1px solid var(--line-soft);color:var(--tx-dim)}
 .mat-table td:first-child{color:var(--tx);font-weight:600}
 .mat-table .mono{font-family:var(--mono);font-size:12.5px;color:var(--gold-2)}
-
-/* ---------- Reveals ---------- */
 .js [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
 .js [data-reveal].revealed{opacity:1;transform:none}
-
-/* ---------- Responsive ---------- */
 @media (max-width:1180px){
   .hero-vertical{display:none}
   .cf1{left:-2%}.cf2{right:-2%}
@@ -625,7 +576,6 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
   .lw-head{grid-template-columns:1fr}
   .lw-photo{max-width:170px}
 }
-/* ---------- Movimiento reducido ---------- */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.001s !important;animation-iteration-count:1 !important;transition-duration:.001s !important}
@@ -679,12 +629,12 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
       <div class="tb-group">
         <a href="tel:+5491155550134"><svg class="ic"><use href="#i-phone"/></svg><span class="tb-label">Guardia 24 hs</span> +54 9 11 5555-0134</a>
         <span class="tb-sep"></span>
-        <a href="mailto:consultas@Zarzayasociados.com.ar"><svg class="ic"><use href="#i-mail"/></svg>consultas@Zarzayasociados.com.ar</a>
+        <a href="mailto:consultas@zarzaasociados.com.ar"><svg class="ic"><use href="#i-mail"/></svg>consultas@zarzaasociados.com.ar</a>
       </div>
       <div class="tb-group">
         <span style="display:inline-flex;align-items:center;gap:7px"><svg class="ic"><use href="#i-clock"/></svg>Lun–Vie · 8:00 a 18:00 hs</span>
         <span class="tb-sep"></span>
-        <a href="https://www.linkedin.com/company/Zarza-asociados-estudio-juridico" target="_blank" rel="noopener"><svg class="ic ic-fill"><use href="#i-linkedin"/></svg>LinkedIn</a>
+        <a href="https://www.linkedin.com/company/zarza-asociados-estudio-juridico" target="_blank" rel="noopener"><svg class="ic ic-fill"><use href="#i-linkedin"/></svg>LinkedIn</a>
       </div>
     </div>
   </div>
@@ -795,7 +745,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
           <circle cx="260" cy="260" r="232" class="s-ring2"/>
           <circle cx="260" cy="260" r="176" class="s-ticks"/>
           <circle cx="260" cy="260" r="164" class="s-ring3"/>
-          <g class="s-rot"><text class="s-text" textLength="1288" lengthAdjust="spacingAndGlyphs"><textPath href="#sealArc">Zarza &amp; ASOCIADOS · ESTUDIO JURÍDICO INTEGRAL · BUENOS AIRES · MMIV ·</textPath></text></g>
+          <g class="s-rot"><text class="s-text" textLength="1288" lengthAdjust="spacingAndGlyphs"><textPath href="#sealArc">ZARZA &amp; ASOCIADOS · ESTUDIO JURÍDICO INTEGRAL · BUENOS AIRES · MMIV ·</textPath></text></g>
           <g class="s-sway"><use href="#i-scale" x="165" y="150" width="190" height="190" style="stroke-width:1.4"/></g>
           <text x="260" y="398" class="s-est">EST · 2004</text>
         </svg>
@@ -864,7 +814,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
         <div class="area-tags"><span class="tag tag-gold">Despidos</span><span class="tag tag-gold">ART</span><span class="tag tag-gold">SECLO</span></div>
         <button type="button" class="area-more">Ver más <svg class="ic"><use href="#i-arrow"/></svg></button>
       </article>
-      <article class="area-card" style="--c:var(--blue)" data-open-area="civil" data-reveal="" data-d="1">
+      <article class="area-card" style="--c:var(--blue)" data-open-area="civil" data-reveal data-d="1">
         <span class="area-num">02</span>
         <span class="area-tile"><svg class="ic"><use href="#i-doc"/></svg></span>
         <h3>Derecho Civil y Comercial</h3>
@@ -967,7 +917,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
     <div class="team-grid">
       <article class="team-card" style="--c:var(--gold)" data-reveal>
         <div class="portrait">
-          <div class="portrait-fallback"><b>AR</b></div>
+          <div class="portrait-fallback"><b>AZ</b></div>
           <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&crop=faces&w=700&h=840&q=75" alt="Dr. Alejandro Zarza, socio fundador" loading="lazy" onerror="this.remove()">
           <span class="portrait-role">Socio Fundador</span>
         </div>
@@ -975,7 +925,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
           <h3>Dr. Alejandro Zarza</h3>
           <p class="team-area">Derecho Laboral · Relaciones colectivas</p>
           <div class="team-meta"><span class="tag tag-gold">Laboral</span><span class="matricula">T° 112 F° 340</span></div>
-          <button type="button" class="btn btn-ghost btn-sm btn-block team-btn" data-open-lawyer="Zarza">Ver Perfil Completo</button>
+          <button type="button" class="btn btn-ghost btn-sm btn-block team-btn" data-open-lawyer="zarza">Ver Perfil Completo</button>
         </div>
       </article>
       <article class="team-card" style="--c:var(--blue)" data-reveal data-d="1">
@@ -1108,7 +1058,6 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
       <p class="sec-index">GUARDIA PENAL <b>24 HS</b> · +54 9 11 5555-0134</p>
     </div>
     <div class="contact-grid">
-      <!-- Formulario clasificado -->
       <div class="form-card" data-reveal>
         <form id="consultForm" novalidate>
           <h3 class="form-title"><svg class="ic"><use href="#i-lock"/></svg>Formulario de consulta clasificada</h3>
@@ -1173,12 +1122,11 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
             </div>
           </div>
         </form>
-        <!-- Estado de éxito -->
         <div class="form-success" id="formSuccess" hidden>
           <div class="fs-check"><svg class="ic"><use href="#i-check"/></svg></div>
           <h3>Consulta registrada con confidencialidad</h3>
           <p>Hemos recibido su caso. Un abogado del área seleccionada le responderá dentro de las próximas <b style="color:var(--gold-2)">24 hs hábiles</b>.</p>
-          <div class="fs-rad" id="fsRad">EXP · RA-2026-0000</div>
+          <div class="fs-rad" id="fsRad">EXP · ZA-2026-0000</div>
           <div class="fs-summary" id="fsSummary"></div>
           <div class="fs-actions">
             <a href="#" class="btn btn-wa" id="fsWa" target="_blank" rel="noopener"><svg class="ic ic-fill"><use href="#i-wa"/></svg>Enviar también por WhatsApp</a>
@@ -1186,7 +1134,6 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
           </div>
         </div>
       </div>
-      <!-- Información de la oficina -->
       <div data-reveal data-d="1">
         <div class="info-card">
           <div class="info-row">
@@ -1205,8 +1152,8 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
           </div>
           <div class="info-row">
             <span class="info-tile"><svg class="ic"><use href="#i-mail"/></svg></span>
-            <div><b>Correo institucional</b><a class="val" href="mailto:consultas@Zarzayasociados.com.ar">consultas@Zarzayasociados.com.ar</a></div>
-            <button type="button" class="copy-btn" data-copy="consultas@Zarzayasociados.com.ar" aria-label="Copiar email"><svg class="ic"><use href="#i-copy"/></svg></button>
+            <div><b>Correo institucional</b><a class="val" href="mailto:consultas@zarzaasociados.com.ar">consultas@zarzaasociados.com.ar</a></div>
+            <button type="button" class="copy-btn" data-copy="consultas@zarzaasociados.com.ar" aria-label="Copiar email"><svg class="ic"><use href="#i-copy"/></svg></button>
           </div>
         </div>
         <div class="map-frame">
@@ -1231,9 +1178,9 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
       </a>
       <p class="foot-mission">Estudio jurídico multipráctica fundado en 2004. Defendemos a personas y empresas con rigor técnico, estrategia clara y confidencialidad absoluta.</p>
       <div class="socials">
-        <a class="soc-btn" href="https://www.linkedin.com/company/Zarza-asociados-estudio-juridico" target="_blank" rel="noopener" aria-label="LinkedIn del estudio"><svg class="ic ic-fill"><use href="#i-linkedin"/></svg></a>
-        <a class="soc-btn" href="https://www.instagram.com/Zarzayasociados" target="_blank" rel="noopener" aria-label="Instagram del estudio"><svg class="ic"><use href="#i-instagram"/></svg></a>
-        <a class="soc-btn" href="mailto:consultas@Zarzayasociados.com.ar" aria-label="Enviar email al estudio"><svg class="ic"><use href="#i-mail"/></svg></a>
+        <a class="soc-btn" href="https://www.linkedin.com/company/zarza-asociados-estudio-juridico" target="_blank" rel="noopener" aria-label="LinkedIn del estudio"><svg class="ic ic-fill"><use href="#i-linkedin"/></svg></a>
+        <a class="soc-btn" href="https://www.instagram.com/zarzaasociados" target="_blank" rel="noopener" aria-label="Instagram del estudio"><svg class="ic"><use href="#i-instagram"/></svg></a>
+        <a class="soc-btn" href="mailto:consultas@zarzaasociados.com.ar" aria-label="Enviar email al estudio"><svg class="ic"><use href="#i-mail"/></svg></a>
         <a class="soc-btn" href="#" data-wa aria-label="WhatsApp del estudio"><svg class="ic ic-fill" style="color:var(--wa)"><use href="#i-wa"/></svg></a>
       </div>
     </div>
@@ -1286,7 +1233,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 
 <script>
 /* ════════════════════════════════════════════════════════════
-   Zarza & ASOCIADOS — Lógica de interacción (vanilla JS)
+   ZARZA & ASOCIADOS — Lógica de interacción (vanilla JS)
    ════════════════════════════════════════════════════════════ */
 (function(){
 "use strict";
@@ -1297,9 +1244,9 @@ const WA_NUM = "5491155550134";
 const wa = txt => "https://wa.me/" + WA_NUM + "?text=" + encodeURIComponent(txt || "Hola, quisiera realizar una consulta legal.");
 const fmt = new Intl.NumberFormat("es-AR");
 
-/* ─────────── DATA ─────────── */
+/* ─────────── DATA (contenido base de respaldo) ─────────── */
 const AREAS = {
-  laboral:{ n:"Derecho Laboral", icon:"i-brief", tag:"tag-gold", lead:"Dr. Alejandro Zarza", leadId:"Zarza",
+  laboral:{ n:"Derecho Laboral", icon:"i-brief", tag:"tag-gold", lead:"Dr. Alejandro Zarza", leadId:"zarza",
     p1:"Defendemos a trabajadores y empleadores en todo el ciclo de la relación laboral. Reclamamos indemnizaciones por despido, diferencias salariales y sanciones por trabajo no registrado, e intervenimos ante SECLO y la justicia laboral de la Nación y la Provincia.",
     p2:"Nuestro departamento combina negociación firme y litigio preparado: cada reclamo se construye desde el primer telegrama con la prueba que sostendrá el caso si llega a sentencia.",
     items:["Despidos con y sin causa · indemnizaciones art. 245 LCT","Trabajo no registrado y registración defectuosa","Accidentes y enfermedades profesionales (ART)","Mobbing, violencia laboral y discriminación","Negociación colectiva y conflictos sindicales","Conciliaciones SECLO y juicio laboral completo"],
@@ -1332,30 +1279,30 @@ const AREAS = {
 };
 
 const LAWYERS = {
-  Zarza:{ n:"Dr. Alejandro Zarza", role:"Socio Fundador · Derecho Laboral", mat:"CPACF · T° 112 F° 340", area:"laboral", tag:"tag-gold",
-    img:"https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&crop=faces&w=500&h=600&q=75", ini:"AR",
-    email:"a.Zarza@Zarzayasociados.com.ar",
+  zarza:{ n:"Dr. Alejandro Zarza", role:"Socio Fundador · Derecho Laboral", mat:"CPACF · T° 112 F° 340", area:"laboral", tag:"tag-gold",
+    img:"https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&crop=faces&w=500&h=600&q=75", ini:"AZ",
+    email:"a.zarza@zarzaasociados.com.ar",
     bio:"Fundó el estudio en 2004 tras una década de litigio laboral en tribunales de la Nación. Dirigió más de 600 procesos individuales y colectivos, y negocia convenios y conflictos sindicales para empresas de servicios e industria. Es docente de Derecho del Trabajo y conferencista sobre registración laboral.",
     form:["Abogado — Universidad de Buenos Aires (UBA)","Especialista en Derecho del Trabajo — UBA","Maestría en Relaciones Laborales — UNTreF","Docente universitario · Derecho del Trabajo"],
     tray:["+600 procesos laborales dirigidos desde 2004","Negociación colectiva en actividad servicios e industria","Litigio ante CNAT y justicia laboral bonaerense"],
     langs:["Español","Inglés"] },
   santamarina:{ n:"Dra. Valeria Santamarina", role:"Socia · Civil, Comercial y Empresario", mat:"CPACF · T° 118 F° 212", area:"civil", tag:"tag-blue",
     img:"https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&crop=faces&w=500&h=600&q=75", ini:"VS",
-    email:"v.santamarina@Zarzayasociados.com.ar",
+    email:"v.santamarina@zarzaasociados.com.ar",
     bio:"Lidera los departamentos Civil-Comercial y Empresario. Asesora a pymes y grupos familiares en estructuración societaria, contratos y prevención de conflictos, con más de 450 sucesiones y contratos complejos gestionados. Su enfoque: documentos claros hoy para evitar juicios mañana.",
     form:["Abogada — Universidad Católica Argentina (UCA)","Maestría en Derecho Empresario — Universidad de San Andrés","Posgrado en Compliance — Universidad Austral"],
     tray:["+450 sucesiones y procesos patrimoniales","Asesoramiento permanente a pymes y grupos familiares","Diseño de programas de cumplimiento normativo"],
     langs:["Español","Inglés","Portugués"] },
   iglesias:{ n:"Dr. Martín Iglesias", role:"Socio · Penal y Tránsito", mat:"CPACF · T° 121 F° 587", area:"penal", tag:"tag-red",
     img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&crop=faces&w=500&h=600&q=75", ini:"MI",
-    email:"m.iglesias@Zarzayasociados.com.ar",
+    email:"m.iglesias@zarzaasociados.com.ar",
     bio:"Tras diez años en la justicia penal, se sumó al estudio para dirigir el departamento Penal y la guardia de urgencias 24 hs. Litigó más de 300 causas y juicios orales, con especial dedicación a delitos informáticos y a la doble vía penal-civil de los accidentes de tránsito.",
     form:["Abogado — Universidad de Buenos Aires (UBA)","Especialista en Derecho Penal — UBA","Posgrado en Criminología — UCASAL"],
     tray:["10 años de función judicial penal","+300 causas y juicios orales litigados","Director de la guardia de urgencias 24 hs"],
     langs:["Español","Inglés"] },
   ferreyra:{ n:"Dra. Lucía Ferreyra", role:"Especialista Sénior · Familia y Consumidor", mat:"CPACF · T° 130 F° 455", area:"familia", tag:"tag-green",
     img:"https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&crop=faces&w=500&h=600&q=75", ini:"LF",
-    email:"l.ferreyra@Zarzayasociados.com.ar",
+    email:"l.ferreyra@zarzaasociados.com.ar",
     bio:"Mediadora registrada ante el Ministerio de Justicia, combina un enfoque conciliador con litigio firme cuando es necesario. Lleva más de 400 convenios reguladores homologados y dirige la práctica de consumidor y bancario del estudio, con foco en fraude digital y reclamos a aseguradoras.",
     form:["Abogada — Universidad Nacional de La Plata (UNLP)","Especialista en Derecho de Familia — UBA","Diplomatura en Derecho del Consumidor — UCA","Mediadora registrada — Ministerio de Justicia"],
     tray:["+400 convenios reguladores homologados","Especialista en recupero por fraude bancario digital","Mediación familiar y de consumo (COPREC)"],
@@ -1397,7 +1344,7 @@ const ARTICLES = {
     body:[
       {p:"Después de un accidente, la prueba se enfría rápido: las cámaras se sobrescriben, los testigos se dispersan y las lesiones se documentan tarde. Las primeras 48 horas concentran las decisiones que definen la reparación que podrá obtener."},
       {h:"Checklist de urgencia"},
-      {ol:["<b>Denuncia a su aseguradora:</b> la Ley 17.418 impone un plazo de tres días; hágala por escrito y con constancia.","<b>Constancia policial o acta:</b> solicite copia y verifique que los datos sean correctos.","<b>Prueba en el lugar:</b> fotos, posiciones finales, testigos identificables y pedido de preservação de cámaras.","<b>Atención médica con constancia:</b> incluso lesiones leves; habilitan la vía penal por lesiones y refuerzan el daño.","<b>No firme quitas ni recibos:</b> ninguna transacción sin revisión profesional previa."]},
+      {ol:["<b>Denuncia a su aseguradora:</b> la Ley 17.418 impone un plazo de tres días; hágala por escrito y con constancia.","<b>Constancia policial o acta:</b> solicite copia y verifique que los datos sean correctos.","<b>Prueba en el lugar:</b> fotos, posiciones finales, testigos identificables y pedido de preservación de cámaras.","<b>Atención médica con constancia:</b> incluso lesiones leves; habilitan la vía penal por lesiones y refuerzan el daño.","<b>No firme quitas ni recibos:</b> ninguna transacción sin revisión profesional previa."]},
       {p:"Cuando hay lesionados, la causa penal y el reclamo civil deben coordinarse desde el inicio: la prueba producida en una vía potencia la otra. Esa doble estrategia es la que maximiza la reparación."},
       {p:"Nuestra guardia de tránsito toma intervención inmediata: preservación de prueba, denuncia y estrategia integral en el mismo día."}
     ]},
@@ -1427,7 +1374,7 @@ const LEGAL = {
     '<p class="m-p"><b style="color:var(--tx)">Datos que recolectamos:</b> nombre, teléfono, email, área de consulta y el detalle del caso que usted nos proporciona voluntariamente a través del formulario o de los canales de contacto.</p>'+
     '<p class="m-p"><b style="color:var(--tx)">Finalidad:</b> responder su consulta, evaluar el caso y contactar al área correspondiente. No cedemos datos a terceros con fines comerciales; solo se comparten cuando una obligación legal o procesal lo exige.</p>'+
     '<p class="m-p"><b style="color:var(--tx)">Secreto profesional:</b> toda la información remitida queda amparada por el secreto profesional del abogado, incluso si no se inicia una relación profesional.</p>'+
-    '<p class="m-p"><b style="color:var(--tx)">Ley 25.326:</b> usted puede ejercer los derechos de acceso, rectificación, actualización y supresión de sus datos escribiendo a <b style="color:var(--gold-2)">privacidad@Zarzayasociados.com.ar</b>. La Agencia de Acceso a la Información Pública es el órgano de control de la Ley 25.326.</p>'+
+    '<p class="m-p"><b style="color:var(--tx)">Ley 25.326:</b> usted puede ejercer los derechos de acceso, rectificación, actualización y supresión de sus datos escribiendo a <b style="color:var(--gold-2)">privacidad@zarzaasociados.com.ar</b>. La Agencia de Acceso a la Información Pública es el órgano de control de la Ley 25.326.</p>'+
     '<p class="m-p"><b style="color:var(--tx)">Conservación:</b> los datos se conservan mientras dure la relación profesional y por los plazos legales de responsabilidad aplicables, con medidas técnicas de seguridad y acceso restringido al equipo del estudio.</p>'+
     '<div class="m-plate">Última actualización: enero de 2026.</div>' },
   terminos:{ t:"Términos del servicio", eyebrow:"Información legal",
@@ -1651,7 +1598,7 @@ function lawyerModal(id){
     '<div class="lw-id"><h3>' + l.n + '</h3><p class="lw-role">' + l.role + '</p>' +
     '<span class="lw-mat">' + l.mat + '</span>' +
     '<div class="lw-contact"><a class="btn btn-ghost btn-sm" href="mailto:' + l.email + '"><svg class="ic"><use href="#i-mail"/></svg>Email</a>' +
-    '<a class="btn btn-ghost btn-sm" href="https://www.linkedin.com/company/Zarza-asociados-estudio-juridico" target="_blank" rel="noopener"><svg class="ic ic-fill"><use href="#i-linkedin"/></svg>LinkedIn</a></div></div></div>' +
+    '<a class="btn btn-ghost btn-sm" href="https://www.linkedin.com/company/zarza-asociados-estudio-juridico" target="_blank" rel="noopener"><svg class="ic ic-fill"><use href="#i-linkedin"/></svg>LinkedIn</a></div></div></div>' +
     '<p class="m-p">' + l.bio + '</p>' +
     '<h4 class="m-h">Formación académica</h4><ul class="m-list">' + l.form.map(i => "<li>" + i + "</li>").join("") + "</ul>" +
     '<h4 class="m-h">Trayectoria destacada</h4><ul class="m-list">' + l.tray.map(i => "<li>" + i + "</li>").join("") + "</ul>" +
@@ -1673,7 +1620,7 @@ function articleModal(id){
     '<div class="art-body">' + body + '</div>' +
     '<div class="art-disclaimer"><b style="color:#F7C780">Nota:</b> este artículo es informativo y no constituye asesoramiento legal para un caso concreto. Los plazos y criterios citados deben verificarse para su situación particular.</div>' +
     '<div class="m-cta-row"><button type="button" class="btn btn-primary" data-consult="' + a.area + '">Consultar sobre este tema <svg class="ic ic-shift"><use href="#i-arrow"/></svg></button>' +
-    '<button type="button" class="btn btn-ghost" data-copy="https://Zarzayasociados.com.ar/blog/' + id + '"><svg class="ic"><use href="#i-copy"/></svg>Copiar enlace</button></div>';
+    '<button type="button" class="btn btn-ghost" data-copy="https://zarzaasociados.com.ar/blog/' + id + '"><svg class="ic"><use href="#i-copy"/></svg>Copiar enlace</button></div>';
 }
 function legalModal(id){
   const l = LEGAL[id]; if (!l) return "";
@@ -1809,7 +1756,7 @@ form.addEventListener("submit", e => {
   submitBtn.classList.add("loading");
   submitBtn.disabled = true;
   setTimeout(() => {
-    const rad = "RA-2026-" + Math.floor(1000 + Math.random() * 9000);
+    const rad = "ZA-2026-" + Math.floor(1000 + Math.random() * 9000);
     const areaTxt = fArea.options[fArea.selectedIndex].text;
     const urg = form.querySelector('input[name="urgencia"]:checked').value;
     const urgTag = urg === "Alta" ? "tag-red" : urg === "Media" ? "tag-amber" : "tag-green";
@@ -1838,6 +1785,426 @@ $("#fsReset").addEventListener("click", () => {
   fNombre.focus();
 });
 })();
+</script>
+
+<!-- ════════════════════════════════════════════════════════════
+     CONECTOR FIREBASE — ZARZA & ASOCIADOS · proyecto zarzaasociados
+     Sincroniza en vivo Inicio, Áreas, Equipo, Blog y Contacto.
+     ════════════════════════════════════════════════════════════ -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+import { getFirestore, collection, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const app = initializeApp({
+  apiKey: "AIzaSyDGx9T9I1ZRV32vby5kaKI1jmps4vbzRKE",
+  authDomain: "zarzaasociados.firebaseapp.com",
+  projectId: "zarzaasociados",
+  storageBucket: "zarzaasociados.firebasestorage.app",
+  messagingSenderId: "177641854130",
+  appId: "1:177641854130:web:f41e67698b40d2992825ab",
+  measurementId: "G-4TH14EY7WP"
+});
+isSupported().then(ok => { if (ok) getAnalytics(app); }).catch(() => {});
+const db = getFirestore(app);
+
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const inline = s => esc(s).replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>").replace(/\*([^*]+)\*/g, "<em>$1</em>");
+const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const fmt = new Intl.NumberFormat("es-AR");
+const MESES = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
+const fdate = iso => { if (!iso) return ""; const [y,m,d] = iso.split("-"); return d + " · " + (MESES[parseInt(m,10)-1]||"") + " · " + y; };
+const byOrden = (a,b) => (a.orden??999)-(b.orden??999);
+const CATCLS = {"Laboral":"cat-laboral","Civil y Comercial":"cat-civil","Familia":"cat-familia","Penal y Tránsito":"cat-penal","Empresario":"cat-empresario","Consumidor":"cat-consumidor"};
+const TAGCLS = {gold:"tag-gold",blue:"tag-blue",green:"tag-green",amber:"tag-amber",red:"tag-red",violet:"tag-violet"};
+const CVAR = {gold:"var(--gold)",blue:"var(--blue)",green:"var(--green)",amber:"var(--amber)",red:"var(--red)",violet:"var(--violet)"};
+const DEFAULTS = { telefono:"+54 11 4372-8900", waDisplay:"+54 9 11 5555-0134", waNum:"5491155550134", email:"consultas@zarzaasociados.com.ar", waMsg:"Hola, quisiera realizar una consulta legal." };
+let C = { ...DEFAULTS };
+const S = { areas:[], equipo:[], blog:[], has:{areas:false,equipo:false,blog:false} };
+const waLink = txt => "https://wa.me/" + C.waNum + "?text=" + encodeURIComponent(txt || C.waMsg);
+const telHref = v => "tel:" + String(v||"").replace(/[^\d+]/g,"");
+
+/* ── Reemplazo global de datos de contacto (texto + enlaces) ── */
+function replaceContact(prev, next){
+  const pairs = [[prev.telefono,next.telefono],[prev.waDisplay,next.waDisplay],[prev.email,next.email]].filter(p => p[0] && p[1] && p[0] !== p[1]);
+  if (pairs.length){
+    const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, { acceptNode: n => /^(SCRIPT|STYLE|TEXTAREA)$/.test(n.parentNode.nodeName) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+    const nodes = []; while (w.nextNode()) nodes.push(w.currentNode);
+    nodes.forEach(n => { let t = n.nodeValue; for (const [a,b] of pairs) t = t.split(a).join(b); if (t !== n.nodeValue) n.nodeValue = t; });
+    $$("[data-copy]").forEach(el => { let v = el.dataset.copy; for (const [a,b] of pairs) v = v.split(a).join(b); el.dataset.copy = v; });
+  }
+  const pd = prev.telefono.replace(/[^\d+]/g,""), nd = next.telefono.replace(/[^\d+]/g,"");
+  $$('a[href^="tel:"]').forEach(a => { const h = a.getAttribute("href"); if (h === "tel:"+pd) a.href = "tel:"+nd; else if (h === "tel:+"+prev.waNum) a.href = "tel:+"+next.waNum; });
+  $$('a[href*="wa.me/"]').forEach(a => a.href = a.getAttribute("href").replace(/wa\.me\/\d+/, "wa.me/"+next.waNum));
+  $$('a[href^="mailto:"]').forEach(a => { if (a.getAttribute("href") === "mailto:"+prev.email) a.href = "mailto:"+next.email; });
+}
+
+/* ── Reveals y contadores para contenido inyectado ── */
+const rio = ("IntersectionObserver" in window && !REDUCED) ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("revealed"); rio.unobserve(e.target); } }), { threshold:.12 }) : null;
+function reveal(scope){
+  $$((scope||document)+" [data-reveal]:not(.revealed)").forEach((el,i) => {
+    el.style.setProperty("--d", ((i%6)*.08)+"s");
+    if (rio) rio.observe(el); else el.classList.add("revealed");
+  });
+}
+const cio = ("IntersectionObserver" in window) ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ runC(e.target); cio.unobserve(e.target); } }), { threshold:.5 }) : null;
+function runC(el){
+  const end = parseInt(el.dataset.count,10)||0;
+  if (REDUCED){ el.textContent = fmt.format(end); return; }
+  const t0 = performance.now(), dur = 1600;
+  (function step(t){ const k = Math.min(1,(t-t0)/dur), e = 1-Math.pow(1-k,4); el.textContent = fmt.format(Math.round(end*e)); if (k<1) requestAnimationFrame(step); })(t0);
+}
+function counters(){$$("[data-count]").forEach(el => { if (cio) cio.observe(el); else el.textContent = fmt.format(parseInt(el.dataset.count,10)||0); });}
+function toastZ(msg, gold){
+  const box = $("#toasts"); if (!box) return;
+  if (box.children.length >= 3) box.firstElementChild.remove();
+  const t = document.createElement("div");
+  t.className = "toast" + (gold ? " t-gold" : "");
+  t.innerHTML = '<svg class="ic"><use href="#' + (gold?"i-shield":"i-check") + '"/></svg><span>' + esc(msg) + "</span>";
+  box.appendChild(t);
+  setTimeout(() => { t.classList.add("out"); setTimeout(() => t.remove(), 320); }, 3600);
+}
+function label(el, txt){
+  if (!el || !txt) return;
+  for (const n of el.childNodes) if (n.nodeType === 3 && n.nodeValue.trim()){ n.nodeValue = txt + " "; return; }
+  el.prepend(document.createTextNode(txt + " "));
+}
+function show(sel, on){ const el = $(sel); if (el) el.style.display = on ? "" : "none"; }
+function hideNav(href, hide){
+  $$('a[href="'+href+'"]').forEach(a => { const li = a.closest("li"); if (li) li.style.display = hide ? "none" : ""; else a.style.display = hide ? "none" : ""; });
+}
+
+/* ── INICIO ── */
+function applyInicio(d){
+  if (!d) return;
+  const eb = $(".hero-eyebrow"); if (eb && d.eyebrow) eb.textContent = d.eyebrow;
+  const h1 = $(".hero h1"); if (h1 && d.titulo) h1.innerHTML = inline(d.titulo);
+  const sub = $(".hero-sub"); if (sub && d.subtitulo != null) sub.textContent = d.subtitulo;
+  label($(".hero-ctas .btn-primary"), d.cta1);
+  label($(".hero-ctas .btn-wa"), d.cta2);
+  const img = $(".hero-bgimg");
+  if (d.imagen){ if (img) img.src = d.imagen; else { const im = document.createElement("img"); im.className = "hero-bgimg"; im.alt = ""; im.setAttribute("aria-hidden","true"); im.onerror = () => im.remove(); im.src = d.imagen; const bg = $(".hero .bg-layer"); if (bg) bg.prepend(im); } }
+  else if (img) img.remove();
+  const mis = $(".foot-mission"); if (mis && d.mision) mis.textContent = d.mision;
+  const ht = $(".hero-trust");
+  if (ht){ ht.style.display = d.showBadges === false ? "none" : ""; ht.innerHTML = (d.badges||[]).map(b => '<span><svg class="ic"><use href="#i-check"/></svg>' + esc(b) + "</span>").join(""); }
+  show(".trust", d.showCifras !== false);
+  const tg = $(".trust-grid");
+  if (tg && Array.isArray(d.cifras)){
+    const act = d.cifras.filter(c => c.activo !== false);
+    tg.innerHTML = act.map((c,i) =>
+      '<div class="trust-cell" data-reveal style="--d:' + (i*.1) + 's"><div class="trust-num">' +
+      (c.pref ? '<span class="fix">' + esc(c.pref) + "</span>" : "") +
+      '<span data-count="' + (parseInt(c.valor,10)||0) + '">' + fmt.format(parseInt(c.valor,10)||0) + "</span>" +
+      (c.suf ? '<span class="suf">' + esc(c.suf) + "</span>" : "") +
+      '</div><div class="trust-label">' + esc(c.label) + '</div><p class="trust-desc">' + esc(c.desc||"") + "</p></div>").join("");
+    reveal(".trust-grid"); counters();
+  }
+  show(".marquee", d.showMarquee !== false);
+  const track = $(".marquee-track");
+  if (track && Array.isArray(d.marquee) && d.marquee.length){
+    const set = '<div class="mq-set">' + d.marquee.map(t => "<span>" + esc(t) + "</span><i>§</i>").join("") + "</div>";
+    track.innerHTML = set + set;
+  }
+}
+
+/* ── CONTACTO ── */
+function applyContacto(raw){
+  if (!raw) return;
+  const d = { ...DEFAULTS, ...raw };
+  replaceContact(C, d); C = d;
+  const groups = $$(".topbar .tb-group");
+  if (groups[0]) groups[0].innerHTML =
+    '<a href="' + telHref(d.waDisplay) + '"><svg class="ic"><use href="#i-phone"/></svg><span class="tb-label">Guardia 24 hs</span> ' + esc(d.waDisplay) + "</a>" +
+    '<span class="tb-sep"></span><a href="mailto:' + esc(d.email) + '"><svg class="ic"><use href="#i-mail"/></svg>' + esc(d.email) + "</a>";
+  if (groups[1]) groups[1].innerHTML =
+    '<span style="display:inline-flex;align-items:center;gap:7px"><svg class="ic"><use href="#i-clock"/></svg>' + esc(d.horario||"") + "</span>" +
+    (d.linkedin ? '<span class="tb-sep"></span><a href="' + esc(d.linkedin) + '" target="_blank" rel="noopener"><svg class="ic ic-fill"><use href="#i-linkedin"/></svg>LinkedIn</a>' : "");
+  const rows = $$(".info-row");
+  const rowOf = icon => rows.find(r => r.querySelector('use[href="#'+icon+'"]'));
+  const pin = rowOf("i-pin");
+  if (pin){ pin.querySelector("div p").innerHTML = esc(d.direccion||"") + (d.ciudad ? "<br>" + esc(d.ciudad) : ""); const cp = pin.querySelector("[data-copy]"); if (cp) cp.dataset.copy = (d.direccion||"") + ", " + (d.ciudad||""); }
+  const clk = rowOf("i-clock");
+  if (clk){ clk.style.display = d.horario ? "" : "none"; clk.querySelector("div p").textContent = d.horario || ""; const s = clk.querySelector(".sub"); if (s) s.textContent = d.guardiaNota || ""; }
+  const ph = rowOf("i-phone");
+  if (ph){ ph.style.display = d.telefono ? "" : "none"; const a = ph.querySelector("a.val"); if (a){ a.href = telHref(d.telefono); a.textContent = d.telefono; }
+    const s = ph.querySelector(".sub"); if (s) s.innerHTML = 'Guardia / WhatsApp: <a class="val" href="' + telHref(d.waDisplay) + '">' + esc(d.waDisplay) + "</a>";
+    const cp = ph.querySelector("[data-copy]"); if (cp) cp.dataset.copy = d.telefono; }
+  const ml = rowOf("i-mail");
+  if (ml){ ml.style.display = d.email ? "" : "none"; const a = ml.querySelector("a.val"); if (a){ a.href = "mailto:" + d.email; a.textContent = d.email; } const cp = ml.querySelector("[data-copy]"); if (cp) cp.dataset.copy = d.email; }
+  show(".map-frame", d.showMapa !== false); show(".map-link", d.showMapa !== false);
+  const ifr = $(".map-frame iframe"); if (ifr && d.mapa) ifr.src = "https://www.google.com/maps?q=" + encodeURIComponent(d.mapa) + "&z=16&output=embed";
+  const mf = $(".map-fallback span"); if (mf) mf.innerHTML = '<svg class="ic"><use href="#i-pin"/></svg>' + esc((d.direccion||"").toUpperCase()) + "<br>EL MAPA SE CARGA CON CONEXIÓN";
+  const mlink = $(".map-link"); if (mlink && d.mapa) mlink.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(d.mapa);
+  show(".conf-badge", d.showBadge !== false);
+  const cb = $(".conf-badge span"); if (cb && d.badge) cb.innerHTML = inline(d.badge).replace(/<b>/g, '<b style="color:var(--gold-2)">');
+  const nf = $(".form-note"); if (nf && d.notaForm) nf.textContent = d.notaForm;
+  const si = $("#contacto .sec-index"); if (si) si.innerHTML = 'GUARDIA PENAL <b>24 HS</b> · ' + esc(d.waDisplay);
+  const li = $('a[aria-label="LinkedIn del estudio"]'); if (li){ li.style.display = d.linkedin ? "" : "none"; li.href = d.linkedin || "#"; }
+  const ig = $('a[aria-label="Instagram del estudio"]'); if (ig){ ig.style.display = d.instagram ? "" : "none"; ig.href = d.instagram || "#"; }
+  const fb = $(".foot-bottom"); if (fb){ const sp = fb.querySelectorAll("span"); if (sp[1]) sp[1].textContent = ((d.direccion||"") + " · " + (d.horario||"")).toUpperCase(); }
+  $$("a[data-wa]").forEach(a => { a.href = waLink(); a.target = "_blank"; a.rel = "noopener"; });
+  const ld = document.querySelector('script[type="application/ld+json"]');
+  if (ld){ try { const j = JSON.parse(ld.textContent); j.name = "Zarza & Asociados — Estudio Jurídico Integral"; j.telephone = d.telefono; j.email = d.email; if (j.address) j.address.streetAddress = d.direccion; ld.textContent = JSON.stringify(j); } catch(_){} }
+}
+new MutationObserver(() => { const a = $("#fsWa"); if (a) a.href = a.getAttribute("href").replace(/wa\.me\/\d+/, "wa.me/"+C.waNum); }).observe($("#fsWa"), { attributes:true, attributeFilter:["href"] });
+new MutationObserver(() => { const h = $("#uHint"); if (!h) return;
+  h.querySelectorAll('a[href^="tel:"]').forEach(a => a.href = telHref(C.waDisplay));
+  const w = document.createTreeWalker(h, NodeFilter.SHOW_TEXT); const ns = []; while (w.nextNode()) ns.push(w.currentNode);
+  ns.forEach(n => { n.nodeValue = n.nodeValue.split(DEFAULTS.waDisplay).join(C.waDisplay); });
+}).observe($("#uHint"), { childList:true, subtree:true });
+
+/* ── ÁREAS ── */
+function renderAreas(){
+  const list = S.areas.filter(a => a.activo !== false).sort(byOrden);
+  const empty = S.has.areas && list.length === 0;
+  show("#areas", !empty);
+  const dd = $("#dd"); if (dd) dd.style.display = empty ? "none" : "";
+  const ma = $("#mnavAcc"); if (ma) ma.style.display = empty ? "none" : "";
+  const fc = document.querySelector(".foot-col"); if (fc) fc.style.display = empty ? "none" : "";
+  if (empty) return;
+  const grid = $(".areas-grid");
+  if (grid){
+    grid.innerHTML = list.map((a,i) =>
+      '<article class="area-card" style="--c:' + (CVAR[a.color]||"var(--gold)") + '" data-open-area="' + esc(a.id) + '" data-reveal data-d="' + (i%3) + '">' +
+      '<span class="area-num">' + String(i+1).padStart(2,"0") + "</span>" +
+      '<span class="area-tile"><svg class="ic"><use href="#' + esc(a.icono||"i-brief") + '"/></svg></span>' +
+      "<h3>" + esc(a.nombre) + "</h3><p>" + esc(a.descripcion||"") + "</p>" +
+      '<div class="area-tags">' + (a.tags||[]).map(t => '<span class="tag ' + (TAGCLS[a.color]||"tag-gold") + '">' + esc(t) + "</span>").join("") + "</div>" +
+      '<button type="button" class="area-more">Ver más <svg class="ic"><use href="#i-arrow"/></svg></button></article>').join("");
+    reveal(".areas-grid");
+  }
+  const note = $(".areas-note"); if (note) note.innerHTML = "<b>" + String(list.length).padStart(2,"0") + "</b> DEPARTAMENTOS · <b>01</b> SOLO INTERLOCUTOR<br>ABORDAJE INTEGRAL DE CADA CONFLICTO";
+  const ddg = $(".dd-grid");
+  if (ddg) ddg.innerHTML = list.map(a =>
+    '<button type="button" class="dd-item" data-open-area="' + esc(a.id) + '"><span class="tile"><svg class="ic"><use href="#' + esc(a.icono||"i-brief") + '"/></svg></span><span><b>' + esc(a.nombre) + "</b><span>" + esc((a.tags||[]).join(" · ").toUpperCase()) + "</span></span></button>").join("");
+  const ms = $(".mnav-sub");
+  if (ms) ms.innerHTML = list.map(a => '<button type="button" data-open-area="' + esc(a.id) + '"><svg class="ic"><use href="#' + esc(a.icono||"i-brief") + '"/></svg>' + esc(a.nombre) + "</button>").join("");
+  const fu = document.querySelector(".foot-col ul");
+  if (fu) fu.innerHTML = list.map(a => '<li><button type="button" data-open-area="' + esc(a.id) + '"><svg class="ic"><use href="#i-arrow"/></svg>' + esc(a.nombre) + "</button></li>").join("");
+  const sel = $("#f-area");
+  if (sel){ const v = sel.value;
+    sel.innerHTML = '<option value="" disabled' + (v?"":" selected") + '>Seleccione un área</option>' +
+      list.map(a => '<option value="' + esc(a.id) + '">' + esc(a.nombre) + "</option>").join("") +
+      '<option value="otra">Otra consulta / No estoy seguro</option>';
+    if (v && sel.querySelector('option[value="'+v+'"]')) sel.value = v;
+  }
+}
+
+/* ── EQUIPO ── */
+function renderEquipo(){
+  const list = S.equipo.filter(l => l.activo !== false).sort(byOrden);
+  const empty = S.has.equipo && list.length === 0;
+  show("#equipo", !empty); hideNav("#equipo", empty);
+  if (empty) return;
+  const grid = $(".team-grid");
+  if (grid){
+    grid.innerHTML = list.map((l,i) =>
+      '<article class="team-card" style="--c:' + (CVAR[l.color]||"var(--gold)") + '" data-reveal data-d="' + (i%4) + '">' +
+      '<div class="portrait"><div class="portrait-fallback"><b>' + esc(l.iniciales||"··") + "</b></div>" +
+      (l.foto ? '<img src="' + esc(l.foto) + '" alt="' + esc(l.nombre) + '" loading="lazy" onerror="this.remove()">' : "") +
+      '<span class="portrait-role">' + esc((l.rol||"").split("·")[0].trim()) + "</span></div>" +
+      '<div class="team-info"><h3>' + esc(l.nombre) + '</h3><p class="team-area">' + esc(l.areaTexto||"") + "</p>" +
+      '<div class="team-meta"><span class="tag ' + (TAGCLS[l.color]||"tag-gold") + '">' + esc((l.areaTexto||"Equipo").split("·")[0].trim()) + '</span><span class="matricula">' + esc((l.matricula||"").replace("CPACF · ","")) + "</span></div>" +
+      '<button type="button" class="btn btn-ghost btn-sm btn-block team-btn" data-open-lawyer="' + esc(l.id) + '">Ver Perfil Completo</button></div></article>').join("");
+    reveal(".team-grid");
+  }
+  const si = $("#equipo .sec-index"); if (si) si.innerHTML = "<b>" + String(list.length).padStart(2,"0") + "</b> / PROFESIONALES · CPACF";
+}
+
+/* ── BLOG ── */
+function parseBody(text){
+  const lines = String(text||"").split("\n");
+  let out = "", para = [], list = null;
+  const flushP = () => { if (para.length){ out += "<p>" + inline(para.join(" ")) + "</p>"; para = []; } };
+  const flushL = () => { if (list){ out += "<" + list.tag + ">" + list.items.map(i => "<li>" + inline(i) + "</li>").join("") + "</" + list.tag + ">"; list = null; } };
+  for (const raw of lines){
+    const l = raw.trim();
+    if (!l){ flushP(); flushL(); continue; }
+    if (l.startsWith("## ")){ flushP(); flushL(); out += '<h4 class="m-h">' + inline(l.slice(3)) + "</h4>"; continue; }
+    const ul = l.match(/^-\s+(.*)/), ol = l.match(/^\d+\.\s+(.*)/);
+    if (ul || ol){ flushP(); const tag = ul ? "ul" : "ol";
+      if (!list || list.tag !== tag){ flushL(); list = { tag, items:[] }; }
+      list.items.push((ul||ol)[1]); continue; }
+    flushL(); para.push(l);
+  }
+  flushP(); flushL();
+  return out.replace(/<ul>/g, '<ul class="m-list">');
+}
+let blogCount = 0;
+function renderBlog(){
+  const list = S.blog.filter(p => p.activo !== false).sort(byOrden);
+  const empty = S.has.blog && list.length === 0;
+  show("#blog", !empty); hideNav("#blog", empty);
+  if (empty) return;
+  blogCount = list.length;
+  const wrap = $("#blogWrap"); if (wrap) wrap.classList.remove("blog-expanded");
+  const oldF = $(".blog-featured"), oldG = $(".blog-grid"), oldE = $(".blog-extra");
+  const [f, ...rest] = list;
+  if (oldF){
+    if (f){ oldF.style.display = ""; oldF.setAttribute("data-open-article", f.id);
+      oldF.innerHTML = '<div class="bf-meta"><span class="bf-index">Nº 01</span><span class="chip-cat ' + (CATCLS[f.categoria]||"cat-laboral") + '">' + esc(f.categoria||"General") + '</span><span class="bf-date">' + fdate(f.fecha) + "<br>" + esc((f.lectura||"").toUpperCase()) + " DE LECTURA</span></div>" +
+        '<div class="bf-body"><h3>' + esc(f.titulo) + "</h3><p>" + esc(f.extracto||"") + '</p><span class="blog-read">Leer artículo <svg class="ic"><use href="#i-arrow"/></svg></span></div>';
+    } else oldF.style.display = "none";
+  }
+  const card = (p,i) =>
+    '<article class="blog-card" data-open-article="' + esc(p.id) + '" data-reveal data-d="' + (i%3) + '">' +
+    '<span class="bf-index">Nº ' + String(i+2).padStart(2,"0") + "</span>" +
+    '<span class="chip-cat ' + (CATCLS[p.categoria]||"cat-laboral") + '">' + esc(p.categoria||"General") + "</span>" +
+    "<h3>" + esc(p.titulo) + "</h3><p>" + esc(p.extracto||"") + "</p>" +
+    '<div class="blog-card-meta"><span>' + fdate(p.fecha) + "</span><span>·</span><span>" + esc((p.lectura||"").toUpperCase()) + "</span></div>" +
+    '<span class="blog-read">Leer artículo <svg class="ic"><use href="#i-arrow"/></svg></span></article>';
+  if (oldG){ oldG.innerHTML = rest.slice(0,2).map((p,i) => card(p,i)).join(""); reveal(".blog-grid"); }
+  if (oldE){ oldE.innerHTML = rest.slice(2).map((p,i) => card(p,i+2)).join(""); $$(".blog-extra [data-reveal]").forEach(el => el.classList.add("revealed")); }
+  const tg = $("#blogToggle");
+  if (tg){ tg.style.display = list.length > 3 ? "" : "none";
+    tg.innerHTML = 'Ver todas las publicaciones (' + list.length + ') <svg class="ic"><use href="#i-chev"/></svg>';
+    tg.setAttribute("aria-expanded","false"); }
+  const si = $("#blog .sec-index"); if (si) si.innerHTML = "<b>" + String(list.length).padStart(2,"0") + "</b> / ARTÍCULOS · ACTUALIZADO " + (f && f.fecha ? MESES[parseInt(f.fecha.split("-")[1],10)-1] + " " + f.fecha.split("-")[0] : "2026");
+}
+const bt = $("#blogToggle");
+if (bt) bt.addEventListener("click", e => {
+  if (!S.has.blog) return;
+  e.stopImmediatePropagation(); e.preventDefault();
+  const wrap = $("#blogWrap"); if (!wrap) return;
+  const open = !wrap.classList.contains("blog-expanded");
+  wrap.classList.toggle("blog-expanded", open);
+  bt.setAttribute("aria-expanded", String(open));
+  bt.innerHTML = open ? 'Mostrar menos <svg class="ic" style="transform:rotate(180deg)"><use href="#i-chev"/></svg>' : 'Ver todas las publicaciones (' + blogCount + ') <svg class="ic"><use href="#i-chev"/></svg>';
+  if (open) $$(".blog-extra [data-reveal]").forEach((el,i) => { el.style.setProperty("--d",(i*.1)+"s"); requestAnimationFrame(() => el.classList.add("revealed")); });
+}, true);
+
+/* ── Modales propios con datos de Firebase ── */
+const root = $("#modalRoot"), mbody = $("#modalBody"), mclose = $("#modalClose"), mback = $("#modalBackdrop");
+let cOpen = false;
+function lockZ(on){
+  const h = document.documentElement;
+  if (on){ h.style.setProperty("--sbw", (innerWidth - h.clientWidth) + "px"); h.classList.add("locked"); }
+  else { h.classList.remove("locked"); h.style.removeProperty("--sbw"); }
+}
+function openZ(html, wide){
+  const bg = $("#burger"); if (bg && bg.getAttribute("aria-expanded") === "true") bg.click();
+  const db2 = $("#ddBtn"); if ($("#dd") && $("#dd").classList.contains("open") && db2) db2.click();
+  mbody.innerHTML = html; mbody.scrollTop = 0;
+  root.classList.toggle("wide", !!wide); root.classList.remove("closing"); root.classList.add("open");
+  if (!cOpen) lockZ(true);
+  cOpen = true; mclose.focus();
+}
+function closeZ(){
+  if (!cOpen) return;
+  cOpen = false; root.classList.add("closing");
+  setTimeout(() => { root.classList.remove("open","closing"); mbody.innerHTML = ""; lockZ(false); }, 230);
+}
+mclose.addEventListener("click", () => { if (cOpen) closeZ(); });
+mback.addEventListener("click", () => { if (cOpen) closeZ(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && cOpen){ e.stopImmediatePropagation(); closeZ(); } }, true);
+
+const chipsZ = (arr, cls) => '<div class="m-chips">' + (arr||[]).map(c => '<span class="tag ' + cls + '">' + esc(c) + "</span>").join("") + "</div>";
+function areaModalZ(id){
+  const a = S.areas.find(x => x.id === id); if (!a) return "";
+  const lead = S.equipo.find(l => l.id === a.abogadoId);
+  const cls = TAGCLS[a.color] || "tag-gold";
+  return '<p class="m-eyebrow">§ Departamento · ' + esc(id.toUpperCase()) + "</p>" +
+    '<div class="m-icon-head"><span class="area-tile"><svg class="ic"><use href="#' + esc(a.icono||"i-brief") + '"/></svg></span>' +
+    '<div><h3 class="m-title" style="margin-bottom:6px">' + esc(a.nombre) + "</h3>" +
+    '<p style="font-family:var(--mono);font-size:11px;color:var(--tx-mute);letter-spacing:.1em">A CARGO: ' +
+    (lead ? '<button type="button" data-open-lawyer="' + esc(lead.id) + '" style="color:var(--gold-2);text-decoration:underline;text-underline-offset:3px;font-family:inherit;font-size:inherit">' + esc(lead.nombre.toUpperCase()) + "</button>" : "EQUIPO DEL ÁREA") + "</p></div></div>" +
+    chipsZ(a.tags, cls) + '<p class="m-p">' + inline(a.p1||"") + '</p><p class="m-p">' + inline(a.p2||"") + "</p>" +
+    '<h4 class="m-h">Alcance del departamento</h4><ul class="m-list">' + (a.alcance||[]).map(i => "<li>" + inline(i) + "</li>").join("") + "</ul>" +
+    '<div class="m-plate"><b>Primera consulta sin cargo.</b> Honorarios y estrategia pactados por escrito antes de iniciar cualquier gestión (Ley 27.423).</div>' +
+    '<div class="m-cta-row"><button type="button" class="btn btn-primary" data-consult="' + esc(id) + '">Consultar por esta área <svg class="ic ic-shift"><use href="#i-arrow"/></svg></button>' +
+    '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + waLink("Hola, quisiera consultar por " + a.nombre + ".") + '"><svg class="ic ic-fill"><use href="#i-wa"/></svg>WhatsApp directo</a></div>';
+}
+function lawyerModalZ(id){
+  const l = S.equipo.find(x => x.id === id); if (!l) return "";
+  const cls = TAGCLS[l.color] || "tag-gold";
+  return '<p class="m-eyebrow">§ Ficha profesional</p>' +
+    '<div class="lw-head"><div class="lw-photo"><div class="portrait-fallback"><b>' + esc(l.iniciales||"··") + "</b></div>" +
+    (l.foto ? '<img src="' + esc(l.foto) + '" alt="Retrato de ' + esc(l.nombre) + '" loading="lazy" onerror="this.remove()">' : "") + "</div>" +
+    '<div class="lw-id"><h3>' + esc(l.nombre) + '</h3><p class="lw-role">' + esc(l.rol||"") + '</p><span class="lw-mat">' + esc(l.matricula||"") + "</span>" +
+    '<div class="lw-contact">' + (l.email ? '<a class="btn btn-ghost btn-sm" href="mailto:' + esc(l.email) + '"><svg class="ic"><use href="#i-mail"/></svg>Email</a>' : "") +
+    (l.linkedin ? '<a class="btn btn-ghost btn-sm" href="' + esc(l.linkedin) + '" target="_blank" rel="noopener"><svg class="ic ic-fill"><use href="#i-linkedin"/></svg>LinkedIn</a>' : "") + "</div></div></div>" +
+    '<p class="m-p">' + inline(l.bio||"") + "</p>" +
+    '<h4 class="m-h">Formación académica</h4><ul class="m-list">' + (l.formacion||[]).map(i => "<li>" + inline(i) + "</li>").join("") + "</ul>" +
+    '<h4 class="m-h">Trayectoria destacada</h4><ul class="m-list">' + (l.trayectoria||[]).map(i => "<li>" + inline(i) + "</li>").join("") + "</ul>" +
+    '<h4 class="m-h">Idiomas</h4>' + chipsZ(l.idiomas, cls) +
+    '<div class="m-cta-row"><button type="button" class="btn btn-primary" data-consult-lawyer="' + esc(id) + '">Consultar con este profesional <svg class="ic ic-shift"><use href="#i-arrow"/></svg></button>' +
+    '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + waLink("Hola, quisiera una consulta con " + l.nombre + ".") + '"><svg class="ic ic-fill"><use href="#i-wa"/></svg>WhatsApp</a></div>';
+}
+function articleModalZ(id){
+  const a = S.blog.find(x => x.id === id); if (!a) return "";
+  return '<p class="m-eyebrow">§ Actualidad jurídica</p>' +
+    '<div class="art-meta"><span class="chip-cat ' + (CATCLS[a.categoria]||"cat-laboral") + '">' + esc(a.categoria||"General") + "</span><span>" + esc(fdate(a.fecha)) + "</span><span>·</span><span>" + esc((a.lectura||"").toUpperCase()) + " DE LECTURA</span></div>" +
+    '<h3 class="m-title">' + esc(a.titulo) + '</h3><div class="art-body">' + parseBody(a.cuerpo) + "</div>" +
+    '<div class="art-disclaimer"><b style="color:#F7C780">Nota:</b> este artículo es informativo y no constituye asesoramiento legal para un caso concreto. Los plazos y criterios citados deben verificarse para su situación particular.</div>' +
+    '<div class="m-cta-row">' + (a.area ? '<button type="button" class="btn btn-primary" data-consult="' + esc(a.area) + '">Consultar sobre este tema <svg class="ic ic-shift"><use href="#i-arrow"/></svg></button>' : "") +
+    '<button type="button" class="btn btn-ghost" data-copy="https://zarzaasociados.com.ar/blog/' + esc(id) + '"><svg class="ic"><use href="#i-copy"/></svg>Copiar enlace</button></div>';
+}
+function legalModalZ(kind){
+  const dir = esc((C.direccion||"") + ", " + (C.ciudad||""));
+  if (kind === "privacidad") return '<p class="m-eyebrow">§ Información legal</p><h3 class="m-title">Aviso de privacidad</h3>' +
+    '<p class="m-p"><b style="color:var(--tx)">Responsable:</b> Zarza &amp; Asociados — Estudio Jurídico Integral, ' + dir + ". CUIT " + esc(C.cuit||"") + ".</p>" +
+    '<p class="m-p"><b style="color:var(--tx)">Datos que recolectamos:</b> nombre, teléfono, email, área de consulta y el detalle del caso que usted nos proporciona voluntariamente.</p>' +
+    '<p class="m-p"><b style="color:var(--tx)">Finalidad:</b> responder su consulta y contactar al área correspondiente. No cedemos datos a terceros con fines comerciales.</p>' +
+    '<p class="m-p"><b style="color:var(--tx)">Secreto profesional:</b> toda la información remitida queda amparada por el secreto profesional del abogado, incluso si no se inicia una relación profesional.</p>' +
+    '<p class="m-p"><b style="color:var(--tx)">Ley 25.326:</b> puede ejercer los derechos de acceso, rectificación, actualización y supresión escribiendo a <b style="color:var(--gold-2)">' + esc(C.email) + "</b>. La Agencia de Acceso a la Información Pública es el órgano de control.</p>" +
+    '<div class="m-plate">Última actualización: enero de 2026.</div><div class="m-cta-row"><button type="button" class="btn btn-ghost" data-modal-close>Volver al sitio</button></div>';
+  if (kind === "terminos") return '<p class="m-eyebrow">§ Información legal</p><h3 class="m-title">Términos del servicio</h3>' +
+    '<p class="m-p"><b style="color:var(--tx)">Carácter del sitio:</b> contenido exclusivamente informativo; no constituye asesoramiento legal para un caso concreto.</p>' +
+    '<p class="m-p"><b style="color:var(--tx)">Relación profesional:</b> se constituye únicamente con aceptación expresa del caso y convenio de honorarios por escrito (Ley 27.423 y normas del CPACF). El envío de un formulario no genera dicha relación.</p>' +
+    '<p class="m-p"><b style="color:var(--tx)">Propiedad intelectual:</b> textos, artículos e identidad visual pertenecen al estudio; su reproducción requiere autorización, salvo cita breve con atribución.</p>' +
+    '<p class="m-p"><b style="color:var(--tx)">Enlaces externos:</b> WhatsApp, Google Maps y LinkedIn se rigen por sus propias políticas.</p>' +
+    '<p class="m-p"><b style="color:var(--tx)">Jurisdicción:</b> leyes de la República Argentina; tribunales ordinarios de la Ciudad Autónoma de Buenos Aires.</p>' +
+    '<div class="m-plate">Última actualización: enero de 2026.</div><div class="m-cta-row"><button type="button" class="btn btn-ghost" data-modal-close>Volver al sitio</button></div>';
+  const rows = S.equipo.filter(l => l.activo !== false).sort(byOrden).map(l =>
+    "<tr><td>" + esc(l.nombre) + '</td><td class="mono">' + esc((l.matricula||"").replace("CPACF · ","")) + "</td><td>" + esc((l.rol||"").split("·")[0].trim()) + "</td></tr>").join("");
+  return '<p class="m-eyebrow">§ Información legal</p><h3 class="m-title">Matrículas profesionales del estudio</h3>' +
+    '<p class="m-p">Todos los profesionales se encuentran matriculados ante el <b style="color:var(--gold-2)">Colegio Público de la Abogacía de la Capital Federal (CPACF)</b>, con matrícula vigente.</p>' +
+    '<table class="mat-table"><thead><tr><th>Profesional</th><th>Matrícula</th><th>Rol</th></tr></thead><tbody>' + rows + "</tbody></table>" +
+    '<p class="m-p">Las matrículas pueden verificarse en el padrón público del CPACF. CUIT del estudio: <b style="color:var(--gold-2)">' + esc(C.cuit||"") + "</b>.</p>" +
+    '<div class="m-plate"><b>Ejercicio responsable:</b> honorarios pactados por escrito (Ley 27.423), secreto profesional y seguro de responsabilidad civil vigente.</div>' +
+    '<div class="m-cta-row"><button type="button" class="btn btn-ghost" data-modal-close>Volver al sitio</button></div>';
+}
+function prefillZ(areaId, lawyerId){
+  closeZ();
+  setTimeout(() => {
+    const sel = $("#f-area");
+    if (sel && areaId && sel.querySelector('option[value="'+areaId+'"]')){ sel.value = areaId; sel.dispatchEvent(new Event("change")); }
+    const l = lawyerId ? S.equipo.find(x => x.id === lawyerId) : null;
+    if (l){ const det = $("#f-detalle"); const p = "Solicito una consulta con " + l.nombre + ". "; if (det && !det.value.startsWith(p)){ det.value = p + det.value; det.dispatchEvent(new Event("input")); } }
+    const sec = document.getElementById("contacto"); if (sec) sec.scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" });
+    setTimeout(() => { const n = $("#f-nombre"); if (n) n.focus({ preventScroll:true }); }, 700);
+    const a = areaId ? S.areas.find(x => x.id === areaId) : null;
+    toastZ(a ? "Formulario listo para su consulta de " + a.nombre + "." : "Formulario listo para su consulta.", true);
+  }, 260);
+}
+document.addEventListener("click", e => {
+  const t = e.target;
+  const oa = t.closest("[data-open-area]");
+  if (oa && S.has.areas){ e.preventDefault(); e.stopPropagation(); openZ(areaModalZ(oa.dataset.openArea)); return; }
+  const ol = t.closest("[data-open-lawyer]");
+  if (ol && S.has.equipo){ e.preventDefault(); e.stopPropagation(); openZ(lawyerModalZ(ol.dataset.openLawyer)); return; }
+  const ob = t.closest("[data-open-article]");
+  if (ob && S.has.blog){ e.preventDefault(); e.stopPropagation(); openZ(articleModalZ(ob.dataset.openArticle), true); return; }
+  const og = t.closest("[data-open-legal]");
+  if (og){ if (og.dataset.openLegal === "matriculas" && !S.has.equipo) return; e.preventDefault(); e.stopPropagation(); openZ(legalModalZ(og.dataset.openLegal)); return; }
+  const mc = t.closest("[data-modal-close]");
+  if (mc && cOpen){ e.preventDefault(); e.stopPropagation(); closeZ(); return; }
+  const c = t.closest("[data-consult]");
+  if (c && cOpen){ e.preventDefault(); e.stopPropagation(); prefillZ(c.dataset.consult, null); return; }
+  const cl = t.closest("[data-consult-lawyer]");
+  if (cl && cOpen){ e.preventDefault(); e.stopPropagation(); const l = S.equipo.find(x => x.id === cl.dataset.consultLawyer); prefillZ(l ? l.areaSlug : null, cl.dataset.consultLawyer); return; }
+}, true);
+
+/* ── Suscripciones en vivo ── */
+const silent = () => {};
+onSnapshot(doc(db,"sitio","inicio"), s => { if (s.exists()) applyInicio(s.data()); }, silent);
+onSnapshot(doc(db,"sitio","contacto"), s => { if (s.exists()) applyContacto(s.data()); }, silent);
+onSnapshot(collection(db,"areas"), qs => { S.has.areas = !qs.empty; if (!qs.empty){ S.areas = qs.docs.map(d => ({ id:d.id, ...d.data() })); renderAreas(); } }, silent);
+onSnapshot(collection(db,"equipo"), qs => { S.has.equipo = !qs.empty; if (!qs.empty){ S.equipo = qs.docs.map(d => ({ id:d.id, ...d.data() })); renderEquipo(); } }, silent);
+onSnapshot(collection(db,"blog"), qs => { S.has.blog = !qs.empty; if (!qs.empty){ S.blog = qs.docs.map(d => ({ id:d.id, ...d.data() })); renderBlog(); } }, silent);
 </script>
 </body>
 </html>
