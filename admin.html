@@ -168,10 +168,21 @@ img{display:block;max-width:100%}
 .rep-row{display:grid;gap:10px;align-items:end;background:var(--ink-900);border:1px solid var(--ink-700);border-radius:10px;padding:14px}
 .rep-badge{grid-template-columns:1fr auto}
 .rep-cifra{grid-template-columns:70px 90px 70px 1fr 1.4fr auto auto}
+.rep-chip{grid-template-columns:1.1fr 1.1fr 160px 130px auto auto}
 .rep-row .field label{font-size:9px}
-.rep-row .inp{padding:9px 11px;font-size:13.5px}
+.rep-row .inp,.rep-row .sel{padding:9px 11px;font-size:13.5px}
+.rep-row .sel{background-position:right 9px center;padding-right:32px}
 .rep-check{display:flex;flex-direction:column;align-items:center;gap:5px}
 .rep-check em{font-family:var(--mono);font-style:normal;font-size:8.5px;letter-spacing:.12em;color:var(--tx-mute)}
+/* Vista previa de tarjetas flotantes */
+.chip-prev{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;padding:18px;border:1px dashed var(--line);border-radius:11px;background:radial-gradient(circle at 28% 18%,rgba(201,162,92,.08),transparent 62%),var(--ink-950)}
+.chip-prev .lbl{width:100%;font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--tx-mute);margin-bottom:2px}
+.cp{display:flex;align-items:center;gap:11px;padding:12px 16px;background:rgba(13,20,36,.9);border:1px solid var(--line);border-radius:11px;box-shadow:0 18px 50px rgba(0,0,0,.45);animation:up .35s var(--ease)}
+.cp b{display:block;font-size:12.5px;font-weight:600;line-height:1.3}
+.cp i{display:block;font-style:normal;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--tx-mute);margin-top:2px}
+.cp .ic{width:22px;height:22px}
+.cp.off{opacity:.38}
+.cp-empty{font-size:13px;color:var(--tx-mute)}
 .steps{counter-reset:p;display:grid;gap:14px;margin:6px 0 4px}
 .steps li{counter-increment:p;position:relative;padding-left:46px;font-size:14px;color:var(--tx-dim);line-height:1.7}
 .steps li::before{content:counter(p,decimal-leading-zero);position:absolute;left:0;top:2px;font-family:var(--mono);font-size:12px;font-weight:600;color:var(--gold);border:1px solid var(--line);border-radius:7px;width:32px;height:26px;display:grid;place-items:center;background:rgba(201,162,92,.06)}
@@ -185,7 +196,6 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 .warn.good .ic{color:var(--green)}
 .warn.info{border-color:rgba(62,123,250,.45);background:rgba(62,123,250,.07);color:#9DBBFF}
 .warn.info .ic{color:var(--blue)}
-/* Diagnóstico */
 .diag{display:grid;gap:10px}
 .diag-row{display:grid;grid-template-columns:150px 1fr auto;gap:14px;align-items:center;background:var(--ink-900);border:1px solid var(--ink-700);border-radius:10px;padding:13px 16px}
 .diag-row b{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--tx)}
@@ -220,7 +230,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 .confirm-msg b{color:var(--tx)}
 .toasts{position:fixed;left:20px;bottom:20px;z-index:500;display:flex;flex-direction:column;gap:10px;max-width:min(360px,86vw)}
 .toast{display:flex;align-items:center;gap:11px;background:linear-gradient(150deg,var(--ink-800),var(--ink-850));border:1px solid var(--line);border-radius:10px;padding:12px 16px;font-size:13.5px;box-shadow:0 18px 50px rgba(0,0,0,.55);animation:up .35s var(--ease)}
-.toast .ic{width:17px;height:17px;color:var(--green);flex:none}
+.toast .ic{width:17px;height:17px;color:var(--green)}
 .toast.err .ic{color:var(--red)}
 .toast.gold .ic{color:var(--gold)}
 .toast.out{opacity:0;transform:translateY(8px);transition:all .3s}
@@ -232,7 +242,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
   .nav-btn .cnt{display:none}
   .side-foot{grid-template-columns:1fr auto auto;align-items:center}
   .grid2{grid-template-columns:1fr}
-  .rep-cifra{grid-template-columns:1fr 1fr 1fr;grid-auto-rows:auto}
+  .rep-cifra,.rep-chip{grid-template-columns:1fr 1fr;grid-auto-rows:auto}
   .row{grid-template-columns:46px 1fr auto;grid-auto-rows:auto}
   .row-orden{grid-column:2}
   .row-state{grid-column:3;grid-row:1}
@@ -248,6 +258,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 
 <svg style="display:none" aria-hidden="true"><defs>
 <symbol id="i-emblem" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="32" cy="32" r="25.5" fill="none" stroke="currentColor" stroke-width=".8" opacity=".5"/><path d="M32 17v27M23 46h18M18 23h28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="32" cy="14.5" r="2.2" fill="currentColor"/><path d="M18 23l-4.5 9M18 23l4.5 9M13.5 32a4.5 4.5 0 0 0 9 0M46 23l-4.5 9M46 23l4.5 9M41.5 32a4.5 4.5 0 0 0 9 0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="i-scale" viewBox="0 0 64 64"><path d="M32 12v38M20 52h24M12 18h40"/><circle cx="32" cy="9" r="3"/><path d="M12 18l-6 12M12 18l6 12M4 30a8 8 0 0 0 16 0M52 18l-6 12M52 18l6 12M44 30a8 8 0 0 0 16 0"/></symbol>
 <symbol id="i-brief" viewBox="0 0 64 64"><rect x="8" y="20" width="48" height="30" rx="4"/><path d="M24 20v-6a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v6M32 27v15M26 42h12M24 31h16M24 31l-4 7M24 31l4 7M20 38a4 4 0 0 0 8 0M40 31l-4 7M40 31l4 7M36 38a4 4 0 0 0 8 0"/></symbol>
 <symbol id="i-doc" viewBox="0 0 64 64"><path d="M16 6h22l12 12v40H16zM38 6v12h12M24 28h16M24 36h10"/><circle cx="40" cy="45" r="6"/><path d="M37 50l-3 8 6-3 6 3-3-8"/></symbol>
 <symbol id="i-family" viewBox="0 0 64 64"><circle cx="18" cy="16" r="6"/><circle cx="46" cy="16" r="6"/><circle cx="32" cy="30" r="4.5"/><path d="M8 44c0-7 4.5-12 10-12s10 5 10 12M36 44c0-7 4.5-12 10-12s10 5 10 12M24 52c0-5 3.5-9 8-9s8 4 8 9"/></symbol>
@@ -259,6 +270,12 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-5.5 6.5-5.5s6.5 2 6.5 5.5M16 4.6a3.5 3.5 0 0 1 0 6.8M17.5 14.7c2.3.6 4 2.3 4 5.3"/></symbol>
 <symbol id="i-post" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h5"/></symbol>
 <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></symbol>
 <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></symbol>
 <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M2 12h4l3-8 4 16 3-8h6"/></symbol>
 <symbol id="i-import" viewBox="0 0 24 24"><path d="M12 3v12M8 11l4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></symbol>
@@ -276,6 +293,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
 <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></symbol>
 <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/></symbol>
 </defs></svg>
 
 <!-- ══════════ LOGIN ══════════ -->
@@ -344,8 +362,20 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
             <div class="field full"><label for="i-mision">Misión (pie de página)</label><textarea class="txa" id="i-mision" rows="2"></textarea></div>
           </div>
         </div>
+
+        <!-- ══ TARJETAS FLOTANTES DEL SELLO ══ -->
+        <div class="card">
+          <h3><svg class="ic"><use href="#i-spark"/></svg>Tarjetas flotantes del sello</h3>
+          <p class="desc">Los recuadros que flotan sobre el sello giratorio de la portada: <b style="color:var(--tx-dim)">“Expediente 1.482/25 · Resuelto favorablemente”</b> y <b style="color:var(--tx-dim)">“Guardia penal · 24 hs”</b>. Edite título, subtítulo, icono y color; incluya o excluya cada una. Máximo 4.</p>
+          <label class="switch-lbl" style="margin-bottom:16px"><span class="switch"><input type="checkbox" id="i-showChips"><span></span></span>Mostrar tarjetas flotantes en la portada</label>
+          <div class="rep" id="i-chips"></div>
+          <div style="margin-top:12px"><button type="button" class="btn btn-ghost btn-sm" id="addChip"><svg class="ic"><use href="#i-plus"/></svg>Agregar tarjeta</button></div>
+          <div class="chip-prev" id="chipPrev"></div>
+        </div>
+
         <div class="card">
           <h3><svg class="ic"><use href="#i-check"/></svg>Sellos de confianza</h3>
+          <p class="desc">La fila de sellos bajo los botones de la portada.</p>
           <label class="switch-lbl" style="margin-bottom:16px"><span class="switch"><input type="checkbox" id="i-showBadges"><span></span></span>Mostrar sellos en la portada</label>
           <div class="rep" id="i-badges"></div>
           <div style="margin-top:12px"><button type="button" class="btn btn-ghost btn-sm" id="addBadge"><svg class="ic"><use href="#i-plus"/></svg>Agregar sello</button></div>
@@ -434,7 +464,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 
         <div class="card" id="importCard">
           <h3><svg class="ic"><use href="#i-import"/></svg>Importar desde el sitio publicado</h3>
-          <p class="desc">Lee el <b>index.html</b> que está online y convierte su equipo, áreas, publicaciones, portada y contacto en registros de Firestore. Es la solución cuando el sitio muestra contenido que el panel no ve.</p>
+          <p class="desc">Lee el <b>index.html</b> que está online y convierte su equipo, áreas, publicaciones, portada (incluidas las tarjetas flotantes) y contacto en registros de Firestore.</p>
           <div class="imp-head">
             <div class="field"><label for="imp-url">URL del index publicado</label>
               <input class="inp" id="imp-url" value="index.html" placeholder="index.html  ·  https://susitio.com/index.html">
@@ -458,10 +488,10 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
         <div class="card">
           <h3><svg class="ic"><use href="#i-help"/></svg>Por qué el equipo del sitio no aparece en el panel</h3>
           <ol class="steps">
-            <li>El <b>index.html</b> trae el equipo escrito en su propio HTML como contenido base. Si Firestore está vacío, el sitio <b>igual se ve completo</b>, pero el panel —que solo lee Firestore— muestra la lista vacía.</li>
-            <li>Solución definitiva: abra <b>Diagnóstico → Importar desde el sitio publicado</b>. El panel lee el index online y escribe esos abogados en la colección <code class="mono">equipo</code>. A partir de ahí se editan, incluyen y excluyen desde aquí.</li>
-            <li>Si el diagnóstico marca <b>permiso denegado</b>, pegue las reglas de abajo en Firestore. Si marca <b>otro proyecto</b>, el index publicado apunta a una base distinta: actualice su configuración o importe el contenido aquí.</li>
-            <li>Alternativa rápida: use <b>Cargar contenido inicial</b> para escribir el equipo completo de Zarza &amp; Asociados (4 abogados con biografía, formación y trayectoria).</li>
+            <li>El <b>index.html</b> trae el contenido escrito en su propio HTML como base. Si Firestore está vacío, el sitio <b>igual se ve completo</b>, pero el panel —que solo lee Firestore— muestra la lista vacía.</li>
+            <li>Solución definitiva: abra <b>Diagnóstico → Importar desde el sitio publicado</b>. El panel lee el index online y escribe ese contenido en las colecciones. A partir de ahí se edita, incluye y excluye desde aquí.</li>
+            <li>Si el diagnóstico marca <b>permiso denegado</b>, pegue las reglas de abajo en Firestore. Si marca <b>otro proyecto</b>, el index publicado apunta a una base distinta.</li>
+            <li>Alternativa rápida: use <b>Cargar contenido inicial</b> para escribir todo el contenido de Zarza &amp; Asociados, incluidas las tarjetas flotantes del sello.</li>
           </ol>
         </div>
         <div class="card">
@@ -568,12 +598,15 @@ const commas = t => String(t||"").split(",").map(x=>x.trim()).filter(Boolean);
 const MESES = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
 const fdate = iso => { if(!iso) return "—"; const p=String(iso).split("-"); return p.length===3 ? `${p[2]} · ${MESES[parseInt(p[1],10)-1]||""} · ${p[0]}` : "—"; };
 const ICONS = [["i-brief","Maletín / Balanza"],["i-doc","Documento con sello"],["i-family","Grupo familiar"],["i-building","Edificio corporativo"],["i-gavel","Mazo de juez"],["i-shieldcart","Escudo / Consumidor"]];
+const CHIP_ICONS = [["i-check","Check · Resuelto"],["i-shield","Escudo · Protección"],["i-scale","Balanza de justicia"],["i-gavel","Mazo de juez"],["i-lock","Candado · Confidencial"],["i-clock","Reloj · 24 hs"],["i-phone","Teléfono"],["i-mail","Email"],["i-cal","Calendario"],["i-user","Persona"],["i-brief","Maletín"],["i-doc","Documento"],["i-pin","Ubicación"]];
 const COLORS = [["gold","Dorado"],["blue","Azul"],["green","Verde"],["amber","Ámbar"],["red","Rojo"],["violet","Violeta"]];
+const CVAR = {gold:"var(--gold)",blue:"var(--blue)",green:"var(--green)",amber:"var(--amber)",red:"var(--red)",violet:"var(--violet)"};
 const CATS = ["Laboral","Civil y Comercial","Familia","Penal y Tránsito","Empresario","Consumidor"];
 const CATCLS = {"Laboral":"ch-gold","Civil y Comercial":"ch-blue","Familia":"ch-green","Penal y Tránsito":"ch-red","Empresario":"ch-amber","Consumidor":"ch-violet"};
 const TAG2COLOR = {"tag-gold":"gold","tag-blue":"blue","tag-green":"green","tag-amber":"amber","tag-red":"red","tag-violet":"violet"};
 const byOrden = (a,b) => (a.orden??999)-(b.orden??999);
 const COLS = ["areas","equipo","blog"];
+const MAX_CHIPS = 4;
 
 function toast(msg, type){
   const box = $("#toasts");
@@ -589,14 +622,18 @@ const fsErr = e => { console.warn(e); toast("Error de Firestore: " + (e.code || 
 /* ───────── Contenido inicial ───────── */
 const SEED = {
 inicio:{
-  eyebrow:"Estudio Jurídico Multipráctica · Buenos Aires · Desde 2004",
+  eyebrow:"Estudio Jurídico Multipráctica · Córdoba · Desde 2004",
   titulo:"Soluciones legales *integrales* con el *respaldo* y la *experiencia* que su caso requiere.",
   subtitulo:"Un equipo multidisciplinario enfocado en proteger sus derechos e intereses particulares y corporativos.",
   cta1:"Enviar Consulta Gratuita", cta2:"Hablar por WhatsApp",
   imagen:"https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1800&q=70",
   mision:"Estudio jurídico multipráctica fundado en 2004. Defendemos a personas y empresas con rigor técnico, estrategia clara y confidencialidad absoluta.",
   badges:["Primera consulta sin cargo","Secreto profesional","Respuesta < 24 hs hábiles"],
-  showBadges:true, showCifras:true, showMarquee:true,
+  showBadges:true, showCifras:true, showMarquee:true, showChips:true,
+  chips:[
+    {titulo:"Expediente 1.482/25", subtitulo:"RESUELTO FAVORABLEMENTE", icono:"i-check", color:"green", activo:true},
+    {titulo:"Guardia penal · 24 hs", subtitulo:"ACTIVA TODOS LOS DÍAS", icono:"i-shield", color:"gold", activo:true}
+  ],
   marquee:["Derecho Laboral","Civil y Comercial","Familia","Empresario","Penal y Tránsito","Consumidor y Bancario","Guardia 24 hs"],
   cifras:[
     {pref:"+",valor:20,suf:"",label:"Años de trayectoria",desc:"Ejercicio ininterrumpido desde 2004.",activo:true},
@@ -606,12 +643,12 @@ inicio:{
   ]
 },
 contacto:{
-  direccion:"Av. Corrientes 1234, Piso 7, Oficina “B”", ciudad:"C1043 · CABA, Argentina",
+  direccion:"Av. Corrientes 1234, Piso 7, Oficina “B”", ciudad:"C1043 · Córdoba, Argentina",
   horario:"Lunes a Viernes de 8:00 a 18:00 hs.", guardiaNota:"Guardia penal y urgencias: 24 hs, todos los días.",
   telefono:"+54 11 4372-8900", email:"consultas@zarzaasociados.com.ar",
   waDisplay:"+54 9 11 5555-0134", waNum:"5491155550134",
   waMsg:"Hola, quisiera realizar una consulta legal.",
-  mapa:"Av. Corrientes 1234, C1043 CABA, Argentina",
+  mapa:"Av. Corrientes 1234, C1043 Córdoba, Argentina",
   linkedin:"https://www.linkedin.com/company/zarza-asociados-estudio-juridico",
   instagram:"https://www.instagram.com/zarzaasociados",
   cuit:"30-71234567-9",
@@ -658,12 +695,12 @@ areas:[
   alcance:["Defensa del consumidor · Ley 24.240","Reclamos bancarios, refinanciaciones y cobros indebidos","Seguros: rechazos de cobertura y mala liquidación","Planes de ahorro y créditos prendarios","Fraude digital, phishing y vaciamiento de cuentas","COPREC y audiencias de conciliación"]}
 ],
 equipo:[
- {id:"zarza",nombre:"Dr. Alejandro Zarza",rol:"Socio Fundador · Derecho Laboral",matricula:"CPACF · T° 112 F° 340",
+ {id:"zarza",nombre:"Dr. Javier Zarza",rol:"Socio Fundador · Derecho Laboral",matricula:"CPACF · T° 112 F° 340",
   areaTexto:"Derecho Laboral · Relaciones colectivas",areaSlug:"laboral",color:"gold",orden:1,activo:true,
   foto:"https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&crop=faces&w=700&h=840&q=75",iniciales:"AZ",
   email:"a.zarza@zarzaasociados.com.ar",linkedin:"https://www.linkedin.com/company/zarza-asociados-estudio-juridico",
   bio:"Fundó el estudio en 2004 tras una década de litigio laboral en tribunales de la Nación. Dirigió más de 600 procesos individuales y colectivos, y negocia convenios y conflictos sindicales para empresas de servicios e industria. Es docente de Derecho del Trabajo y conferencista sobre registración laboral.",
-  formacion:["Abogado — Universidad de Buenos Aires (UBA)","Especialista en Derecho del Trabajo — UBA","Maestría en Relaciones Laborales — UNTreF","Docente universitario · Derecho del Trabajo"],
+  formacion:["Abogado — Universidad de Córdoba (UBA)","Especialista en Derecho del Trabajo — UBA","Maestría en Relaciones Laborales — UNTreF","Docente universitario · Derecho del Trabajo"],
   trayectoria:["+600 procesos laborales dirigidos desde 2004","Negociación colectiva en actividad servicios e industria","Litigio ante CNAT y justicia laboral bonaerense"],
   idiomas:["Español","Inglés"]},
  {id:"santamarina",nombre:"Dra. Valeria Santamarina",rol:"Socia · Civil, Comercial y Empresario",matricula:"CPACF · T° 118 F° 212",
@@ -679,7 +716,7 @@ equipo:[
   foto:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&crop=faces&w=700&h=840&q=75",iniciales:"MI",
   email:"m.iglesias@zarzaasociados.com.ar",linkedin:"https://www.linkedin.com/company/zarza-asociados-estudio-juridico",
   bio:"Tras diez años en la justicia penal, se sumó al estudio para dirigir el departamento Penal y la guardia de urgencias 24 hs. Litigó más de 300 causas y juicios orales, con especial dedicación a delitos informáticos y a la doble vía penal-civil de los accidentes de tránsito.",
-  formacion:["Abogado — Universidad de Buenos Aires (UBA)","Especialista en Derecho Penal — UBA","Posgrado en Criminología — UCASAL"],
+  formacion:["Abogado — Universidad de Córdoba (UBA)","Especialista en Derecho Penal — UBA","Posgrado en Criminología — UCASAL"],
   trayectoria:["10 años de función judicial penal","+300 causas y juicios orales litigados","Director de la guardia de urgencias 24 hs"],
   idiomas:["Español","Inglés"]},
  {id:"ferreyra",nombre:"Dra. Lucía Ferreyra",rol:"Especialista Sénior · Familia y Consumidor",matricula:"CPACF · T° 130 F° 455",
@@ -694,7 +731,7 @@ equipo:[
 blog:[
  {id:"plazos-despidos",titulo:"Nuevos plazos procesales en despidos",categoria:"Laboral",fecha:"2026-11-12",lectura:"6 min",area:"laboral",orden:1,activo:true,
   extracto:"Las últimas acordadas reordenaron los tiempos de instrucción y prueba en la justicia laboral. Qué deben revisar trabajadores y empleadores antes de enviar el primer telegrama.",
-  cuerpo:"Las recientes acordadas de la Cámara Nacional de Apelaciones del Trabajo reordenaron los plazos de las etapas de instrucción y producción de prueba, con impacto directo en la estrategia de trabajadores despedidos y de empleadores.\n\nEn la práctica, los tiempos entre el intercambio telegráfico y la demanda efectiva se han acortado. Dejar correr los plazos puede significar perder pruebas decisivas: registración deficiente, testigos clave o pericias contables que ya no podrán producirse.\n\n## Plazos que conviene tener presentes\n\n1. **Prescripción de créditos laborales:** dos años (art. 256 LCT). El reclamo debe iniciarse o interrumpirse válidamente antes de ese vencimiento.\n1. **Intercambio telegráfico:** las Leyes 23.789 y 24.635 estructuran la comunicación previa; una intimación mal redactada puede debilitar todo el reclamo posterior.\n1. **Conciliación previa (SECLO):** es instancia obligatoria en CABA; sus plazos corren y condicionan la habilitación de la demanda.\n1. **Accidentes de trabajo:** denuncie el hecho ante la empleadora y la ART de inmediato; la demora complica el nexo causal.\n\nAntes de enviar cualquier telegrama o carta documento, solicite una revisión profesional del texto. La diferencia entre un reclamo sólido y uno débil suele estar en las primeras 48 horas y en las palabras exactas de la primera intimación.\n\nEn el estudio analizamos su caso sin cargo, verificamos los plazos vigentes y definimos la vía más conveniente: acuerdo directo, SECLO o demanda."},
+  cuerpo:"Las recientes acordadas de la Cámara Nacional de Apelaciones del Trabajo reordenaron los plazos de las etapas de instrucción y producción de prueba, con impacto directo en la estrategia de trabajadores despedidos y de empleadores.\n\nEn la práctica, los tiempos entre el intercambio telegráfico y la demanda efectiva se han acortado. Dejar correr los plazos puede significar perder pruebas decisivas: registración deficiente, testigos clave o pericias contables que ya no podrán producirse.\n\n## Plazos que conviene tener presentes\n\n1. **Prescripción de créditos laborales:** dos años (art. 256 LCT). El reclamo debe iniciarse o interrumpirse válidamente antes de ese vencimiento.\n1. **Intercambio telegráfico:** las Leyes 23.789 y 24.635 estructuran la comunicación previa; una intimación mal redactada puede debilitar todo el reclamo posterior.\n1. **Conciliación previa (SECLO):** es instancia obligatoria en Córdoba; sus plazos corren y condicionan la habilitación de la demanda.\n1. **Accidentes de trabajo:** denuncie el hecho ante la empleadora y la ART de inmediato; la demora complica el nexo causal.\n\nAntes de enviar cualquier telegrama o carta documento, solicite una revisión profesional del texto. La diferencia entre un reclamo sólido y uno débil suele estar en las primeras 48 horas y en las palabras exactas de la primera intimación.\n\nEn el estudio analizamos su caso sin cargo, verificamos los plazos vigentes y definimos la vía más conveniente: acuerdo directo, SECLO o demanda."},
  {id:"sucesion-sin-conflictos",titulo:"Cómo tramitar una sucesión sin conflictos",categoria:"Civil y Comercial",fecha:"2026-10-28",lectura:"8 min",area:"civil",orden:2,activo:true,
   extracto:"Las tres decisiones tempranas que evitan años de disputa familiar: administrador, documentación y acuerdo de partición.",
   cuerpo:"Una sucesión bien ordenada evita años de conflicto familiar. La clave está en tres decisiones tempranas: designar un administrador único, reunir la documentación completa y acordar la partición antes de que el expediente avance por inercia.\n\nEl proceso comienza con la denuncia de bienes y la declaración de herederos. Cuanto más completa sea la presentación inicial —títulos de propiedad, partidas, datos bancarios y registrales— menos incidencias y suspensiones tendrá el trámite.\n\n## Las cinco etapas del proceso\n\n1. **Denuncia de bienes y documentación:** títulos, partidas, DNI y datos registrales de cada bien.\n1. **Declaratoria de herederos:** resolución que reconoce quiénes suceden al causante.\n1. **Inventario y avalúo:** valuación de los bienes que integran el acervo hereditario.\n1. **Partición y adjudicación:** acuerdo entre herederos o partición judicial; el acuerdo privado homologado es la vía más rápida.\n1. **Inscripción registral:** Registro de la Propiedad Inmueble, DNRPA y entidades bancarias.\n\nLos honorarios y tasas se calculan sobre el valor de los bienes: pactarlos por escrito al inicio evita discusiones al final. Un presupuesto claro es parte de la tranquilidad familiar.\n\nCuando hay menores, bienes en el exterior o herederos en desacuerdo, el diseño del acuerdo requiere técnica específica: es el momento de consultar antes de firmar cualquier documento privado."},
@@ -810,7 +847,9 @@ $("#sideNav").addEventListener("click", e => {
 });
 const goView = v => { const b = document.querySelector('[data-view="'+v+'"]'); if (b) b.click(); };
 
-/* ───────── INICIO ───────── */
+/* ───────── INICIO: sellos, cifras y tarjetas flotantes ───────── */
+const selCls = (cls,opts,v) => '<select class="sel ' + cls + '">' + opts.map(o => '<option value="' + esc(o[0]) + '"' + (o[0]===v?" selected":"") + ">" + esc(o[1]) + "</option>").join("") + "</select>";
+
 function badgeRow(v){
   const d = document.createElement("div");
   d.className = "rep-row rep-badge";
@@ -834,6 +873,51 @@ function cifraRow(c){
   d.querySelector(".rm").addEventListener("click", () => d.remove());
   return d;
 }
+function chipRow(c){
+  c = c || {titulo:"",subtitulo:"",icono:"i-check",color:"green",activo:true};
+  const d = document.createElement("div");
+  d.className = "rep-row rep-chip";
+  d.innerHTML =
+    '<div class="field"><label>Título de la tarjeta</label><input class="inp ch-t" value="' + esc(c.titulo) + '" placeholder="Expediente 1.482/25"></div>' +
+    '<div class="field"><label>Subtítulo</label><input class="inp ch-s" value="' + esc(c.subtitulo) + '" placeholder="RESUELTO FAVORABLEMENTE"></div>' +
+    '<div class="field"><label>Icono</label>' + selCls("ch-i",CHIP_ICONS,c.icono||"i-check") + "</div>" +
+    '<div class="field"><label>Color del icono</label>' + selCls("ch-c",COLORS,c.color||"green") + "</div>" +
+    '<div class="rep-check"><em>INCLUIR</em><label class="switch"><input type="checkbox" class="ch-a" aria-label="Incluir tarjeta"' + (c.activo!==false?" checked":"") + '><span></span></label></div>' +
+    '<button type="button" class="icon-btn danger rm" aria-label="Quitar"><svg class="ic"><use href="#i-trash"/></svg></button>';
+  d.querySelector(".rm").addEventListener("click", () => { d.remove(); renderChipPreview(); });
+  return d;
+}
+function readChips(){
+  return $$("#i-chips .rep-row").map(r => ({
+    titulo: r.querySelector(".ch-t").value.trim(),
+    subtitulo: r.querySelector(".ch-s").value.trim(),
+    icono: r.querySelector(".ch-i").value,
+    color: r.querySelector(".ch-c").value,
+    activo: r.querySelector(".ch-a").checked
+  }));
+}
+function renderChipPreview(){
+  const box = $("#chipPrev"); if (!box) return;
+  const all = readChips();
+  const globalOn = $("#i-showChips").checked;
+  let h = '<span class="lbl">Vista previa · así se verán sobre el sello</span>';
+  if (!all.length) h += '<span class="cp-empty">Sin tarjetas. Agregue una para verla aquí.</span>';
+  else h += all.map(c =>
+    '<div class="cp' + ((!c.activo || !globalOn) ? " off" : "") + '">' +
+    '<svg class="ic" style="color:' + (CVAR[c.color]||"var(--gold)") + '"><use href="#' + esc(c.icono||"i-check") + '"/></svg>' +
+    "<span><b>" + esc(c.titulo || "(sin título)") + "</b><i>" + esc(c.subtitulo || "") + "</i></span></div>").join("");
+  if (!globalOn && all.length) h += '<span class="cp-empty">El interruptor general está apagado: no se mostrarán en el sitio.</span>';
+  box.innerHTML = h;
+}
+$("#i-chips").addEventListener("input", renderChipPreview);
+$("#i-chips").addEventListener("change", renderChipPreview);
+$("#i-showChips").addEventListener("change", renderChipPreview);
+$("#addChip").addEventListener("click", () => {
+  if ($$("#i-chips .rep-row").length >= MAX_CHIPS) return toast("Máximo " + MAX_CHIPS + " tarjetas flotantes.", "err");
+  $("#i-chips").appendChild(chipRow());
+  renderChipPreview();
+});
+
 function renderInicio(){
   const d = state.inicio || SEED.inicio;
   $("#i-eyebrow").value = d.eyebrow || "";
@@ -847,8 +931,12 @@ function renderInicio(){
   $("#i-showBadges").checked = d.showBadges !== false;
   $("#i-showCifras").checked = d.showCifras !== false;
   $("#i-showMarquee").checked = d.showMarquee !== false;
+  $("#i-showChips").checked = d.showChips !== false;
   const b = $("#i-badges"); b.innerHTML = ""; (d.badges || []).forEach(x => b.appendChild(badgeRow(x)));
   const c = $("#i-cifras"); c.innerHTML = ""; (d.cifras || []).forEach(x => c.appendChild(cifraRow(x)));
+  const ch = $("#i-chips"); ch.innerHTML = "";
+  (Array.isArray(d.chips) ? d.chips : SEED.inicio.chips).slice(0,MAX_CHIPS).forEach(x => ch.appendChild(chipRow(x)));
+  renderChipPreview();
 }
 $("#addBadge").addEventListener("click", () => $("#i-badges").appendChild(badgeRow("")));
 $("#addCifra").addEventListener("click", () => $("#i-cifras").appendChild(cifraRow()));
@@ -860,8 +948,10 @@ $("#saveInicio").addEventListener("click", async () => {
     cta1:$("#i-cta1").value.trim() || "Enviar Consulta Gratuita", cta2:$("#i-cta2").value.trim() || "Hablar por WhatsApp",
     imagen:$("#i-imagen").value.trim(), mision:$("#i-mision").value.trim(),
     marquee:commas($("#i-marquee").value),
-    showBadges:$("#i-showBadges").checked, showCifras:$("#i-showCifras").checked, showMarquee:$("#i-showMarquee").checked,
+    showBadges:$("#i-showBadges").checked, showCifras:$("#i-showCifras").checked,
+    showMarquee:$("#i-showMarquee").checked, showChips:$("#i-showChips").checked,
     badges:$$("#i-badges .rep-row").map(r => r.querySelector("input").value.trim()).filter(Boolean),
+    chips:readChips().filter(c => c.titulo).slice(0,MAX_CHIPS),
     cifras:$$("#i-cifras .rep-row").map(r => ({
       pref:r.querySelector(".c-pref").value.trim(), valor:parseInt(r.querySelector(".c-val").value,10)||0,
       suf:r.querySelector(".c-suf").value.trim(), label:r.querySelector(".c-label").value.trim(),
@@ -1100,8 +1190,10 @@ function renderDiag(){
   ["inicio","contacto"].forEach(k => {
     const st = state.status[k];
     const p = st === "ok" ? pill("p-ok","Lectura OK") : st === "error" ? pill("p-bad","Denegado") : pill("p-wait","Leyendo");
-    const meta = st === "error" ? "Error: <strong>" + esc(state.err[k]||"") + "</strong>"
-      : state[k] ? "Documento <strong>sitio/" + k + "</strong> presente" : "Documento <strong>sitio/" + k + "</strong> inexistente (el sitio usa su contenido base)";
+    let meta;
+    if (st === "error") meta = "Error: <strong>" + esc(state.err[k]||"") + "</strong>";
+    else if (state[k]) meta = "Documento <strong>sitio/" + k + "</strong> presente" + (k === "inicio" ? " · <strong>" + ((state[k].chips||[]).length) + "</strong> tarjeta(s) flotante(s)" : "");
+    else meta = "Documento <strong>sitio/" + k + "</strong> inexistente (el sitio usa su contenido base)";
     h += '<div class="diag-row"><b>SITIO/' + k.toUpperCase() + '</b><div class="meta">' + meta + "</div>" + p + "</div>";
   });
   COLS.forEach(c => {
@@ -1135,7 +1227,7 @@ $("#diagWrite").addEventListener("click", async () => {
     const ref = doc(db,"sitio","_diagnostico");
     await setDoc(ref, { ts:serverTimestamp(), by:auth.currentUser?.email || "" });
     await deleteDoc(ref);
-    out.innerHTML = '<div class="warn good"><svg class="ic"><use href="#i-check"/></svg><span><b>Escritura correcta.</b> Las reglas permiten guardar y el proyecto es el adecuado. Si alguna lista sigue vacía, es porque no hay documentos: importe el contenido del sitio.</span></div>';
+    out.innerHTML = '<div class="warn good"><svg class="ic"><use href="#i-check"/></svg><span><b>Escritura correcta.</b> Las reglas permiten guardar y el proyecto es el adecuado.</span></div>';
   } catch(e){
     out.innerHTML = '<div class="warn bad"><svg class="ic"><use href="#i-alert"/></svg><span><b>Escritura bloqueada (' + esc(e.code||e.message) + ').</b> Publique las reglas de la pestaña Ayuda y verifique haber iniciado sesión en este proyecto.</span></div>';
   } finally { btn.classList.remove("loading"); }
@@ -1239,7 +1331,7 @@ function parseIndex(src){
   const cardAr = aCards.map((c,i) => ({
     id: c.getAttribute("data-open-area") || slugify(T(c.querySelector("h3")) || "area-"+(i+1)),
     nombre: T(c.querySelector("h3")), descripcion: T(c.querySelector("p")),
-    color: colorOf(c.querySelector(".area-tile")) !== "gold" ? colorOf(c.querySelector(".area-tile")) : (TAG2COLOR[(c.querySelector(".tag")?.className||"").split(" ").find(x=>TAG2COLOR[x])] || "gold"),
+    color: (TAG2COLOR[(c.querySelector(".tag")?.className||"").split(" ").find(x=>TAG2COLOR[x])] || "gold"),
     styleColor: (c.getAttribute("style")||"").match(/--c:\s*var\(--([a-z]+)\)/)?.[1] || "",
     tags: Array.from(c.querySelectorAll(".tag")).map(t => T(t)),
     orden: i+1
@@ -1286,6 +1378,19 @@ function parseIndex(src){
     pref: T(c.querySelector(".fix")), valor: parseInt(c.querySelector("[data-count]")?.getAttribute("data-count")||"0",10)||0,
     suf: T(c.querySelector(".suf")), label: T(c.querySelector(".trust-label")), desc: T(c.querySelector(".trust-desc")), activo:true
   }));
+  const chipColor = c => {
+    const st = (c.getAttribute("style")||"") + " " + (c.querySelector(".ic")?.getAttribute("style")||"");
+    const m = st.match(/color:\s*var\(--([a-z]+)\)/);
+    if (m) return m[1];
+    if (c.classList.contains("cf1")) return "green";
+    return "gold";
+  };
+  const chips = Array.from(dom.querySelectorAll(".chip-float")).slice(0,MAX_CHIPS).map(c => ({
+    titulo: T(c.querySelector("b")),
+    subtitulo: T(c.querySelector("span span")) || T(Array.from(c.querySelectorAll("span")).pop()),
+    icono: (c.querySelector("use")?.getAttribute("href") || "#i-check").replace("#",""),
+    color: chipColor(c), activo:true
+  }));
   const cta1 = dom.querySelector(".hero-ctas .btn-primary"), cta2 = dom.querySelector(".hero-ctas .btn-wa");
   const btnLabel = el => { if (!el) return ""; for (const n of el.childNodes) if (n.nodeType === 3 && n.nodeValue.trim()) return n.nodeValue.trim(); return ""; };
   out.inicio = {
@@ -1296,9 +1401,10 @@ function parseIndex(src){
     imagen: dom.querySelector(".hero-bgimg")?.getAttribute("src") || "",
     mision: T(dom.querySelector(".foot-mission")),
     badges: Array.from(dom.querySelectorAll(".hero-trust span")).map(s => T(s)).filter(Boolean),
+    chips: chips.length ? chips : SEED.inicio.chips,
     cifras: cifras.length ? cifras : SEED.inicio.cifras,
     marquee: Array.from(dom.querySelectorAll(".mq-set")[0]?.querySelectorAll("span") || []).map(s => T(s)).filter(Boolean),
-    showBadges:true, showCifras:true, showMarquee:true
+    showBadges:true, showCifras:true, showMarquee:true, showChips:true
   };
   /* CONTACTO */
   const rowBy = ic => Array.from(dom.querySelectorAll(".info-row")).find(r => r.querySelector('use[href="#'+ic+'"]'));
@@ -1335,12 +1441,12 @@ function renderImport(){
     ["equipo","Equipo / Abogados", d.equipo.length, "Colección equipo"],
     ["areas","Áreas de Práctica", d.areas.length, "Colección areas"],
     ["blog","Publicaciones", d.blog.length, "Colección blog"],
-    ["inicio","Portada y cifras", 1, "Documento sitio/inicio"],
+    ["inicio","Portada, cifras y tarjetas flotantes", 1, "Documento sitio/inicio"],
     ["contacto","Datos de contacto", 1, "Documento sitio/contacto"]
   ];
   let h = "";
   if (d.proyecto && d.proyecto !== firebaseConfig.projectId)
-    h += '<div class="warn bad"><svg class="ic"><use href="#i-alert"/></svg><span><b>Proyecto distinto.</b> El index publicado usa <b>' + esc(d.proyecto) + '</b> y este panel usa <b>' + esc(firebaseConfig.projectId) + '</b>. Por eso el panel no veía lo que se ve online. Importe aquí para unificar, o corrija la configuración del index.</span></div>';
+    h += '<div class="warn bad"><svg class="ic"><use href="#i-alert"/></svg><span><b>Proyecto distinto.</b> El index publicado usa <b>' + esc(d.proyecto) + '</b> y este panel usa <b>' + esc(firebaseConfig.projectId) + '</b>. Importe aquí para unificar, o corrija la configuración del index.</span></div>';
   else if (!d.conector)
     h += '<div class="warn info"><svg class="ic"><use href="#i-alert"/></svg><span><b>El index publicado no está conectado a Firebase.</b> Muestra contenido base escrito en el HTML. Al importar, ese contenido pasa a la base y el sitio (con el conector) lo leerá desde aquí.</span></div>';
   else
@@ -1356,6 +1462,10 @@ function renderImport(){
   if (d.equipo.length){
     h += '<div class="imp-prev"><b>Abogados detectados:</b><br>' +
       d.equipo.map(l => "· <b>" + esc(brandify(l.nombre)) + "</b> — " + esc(brandify(l.rol||"—")) + " · " + esc(brandify(l.matricula||"sin matrícula")) + (l.bio ? " · ficha completa" : " · solo tarjeta")).join("<br>") + "</div>";
+  }
+  if (d.inicio && d.inicio.chips && d.inicio.chips.length){
+    h += '<div class="imp-prev" style="margin-top:10px"><b>Tarjetas flotantes detectadas:</b><br>' +
+      d.inicio.chips.map(c => "· <b>" + esc(c.titulo) + "</b> — " + esc(c.subtitulo||"—")).join("<br>") + "</div>";
   }
   h += '<div class="row-actions"><button type="button" class="btn btn-ghost" id="impCancel">Descartar</button><button type="button" class="btn btn-primary" id="impWrite"><svg class="ic"><use href="#i-db"/></svg>Escribir en Firestore</button></div>';
   box.innerHTML = h;
@@ -1437,6 +1547,7 @@ async function doImport(){
         if (chosen.includes("equipo")) goView("equipo");
         else if (chosen.includes("areas")) goView("areas");
         else if (chosen.includes("blog")) goView("blog");
+        else if (chosen.includes("inicio")) goView("inicio");
       } catch(e){ fsErr(e); }
     }, "Escribir");
 }
@@ -1449,7 +1560,7 @@ $("#copyRules").addEventListener("click", async () => {
 });
 $("#seedBtn").addEventListener("click", () => {
   openConfirm("Cargar contenido inicial",
-    "Se escribirán <b>6 áreas, 4 abogados, 6 publicaciones</b> y los documentos de <b>Inicio y Contacto</b> con el contenido de Zarza &amp; Asociados, sobrescribiendo los documentos con esos identificadores. ¿Continuar?",
+    "Se escribirán <b>6 áreas, 4 abogados, 6 publicaciones</b> y los documentos de <b>Inicio y Contacto</b> (incluidas las tarjetas flotantes del sello) con el contenido de Zarza &amp; Asociados, sobrescribiendo los documentos con esos identificadores. ¿Continuar?",
     async () => {
       try {
         const b = writeBatch(db), ts = serverTimestamp();
