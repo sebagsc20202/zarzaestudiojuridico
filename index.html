@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"LegalService","name":"Zarza & Asociados — Estudio Jurídico Integral","address":{"@type":"PostalAddress","streetAddress":"Av. Corrientes 1234, Piso 7, Of. B","addressLocality":"Ciudad Autónoma de Córdoba","postalCode":"C1043","addressCountry":"AR"},"telephone":"+541143728900","email":"consultas@zarzaasociados.com.ar","openingHours":"Mo-Fr 08:00-18:00","foundingDate":"2004","priceRange":"Primera consulta sin cargo"}
+{"@context":"https://schema.org","@type":"LegalService","name":"Zarza & Asociados — Estudio Jurídico Integral","address":{"@type":"PostalAddress","streetAddress":"Av. Corrientes 1234, Piso 7, Of. B","addressLocality":"Córdoba","postalCode":"C1043","addressCountry":"AR"},"telephone":"+541143728900","email":"consultas@zarzaasociados.com.ar","openingHours":"Mo-Fr 08:00-18:00","foundingDate":"2004","priceRange":"Primera consulta sin cargo"}
 </script>
 <style>
 /* ============================================================
@@ -1383,7 +1383,7 @@ const LEGAL = {
     '<p class="m-p"><b style="color:var(--tx)">Veracidad:</b> el usuario se compromete a brindar datos veraces y a no utilizar los canales de contacto con fines ilícitos o abusivos.</p>'+
     '<p class="m-p"><b style="color:var(--tx)">Propiedad intelectual:</b> los textos, artículos, identidad visual y materiales del sitio pertenecen al estudio; su reproducción requiere autorización, salvo cita breve con atribución.</p>'+
     '<p class="m-p"><b style="color:var(--tx)">Enlaces externos:</b> los servicios de WhatsApp, Google Maps y LinkedIn se rigen por sus propias políticas de privacidad y términos; el estudio no controla su tratamiento de datos.</p>'+
-    '<p class="m-p"><b style="color:var(--tx)">Jurisdicción:</b> estos términos se rigen por las leyes de la República Argentina; cualquier controversia se somete a los tribunales ordinarios de la Ciudad Autónoma de Córdoba.</p>'+
+    '<p class="m-p"><b style="color:var(--tx)">Jurisdicción:</b> estos términos se rigen por las leyes de la República Argentina; cualquier controversia se somete a los tribunales ordinarios de la ciudad de Córdoba.</p>'+
     '<div class="m-plate">Última actualización: enero de 2026.</div>' },
   matriculas:{ t:"Matrículas profesionales del estudio", eyebrow:"Información legal",
     html:'<p class="m-p">Todos los profesionales del estudio se encuentran matriculados ante el <b style="color:var(--gold-2)">Colegio Público de la Abogacía de la Capital Federal (CPACF)</b>, con matrícula vigente y habilitación para el ejercicio.</p>'+
@@ -1789,7 +1789,8 @@ $("#fsReset").addEventListener("click", () => {
 
 <!-- ════════════════════════════════════════════════════════════
      CONECTOR FIREBASE — ZARZA & ASOCIADOS · proyecto zarzaasociados
-     Sincroniza en vivo Inicio, Áreas, Equipo, Blog y Contacto.
+     Sincroniza en vivo Inicio (incluidas las tarjetas flotantes),
+     Áreas, Equipo, Blog y Contacto.
      ════════════════════════════════════════════════════════════ -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -1815,7 +1816,7 @@ const inline = s => esc(s).replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>").replace(/\*(
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const fmt = new Intl.NumberFormat("es-AR");
 const MESES = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
-const fdate = iso => { if (!iso) return ""; const [y,m,d] = iso.split("-"); return d + " · " + (MESES[parseInt(m,10)-1]||"") + " · " + y; };
+const fdate = iso => { if (!iso) return ""; const [y,m,d] = String(iso).split("-"); return d + " · " + (MESES[parseInt(m,10)-1]||"") + " · " + y; };
 const byOrden = (a,b) => (a.orden??999)-(b.orden??999);
 const CATCLS = {"Laboral":"cat-laboral","Civil y Comercial":"cat-civil","Familia":"cat-familia","Penal y Tránsito":"cat-penal","Empresario":"cat-empresario","Consumidor":"cat-consumidor"};
 const TAGCLS = {gold:"tag-gold",blue:"tag-blue",green:"tag-green",amber:"tag-amber",red:"tag-red",violet:"tag-violet"};
@@ -1835,7 +1836,7 @@ function replaceContact(prev, next){
     nodes.forEach(n => { let t = n.nodeValue; for (const [a,b] of pairs) t = t.split(a).join(b); if (t !== n.nodeValue) n.nodeValue = t; });
     $$("[data-copy]").forEach(el => { let v = el.dataset.copy; for (const [a,b] of pairs) v = v.split(a).join(b); el.dataset.copy = v; });
   }
-  const pd = prev.telefono.replace(/[^\d+]/g,""), nd = next.telefono.replace(/[^\d+]/g,"");
+  const pd = String(prev.telefono||"").replace(/[^\d+]/g,""), nd = String(next.telefono||"").replace(/[^\d+]/g,"");
   $$('a[href^="tel:"]').forEach(a => { const h = a.getAttribute("href"); if (h === "tel:"+pd) a.href = "tel:"+nd; else if (h === "tel:+"+prev.waNum) a.href = "tel:+"+next.waNum; });
   $$('a[href*="wa.me/"]').forEach(a => a.href = a.getAttribute("href").replace(/wa\.me\/\d+/, "wa.me/"+next.waNum));
   $$('a[href^="mailto:"]').forEach(a => { if (a.getAttribute("href") === "mailto:"+prev.email) a.href = "mailto:"+next.email; });
@@ -1876,7 +1877,7 @@ function hideNav(href, hide){
   $$('a[href="'+href+'"]').forEach(a => { const li = a.closest("li"); if (li) li.style.display = hide ? "none" : ""; else a.style.display = hide ? "none" : ""; });
 }
 
-/* ── INICIO ── */
+/* ── INICIO (incluye tarjetas flotantes editables del sello) ── */
 function applyInicio(d){
   if (!d) return;
   const eb = $(".hero-eyebrow"); if (eb && d.eyebrow) eb.textContent = d.eyebrow;
@@ -1890,6 +1891,29 @@ function applyInicio(d){
   const mis = $(".foot-mission"); if (mis && d.mision) mis.textContent = d.mision;
   const ht = $(".hero-trust");
   if (ht){ ht.style.display = d.showBadges === false ? "none" : ""; ht.innerHTML = (d.badges||[]).map(b => '<span><svg class="ic"><use href="#i-check"/></svg>' + esc(b) + "</span>").join(""); }
+
+  /* Tarjetas flotantes: “Expediente … / Resuelto …” y “Guardia penal …” */
+  const sw = $(".seal-wrap");
+  if (sw){
+    if (Array.isArray(d.chips)){
+      sw.querySelectorAll(".chip-float").forEach(el => el.remove());
+      if (d.showChips !== false){
+        const EXTRA = ["top:5%;right:-2%","bottom:9%;left:-2%"];
+        d.chips.filter(c => c && c.activo !== false).slice(0,4).forEach((c,i) => {
+          const el = document.createElement("div");
+          el.className = "chip-float" + (i < 2 ? " cf" + (i+1) : "");
+          if (i >= 2) el.setAttribute("style", EXTRA[i-2]);
+          el.style.animationDelay = (i * 0.7) + "s";
+          el.innerHTML = '<svg class="ic" style="color:' + (CVAR[c.color]||"var(--gold)") + '"><use href="#' + esc(c.icono||"i-check") + '"/></svg>' +
+            "<span><b>" + esc(c.titulo||"") + "</b><span>" + esc(c.subtitulo||"") + "</span></span>";
+          sw.appendChild(el);
+        });
+      }
+    } else if (d.showChips === false){
+      sw.querySelectorAll(".chip-float").forEach(el => el.style.display = "none");
+    }
+  }
+
   show(".trust", d.showCifras !== false);
   const tg = $(".trust-grid");
   if (tg && Array.isArray(d.cifras)){
@@ -1947,7 +1971,7 @@ function applyContacto(raw){
   const fb = $(".foot-bottom"); if (fb){ const sp = fb.querySelectorAll("span"); if (sp[1]) sp[1].textContent = ((d.direccion||"") + " · " + (d.horario||"")).toUpperCase(); }
   $$("a[data-wa]").forEach(a => { a.href = waLink(); a.target = "_blank"; a.rel = "noopener"; });
   const ld = document.querySelector('script[type="application/ld+json"]');
-  if (ld){ try { const j = JSON.parse(ld.textContent); j.name = "Zarza & Asociados — Estudio Jurídico Integral"; j.telephone = d.telefono; j.email = d.email; if (j.address) j.address.streetAddress = d.direccion; ld.textContent = JSON.stringify(j); } catch(_){} }
+  if (ld){ try { const j = JSON.parse(ld.textContent); j.name = "Zarza & Asociados — Estudio Jurídico Integral"; j.telephone = d.telefono; j.email = d.email; if (j.address){ j.address.streetAddress = d.direccion; j.address.addressLocality = d.ciudad || j.address.addressLocality; } ld.textContent = JSON.stringify(j); } catch(_){} }
 }
 new MutationObserver(() => { const a = $("#fsWa"); if (a) a.href = a.getAttribute("href").replace(/wa\.me\/\d+/, "wa.me/"+C.waNum); }).observe($("#fsWa"), { attributes:true, attributeFilter:["href"] });
 new MutationObserver(() => { const h = $("#uHint"); if (!h) return;
@@ -2062,7 +2086,7 @@ function renderBlog(){
   if (tg){ tg.style.display = list.length > 3 ? "" : "none";
     tg.innerHTML = 'Ver todas las publicaciones (' + list.length + ') <svg class="ic"><use href="#i-chev"/></svg>';
     tg.setAttribute("aria-expanded","false"); }
-  const si = $("#blog .sec-index"); if (si) si.innerHTML = "<b>" + String(list.length).padStart(2,"0") + "</b> / ARTÍCULOS · ACTUALIZADO " + (f && f.fecha ? MESES[parseInt(f.fecha.split("-")[1],10)-1] + " " + f.fecha.split("-")[0] : "2026");
+  const si = $("#blog .sec-index"); if (si) si.innerHTML = "<b>" + String(list.length).padStart(2,"0") + "</b> / ARTÍCULOS · ACTUALIZADO " + (f && f.fecha ? MESES[parseInt(String(f.fecha).split("-")[1],10)-1] + " " + String(f.fecha).split("-")[0] : "2026");
 }
 const bt = $("#blogToggle");
 if (bt) bt.addEventListener("click", e => {
@@ -2156,7 +2180,7 @@ function legalModalZ(kind){
     '<p class="m-p"><b style="color:var(--tx)">Relación profesional:</b> se constituye únicamente con aceptación expresa del caso y convenio de honorarios por escrito (Ley 27.423 y normas del CPACF). El envío de un formulario no genera dicha relación.</p>' +
     '<p class="m-p"><b style="color:var(--tx)">Propiedad intelectual:</b> textos, artículos e identidad visual pertenecen al estudio; su reproducción requiere autorización, salvo cita breve con atribución.</p>' +
     '<p class="m-p"><b style="color:var(--tx)">Enlaces externos:</b> WhatsApp, Google Maps y LinkedIn se rigen por sus propias políticas.</p>' +
-    '<p class="m-p"><b style="color:var(--tx)">Jurisdicción:</b> leyes de la República Argentina; tribunales ordinarios de la Ciudad Autónoma de Córdoba.</p>' +
+    '<p class="m-p"><b style="color:var(--tx)">Jurisdicción:</b> leyes de la República Argentina; tribunales ordinarios de la ciudad de Córdoba.</p>' +
     '<div class="m-plate">Última actualización: enero de 2026.</div><div class="m-cta-row"><button type="button" class="btn btn-ghost" data-modal-close>Volver al sitio</button></div>';
   const rows = S.equipo.filter(l => l.activo !== false).sort(byOrden).map(l =>
     "<tr><td>" + esc(l.nombre) + '</td><td class="mono">' + esc((l.matricula||"").replace("CPACF · ","")) + "</td><td>" + esc((l.rol||"").split("·")[0].trim()) + "</td></tr>").join("");
