@@ -526,35 +526,34 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 .mat-table .mono{font-family:var(--mono);font-size:12.5px;color:var(--gold-2)}
 .js [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
 .js [data-reveal].revealed{opacity:1;transform:none}
-
 /* ═══ INDICADOR DE SINCRONIZACIÓN FIREBASE ═══ */
 .fb-sync{
-  position:fixed;
-  bottom:22px;
-  left:22px;
-  z-index:80;
-  display:flex;
-  align-items:center;
-  gap:9px;
-  padding:9px 14px;
-  background:rgba(13,20,36,.92);
-  border:1px solid var(--line);
-  border-radius:10px;
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  font-family:var(--mono);
-  font-size:10.5px;
-  letter-spacing:.1em;
-  color:var(--tx-mute);
-  text-transform:uppercase;
-  transition:all .3s var(--ease);
-  pointer-events:none;
+position:fixed;
+bottom:22px;
+left:22px;
+z-index:80;
+display:flex;
+align-items:center;
+gap:9px;
+padding:9px 14px;
+background:rgba(13,20,36,.92);
+border:1px solid var(--line);
+border-radius:10px;
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
+font-family:var(--mono);
+font-size:10.5px;
+letter-spacing:.1em;
+color:var(--tx-mute);
+text-transform:uppercase;
+transition:all .3s var(--ease);
+pointer-events:none;
 }
 .fb-sync i{
-  width:8px;height:8px;border-radius:50%;
-  background:var(--amber);font-style:normal;
-  transition:background .3s;
-  flex:none;
+width:8px;height:8px;border-radius:50%;
+background:var(--amber);font-style:normal;
+transition:background .3s;
+flex:none;
 }
 .fb-sync.ok{color:#8FE0B4;border-color:rgba(47,191,113,.4)}
 .fb-sync.ok i{background:var(--green);box-shadow:0 0 10px rgba(47,191,113,.7)}
@@ -562,11 +561,10 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 .fb-sync.err i{background:var(--red);box-shadow:0 0 10px rgba(226,72,61,.7)}
 .fb-sync.pulse{animation:syncPulse 1.2s ease-in-out}
 @keyframes syncPulse{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.05);border-color:var(--gold)}
-  100%{transform:scale(1)}
+0%{transform:scale(1)}
+50%{transform:scale(1.05);border-color:var(--gold)}
+100%{transform:scale(1)}
 }
-
 @media (max-width:1180px){
 .hero-vertical{display:none}
 .cf1{left:-2%}.cf2{right:-2%}
@@ -1317,13 +1315,11 @@ html{scroll-behavior:auto}
 <div class="modal-scroll" id="modalBody"></div>
 </div>
 </div>
-
 <!-- ═══ INDICADOR DE SINCRONIZACIÓN ═══ -->
 <div class="fb-sync" id="fbSync" title="Estado de sincronización con Firebase">
 <i></i>
 <span id="fbSyncTxt">Conectando…</span>
 </div>
-
 <script>
 /* ════════════════════════════════════════════════════════════
 ZARZA & ASOCIADOS — Lógica de interacción (vanilla JS)
@@ -1842,18 +1838,28 @@ const rad = "ZA-2026-" + Math.floor(1000 + Math.random() * 9000);
 const areaTxt = fArea.options[fArea.selectedIndex].text;
 const urg = form.querySelector('input[name="urgencia"]:checked').value;
 const urgTag = urg === "Alta" ? "tag-red" : urg === "Media" ? "tag-amber" : "tag-green";
+/* ═══════════════════════════════════════════════════════
+CORRECCIÓN CRÍTICA: Reutilizar la app de Firebase
+si ya fue inicializada por el módulo conector.
+═══════════════════════════════════════════════════════ */
 (async () => {
 try {
-const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+const { initializeApp, getApps, getApp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
 const { getFirestore, collection, addDoc, serverTimestamp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
-const app = initializeApp({
+const firebaseConfig = {
 apiKey: "AIzaSyDGx9T9I1ZRV32vby5kaKI1jmps4vbzRKE",
 authDomain: "zarzaasociados.firebaseapp.com",
 projectId: "zarzaasociados",
 storageBucket: "zarzaasociados.firebasestorage.app",
 messagingSenderId: "177641854130",
 appId: "1:177641854130:web:f41e67698b40d2992825ab"
-});
+};
+let app;
+if (getApps().length === 0) {
+app = initializeApp(firebaseConfig);
+} else {
+app = getApp();
+}
 const db = getFirestore(app);
 await addDoc(collection(db, "clientes"), {
 nombre: fNombre.value.trim(),
@@ -1918,7 +1924,6 @@ fNombre.focus();
 });
 })();
 </script>
-
 <!-- ════════════════════════════════════════════════════════════
 CONECTOR FIREBASE MEJORADO — Sincronización en tiempo real
 Con indicador visual de estado y reporte de errores
@@ -1927,19 +1932,17 @@ Con indicador visual de estado y reporte de errores
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
 import { getFirestore, collection, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
 const app = initializeApp({
-  apiKey: "AIzaSyDGx9T9I1ZRV32vby5kaKI1jmps4vbzRKE",
-  authDomain: "zarzaasociados.firebaseapp.com",
-  projectId: "zarzaasociados",
-  storageBucket: "zarzaasociados.firebasestorage.app",
-  messagingSenderId: "177641854130",
-  appId: "1:177641854130:web:f41e67698b40d2992825ab",
-  measurementId: "G-4TH14EY7WP"
+apiKey: "AIzaSyDGx9T9I1ZRV32vby5kaKI1jmps4vbzRKE",
+authDomain: "zarzaasociados.firebaseapp.com",
+projectId: "zarzaasociados",
+storageBucket: "zarzaasociados.firebasestorage.app",
+messagingSenderId: "177641854130",
+appId: "1:177641854130:web:f41e67698b40d2992825ab",
+measurementId: "G-4TH14EY7WP"
 });
 isSupported().then(ok => { if (ok) getAnalytics(app); }).catch(() => {});
 const db = getFirestore(app);
-
 const $ = s => document.querySelector(s);
 const $$ = s => Array.from(document.querySelectorAll(s));
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -1958,39 +1961,35 @@ let C = { ...DEFAULTS };
 const S = { areas:[], equipo:[], blog:[], has:{areas:false,equipo:false,blog:false} };
 const waLink = txt => "https://wa.me/" + C.waNum + "?text=" + encodeURIComponent(txt || C.waMsg);
 const telHref = v => "tel:" + String(v||"").replace(/[^\d+]/g,"");
-
 /* ═══ INDICADOR DE SINCRONIZACIÓN ═══ */
 const syncEl = $("#fbSync");
 const syncTxt = $("#fbSyncTxt");
 let syncCount = 0;
 let hasError = false;
-
 function setSync(status, msg){
-  if (!syncEl) return;
-  syncEl.classList.remove("ok","err","pulse");
-  if (status === "ok"){
-    syncEl.classList.add("ok");
-    syncTxt.textContent = msg || "Sincronizado";
-    // Pulso breve al actualizar
-    void syncEl.offsetWidth;
-    syncEl.classList.add("pulse");
-  } else if (status === "err"){
-    syncEl.classList.add("err");
-    syncTxt.textContent = msg || "Error de conexión";
-    hasError = true;
-  } else {
-    syncTxt.textContent = msg || "Conectando…";
-  }
+if (!syncEl) return;
+syncEl.classList.remove("ok","err","pulse");
+if (status === "ok"){
+syncEl.classList.add("ok");
+syncTxt.textContent = msg || "Sincronizado";
+// Pulso breve al actualizar
+void syncEl.offsetWidth;
+syncEl.classList.add("pulse");
+} else if (status === "err"){
+syncEl.classList.add("err");
+syncTxt.textContent = msg || "Error de conexión";
+hasError = true;
+} else {
+syncTxt.textContent = msg || "Conectando…";
 }
-
+}
 function reportSync(){
-  syncCount++;
-  const total = 5; // inicio, contacto, areas, equipo, blog
-  if (syncCount >= total && !hasError){
-    setSync("ok", "En vivo · " + new Date().toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit"}));
-  }
+syncCount++;
+const total = 5; // inicio, contacto, areas, equipo, blog
+if (syncCount >= total && !hasError){
+setSync("ok", "En vivo · " + new Date().toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit"}));
 }
-
+}
 /* ── Reemplazo global de datos de contacto ── */
 function replaceContact(prev, next){
 const pairs = [[prev.telefono,next.telefono],[prev.waDisplay,next.waDisplay],[prev.email,next.email]].filter(p => p[0] && p[1] && p[0] !== p[1]);
@@ -2010,7 +2009,6 @@ else if (h === "tel:+"+prev.waNum) a.href = "tel:+"+next.waNum;
 $$('a[href*="wa.me/"]:not([data-wa-lawyer])').forEach(a => a.href = a.getAttribute("href").replace(/wa\.me\/\d+/, "wa.me/"+next.waNum));
 $$('a[href^="mailto:"]').forEach(a => { if (a.getAttribute("href") === "mailto:"+prev.email) a.href = "mailto:"+next.email; });
 }
-
 /* ── Reveals y contadores para contenido inyectado ── */
 const rio = ("IntersectionObserver" in window && !REDUCED) ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("revealed"); rio.unobserve(e.target); } }), { threshold:.12 }) : null;
 function reveal(scope){
@@ -2045,7 +2043,6 @@ function show(sel, on){ const el = $(sel); if (el) el.style.display = on ? "" : 
 function hideNav(href, hide){
 $$('a[href="'+href+'"]').forEach(a => { const li = a.closest("li"); if (li) li.style.display = hide ? "none" : ""; else a.style.display = hide ? "none" : ""; });
 }
-
 /* ── INICIO ── */
 function applyInicio(d){
 if (!d) return;
@@ -2099,7 +2096,6 @@ const set = '<div class="mq-set">' + d.marquee.map(t => "<span>" + esc(t) + "</s
 track.innerHTML = set + set;
 }
 }
-
 /* ── CONTACTO ── */
 function applyContacto(raw){
 if (!raw) return;
@@ -2139,14 +2135,12 @@ $$("a[data-wa]").forEach(a => { a.href = waLink(); a.target = "_blank"; a.rel = 
 const ld = document.querySelector('script[type="application/ld+json"]');
 if (ld){ try { const j = JSON.parse(ld.textContent); j.name = "Zarza & Asociados — Estudio Jurídico Integral"; j.telephone = d.telefono; j.email = d.email; if (j.address){ j.address.streetAddress = d.direccion; j.address.addressLocality = d.ciudad || j.address.addressLocality; } ld.textContent = JSON.stringify(j); } catch(_){} }
 }
-
 new MutationObserver(() => { const a = $("#fsWa"); if (a) a.href = a.getAttribute("href").replace(/wa\.me\/\d+/, "wa.me/"+C.waNum); }).observe($("#fsWa"), { attributes:true, attributeFilter:["href"] });
 new MutationObserver(() => { const h = $("#uHint"); if (!h) return;
 h.querySelectorAll('a[href^="tel:"]').forEach(a => a.href = telHref(C.waDisplay));
 const w = document.createTreeWalker(h, NodeFilter.SHOW_TEXT); const ns = []; while (w.nextNode()) ns.push(w.currentNode);
 ns.forEach(n => { n.nodeValue = n.nodeValue.split(DEFAULTS.waDisplay).join(C.waDisplay); });
 }).observe($("#uHint"), { childList:true, subtree:true });
-
 /* ── ÁREAS ── */
 function renderAreas(){
 const list = S.areas.filter(a => a.activo !== false).sort(byOrden);
@@ -2183,7 +2177,6 @@ list.map(a => '<option value="' + esc(a.id) + '">' + esc(a.nombre) + "</option>"
 if (v && sel.querySelector('option[value="'+v+'"]')) sel.value = v;
 }
 }
-
 /* ── EQUIPO ── */
 function renderEquipo(){
 const list = S.equipo.filter(l => l.activo !== false).sort(byOrden);
@@ -2207,7 +2200,6 @@ reveal(".team-grid");
 }
 const si = $("#equipo .sec-index"); if (si) si.innerHTML = "<b>" + String(list.length).padStart(2,"0") + "</b> / PROFESIONALES · CPACF";
 }
-
 /* ── BLOG ── */
 function parseBody(text){
 const lines = String(text||"").split("\n");
@@ -2258,7 +2250,6 @@ tg.innerHTML = 'Ver todas las publicaciones (' + list.length + ') <svg class="ic
 tg.setAttribute("aria-expanded","false"); }
 const si = $("#blog .sec-index"); if (si) si.innerHTML = "<b>" + String(list.length).padStart(2,"0") + "</b> / ARTÍCULOS · ACTUALIZADO " + (f && f.fecha ? MESES[parseInt(String(f.fecha).split("-")[1],10)-1] + " " + String(f.fecha).split("-")[0] : "2026");
 }
-
 /* ── Modales propios con datos de Firebase ── */
 const root = $("#modalRoot"), mbody = $("#modalBody"), mclose = $("#modalClose"), mback = $("#modalBackdrop");
 let cOpen = false;
@@ -2283,7 +2274,6 @@ setTimeout(() => { root.classList.remove("open","closing"); mbody.innerHTML = ""
 mclose.addEventListener("click", () => { if (cOpen) closeZ(); });
 mback.addEventListener("click", () => { if (cOpen) closeZ(); });
 document.addEventListener("keydown", e => { if (e.key === "Escape" && cOpen){ e.stopImmediatePropagation(); closeZ(); } }, true);
-
 const chipsZ = (arr, cls) => '<div class="m-chips">' + (arr||[]).map(c => '<span class="tag ' + cls + '">' + esc(c) + "</span>").join("") + "</div>";
 function areaModalZ(id){
 const a = S.areas.find(x => x.id === id); if (!a) return "";
@@ -2372,7 +2362,6 @@ const a = areaId ? S.areas.find(x => x.id === areaId) : null;
 toastZ(a ? "Formulario listo para su consulta de " + a.nombre + "." : "Formulario listo para su consulta.", true);
 }, 260);
 }
-
 document.addEventListener("click", e => {
 const t = e.target;
 const oa = t.closest("[data-open-area]");
@@ -2390,43 +2379,40 @@ if (c && cOpen){ e.preventDefault(); e.stopPropagation(); prefillZ(c.dataset.con
 const cl = t.closest("[data-consult-lawyer]");
 if (cl && cOpen){ e.preventDefault(); e.stopPropagation(); const l = S.equipo.find(x => x.id === cl.dataset.consultLawyer); prefillZ(l ? l.areaSlug : null, cl.dataset.consultLawyer); return; }
 }, true);
-
 /* ═══ SUSCRIPCIONES EN VIVO CON REPORTE DE ERRORES ═══ */
 function errHandler(collectionName){
-  return (err) => {
-    console.error("Error Firebase en " + collectionName + ":", err);
-    setSync("err", "Error: " + (err.code || "conexión"));
-    toastZ("No se pudo sincronizar " + collectionName + ". Revise las reglas de Firestore.", false);
-  };
+return (err) => {
+console.error("Error Firebase en " + collectionName + ":", err);
+setSync("err", "Error: " + (err.code || "conexión"));
+toastZ("No se pudo sincronizar " + collectionName + ". Revise las reglas de Firestore.", false);
+};
 }
-
-onSnapshot(doc(db,"sitio","inicio"), 
-  s => { if (s.exists()){ applyInicio(s.data()); reportSync(); } },
-  errHandler("inicio")
+onSnapshot(doc(db,"sitio","inicio"),
+s => { if (s.exists()){ applyInicio(s.data()); reportSync(); } },
+errHandler("inicio")
 );
-onSnapshot(doc(db,"sitio","contacto"), 
-  s => { if (s.exists()){ applyContacto(s.data()); reportSync(); } },
-  errHandler("contacto")
+onSnapshot(doc(db,"sitio","contacto"),
+s => { if (s.exists()){ applyContacto(s.data()); reportSync(); } },
+errHandler("contacto")
 );
-onSnapshot(collection(db,"areas"), 
-  qs => { S.has.areas = !qs.empty; if (!qs.empty){ S.areas = qs.docs.map(d => ({ id:d.id, ...d.data() })); renderAreas(); } reportSync(); },
-  errHandler("áreas")
+onSnapshot(collection(db,"areas"),
+qs => { S.has.areas = !qs.empty; if (!qs.empty){ S.areas = qs.docs.map(d => ({ id:d.id, ...d.data() })); renderAreas(); } reportSync(); },
+errHandler("áreas")
 );
-onSnapshot(collection(db,"equipo"), 
-  qs => { S.has.equipo = !qs.empty; if (!qs.empty){ S.equipo = qs.docs.map(d => ({ id:d.id, ...d.data() })); renderEquipo(); } reportSync(); },
-  errHandler("equipo")
+onSnapshot(collection(db,"equipo"),
+qs => { S.has.equipo = !qs.empty; if (!qs.empty){ S.equipo = qs.docs.map(d => ({ id:d.id, ...d.data() })); renderEquipo(); } reportSync(); },
+errHandler("equipo")
 );
-onSnapshot(collection(db,"blog"), 
-  qs => { S.has.blog = !qs.empty; if (!qs.empty){ S.blog = qs.docs.map(d => ({ id:d.id, ...d.data() })); renderBlog(); } reportSync(); },
-  errHandler("blog")
+onSnapshot(collection(db,"blog"),
+qs => { S.has.blog = !qs.empty; if (!qs.empty){ S.blog = qs.docs.map(d => ({ id:d.id, ...d.data() })); renderBlog(); } reportSync(); },
+errHandler("blog")
 );
-
 // Mensaje inicial
 setSync(null, "Conectando con Firebase…");
 setTimeout(() => {
-  if (syncCount === 0 && !hasError){
-    setSync("err", "Sin respuesta de Firebase");
-  }
+if (syncCount === 0 && !hasError){
+setSync("err", "Sin respuesta de Firebase");
+}
 }, 8000);
 </script>
 </body>
