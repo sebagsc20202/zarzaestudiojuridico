@@ -1353,7 +1353,7 @@ $("#histPurge").hidden = !isSuper();
 if (isSuper()){
 g.innerHTML = '<div class="warn good" style="margin:0 0 16px"><svg class="ic"><use href="#i-shield"/></svg><span><b>Super administrador activo.</b> Puede eliminar sesiones individuales o vaciar el historial completo.</span></div>';
 } else {
-g.innerHTML = '<div class="warn" style="margin:0 0 16px"><svg class="ic"><use href="#i-lock"/></svg><span><b>Historial protegido.</b> Solo <b>' + SUPER_EMAIL + '</b> puede eliminar registros.</span></div>';
+g.innerHTML = '<div class="warn" style="margin:0 0 16px"><svg class="ic"><use href="#i-lock"/></svg><span><b>Historial protegido.</span></div>';
 }
 }
 function histFiltered(){
