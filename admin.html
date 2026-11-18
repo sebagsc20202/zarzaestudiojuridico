@@ -643,7 +643,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 <li>Cada ingreso crea un registro en la colección <code class="mono">sesiones</code> con <b>usuario, inicio, tiempo logueado y acciones</b>. El contador de la sesión actual corre en vivo.</li>
 <li>Las acciones se registran solas: guardar Inicio o Contacto, crear/editar/eliminar áreas, abogados y posts, incluir/excluir, cambiar orden, importar y cargar contenido inicial.</li>
 <li>El historial muestra <b>10 sesiones</b> y luego genera barra de desplazamiento. Toque el ojo de una fila para ver el detalle completo de acciones.</li>
-<li><b>Solo sebagsc2020@gmail.com</b> puede eliminar registros. Los demás usuarios ven un candado: las reglas de Firestore rechazan cualquier borrado o alteración hecho por otra cuenta.</li>
+<li><b>Solo administradores</b> pueden eliminar registros. Los demás usuarios ven un candado: las reglas de Firestore rechazan cualquier borrado o alteración hecho por otra cuenta.</li>
 </ol>
 <div class="warn info"><svg class="ic"><use href="#i-shield"/></svg><span>El usuario <b>sebagsc2020@gmail.com</b> debe existir en Firebase Authentication con proveedor Correo/Contraseña. Su rol se verifica por el email del token, no por una variable del navegador.</span></div>
 </div>
