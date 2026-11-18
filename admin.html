@@ -18,6 +18,7 @@
   --line:rgba(201,162,92,.22);--line-soft:rgba(201,162,92,.12);
   --serif:"Fraunces",Georgia,serif;--sans:"Archivo",system-ui,sans-serif;--mono:"IBM Plex Mono",monospace;
   --ease:cubic-bezier(.22,1,.36,1);
+  --hist-row:62px;--hist-gap:8px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{overflow-x:clip}
@@ -53,7 +54,7 @@ img{display:block;max-width:100%}
 .btn.loading::before{content:"";position:absolute;width:18px;height:18px;border:2.5px solid rgba(6,9,15,.3);border-top-color:var(--ink-950);border-radius:50%;animation:spin .7s linear infinite}
 .btn-ghost.loading::before,.btn-danger.loading::before{border-color:rgba(237,231,218,.25);border-top-color:var(--gold-2)}
 @keyframes spin{to{transform:rotate(360deg)}}
-.icon-btn{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--ink-700);border-radius:8px;color:var(--tx-dim);transition:all .25s}
+.icon-btn{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--ink-700);border-radius:8px;color:var(--tx-dim);transition:all .25s;flex:none}
 .icon-btn:hover{color:var(--gold-2);border-color:var(--gold)}
 .icon-btn.danger:hover{color:#F49B93;border-color:var(--red)}
 .icon-btn .ic{width:16px;height:16px}
@@ -120,6 +121,7 @@ img{display:block;max-width:100%}
 .nav-btn .cnt.bad{color:#F49B93;border-color:rgba(226,72,61,.5)}
 .side-foot{border-top:1px solid var(--line-soft);padding-top:16px;display:grid;gap:10px}
 .side-user{font-family:var(--mono);font-size:10.5px;color:var(--tx-mute);word-break:break-all;padding:0 4px}
+.side-user b{color:var(--gold-2);display:block;font-weight:600}
 .main{min-width:0;padding:0 0 60px}
 .topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:16px;padding:16px 30px;background:rgba(6,9,15,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft)}
 .topbar h2{font-family:var(--serif);font-weight:560;font-size:22px}
@@ -136,7 +138,7 @@ img{display:block;max-width:100%}
 .card>.desc{font-size:13px;color:var(--tx-mute);margin-bottom:20px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .full{grid-column:1/-1}
-.row-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line-soft)}
+.row-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line-soft);flex-wrap:wrap}
 .sec-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
 .sec-head p{font-size:13px;color:var(--tx-mute)}
 .rows{display:grid;gap:10px}
@@ -175,7 +177,6 @@ img{display:block;max-width:100%}
 .rep-row .sel{background-position:right 9px center;padding-right:32px}
 .rep-check{display:flex;flex-direction:column;align-items:center;gap:5px}
 .rep-check em{font-family:var(--mono);font-style:normal;font-size:8.5px;letter-spacing:.12em;color:var(--tx-mute)}
-/* Vista previa de tarjetas flotantes */
 .chip-prev{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;padding:18px;border:1px dashed var(--line);border-radius:11px;background:radial-gradient(circle at 28% 18%,rgba(201,162,92,.08),transparent 62%),var(--ink-950)}
 .chip-prev .lbl{width:100%;font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--tx-mute);margin-bottom:2px}
 .cp{display:flex;align-items:center;gap:11px;padding:12px 16px;background:rgba(13,20,36,.9);border:1px solid var(--line);border-radius:11px;box-shadow:0 18px 50px rgba(0,0,0,.45);animation:up .35s var(--ease)}
@@ -184,7 +185,6 @@ img{display:block;max-width:100%}
 .cp .ic{width:22px;height:22px}
 .cp.off{opacity:.38}
 .cp-empty{font-size:13px;color:var(--tx-mute)}
-/* Vista previa de contacto del profesional */
 .eq-prev{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:15px 16px;border:1px dashed var(--line);border-radius:11px;background:radial-gradient(circle at 20% 10%,rgba(201,162,92,.07),transparent 60%),var(--ink-950)}
 .eq-prev .lbl{width:100%;font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--tx-mute);margin-bottom:2px}
 .cb{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:8px;border:1px solid rgba(237,231,218,.25);font-size:13px;font-weight:600;color:var(--tx);animation:up .3s var(--ease);max-width:100%}
@@ -194,6 +194,42 @@ img{display:block;max-width:100%}
 .cb.wa{border-color:rgba(37,211,102,.5);background:rgba(37,211,102,.1);color:#8FE9B4}
 .cb.wa .ic{color:var(--wa)}
 .eq-prev .none{font-size:12.5px;color:var(--tx-mute)}
+/* ── HISTORIAL DE SESIONES ── */
+.sess-now{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;background:linear-gradient(120deg,rgba(47,191,113,.08),var(--ink-900) 60%);border:1px solid rgba(47,191,113,.35);border-radius:12px;padding:16px 18px;margin-bottom:18px}
+.sess-now .dot{width:11px;height:11px;border-radius:50%;background:var(--green);box-shadow:0 0 12px rgba(47,191,113,.8);animation:blip 2s ease-in-out infinite}
+@keyframes blip{50%{opacity:.35}}
+.sess-now b{display:block;font-size:14.5px}
+.sess-now span{display:block;font-family:var(--mono);font-size:10.5px;color:var(--tx-mute);margin-top:2px;overflow-wrap:anywhere}
+.sess-clock{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--gold-2);letter-spacing:.04em;white-space:nowrap}
+.hist-bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.hist-bar .inp{max-width:280px}
+.hist-bar .grow{flex:1}
+.hist-note{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--tx-mute);text-transform:uppercase;margin-bottom:10px}
+.hist-scroll{max-height:calc(var(--hist-row) * 10 + var(--hist-gap) * 9);overflow-y:auto;overflow-x:hidden;padding-right:6px;display:grid;gap:var(--hist-gap);align-content:start;scrollbar-gutter:stable}
+.hist-row{height:var(--hist-row);display:grid;grid-template-columns:36px minmax(0,1fr) 104px 84px 36px 36px;gap:12px;align-items:center;background:var(--ink-900);border:1px solid var(--ink-700);border-radius:10px;padding:0 14px;transition:border-color .25s,background .25s}
+.hist-row:hover{border-color:var(--line);background:var(--ink-850)}
+.hist-row.me{border-color:rgba(47,191,113,.4)}
+.hist-av{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:15px;font-weight:600;color:var(--ink-950);background:linear-gradient(140deg,var(--gold-2),var(--gold-deep))}
+.hist-av.sup{background:linear-gradient(140deg,#8FE0B4,#1D7A49)}
+.hist-info{min-width:0}
+.hist-info b{display:block;font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hist-info .h-sub,.hist-info .h-sub-m{display:block;font-family:var(--mono);font-size:10px;color:var(--tx-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.hist-info .h-sub-m{display:none}
+.hist-dur{font-family:var(--mono);font-size:12.5px;color:var(--gold-2);text-align:right;white-space:nowrap}
+.hist-dur small{display:block;font-size:8.5px;letter-spacing:.14em;color:var(--tx-mute);text-transform:uppercase}
+.hist-acts{display:flex;justify-content:flex-end}
+.hist-lock{width:36px;height:36px;display:grid;place-items:center;color:var(--tx-mute);border:1px dashed var(--ink-700);border-radius:8px}
+.hist-lock .ic{width:15px;height:15px}
+.sup-badge{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:8.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FE0B4;border:1px solid rgba(47,191,113,.45);background:rgba(47,191,113,.1);border-radius:20px;padding:2px 8px;margin-left:8px;vertical-align:middle}
+.act-list{display:grid;gap:8px}
+.act-item{display:grid;grid-template-columns:88px 1fr;gap:12px;background:var(--ink-900);border:1px solid var(--ink-700);border-radius:9px;padding:10px 13px}
+.act-item time{font-family:var(--mono);font-size:10.5px;color:var(--gold-2)}
+.act-item b{display:block;font-size:13.5px;font-weight:600}
+.act-item span{display:block;font-size:12.5px;color:var(--tx-mute);overflow-wrap:anywhere}
+.hist-sum{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.hist-sum div{background:var(--ink-900);border:1px solid var(--ink-700);border-radius:10px;padding:14px 16px}
+.hist-sum b{display:block;font-family:var(--serif);font-style:italic;font-size:26px;color:var(--gold-2);line-height:1}
+.hist-sum span{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tx-mute);margin-top:6px}
 .steps{counter-reset:p;display:grid;gap:14px;margin:6px 0 4px}
 .steps li{counter-increment:p;position:relative;padding-left:46px;font-size:14px;color:var(--tx-dim);line-height:1.7}
 .steps li::before{content:counter(p,decimal-leading-zero);position:absolute;left:0;top:2px;font-family:var(--mono);font-size:12px;font-weight:600;color:var(--gold);border:1px solid var(--line);border-radius:7px;width:32px;height:26px;display:grid;place-items:center;background:rgba(201,162,92,.06)}
@@ -241,7 +277,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 .confirm-msg b{color:var(--tx)}
 .toasts{position:fixed;left:20px;bottom:20px;z-index:500;display:flex;flex-direction:column;gap:10px;max-width:min(360px,86vw)}
 .toast{display:flex;align-items:center;gap:11px;background:linear-gradient(150deg,var(--ink-800),var(--ink-850));border:1px solid var(--line);border-radius:10px;padding:12px 16px;font-size:13.5px;box-shadow:0 18px 50px rgba(0,0,0,.55);animation:up .35s var(--ease)}
-.toast .ic{width:17px;height:17px;color:var(--green)}
+.toast .ic{width:17px;height:17px;color:var(--green);flex:none}
 .toast.err .ic{color:var(--red)}
 .toast.gold .ic{color:var(--gold)}
 .toast.out{opacity:0;transform:translateY(8px);transition:all .3s}
@@ -261,6 +297,13 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
   .imp-head{grid-template-columns:1fr}
   .views{padding:20px 16px}
   .topbar{padding:14px 16px}
+  .hist-row{grid-template-columns:36px minmax(0,1fr) 36px 36px}
+  .hist-dur,.hist-acts{display:none}
+  .hist-info .h-sub{display:none}
+  .hist-info .h-sub-m{display:block}
+  .hist-sum{grid-template-columns:1fr}
+  .sess-now{grid-template-columns:auto 1fr;row-gap:10px}
+  .sess-clock{grid-column:2}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}}
 </style>
@@ -284,6 +327,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 <symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></symbol>
 <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></symbol>
 <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+<symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/><path d="M12 8v4l3 2"/></symbol>
 <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></symbol>
 <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></symbol>
 <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
@@ -307,6 +351,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
 <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/></symbol>
 <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v15.5h-4V8zm7.5 0h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1v9.4h-4v-8.5c0-2.03-.04-4.64-2.83-4.64-2.83 0-3.26 2.2-3.26 4.48v8.66H8V8z"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></symbol>
 </defs></svg>
 
 <!-- ══════════ LOGIN ══════════ -->
@@ -324,7 +369,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
       <div class="auth-err" id="loginErr"><svg class="ic"><use href="#i-alert"/></svg><span id="loginErrMsg"></span></div>
       <button type="submit" class="btn btn-primary btn-block" id="loginBtn"><span class="lbl" style="display:inline-flex;align-items:center;gap:9px"><svg class="ic"><use href="#i-lock"/></svg>Ingresar al panel</span></button>
     </form>
-    <p class="auth-note">Acceso con <b>Firebase Authentication</b>. Cree el usuario en la consola → <b>Authentication → Users → Add user</b> (proveedor Correo/Contraseña habilitado). Si el equipo del sitio no aparece aquí, ingrese y abra <b>Diagnóstico → Importar desde el sitio publicado</b>.</p>
+    <p class="auth-note">Acceso con <b>Firebase Authentication</b>. Cada ingreso queda registrado en el <b>Historial de sesiones</b> con usuario, tiempo logueado y acciones realizadas. Ese historial solo puede eliminarlo el super administrador <b>sebagsc2020@gmail.com</b>.</p>
     <span class="proj-chip"><i></i>Proyecto: zarzaasociados</span>
   </div>
 </section>
@@ -342,6 +387,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
       <button type="button" class="nav-btn" data-view="equipo"><svg class="ic"><use href="#i-users"/></svg>Equipo<span class="cnt" id="cnt-equipo">·</span></button>
       <button type="button" class="nav-btn" data-view="blog"><svg class="ic"><use href="#i-post"/></svg>Blog<span class="cnt" id="cnt-blog">·</span></button>
       <button type="button" class="nav-btn" data-view="contacto"><svg class="ic"><use href="#i-phone"/></svg>Contacto</button>
+      <button type="button" class="nav-btn" data-view="historial"><svg class="ic"><use href="#i-history"/></svg>Historial<span class="cnt" id="cnt-sesiones">·</span></button>
       <button type="button" class="nav-btn" data-view="diagnostico"><svg class="ic"><use href="#i-pulse"/></svg>Diagnóstico</button>
       <button type="button" class="nav-btn" data-view="ayuda"><svg class="ic"><use href="#i-help"/></svg>Ayuda</button>
     </nav>
@@ -376,7 +422,6 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
           </div>
         </div>
 
-        <!-- ══ TARJETAS FLOTANTES DEL SELLO ══ -->
         <div class="card">
           <h3><svg class="ic"><use href="#i-spark"/></svg>Tarjetas flotantes del sello</h3>
           <p class="desc">Los recuadros que flotan sobre el sello giratorio de la portada: <b style="color:var(--tx-dim)">“Expediente 1.482/25 · Resuelto favorablemente”</b> y <b style="color:var(--tx-dim)">“Guardia penal · 24 hs”</b>. Edite título, subtítulo, icono y color; incluya o excluya cada una. Máximo 4.</p>
@@ -462,6 +507,33 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
         </div>
       </section>
 
+      <!-- ══════════ HISTORIAL DE SESIONES ══════════ -->
+      <section class="view" id="view-historial">
+        <div class="card">
+          <h3><svg class="ic"><use href="#i-history"/></svg>Historial de sesiones</h3>
+          <p class="desc">Registro de cada ingreso al panel: <b style="color:var(--tx-dim)">usuario</b>, <b style="color:var(--tx-dim)">tiempo logueado</b> y <b style="color:var(--tx-dim)">acciones realizadas</b>. Se muestran 10 sesiones por pantalla; el resto se recorre con la barra de desplazamiento.</p>
+
+          <div class="sess-now" id="sessNow">
+            <span class="dot"></span>
+            <div><b id="sessMail">—</b><span id="sessMeta">Sesión actual</span></div>
+            <div class="sess-clock" id="sessClock">00:00:00</div>
+          </div>
+
+          <div class="hist-sum" id="histSum"></div>
+
+          <div class="hist-bar">
+            <input class="inp" id="histFilter" placeholder="Filtrar por usuario o acción…" aria-label="Filtrar historial">
+            <span class="grow"></span>
+            <button type="button" class="btn btn-ghost btn-sm" id="histReload"><svg class="ic"><use href="#i-refresh"/></svg>Actualizar</button>
+            <button type="button" class="btn btn-danger btn-sm" id="histPurge" hidden><svg class="ic"><use href="#i-trash"/></svg>Eliminar todo</button>
+          </div>
+
+          <div id="histGuard"></div>
+          <p class="hist-note" id="histNote">10 sesiones visibles · desplazá para ver el resto</p>
+          <div class="hist-scroll" id="histList" tabindex="0" aria-label="Listado de sesiones"></div>
+        </div>
+      </section>
+
       <!-- DIAGNÓSTICO -->
       <section class="view" id="view-diagnostico">
         <div class="card">
@@ -499,24 +571,35 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
       <!-- AYUDA -->
       <section class="view" id="view-ayuda">
         <div class="card">
+          <h3><svg class="ic"><use href="#i-history"/></svg>Historial de sesiones y super administrador</h3>
+          <ol class="steps">
+            <li>Cada ingreso crea un registro en la colección <code class="mono">sesiones</code> con <b>usuario, inicio, tiempo logueado y acciones</b>. El contador de la sesión actual corre en vivo.</li>
+            <li>Las acciones se registran solas: guardar Inicio o Contacto, crear/editar/eliminar áreas, abogados y posts, incluir/excluir, cambiar orden, importar y cargar contenido inicial.</li>
+            <li>El historial muestra <b>10 sesiones</b> y luego genera barra de desplazamiento. Toque el ojo de una fila para ver el detalle completo de acciones.</li>
+            <li><b>Solo sebagsc2020@gmail.com</b> puede eliminar registros. Los demás usuarios ven un candado: las reglas de Firestore rechazan cualquier borrado o alteración hecho por otra cuenta.</li>
+          </ol>
+          <div class="warn info"><svg class="ic"><use href="#i-shield"/></svg><span>El usuario <b>sebagsc2020@gmail.com</b> debe existir en Firebase Authentication con proveedor Correo/Contraseña. Su rol se verifica por el email del token, no por una variable del navegador.</span></div>
+        </div>
+        <div class="card">
           <h3><svg class="ic"><use href="#i-help"/></svg>Por qué el equipo del sitio no aparece en el panel</h3>
           <ol class="steps">
             <li>El <b>index.html</b> trae el contenido escrito en su propio HTML como base. Si Firestore está vacío, el sitio <b>igual se ve completo</b>, pero el panel —que solo lee Firestore— muestra la lista vacía.</li>
-            <li>Solución definitiva: abra <b>Diagnóstico → Importar desde el sitio publicado</b>. El panel lee el index online y escribe ese contenido en las colecciones. A partir de ahí se edita, incluye y excluye desde aquí.</li>
+            <li>Solución definitiva: abra <b>Diagnóstico → Importar desde el sitio publicado</b>. El panel lee el index online y escribe ese contenido en las colecciones.</li>
             <li>Si el diagnóstico marca <b>permiso denegado</b>, pegue las reglas de abajo en Firestore. Si marca <b>otro proyecto</b>, el index publicado apunta a una base distinta.</li>
-            <li>Alternativa rápida: use <b>Cargar contenido inicial</b> para escribir todo el contenido de Zarza &amp; Asociados, incluidas las tarjetas flotantes del sello y los teléfonos directos de cada abogado.</li>
+            <li>Alternativa rápida: use <b>Cargar contenido inicial</b> para escribir todo el contenido de Zarza &amp; Asociados.</li>
           </ol>
         </div>
         <div class="card">
           <h3><svg class="ic"><use href="#i-phone"/></svg>Teléfono y WhatsApp por abogado</h3>
           <ol class="steps">
-            <li>Abra <b>Equipo → editar</b> (icono lápiz). Complete <b>Teléfono directo</b> con el número tal como quiere que se lea, por ejemplo <code class="mono">+54 11 4372-8901</code>.</li>
-            <li>En <b>WhatsApp del profesional</b> cargue solo dígitos: país + área + número, por ejemplo <code class="mono">5491143728901</code>. Si lo deja vacío, la ficha usa el WhatsApp general del estudio.</li>
-            <li>La vista previa del editor muestra los botones exactos que verá el visitante en la ficha del profesional. Al guardar, se publican al instante.</li>
+            <li>Abra <b>Equipo → editar</b> (icono lápiz). Complete <b>Teléfono directo</b> tal como quiere que se lea, por ejemplo <code class="mono">+54 11 4372-8901</code>.</li>
+            <li>En <b>WhatsApp del profesional</b> cargue solo dígitos: país + área + número, por ejemplo <code class="mono">5491143728901</code>. Vacío = usa el WhatsApp general del estudio.</li>
+            <li>La vista previa del editor muestra los botones exactos que verá el visitante. Al guardar se publican al instante y la acción queda registrada.</li>
           </ol>
         </div>
         <div class="card">
           <h3><svg class="ic"><use href="#i-lock"/></svg>Reglas de seguridad de Firestore</h3>
+          <p class="desc">Incluyen la protección del historial: nadie puede borrarlo ni alterarlo salvo el super administrador.</p>
 <pre class="rules" id="rulesPre">rules_version = '2';
 
 service cloud.firestore {
@@ -538,6 +621,24 @@ service cloud.firestore {
     match /blog/{documento} {
       allow read: if true;
       allow write: if request.auth != null;
+    }
+
+    // Historial de sesiones: registro inalterable.
+    // Solo el dueño puede agregar acciones; solo el super admin puede borrar.
+    match /sesiones/{documento} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null
+                    && request.resource.data.uid == request.auth.uid
+                    && request.resource.data.email == request.auth.token.email;
+      allow update: if request.auth != null
+                    && resource.data.uid == request.auth.uid
+                    && request.resource.data.uid == resource.data.uid
+                    && request.resource.data.email == resource.data.email
+                    && request.resource.data.inicioMs == resource.data.inicioMs
+                    && request.resource.data.acciones.size() >= resource.data.acciones.size()
+                    && request.resource.data.totalAcciones >= resource.data.totalAcciones;
+      allow delete: if request.auth != null
+                    && request.auth.token.email == 'sebagsc2020@gmail.com';
     }
 
     // Cualquier otra colección permanece bloqueada
@@ -573,6 +674,16 @@ service cloud.firestore {
   </div>
 </div>
 
+<!-- Modal detalle de sesión -->
+<div class="mroot" id="histRoot" role="dialog" aria-modal="true">
+  <div class="mback" data-close-hist></div>
+  <div class="mcard">
+    <div class="mhead"><h3 id="histTitle">Sesión</h3><button type="button" class="icon-btn" data-close-hist aria-label="Cerrar"><svg class="ic"><use href="#i-x"/></svg></button></div>
+    <div class="mbody" id="histBody"></div>
+    <div class="mfoot"><button type="button" class="btn btn-ghost" data-close-hist>Cerrar</button></div>
+  </div>
+</div>
+
 <!-- Modal confirmación -->
 <div class="mroot" id="confirmRoot" role="dialog" aria-modal="true">
   <div class="mback" data-close-confirm></div>
@@ -592,7 +703,7 @@ service cloud.firestore {
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, collection, doc, onSnapshot, setDoc, addDoc, updateDoc, deleteDoc, getDocs, serverTimestamp, writeBatch } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, doc, onSnapshot, setDoc, addDoc, updateDoc, deleteDoc, getDoc, getDocs, serverTimestamp, writeBatch, arrayUnion, increment } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 /* ═══ SDK FIREBASE — PROYECTO zarzaasociados ═══ */
 const firebaseConfig = {
@@ -609,6 +720,10 @@ isSupported().then(ok => { if (ok) getAnalytics(app); }).catch(() => {});
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+/* ═══ SUPER ADMINISTRADOR ═══ */
+const SUPER_EMAIL = "sebagsc2020@gmail.com";
+const isSuper = () => String(auth.currentUser?.email || "").trim().toLowerCase() === SUPER_EMAIL;
+
 /* ───────── Utilidades ───────── */
 const $ = s => document.querySelector(s);
 const $$ = s => Array.from(document.querySelectorAll(s));
@@ -619,6 +734,15 @@ const commas = t => String(t||"").split(",").map(x=>x.trim()).filter(Boolean);
 const digits = t => String(t||"").replace(/\D/g,"");
 const MESES = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
 const fdate = iso => { if(!iso) return "—"; const p=String(iso).split("-"); return p.length===3 ? `${p[2]} · ${MESES[parseInt(p[1],10)-1]||""} · ${p[0]}` : "—"; };
+const pad = n => String(n).padStart(2,"0");
+const fstamp = ms => { if(!ms) return "—"; const d=new Date(ms); return `${pad(d.getDate())} ${MESES[d.getMonth()]} ${d.getFullYear()} · ${pad(d.getHours())}:${pad(d.getMinutes())}`; };
+const fhms = ms => { const t=Math.max(0,Math.floor(ms/1000)); return pad(Math.floor(t/3600))+":"+pad(Math.floor(t%3600/60))+":"+pad(t%60); };
+const fdur = ms => {
+  const t = Math.max(0, Math.floor(ms/1000));
+  if (t < 60) return t + " s";
+  const h = Math.floor(t/3600), m = Math.floor(t%3600/60);
+  return h ? h + " h " + pad(m) + " min" : m + " min " + pad(t%60) + " s";
+};
 const ICONS = [["i-brief","Maletín / Balanza"],["i-doc","Documento con sello"],["i-family","Grupo familiar"],["i-building","Edificio corporativo"],["i-gavel","Mazo de juez"],["i-shieldcart","Escudo / Consumidor"]];
 const CHIP_ICONS = [["i-check","Check · Resuelto"],["i-shield","Escudo · Protección"],["i-scale","Balanza de justicia"],["i-gavel","Mazo de juez"],["i-lock","Candado · Confidencial"],["i-clock","Reloj · 24 hs"],["i-phone","Teléfono"],["i-mail","Email"],["i-cal","Calendario"],["i-user","Persona"],["i-brief","Maletín"],["i-doc","Documento"],["i-pin","Ubicación"]];
 const COLORS = [["gold","Dorado"],["blue","Azul"],["green","Verde"],["amber","Ámbar"],["red","Rojo"],["violet","Violeta"]];
@@ -629,6 +753,7 @@ const TAG2COLOR = {"tag-gold":"gold","tag-blue":"blue","tag-green":"green","tag-
 const byOrden = (a,b) => (a.orden??999)-(b.orden??999);
 const COLS = ["areas","equipo","blog"];
 const MAX_CHIPS = 4;
+const MAX_ACTS = 400;
 
 function toast(msg, type){
   const box = $("#toasts");
@@ -775,14 +900,91 @@ blog:[
   cuerpo:"El vaciamiento de cuentas mediante phishing, SIM swapping o token spoofing no es una fatalidad que el cliente deba soportar: los bancos tienen un deber de seguridad (art. 42 CN y Ley 24.240) y la jurisprudencia viene convalidando reclamos con resultados favorables.\n\n## La ruta del reclamo, en orden\n\n1. **Desconocimiento inmediato por escrito:** carta documento al banco desconociendo cada operación; la fecha importa.\n1. **Denuncia penal:** constituye prueba del fraude y habilita medidas sobre las cuentas destino.\n1. **Reclamo ante BCRA:** responsabilidad directa de la entidad ante usuarios financieros.\n1. **Vía consumidor / COPREC:** audiencia y eventual demanda con daño punitivo.\n1. **Pericia informática:** preservación de logs, IPs y dispositivos: es la prueba que gana estos casos.\n\nEl banco suele alegar que las operaciones se hicieron con credenciales válidas. Ese argumento no lo exime: la cuestión es si su sistema de seguridad detectó operaciones incompatibles con el perfil del cliente y falló en bloquearlas.\n\nActúe el mismo día del hecho. Cada hora de demora reduce las chances de bloquear el circuito del dinero y debilita el desconocimiento. Nuestra práctica de fraude digital interviene de urgencia."}
 ]};
 
-/* ───────── Estado & sesión ───────── */
+/* ───────── Estado ───────── */
 const state = {
-  inicio:null, contacto:null, areas:[], equipo:[], blog:[],
-  status:{inicio:"loading",contacto:"loading",areas:"loading",equipo:"loading",blog:"loading"},
+  inicio:null, contacto:null, areas:[], equipo:[], blog:[], sesiones:[],
+  status:{inicio:"loading",contacto:"loading",areas:"loading",equipo:"loading",blog:"loading",sesiones:"loading"},
   err:{}
 };
 let unsubs = [], view = "inicio";
+let SESS = null, sessTimer = null, beatTimer = null, logWarned = false;
 
+/* ═════════ AUDITORÍA / SESIONES ═════════ */
+const sessKey = uid => "za_sess_" + uid;
+const sessRef = () => SESS ? doc(db,"sesiones",SESS.id) : null;
+
+async function logAction(tipo, detalle){
+  if (!SESS || !auth.currentUser) return;
+  try {
+    const payload = { ultimoMs: Date.now(), totalAcciones: increment(1) };
+    if ((SESS.actCount || 0) < MAX_ACTS){
+      payload.acciones = arrayUnion({ t: Date.now(), n: Math.random().toString(36).slice(2,7), tipo: String(tipo), detalle: String(detalle||"") });
+      SESS.actCount = (SESS.actCount || 0) + 1;
+    }
+    await updateDoc(sessRef(), payload);
+  } catch(e){
+    console.warn("Auditoría:", e);
+    if (!logWarned){ logWarned = true; toast("No se pudo registrar la acción en el historial. Revise las reglas de /sesiones.", "err"); }
+  }
+}
+async function startSession(user){
+  const key = sessKey(user.uid);
+  let id = null, inicioMs = Date.now(), actCount = 0, resumed = false;
+  try {
+    const saved = sessionStorage.getItem(key);
+    if (saved){
+      const snap = await getDoc(doc(db,"sesiones",saved));
+      if (snap.exists() && snap.data().uid === user.uid && !snap.data().finMs){
+        id = saved; inicioMs = snap.data().inicioMs || Date.now();
+        actCount = (snap.data().acciones || []).length; resumed = true;
+      }
+    }
+  } catch(_){}
+  if (!id){
+    try {
+      const ref = await addDoc(collection(db,"sesiones"), {
+        uid: user.uid, email: user.email || "", inicio: serverTimestamp(),
+        inicioMs: Date.now(), ultimoMs: Date.now(), finMs: null, activo: true,
+        totalAcciones: 0, acciones: [], ua: navigator.userAgent.slice(0,180)
+      });
+      id = ref.id; inicioMs = Date.now(); actCount = 0;
+      sessionStorage.setItem(key, id);
+    } catch(e){
+      console.warn(e);
+      toast("No se pudo abrir el registro de sesión. Publique las reglas de /sesiones.", "err");
+      return;
+    }
+  }
+  SESS = { id, inicioMs, actCount };
+  await logAction(resumed ? "Sesión reanudada" : "Sesión iniciada", resumed ? "Recarga del panel" : "Ingreso al panel de administración");
+  clearInterval(sessTimer); clearInterval(beatTimer);
+  sessTimer = setInterval(paintClock, 1000);
+  beatTimer = setInterval(() => { if (SESS && auth.currentUser) updateDoc(sessRef(), { ultimoMs: Date.now(), activo:true }).catch(()=>{}); }, 30000);
+  paintClock();
+}
+async function endSession(){
+  if (!SESS || !auth.currentUser) return;
+  await logAction("Sesión cerrada", "Salida del panel");
+  try { await updateDoc(sessRef(), { finMs: Date.now(), ultimoMs: Date.now(), activo:false }); } catch(_){}
+  try { sessionStorage.removeItem(sessKey(auth.currentUser.uid)); } catch(_){}
+  clearInterval(sessTimer); clearInterval(beatTimer);
+  SESS = null;
+}
+function paintClock(){
+  const el = $("#sessClock"); if (!el) return;
+  el.textContent = SESS ? fhms(Date.now() - SESS.inicioMs) : "00:00:00";
+  if (view === "historial") paintLiveRows();
+}
+function sessDur(s){
+  const ini = s.inicioMs || 0;
+  if (s.finMs) return Math.max(0, s.finMs - ini);
+  const last = s.ultimoMs || ini;
+  if (s.activo && Date.now() - last < 90000) return Math.max(0, Date.now() - ini);
+  return Math.max(0, last - ini);
+}
+const sessLive = s => !s.finMs && s.activo && (Date.now() - (s.ultimoMs||0) < 90000);
+
+/* ───────── Sesión / navegación ───────── */
 const AUTH_ERRS = {
   "auth/invalid-credential":"Credenciales incorrectas. Verifique email y contraseña.",
   "auth/wrong-password":"Contraseña incorrecta.",
@@ -804,16 +1006,27 @@ $("#loginForm").addEventListener("submit", async e => {
   catch(ex){ $("#loginErrMsg").textContent = AUTH_ERRS[ex.code] || ("No se pudo ingresar: " + ex.code); err.classList.add("show"); }
   finally { btn.classList.remove("loading"); }
 });
-$("#logoutBtn").addEventListener("click", () => signOut(auth));
+$("#logoutBtn").addEventListener("click", async () => {
+  const b = $("#logoutBtn"); b.classList.add("loading");
+  await endSession();
+  try { await signOut(auth); } catch(_){}
+  b.classList.remove("loading");
+});
+addEventListener("pagehide", () => { if (SESS && auth.currentUser) updateDoc(sessRef(), { ultimoMs: Date.now() }).catch(()=>{}); });
+document.addEventListener("visibilitychange", () => { if (!document.hidden && SESS && auth.currentUser) updateDoc(sessRef(), { ultimoMs: Date.now(), activo:true }).catch(()=>{}); });
 
-onAuthStateChanged(auth, user => {
+onAuthStateChanged(auth, async user => {
   if (user){
     $("#authView").style.display = "none";
     $("#appView").classList.add("on");
-    $("#userEmail").textContent = user.email;
-    subscribe(); renderDiag();
+    $("#userEmail").innerHTML = "<b>" + esc(user.email) + "</b>" + (isSuper() ? "Super administrador" : "Administrador");
+    $("#sessMail").textContent = user.email;
+    $("#sessMeta").textContent = isSuper() ? "Sesión actual · super administrador (puede eliminar el historial)" : "Sesión actual · solo lectura del historial";
+    subscribe(); renderDiag(); renderHistGuard();
+    await startSession(user);
   } else {
     unsubs.forEach(u => { try{u();}catch(_){}} ); unsubs = [];
+    clearInterval(sessTimer); clearInterval(beatTimer); SESS = null;
     $("#appView").classList.remove("on");
     $("#authView").style.display = "grid";
     setConn("", "Conectando…");
@@ -849,6 +1062,16 @@ function subscribe(){
       if (view === col) renderList(col);
     }));
   });
+  unsubs.push(onSnapshot(collection(db,"sesiones"), qs => {
+    state.sesiones = qs.docs.map(d => ({ id:d.id, ...d.data() })).sort((a,b) => (b.inicioMs||0)-(a.inicioMs||0));
+    state.status.sesiones = "ok"; delete state.err.sesiones;
+    updateCounts(); refreshConn(); renderDiag();
+    if (view === "historial") renderHist();
+  }, e => {
+    state.status.sesiones = "error"; state.err.sesiones = e.code || e.message;
+    updateCounts(); refreshConn(); renderDiag();
+    if (view === "historial") renderHist();
+  }));
 }
 function updateCounts(){
   COLS.forEach(c => {
@@ -856,10 +1079,12 @@ function updateCounts(){
     el.textContent = state.status[c] === "error" ? "!" : state[c].length;
     el.classList.toggle("bad", state.status[c] === "error");
   });
+  const s = $("#cnt-sesiones");
+  s.textContent = state.status.sesiones === "error" ? "!" : state.sesiones.length;
+  s.classList.toggle("bad", state.status.sesiones === "error");
 }
 
-/* ───────── Navegación ───────── */
-const TITLES = { inicio:"Inicio", areas:"Áreas de Práctica", equipo:"Equipo / Abogados", blog:"Blog / Publicaciones", contacto:"Contacto", diagnostico:"Diagnóstico y reparación", ayuda:"Ayuda / Configuración" };
+const TITLES = { inicio:"Inicio", areas:"Áreas de Práctica", equipo:"Equipo / Abogados", blog:"Blog / Publicaciones", contacto:"Contacto", historial:"Historial de sesiones", diagnostico:"Diagnóstico y reparación", ayuda:"Ayuda / Configuración" };
 $("#sideNav").addEventListener("click", e => {
   const b = e.target.closest("[data-view]"); if (!b) return;
   view = b.dataset.view;
@@ -868,14 +1093,159 @@ $("#sideNav").addEventListener("click", e => {
   $("#viewTitle").textContent = TITLES[view];
   if (view === "inicio") renderInicio();
   else if (view === "contacto") renderContacto();
+  else if (view === "historial"){ renderHistGuard(); renderHist(); paintClock(); }
   else if (view === "diagnostico") renderDiag();
   else if (COLS.includes(view)) renderList(view);
 });
 const goView = v => { const b = document.querySelector('[data-view="'+v+'"]'); if (b) b.click(); };
 
-/* ───────── INICIO: sellos, cifras y tarjetas flotantes ───────── */
-const selCls = (cls,opts,v) => '<select class="sel ' + cls + '">' + opts.map(o => '<option value="' + esc(o[0]) + '"' + (o[0]===v?" selected":"") + ">" + esc(o[1]) + "</option>").join("") + "</select>";
+/* ═════════ HISTORIAL: render ═════════ */
+function renderHistGuard(){
+  const g = $("#histGuard");
+  $("#histPurge").hidden = !isSuper();
+  if (isSuper()){
+    g.innerHTML = '<div class="warn good" style="margin:0 0 16px"><svg class="ic"><use href="#i-shield"/></svg><span><b>Super administrador activo.</b> Puede eliminar sesiones individuales o vaciar el historial completo. El resto de las cuentas no puede borrar ni alterar estos registros.</span></div>';
+  } else {
+    g.innerHTML = '<div class="warn" style="margin:0 0 16px"><svg class="ic"><use href="#i-lock"/></svg><span><b>Historial protegido.</b> Solo <b>' + SUPER_EMAIL + '</b> puede eliminar registros. Su cuenta puede consultar el historial, pero no modificarlo.</span></div>';
+  }
+}
+function histFiltered(){
+  const q = ($("#histFilter").value || "").trim().toLowerCase();
+  if (!q) return state.sesiones;
+  return state.sesiones.filter(s =>
+    String(s.email||"").toLowerCase().includes(q) ||
+    (s.acciones||[]).some(a => String(a.tipo||"").toLowerCase().includes(q) || String(a.detalle||"").toLowerCase().includes(q))
+  );
+}
+function initials(email){
+  const n = String(email||"?").split("@")[0].replace(/[^a-zA-Z0-9]+/g," ").trim().split(" ");
+  return ((n[0]?.[0]||"?") + (n[1]?.[0]||"")).toUpperCase();
+}
+function histRow(s){
+  const sup = String(s.email||"").toLowerCase() === SUPER_EMAIL;
+  const mine = SESS && s.id === SESS.id;
+  const dur = sessDur(s), live = sessLive(s);
+  const acts = s.totalAcciones ?? (s.acciones||[]).length;
+  const sub = fstamp(s.inicioMs) + (live ? " · en curso" : s.finMs ? " · cerrada" : " · inactiva");
+  const del = isSuper()
+    ? '<button type="button" class="icon-btn danger" data-hdel="' + esc(s.id) + '" aria-label="Eliminar sesión"><svg class="ic"><use href="#i-trash"/></svg></button>'
+    : '<span class="hist-lock" title="Solo ' + SUPER_EMAIL + ' puede eliminar"><svg class="ic"><use href="#i-lock"/></svg></span>';
+  return '<div class="hist-row' + (mine ? " me" : "") + '" data-sid="' + esc(s.id) + '">' +
+    '<span class="hist-av' + (sup ? " sup" : "") + '">' + esc(initials(s.email)) + "</span>" +
+    '<span class="hist-info"><b>' + esc(s.email || "—") + (sup ? '<span class="sup-badge">Super</span>' : "") + "</b>" +
+      '<span class="h-sub">' + esc(sub) + "</span>" +
+      '<span class="h-sub-m">' + esc(fstamp(s.inicioMs) + " · " + fdur(dur) + " · " + acts + " acc.") + "</span></span>" +
+    '<span class="hist-dur" data-dur="' + esc(s.id) + '">' + fdur(dur) + "<small>" + (live ? "en curso" : "logueado") + "</small></span>" +
+    '<span class="hist-acts"><span class="chip ' + (acts ? "ch-gold" : "ch-red") + '">' + acts + " acc.</span></span>" +
+    '<button type="button" class="icon-btn" data-hview="' + esc(s.id) + '" aria-label="Ver acciones"><svg class="ic"><use href="#i-eye"/></svg></button>' +
+    del + "</div>";
+}
+function renderHist(){
+  const box = $("#histList"), st = state.status.sesiones;
+  $("#histPurge").hidden = !isSuper() || !state.sesiones.length;
+  if (st === "loading"){ box.innerHTML = '<div class="skel"><div></div><div></div><div></div></div>'; $("#histSum").innerHTML = ""; $("#histNote").textContent = "Cargando historial…"; return; }
+  if (st === "error"){
+    box.innerHTML = '<div class="empty err"><svg class="ic"><use href="#i-alert"/></svg><span><b style="color:#F49B93">No se pudo leer el historial.</b><br>Código: ' + esc(state.err.sesiones||"") + '. Publique las reglas de la colección <span class="mono">sesiones</span> (pestaña Ayuda).</span></div>';
+    $("#histSum").innerHTML = ""; $("#histNote").textContent = ""; return;
+  }
+  const list = histFiltered();
+  const totalAct = state.sesiones.reduce((n,s) => n + (s.totalAcciones ?? (s.acciones||[]).length), 0);
+  const totalTime = state.sesiones.reduce((n,s) => n + sessDur(s), 0);
+  $("#histSum").innerHTML =
+    "<div><b>" + state.sesiones.length + "</b><span>Sesiones registradas</span></div>" +
+    "<div><b>" + totalAct + "</b><span>Acciones auditadas</span></div>" +
+    "<div><b>" + fdur(totalTime) + "</b><span>Tiempo total logueado</span></div>";
+  if (!list.length){
+    box.innerHTML = '<div class="empty"><svg class="ic"><use href="#i-history"/></svg><span>' + (state.sesiones.length ? "Ninguna sesión coincide con el filtro." : "Todavía no hay sesiones registradas.") + "</span></div>";
+    $("#histNote").textContent = ""; return;
+  }
+  box.innerHTML = list.map(histRow).join("");
+  $("#histNote").textContent = list.length > 10
+    ? list.length + " sesiones · 10 visibles, desplazá para ver el resto"
+    : list.length + " sesión(es) registrada(s)";
+}
+function paintLiveRows(){
+  state.sesiones.forEach(s => {
+    if (!sessLive(s)) return;
+    const el = document.querySelector('[data-dur="' + s.id + '"]');
+    if (el) el.innerHTML = fdur(sessDur(s)) + "<small>en curso</small>";
+  });
+}
+$("#histFilter").addEventListener("input", () => { if (state.status.sesiones === "ok") renderHist(); });
+$("#histReload").addEventListener("click", async () => {
+  const b = $("#histReload"); b.classList.add("loading");
+  try {
+    const qs = await getDocs(collection(db,"sesiones"));
+    state.sesiones = qs.docs.map(d => ({ id:d.id, ...d.data() })).sort((a,b2) => (b2.inicioMs||0)-(a.inicioMs||0));
+    state.status.sesiones = "ok"; delete state.err.sesiones;
+    updateCounts(); renderHist(); toast("Historial actualizado.", "gold");
+  } catch(e){ state.status.sesiones = "error"; state.err.sesiones = e.code || e.message; renderHist(); fsErr(e); }
+  finally { b.classList.remove("loading"); }
+});
+$("#histList").addEventListener("click", e => {
+  const v = e.target.closest("[data-hview]");
+  if (v){ openHistDetail(v.dataset.hview); return; }
+  const d = e.target.closest("[data-hdel]");
+  if (d){
+    if (!isSuper()) return toast("Solo " + SUPER_EMAIL + " puede eliminar el historial.", "err");
+    const s = state.sesiones.find(x => x.id === d.dataset.hdel);
+    openConfirm("Eliminar sesión del historial",
+      "Se eliminará el registro de <b>" + esc(s?.email || d.dataset.hdel) + "</b> (" + esc(fstamp(s?.inicioMs)) + ", " + (s?.totalAcciones ?? 0) + " acciones). Esta acción es irreversible y solo la puede ejecutar el super administrador.",
+      async () => {
+        try {
+          await deleteDoc(doc(db,"sesiones",d.dataset.hdel));
+          if (SESS && SESS.id === d.dataset.hdel){ SESS = null; clearInterval(sessTimer); clearInterval(beatTimer); paintClock(); }
+          toast("Registro eliminado del historial.");
+        } catch(ex){ fsErr(ex); }
+      }, "Eliminar");
+  }
+});
+$("#histPurge").addEventListener("click", () => {
+  if (!isSuper()) return toast("Solo " + SUPER_EMAIL + " puede eliminar el historial.", "err");
+  openConfirm("Vaciar el historial completo",
+    "Se eliminarán <b>" + state.sesiones.length + " sesiones</b> con todas sus acciones. Esta acción es irreversible y queda reservada al super administrador.",
+    async () => {
+      try {
+        const qs = await getDocs(collection(db,"sesiones"));
+        let batch = writeBatch(db), n = 0;
+        for (const d of qs.docs){
+          batch.delete(d.ref); n++;
+          if (n % 400 === 0){ await batch.commit(); batch = writeBatch(db); }
+        }
+        await batch.commit();
+        SESS = null; clearInterval(sessTimer); clearInterval(beatTimer); paintClock();
+        toast("Historial vaciado (" + n + " sesiones).");
+      } catch(ex){ fsErr(ex); }
+    }, "Vaciar");
+});
+const histRoot = $("#histRoot");
+function openHistDetail(id){
+  const s = state.sesiones.find(x => x.id === id); if (!s) return;
+  const acts = (s.acciones || []).slice().sort((a,b) => (a.t||0)-(b.t||0));
+  const total = s.totalAcciones ?? acts.length;
+  $("#histTitle").textContent = "Sesión · " + (s.email || "—");
+  let h = '<div class="hist-sum" style="margin-bottom:16px">' +
+    "<div><b>" + fdur(sessDur(s)) + "</b><span>Tiempo logueado</span></div>" +
+    "<div><b>" + total + "</b><span>Acciones</span></div>" +
+    "<div><b>" + (sessLive(s) ? "En curso" : s.finMs ? "Cerrada" : "Inactiva") + "</b><span>Estado</span></div></div>" +
+    '<p class="hint" style="margin-bottom:14px">Inicio: <code>' + esc(fstamp(s.inicioMs)) + "</code>" +
+    (s.finMs ? " · Cierre: <code>" + esc(fstamp(s.finMs)) + "</code>" : " · Último acceso: <code>" + esc(fstamp(s.ultimoMs)) + "</code>") +
+    "<br>UID: <code>" + esc(s.uid||"") + "</code>" + (s.ua ? "<br>Navegador: " + esc(s.ua) : "") + "</p>";
+  if (!acts.length) h += '<div class="empty"><svg class="ic"><use href="#i-history"/></svg><span>Sin acciones detalladas en este registro.</span></div>';
+  else {
+    h += '<div class="act-list">' + acts.map(a =>
+      '<div class="act-item"><time>' + esc(new Date(a.t||0).toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit",second:"2-digit"})) + "</time>" +
+      "<span><b>" + esc(a.tipo||"Acción") + "</b><span>" + esc(a.detalle||"") + "</span></span></div>").join("") + "</div>";
+    if (total > acts.length) h += '<div class="warn"><svg class="ic"><use href="#i-alert"/></svg><span>Se registraron ' + total + ' acciones; el detalle conserva las primeras ' + acts.length + ' por límite de tamaño del documento.</span></div>';
+  }
+  $("#histBody").innerHTML = h;
+  $("#histBody").scrollTop = 0;
+  histRoot.classList.add("open");
+}
+$$("[data-close-hist]").forEach(el => el.addEventListener("click", () => histRoot.classList.remove("open")));
 
+/* ───────── INICIO ───────── */
+const selCls = (cls,opts,v) => '<select class="sel ' + cls + '">' + opts.map(o => '<option value="' + esc(o[0]) + '"' + (o[0]===v?" selected":"") + ">" + esc(o[1]) + "</option>").join("") + "</select>";
 function badgeRow(v){
   const d = document.createElement("div");
   d.className = "rep-row rep-badge";
@@ -943,7 +1313,6 @@ $("#addChip").addEventListener("click", () => {
   $("#i-chips").appendChild(chipRow());
   renderChipPreview();
 });
-
 function renderInicio(){
   const d = state.inicio || SEED.inicio;
   $("#i-eyebrow").value = d.eyebrow || "";
@@ -969,6 +1338,7 @@ $("#addCifra").addEventListener("click", () => $("#i-cifras").appendChild(cifraR
 $("#saveInicio").addEventListener("click", async () => {
   const titulo = $("#i-titulo").value.trim();
   if (!titulo) return toast("El titular principal es obligatorio.", "err");
+  const chips = readChips().filter(c => c.titulo).slice(0,MAX_CHIPS);
   const data = {
     eyebrow:$("#i-eyebrow").value.trim(), titulo, subtitulo:$("#i-subtitulo").value.trim(),
     cta1:$("#i-cta1").value.trim() || "Enviar Consulta Gratuita", cta2:$("#i-cta2").value.trim() || "Hablar por WhatsApp",
@@ -977,7 +1347,7 @@ $("#saveInicio").addEventListener("click", async () => {
     showBadges:$("#i-showBadges").checked, showCifras:$("#i-showCifras").checked,
     showMarquee:$("#i-showMarquee").checked, showChips:$("#i-showChips").checked,
     badges:$$("#i-badges .rep-row").map(r => r.querySelector("input").value.trim()).filter(Boolean),
-    chips:readChips().filter(c => c.titulo).slice(0,MAX_CHIPS),
+    chips,
     cifras:$$("#i-cifras .rep-row").map(r => ({
       pref:r.querySelector(".c-pref").value.trim(), valor:parseInt(r.querySelector(".c-val").value,10)||0,
       suf:r.querySelector(".c-suf").value.trim(), label:r.querySelector(".c-label").value.trim(),
@@ -985,7 +1355,11 @@ $("#saveInicio").addEventListener("click", async () => {
     })).filter(c => c.label),
     updatedAt:serverTimestamp()
   };
-  try { await setDoc(doc(db,"sitio","inicio"), data); toast("Sección Inicio guardada y publicada."); } catch(ex){ fsErr(ex); }
+  try {
+    await setDoc(doc(db,"sitio","inicio"), data);
+    await logAction("Editó Inicio", "Portada, sellos, cifras y " + chips.length + " tarjeta(s) flotante(s)");
+    toast("Sección Inicio guardada y publicada.");
+  } catch(ex){ fsErr(ex); }
 });
 
 /* ───────── CONTACTO ───────── */
@@ -1001,7 +1375,11 @@ $("#saveContacto").addEventListener("click", async () => {
   if (!waNum) return toast("El número de WhatsApp (solo dígitos) es obligatorio.", "err");
   const data = { waNum, showMapa:$("#k-showMapa").checked, showBadge:$("#k-showBadge").checked, updatedAt:serverTimestamp() };
   for (const k in KMAP) if (k !== "waNum") data[k] = $("#" + KMAP[k]).value.trim();
-  try { await setDoc(doc(db,"sitio","contacto"), data); toast("Datos de contacto guardados y publicados."); } catch(ex){ fsErr(ex); }
+  try {
+    await setDoc(doc(db,"sitio","contacto"), data);
+    await logAction("Editó Contacto", "Teléfono " + (data.telefono||"—") + " · WhatsApp " + waNum + " · " + (data.email||"—"));
+    toast("Datos de contacto guardados y publicados.");
+  } catch(ex){ fsErr(ex); }
 });
 
 /* ───────── LISTAS CRUD ───────── */
@@ -1040,6 +1418,7 @@ function renderList(col){
   const s = listState(col);
   el.innerHTML = s || state[col].map(d => rowHTML(col, d)).join("");
 }
+const NOMCOL = {areas:"área", equipo:"abogado", blog:"publicación"};
 $("#mainArea").addEventListener("click", e => {
   const g = e.target.closest("[data-goto]");
   if (g){ goView(g.dataset.goto); return; }
@@ -1051,24 +1430,39 @@ $("#mainArea").addEventListener("click", e => {
     const d = state[type].find(x => x.id === id);
     const nom = d ? (d.nombre || d.titulo || id) : id;
     openConfirm("Eliminar definitivamente", "Se eliminará <b>" + esc(nom) + "</b> de la base de datos. Esta acción no puede deshacerse. Si solo desea ocultarlo, use el interruptor.", async () => {
-      try { await deleteDoc(doc(db, type, id)); toast("Documento eliminado."); } catch(ex){ fsErr(ex); }
+      try {
+        await deleteDoc(doc(db, type, id));
+        await logAction("Eliminó " + NOMCOL[type], nom + " (/" + id + ")");
+        toast("Documento eliminado.");
+      } catch(ex){ fsErr(ex); }
     });
   }
 });
 $("#mainArea").addEventListener("change", async e => {
   const t = e.target;
   if (t.matches("[data-toggle]")){
-    try { await updateDoc(doc(db, t.dataset.toggle, t.dataset.id), { activo:t.checked, updatedAt:serverTimestamp() });
-      toast(t.checked ? "Incluido en el sitio público." : "Excluido del sitio público.", "gold"); } catch(ex){ fsErr(ex); }
+    const col = t.dataset.toggle, id = t.dataset.id;
+    const d = state[col].find(x => x.id === id);
+    try {
+      await updateDoc(doc(db, col, id), { activo:t.checked, updatedAt:serverTimestamp() });
+      await logAction((t.checked ? "Incluyó " : "Excluyó ") + NOMCOL[col], (d?.nombre || d?.titulo || id) + " (/" + id + ")");
+      toast(t.checked ? "Incluido en el sitio público." : "Excluido del sitio público.", "gold");
+    } catch(ex){ fsErr(ex); }
   }
   if (t.matches("[data-orden]")){
-    try { await updateDoc(doc(db, t.dataset.orden, t.dataset.id), { orden:parseInt(t.value,10)||0, updatedAt:serverTimestamp() }); toast("Orden actualizado."); } catch(ex){ fsErr(ex); }
+    const col = t.dataset.orden, id = t.dataset.id, v = parseInt(t.value,10)||0;
+    const d = state[col].find(x => x.id === id);
+    try {
+      await updateDoc(doc(db, col, id), { orden:v, updatedAt:serverTimestamp() });
+      await logAction("Reordenó " + NOMCOL[col], (d?.nombre || d?.titulo || id) + " → posición " + v);
+      toast("Orden actualizado.");
+    } catch(ex){ fsErr(ex); }
   }
 });
 
 /* ───────── EDITOR ───────── */
 const editorRoot = $("#editorRoot"), editorBody = $("#editorBody");
-let editorSaveFn = null;
+let editorSaveFn = null, editorLog = null;
 const fld = (id,label,html,hint) => '<div class="field"><label for="' + id + '">' + label + "</label>" + html + (hint ? '<span class="hint">' + hint + "</span>" : "") + "</div>";
 const inp = (id,v,type) => '<input class="inp" id="' + id + '" type="' + (type||"text") + '" value="' + esc(v ?? "") + '">';
 const txa = (id,v,rows) => '<textarea class="txa" id="' + id + '" rows="' + (rows||3) + '">' + esc(v ?? "") + "</textarea>";
@@ -1077,7 +1471,6 @@ const switchFld = (id,v,label) => '<label class="switch-lbl"><span class="switch
 const areaOpts = () => [["","— Sin asignar —"]].concat(state.areas.map(a => [a.id, a.nombre]));
 const equipoOpts = () => [["","— Equipo del área —"]].concat(state.equipo.map(l => [l.id, l.nombre]));
 
-/* Vista previa de los botones de contacto del profesional */
 function renderEqPrev(){
   const box = $("#eqPrev"); if (!box) return;
   const tel = ($("#e-telefono")?.value || "").trim();
@@ -1103,7 +1496,6 @@ function bindEqPrev(){
   });
   renderEqPrev();
 }
-
 function openEditor(type, id){
   const isEdit = !!id;
   const d = isEdit ? state[type].find(x => x.id === id) : null;
@@ -1137,6 +1529,7 @@ function openEditor(type, id){
         activo:$("#e-activo").checked, updatedAt:serverTimestamp() };
       if (isEdit) await updateDoc(doc(db,"areas",id), data);
       else await setDoc(doc(db,"areas",slug), { ...data, createdAt:serverTimestamp() });
+      editorLog = [(isEdit ? "Editó área" : "Creó área"), nombre + " (/" + slug + ")"];
       return true;
     };
   }
@@ -1180,6 +1573,7 @@ function openEditor(type, id){
         activo:$("#e-activo").checked, updatedAt:serverTimestamp() };
       if (isEdit) await updateDoc(doc(db,"equipo",id), data);
       else await addDoc(collection(db,"equipo"), { ...data, createdAt:serverTimestamp() });
+      editorLog = [(isEdit ? "Editó abogado" : "Creó abogado"), nombre + " · tel " + (telefono||"—") + " · WA " + (whatsapp||"—")];
       return true;
     };
   }
@@ -1205,20 +1599,28 @@ function openEditor(type, id){
         orden:parseInt($("#e-orden").value,10)||0, activo:$("#e-activo").checked, updatedAt:serverTimestamp() };
       if (isEdit) await updateDoc(doc(db,"blog",id), data);
       else await addDoc(collection(db,"blog"), { ...data, createdAt:serverTimestamp() });
+      editorLog = [(isEdit ? "Editó publicación" : "Creó publicación"), titulo + " · " + ($("#e-activo").checked ? "publicado" : "borrador")];
       return true;
     };
   }
   $("#editorTitle").textContent = title;
   editorBody.innerHTML = html;
   editorBody.scrollTop = 0;
+  editorLog = null;
   editorRoot.classList.add("open");
   if (type === "equipo") bindEqPrev();
 }
 $("#editorSave").addEventListener("click", async () => {
   if (!editorSaveFn) return;
   const btn = $("#editorSave"); btn.classList.add("loading");
-  try { const ok = await editorSaveFn(); if (ok !== false){ editorRoot.classList.remove("open"); toast("Guardado y publicado en el sitio."); } }
-  catch(ex){ fsErr(ex); }
+  try {
+    const ok = await editorSaveFn();
+    if (ok !== false){
+      editorRoot.classList.remove("open");
+      if (editorLog) await logAction(editorLog[0], editorLog[1]);
+      toast("Guardado y publicado en el sitio.");
+    }
+  } catch(ex){ fsErr(ex); }
   finally { btn.classList.remove("loading"); }
 });
 $$("[data-close-editor]").forEach(el => el.addEventListener("click", () => editorRoot.classList.remove("open")));
@@ -1242,6 +1644,7 @@ $$("[data-close-confirm]").forEach(el => el.addEventListener("click", () => conf
 document.addEventListener("keydown", e => {
   if (e.key !== "Escape") return;
   if (confirmRoot.classList.contains("open")) confirmRoot.classList.remove("open");
+  else if (histRoot.classList.contains("open")) histRoot.classList.remove("open");
   else if (editorRoot.classList.contains("open")) editorRoot.classList.remove("open");
 });
 
@@ -1251,7 +1654,7 @@ function renderDiag(){
   const box = $("#diagBox"); if (!box) return;
   const u = auth.currentUser;
   let h = '<div class="diag-row"><b>PROYECTO</b><div class="meta"><strong>' + esc(firebaseConfig.projectId) + '</strong> · authDomain ' + esc(firebaseConfig.authDomain) + '</div>' + pill("p-ok","SDK") + "</div>";
-  h += '<div class="diag-row"><b>SESIÓN</b><div class="meta">' + (u ? "Autenticado como <strong>" + esc(u.email) + "</strong>" : "Sin sesión iniciada") + "</div>" + (u ? pill("p-ok","Activa") : pill("p-bad","Sin sesión")) + "</div>";
+  h += '<div class="diag-row"><b>SESIÓN</b><div class="meta">' + (u ? "Autenticado como <strong>" + esc(u.email) + "</strong>" + (isSuper() ? " · <strong>super administrador</strong>" : "") : "Sin sesión iniciada") + "</div>" + (u ? pill("p-ok","Activa") : pill("p-bad","Sin sesión")) + "</div>";
   ["inicio","contacto"].forEach(k => {
     const st = state.status[k];
     const p = st === "ok" ? pill("p-ok","Lectura OK") : st === "error" ? pill("p-bad","Denegado") : pill("p-wait","Leyendo");
@@ -1274,18 +1677,25 @@ function renderDiag(){
     }
     h += '<div class="diag-row"><b>' + c.toUpperCase() + '</b><div class="meta">' + meta + "</div>" + p + "</div>";
   });
+  const stS = state.status.sesiones;
+  const pS = stS === "ok" ? pill("p-ok","Lectura OK") : stS === "error" ? pill("p-bad","Denegado") : pill("p-wait","Leyendo");
+  const metaS = stS === "error" ? "Error: <strong>" + esc(state.err.sesiones||"") + "</strong> · publique las reglas de /sesiones"
+    : "<strong>" + state.sesiones.length + "</strong> sesión(es) · borrado reservado a <strong>" + SUPER_EMAIL + "</strong>" + (isSuper() ? " (usted)" : " (su cuenta no puede borrar)");
+  h += '<div class="diag-row"><b>SESIONES</b><div class="meta">' + metaS + "</div>" + pS + "</div>";
   box.innerHTML = h;
 }
 $("#diagRead").addEventListener("click", async () => {
   const btn = $("#diagRead"); btn.classList.add("loading");
   try {
-    for (const c of COLS){
+    for (const c of COLS.concat(["sesiones"])){
       try { const qs = await getDocs(collection(db,c)); state.status[c] = "ok"; delete state.err[c];
-        state[c] = qs.docs.map(d => ({ id:d.id, ...d.data() })).sort(byOrden); }
+        const arr = qs.docs.map(d => ({ id:d.id, ...d.data() }));
+        state[c] = c === "sesiones" ? arr.sort((a,b) => (b.inicioMs||0)-(a.inicioMs||0)) : arr.sort(byOrden); }
       catch(e){ state.status[c] = "error"; state.err[c] = e.code || e.message; }
     }
     updateCounts(); refreshConn(); renderDiag();
     if (COLS.includes(view)) renderList(view);
+    if (view === "historial") renderHist();
     toast("Lecturas reverificadas.", "gold");
   } finally { btn.classList.remove("loading"); }
 });
@@ -1302,7 +1712,7 @@ $("#diagWrite").addEventListener("click", async () => {
   } finally { btn.classList.remove("loading"); }
 });
 
-/* ───────── IMPORTADOR DESDE EL SITIO PUBLICADO ───────── */
+/* ───────── IMPORTADOR ───────── */
 const MESES_FULL = {enero:1,febrero:2,marzo:3,abril:4,mayo:5,junio:6,julio:7,agosto:8,septiembre:9,setiembre:9,octubre:10,noviembre:11,diciembre:12};
 function esDateToISO(s){
   const m = String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").match(/(\d{1,2})\s+de\s+([a-z]+)\s+de\s+(\d{4})/);
@@ -1364,7 +1774,6 @@ function parseIndex(src){
     conector: /firebase-firestore\.js/.test(src),
     equipo:[], areas:[], blog:[], inicio:null, contacto:null
   };
-  /* EQUIPO */
   const cards = Array.from(dom.querySelectorAll(".team-card"));
   const cardEq = cards.map((c,i) => ({
     id: c.querySelector("[data-open-lawyer]")?.getAttribute("data-open-lawyer") || slugify(T(c.querySelector("h3")) || "abogado-"+(i+1)),
@@ -1375,6 +1784,7 @@ function parseIndex(src){
     iniciales: T(c.querySelector(".portrait-fallback b")),
     matricula: T(c.querySelector(".matricula")),
     color: colorOf(c.querySelector(".tag")),
+    telefono: T(c.querySelector(".team-tel")),
     orden: i+1
   }));
   const pickTel = l => String(l.telefono || l.tel || l.phone || "").trim();
@@ -1389,17 +1799,16 @@ function parseIndex(src){
         areaSlug: l.area || "", color: TAG2COLOR[l.tag] || ci?.color || "gold",
         foto: ci?.foto || l.img || "", iniciales: l.ini || ci?.iniciales || "",
         email: l.email || "", linkedin: l.linkedin || SEED.contacto.linkedin,
-        telefono: pickTel(l), whatsapp: pickWa(l),
+        telefono: pickTel(l) || ci?.telefono || "", whatsapp: pickWa(l),
         bio: l.bio || "", formacion: l.form || [], trayectoria: l.tray || [], idiomas: l.langs || [],
         orden: ci?.orden || i+1, activo: true
       };
     });
   } else {
     out.equipo = cardEq.map(c => ({ ...c, matricula: c.matricula ? "CPACF · " + c.matricula : "",
-      areaSlug:"", email:"", linkedin:SEED.contacto.linkedin, telefono:"", whatsapp:"",
+      areaSlug:"", email:"", linkedin:SEED.contacto.linkedin, whatsapp:"",
       bio:"", formacion:[], trayectoria:[], idiomas:[], activo:true }));
   }
-  /* ÁREAS */
   const aCards = Array.from(dom.querySelectorAll(".area-card"));
   const cardAr = aCards.map((c,i) => ({
     id: c.getAttribute("data-open-area") || slugify(T(c.querySelector("h3")) || "area-"+(i+1)),
@@ -1422,7 +1831,6 @@ function parseIndex(src){
     out.areas = cardAr.map(c => ({ id:c.id, nombre:c.nombre, icono:"i-brief", color:c.styleColor||c.color,
       descripcion:c.descripcion, tags:c.tags.slice(0,3), p1:"", p2:"", alcance:[], abogadoId:"", orden:c.orden, activo:true }));
   }
-  /* BLOG */
   const bCards = Array.from(dom.querySelectorAll("[data-open-article]"));
   const cardBl = bCards.map((c,i) => ({
     id: c.getAttribute("data-open-article"),
@@ -1445,7 +1853,6 @@ function parseIndex(src){
   } else {
     out.blog = cardBl.map(c => ({ ...c, fecha:new Date().toISOString().slice(0,10), lectura:"5 min", area:"", cuerpo:"", activo:true }));
   }
-  /* INICIO */
   const h1 = dom.querySelector(".hero h1");
   const cifras = Array.from(dom.querySelectorAll(".trust-cell")).map(c => ({
     pref: T(c.querySelector(".fix")), valor: parseInt(c.querySelector("[data-count]")?.getAttribute("data-count")||"0",10)||0,
@@ -1479,7 +1886,6 @@ function parseIndex(src){
     marquee: Array.from(dom.querySelectorAll(".mq-set")[0]?.querySelectorAll("span") || []).map(s => T(s)).filter(Boolean),
     showBadges:true, showCifras:true, showMarquee:true, showChips:true
   };
-  /* CONTACTO */
   const rowBy = ic => Array.from(dom.querySelectorAll(".info-row")).find(r => r.querySelector('use[href="#'+ic+'"]'));
   const pinP = rowBy("i-pin")?.querySelector("div p");
   const pinParts = pinP ? nodeToLite(pinP).split("\n").map(s=>s.trim()).filter(Boolean) : [];
@@ -1620,6 +2026,7 @@ async function doImport(){
         if (chosen.includes("inicio")) b.set(doc(db,"sitio","inicio"), { ...deepBrand(d.inicio, on), updatedAt:ts });
         if (chosen.includes("contacto")) b.set(doc(db,"sitio","contacto"), { ...deepBrand(d.contacto, on), updatedAt:ts });
         await b.commit();
+        await logAction("Importó desde el sitio", resumen + " · " + d.equipo.length + " abogados, " + d.areas.length + " áreas, " + d.blog.length + " posts");
         IMPORT = null; renderImport();
         toast("Contenido importado y publicado. Ya puede editarlo desde el panel.");
         renderDiag();
@@ -1649,13 +2056,14 @@ $("#seedBtn").addEventListener("click", () => {
         SEED.equipo.forEach(l => { const { id, ...rest } = l; b.set(doc(db,"equipo",id), { ...rest, updatedAt:ts }); });
         SEED.blog.forEach(p => { const { id, ...rest } = p; b.set(doc(db,"blog",id), { ...rest, updatedAt:ts }); });
         await b.commit();
+        await logAction("Cargó contenido inicial", "6 áreas · 4 abogados · 6 publicaciones · Inicio y Contacto");
         toast("Contenido inicial de Zarza & Asociados cargado.");
         renderDiag(); goView("equipo");
       } catch(ex){ fsErr(ex); }
     });
 });
 
-renderInicio(); renderContacto(); renderDiag();
+renderInicio(); renderContacto(); renderDiag(); renderHistGuard(); renderHist();
 COLS.forEach(renderList);
 </script>
 </body>
