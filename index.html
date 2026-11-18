@@ -311,6 +311,9 @@ ul{list-style:none}
 .team-area{font-size:13px;color:var(--tx-dim)}
 .team-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .matricula{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--tx-mute)}
+.team-tel{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--gold-2);min-width:0;overflow-wrap:anywhere;transition:color .25s}
+.team-tel .ic{width:14px;height:14px;color:var(--gold)}
+.team-tel:hover{color:var(--tx)}
 .team-btn{margin-top:4px}
 #blog{--acc:var(--red)}
 #blog .g-b{width:500px;height:500px;top:-16%;left:-8%;background:rgba(226,72,61,.07)}
@@ -980,6 +983,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
           <h3>Dr. Javier Zarza</h3>
           <p class="team-area">Derecho Laboral · Relaciones colectivas</p>
           <div class="team-meta"><span class="tag tag-gold">Laboral</span><span class="matricula">T° 112 F° 340</span></div>
+          <a class="team-tel" href="tel:+541143728901"><svg class="ic"><use href="#i-phone"/></svg>+54 11 4372-8901</a>
           <button type="button" class="btn btn-ghost btn-sm btn-block team-btn" data-open-lawyer="zarza">Ver Perfil Completo</button>
         </div>
       </article>
@@ -993,6 +997,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
           <h3>Dra. Valeria Santamarina</h3>
           <p class="team-area">Civil, Comercial y Empresario</p>
           <div class="team-meta"><span class="tag tag-blue">Civil · Empresario</span><span class="matricula">T° 118 F° 212</span></div>
+          <a class="team-tel" href="tel:+541143728902"><svg class="ic"><use href="#i-phone"/></svg>+54 11 4372-8902</a>
           <button type="button" class="btn btn-ghost btn-sm btn-block team-btn" data-open-lawyer="santamarina">Ver Perfil Completo</button>
         </div>
       </article>
@@ -1006,6 +1011,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
           <h3>Dr. Martín Iglesias</h3>
           <p class="team-area">Penal y Tránsito · Guardia 24 hs</p>
           <div class="team-meta"><span class="tag tag-red">Penal</span><span class="matricula">T° 121 F° 587</span></div>
+          <a class="team-tel" href="tel:+541143728903"><svg class="ic"><use href="#i-phone"/></svg>+54 11 4372-8903</a>
           <button type="button" class="btn btn-ghost btn-sm btn-block team-btn" data-open-lawyer="iglesias">Ver Perfil Completo</button>
         </div>
       </article>
@@ -1019,6 +1025,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
           <h3>Dra. Lucía Ferreyra</h3>
           <p class="team-area">Familia · Consumidor y Bancario</p>
           <div class="team-meta"><span class="tag tag-green">Familia</span><span class="matricula">T° 130 F° 455</span></div>
+          <a class="team-tel" href="tel:+541143728904"><svg class="ic"><use href="#i-phone"/></svg>+54 11 4372-8904</a>
           <button type="button" class="btn btn-ghost btn-sm btn-block team-btn" data-open-lawyer="ferreyra">Ver Perfil Completo</button>
         </div>
       </article>
@@ -1297,6 +1304,8 @@ const $$ = s => Array.from(document.querySelectorAll(s));
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const WA_NUM = "5491155550134";
 const wa = txt => "https://wa.me/" + WA_NUM + "?text=" + encodeURIComponent(txt || "Hola, quisiera realizar una consulta legal.");
+const digits = t => String(t||"").replace(/\D/g,"");
+const telH = t => "tel:" + String(t||"").replace(/[^\d+]/g,"");
 const fmt = new Intl.NumberFormat("es-AR");
 
 /* ─────────── DATA (contenido base de respaldo) ─────────── */
@@ -1336,28 +1345,28 @@ const AREAS = {
 const LAWYERS = {
   zarza:{ n:"Dr. Javier Zarza", role:"Socio Fundador · Derecho Laboral", mat:"CPACF · T° 112 F° 340", area:"laboral", tag:"tag-gold",
     img:"https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&crop=faces&w=500&h=600&q=75", ini:"AZ",
-    email:"a.zarza@zarzaasociados.com.ar",
+    email:"a.zarza@zarzaasociados.com.ar", tel:"+54 11 4372-8901", wa:"5491143728901",
     bio:"Fundó el estudio en 2004 tras una década de litigio laboral en tribunales de la Nación. Dirigió más de 600 procesos individuales y colectivos, y negocia convenios y conflictos sindicales para empresas de servicios e industria. Es docente de Derecho del Trabajo y conferencista sobre registración laboral.",
     form:["Abogado — Universidad de Córdoba (UBA)","Especialista en Derecho del Trabajo — UBA","Maestría en Relaciones Laborales — UNTreF","Docente universitario · Derecho del Trabajo"],
     tray:["+600 procesos laborales dirigidos desde 2004","Negociación colectiva en actividad servicios e industria","Litigio ante CNAT y justicia laboral bonaerense"],
     langs:["Español","Inglés"] },
   santamarina:{ n:"Dra. Valeria Santamarina", role:"Socia · Civil, Comercial y Empresario", mat:"CPACF · T° 118 F° 212", area:"civil", tag:"tag-blue",
     img:"https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&crop=faces&w=500&h=600&q=75", ini:"VS",
-    email:"v.santamarina@zarzaasociados.com.ar",
+    email:"v.santamarina@zarzaasociados.com.ar", tel:"+54 11 4372-8902", wa:"5491143728902",
     bio:"Lidera los departamentos Civil-Comercial y Empresario. Asesora a pymes y grupos familiares en estructuración societaria, contratos y prevención de conflictos, con más de 450 sucesiones y contratos complejos gestionados. Su enfoque: documentos claros hoy para evitar juicios mañana.",
     form:["Abogada — Universidad Católica Argentina (UCA)","Maestría en Derecho Empresario — Universidad de San Andrés","Posgrado en Compliance — Universidad Austral"],
     tray:["+450 sucesiones y procesos patrimoniales","Asesoramiento permanente a pymes y grupos familiares","Diseño de programas de cumplimiento normativo"],
     langs:["Español","Inglés","Portugués"] },
   iglesias:{ n:"Dr. Martín Iglesias", role:"Socio · Penal y Tránsito", mat:"CPACF · T° 121 F° 587", area:"penal", tag:"tag-red",
     img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&crop=faces&w=500&h=600&q=75", ini:"MI",
-    email:"m.iglesias@zarzaasociados.com.ar",
+    email:"m.iglesias@zarzaasociados.com.ar", tel:"+54 11 4372-8903", wa:"5491143728903",
     bio:"Tras diez años en la justicia penal, se sumó al estudio para dirigir el departamento Penal y la guardia de urgencias 24 hs. Litigó más de 300 causas y juicios orales, con especial dedicación a delitos informáticos y a la doble vía penal-civil de los accidentes de tránsito.",
     form:["Abogado — Universidad de Córdoba (UBA)","Especialista en Derecho Penal — UBA","Posgrado en Criminología — UCASAL"],
     tray:["10 años de función judicial penal","+300 causas y juicios orales litigados","Director de la guardia de urgencias 24 hs"],
     langs:["Español","Inglés"] },
   ferreyra:{ n:"Dra. Lucía Ferreyra", role:"Especialista Sénior · Familia y Consumidor", mat:"CPACF · T° 130 F° 455", area:"familia", tag:"tag-green",
     img:"https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&crop=faces&w=500&h=600&q=75", ini:"LF",
-    email:"l.ferreyra@zarzaasociados.com.ar",
+    email:"l.ferreyra@zarzaasociados.com.ar", tel:"+54 11 4372-8904", wa:"5491143728904",
     bio:"Mediadora registrada ante el Ministerio de Justicia, combina un enfoque conciliador con litigio firme cuando es necesario. Lleva más de 400 convenios reguladores homologados y dirige la práctica de consumidor y bancario del estudio, con foco en fraude digital y reclamos a aseguradoras.",
     form:["Abogada — Universidad Nacional de La Plata (UNLP)","Especialista en Derecho de Familia — UBA","Diplomatura en Derecho del Consumidor — UCA","Mediadora registrada — Ministerio de Justicia"],
     tray:["+400 convenios reguladores homologados","Especialista en recupero por fraude bancario digital","Mediación familiar y de consumo (COPREC)"],
@@ -1647,19 +1656,26 @@ function areaModal(id){
 }
 function lawyerModal(id){
   const l = LAWYERS[id]; if (!l) return "";
+  const tel = String(l.tel||"").trim(), waN = digits(l.wa);
+  const waHref = waN ? "https://wa.me/"+waN+"?text="+encodeURIComponent("Hola "+l.n+", quisiera realizar una consulta legal.") : wa("Hola, quisiera una consulta con "+l.n+".");
+  const waAttr = waN ? " data-wa-lawyer" : "";
+  const waLabel = waN ? "WhatsApp del profesional" : "WhatsApp";
   return '<p class="m-eyebrow">§ Ficha profesional</p>' +
     '<div class="lw-head"><div class="lw-photo"><div class="portrait-fallback"><b>' + l.ini + '</b></div>' +
     '<img src="' + l.img + '" alt="Retrato de ' + l.n + '" loading="lazy" onerror="this.remove()"></div>' +
     '<div class="lw-id"><h3>' + l.n + '</h3><p class="lw-role">' + l.role + '</p>' +
     '<span class="lw-mat">' + l.mat + '</span>' +
-    '<div class="lw-contact"><a class="btn btn-ghost btn-sm" href="mailto:' + l.email + '"><svg class="ic"><use href="#i-mail"/></svg>Email</a>' +
-    '<a class="btn btn-ghost btn-sm" href="https://www.linkedin.com/company/zarza-asociados-estudio-juridico" target="_blank" rel="noopener"><svg class="ic ic-fill"><use href="#i-linkedin"/></svg>LinkedIn</a></div></div></div>' +
+    '<div class="lw-contact">' +
+      (tel ? '<a class="btn btn-ghost btn-sm" href="' + telH(tel) + '"><svg class="ic"><use href="#i-phone"/></svg>' + tel + '</a>' : "") +
+      '<a class="btn btn-ghost btn-sm" href="mailto:' + l.email + '"><svg class="ic"><use href="#i-mail"/></svg>Email</a>' +
+      '<a class="btn btn-ghost btn-sm" href="https://www.linkedin.com/company/zarza-asociados-estudio-juridico" target="_blank" rel="noopener"><svg class="ic ic-fill"><use href="#i-linkedin"/></svg>LinkedIn</a>' +
+    '</div></div></div>' +
     '<p class="m-p">' + l.bio + '</p>' +
     '<h4 class="m-h">Formación académica</h4><ul class="m-list">' + l.form.map(i => "<li>" + i + "</li>").join("") + "</ul>" +
     '<h4 class="m-h">Trayectoria destacada</h4><ul class="m-list">' + l.tray.map(i => "<li>" + i + "</li>").join("") + "</ul>" +
     '<h4 class="m-h">Idiomas</h4>' + chipsHTML(l.langs, l.tag) +
     '<div class="m-cta-row"><button type="button" class="btn btn-primary" data-consult-lawyer="' + id + '">Consultar con este profesional <svg class="ic ic-shift"><use href="#i-arrow"/></svg></button>' +
-    '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + wa("Hola, quisiera una consulta con " + l.n + ".") + '"><svg class="ic ic-fill"><use href="#i-wa"/></svg>WhatsApp</a></div>';
+    '<a class="btn btn-wa" target="_blank" rel="noopener"' + waAttr + ' href="' + waHref + '"><svg class="ic ic-fill"><use href="#i-wa"/></svg>' + waLabel + '</a></div>';
 }
 function articleModal(id){
   const a = ARTICLES[id]; if (!a) return "";
@@ -1844,8 +1860,8 @@ $("#fsReset").addEventListener("click", () => {
 
 <!-- ════════════════════════════════════════════════════════════
      CONECTOR FIREBASE — ZARZA & ASOCIADOS · proyecto zarzaasociados
-     Sincroniza en vivo Inicio (incluidas las tarjetas flotantes),
-     Áreas, Equipo, Blog y Contacto.
+     Sincroniza en vivo Inicio (tarjetas flotantes), Áreas, Equipo
+     (teléfono y WhatsApp propios), Blog y Contacto.
      ════════════════════════════════════════════════════════════ -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -1868,6 +1884,7 @@ const $ = s => document.querySelector(s);
 const $$ = s => Array.from(document.querySelectorAll(s));
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const inline = s => esc(s).replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>").replace(/\*([^*]+)\*/g, "<em>$1</em>");
+const digits = t => String(t||"").replace(/\D/g,"");
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const fmt = new Intl.NumberFormat("es-AR");
 const MESES = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
@@ -1882,7 +1899,7 @@ const S = { areas:[], equipo:[], blog:[], has:{areas:false,equipo:false,blog:fal
 const waLink = txt => "https://wa.me/" + C.waNum + "?text=" + encodeURIComponent(txt || C.waMsg);
 const telHref = v => "tel:" + String(v||"").replace(/[^\d+]/g,"");
 
-/* ── Reemplazo global de datos de contacto (texto + enlaces) ── */
+/* ── Reemplazo global de datos de contacto (respeta los WhatsApp personales) ── */
 function replaceContact(prev, next){
   const pairs = [[prev.telefono,next.telefono],[prev.waDisplay,next.waDisplay],[prev.email,next.email]].filter(p => p[0] && p[1] && p[0] !== p[1]);
   if (pairs.length){
@@ -1891,9 +1908,14 @@ function replaceContact(prev, next){
     nodes.forEach(n => { let t = n.nodeValue; for (const [a,b] of pairs) t = t.split(a).join(b); if (t !== n.nodeValue) n.nodeValue = t; });
     $$("[data-copy]").forEach(el => { let v = el.dataset.copy; for (const [a,b] of pairs) v = v.split(a).join(b); el.dataset.copy = v; });
   }
-  const pd = String(prev.telefono||"").replace(/[^\d+]/g,""), nd = String(next.telefono||"").replace(/[^\d+]/g,"");
-  $$('a[href^="tel:"]').forEach(a => { const h = a.getAttribute("href"); if (h === "tel:"+pd) a.href = "tel:"+nd; else if (h === "tel:+"+prev.waNum) a.href = "tel:+"+next.waNum; });
-  $$('a[href*="wa.me/"]').forEach(a => a.href = a.getAttribute("href").replace(/wa\.me\/\d+/, "wa.me/"+next.waNum));
+  const pd = digits(prev.telefono), nd = digits(next.telefono);
+  const pPlus = String(prev.telefono||"").replace(/[^\d+]/g,""), nPlus = String(next.telefono||"").replace(/[^\d+]/g,"");
+  $$('a[href^="tel:"]').forEach(a => {
+    const h = a.getAttribute("href");
+    if (h === "tel:"+pPlus || h === "tel:+"+pd) a.href = "tel:"+nPlus;
+    else if (h === "tel:+"+prev.waNum) a.href = "tel:+"+next.waNum;
+  });
+  $$('a[href*="wa.me/"]:not([data-wa-lawyer])').forEach(a => a.href = a.getAttribute("href").replace(/wa\.me\/\d+/, "wa.me/"+next.waNum));
   $$('a[href^="mailto:"]').forEach(a => { if (a.getAttribute("href") === "mailto:"+prev.email) a.href = "mailto:"+next.email; });
 }
 
@@ -2072,7 +2094,7 @@ function renderAreas(){
   }
 }
 
-/* ── EQUIPO ── */
+/* ── EQUIPO (teléfono directo por profesional) ── */
 function renderEquipo(){
   const list = S.equipo.filter(l => l.activo !== false).sort(byOrden);
   const empty = S.has.equipo && list.length === 0;
@@ -2080,14 +2102,17 @@ function renderEquipo(){
   if (empty) return;
   const grid = $(".team-grid");
   if (grid){
-    grid.innerHTML = list.map((l,i) =>
-      '<article class="team-card" style="--c:' + (CVAR[l.color]||"var(--gold)") + '" data-reveal data-d="' + (i%4) + '">' +
+    grid.innerHTML = list.map((l,i) => {
+      const tel = String(l.telefono||"").trim();
+      return '<article class="team-card" style="--c:' + (CVAR[l.color]||"var(--gold)") + '" data-reveal data-d="' + (i%4) + '">' +
       '<div class="portrait"><div class="portrait-fallback"><b>' + esc(l.iniciales||"··") + "</b></div>" +
       (l.foto ? '<img src="' + esc(l.foto) + '" alt="' + esc(l.nombre) + '" loading="lazy" onerror="this.remove()">' : "") +
       '<span class="portrait-role">' + esc((l.rol||"").split("·")[0].trim()) + "</span></div>" +
       '<div class="team-info"><h3>' + esc(l.nombre) + '</h3><p class="team-area">' + esc(l.areaTexto||"") + "</p>" +
       '<div class="team-meta"><span class="tag ' + (TAGCLS[l.color]||"tag-gold") + '">' + esc((l.areaTexto||"Equipo").split("·")[0].trim()) + '</span><span class="matricula">' + esc((l.matricula||"").replace("CPACF · ","")) + "</span></div>" +
-      '<button type="button" class="btn btn-ghost btn-sm btn-block team-btn" data-open-lawyer="' + esc(l.id) + '">Ver Perfil Completo</button></div></article>').join("");
+      (tel ? '<a class="team-tel" href="' + telHref(tel) + '"><svg class="ic"><use href="#i-phone"/></svg>' + esc(tel) + '</a>' : "") +
+      '<button type="button" class="btn btn-ghost btn-sm btn-block team-btn" data-open-lawyer="' + esc(l.id) + '">Ver Perfil Completo</button></div></article>';
+    }).join("");
     reveal(".team-grid");
   }
   const si = $("#equipo .sec-index"); if (si) si.innerHTML = "<b>" + String(list.length).padStart(2,"0") + "</b> / PROFESIONALES · CPACF";
@@ -2199,18 +2224,28 @@ function areaModalZ(id){
 function lawyerModalZ(id){
   const l = S.equipo.find(x => x.id === id); if (!l) return "";
   const cls = TAGCLS[l.color] || "tag-gold";
+  const tel = String(l.telefono || "").trim();
+  const waN = digits(l.whatsapp);
+  const waHref = waN
+    ? "https://wa.me/" + waN + "?text=" + encodeURIComponent("Hola " + l.nombre + ", quisiera realizar una consulta legal.")
+    : waLink("Hola, quisiera una consulta con " + l.nombre + ".");
+  const waAttr = waN ? " data-wa-lawyer" : "";
+  const waLabel = waN ? "WhatsApp del profesional" : "WhatsApp";
   return '<p class="m-eyebrow">§ Ficha profesional</p>' +
     '<div class="lw-head"><div class="lw-photo"><div class="portrait-fallback"><b>' + esc(l.iniciales||"··") + "</b></div>" +
     (l.foto ? '<img src="' + esc(l.foto) + '" alt="Retrato de ' + esc(l.nombre) + '" loading="lazy" onerror="this.remove()">' : "") + "</div>" +
     '<div class="lw-id"><h3>' + esc(l.nombre) + '</h3><p class="lw-role">' + esc(l.rol||"") + '</p><span class="lw-mat">' + esc(l.matricula||"") + "</span>" +
-    '<div class="lw-contact">' + (l.email ? '<a class="btn btn-ghost btn-sm" href="mailto:' + esc(l.email) + '"><svg class="ic"><use href="#i-mail"/></svg>Email</a>' : "") +
-    (l.linkedin ? '<a class="btn btn-ghost btn-sm" href="' + esc(l.linkedin) + '" target="_blank" rel="noopener"><svg class="ic ic-fill"><use href="#i-linkedin"/></svg>LinkedIn</a>' : "") + "</div></div></div>" +
+    '<div class="lw-contact">' +
+      (tel ? '<a class="btn btn-ghost btn-sm" href="' + telHref(tel) + '"><svg class="ic"><use href="#i-phone"/></svg>' + esc(tel) + '</a>' : "") +
+      (l.email ? '<a class="btn btn-ghost btn-sm" href="mailto:' + esc(l.email) + '"><svg class="ic"><use href="#i-mail"/></svg>Email</a>' : "") +
+      (l.linkedin ? '<a class="btn btn-ghost btn-sm" href="' + esc(l.linkedin) + '" target="_blank" rel="noopener"><svg class="ic ic-fill"><use href="#i-linkedin"/></svg>LinkedIn</a>' : "") +
+    "</div></div></div>" +
     '<p class="m-p">' + inline(l.bio||"") + "</p>" +
     '<h4 class="m-h">Formación académica</h4><ul class="m-list">' + (l.formacion||[]).map(i => "<li>" + inline(i) + "</li>").join("") + "</ul>" +
     '<h4 class="m-h">Trayectoria destacada</h4><ul class="m-list">' + (l.trayectoria||[]).map(i => "<li>" + inline(i) + "</li>").join("") + "</ul>" +
     '<h4 class="m-h">Idiomas</h4>' + chipsZ(l.idiomas, cls) +
     '<div class="m-cta-row"><button type="button" class="btn btn-primary" data-consult-lawyer="' + esc(id) + '">Consultar con este profesional <svg class="ic ic-shift"><use href="#i-arrow"/></svg></button>' +
-    '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + waLink("Hola, quisiera una consulta con " + l.nombre + ".") + '"><svg class="ic ic-fill"><use href="#i-wa"/></svg>WhatsApp</a></div>';
+    '<a class="btn btn-wa" target="_blank" rel="noopener"' + waAttr + ' href="' + waHref + '"><svg class="ic ic-fill"><use href="#i-wa"/></svg>' + waLabel + '</a></div>';
 }
 function articleModalZ(id){
   const a = S.blog.find(x => x.id === id); if (!a) return "";
