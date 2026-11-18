@@ -360,7 +360,6 @@ img{display:block;max-width:100%}
 .cli-state-btn.active.cerrada{border-color:rgba(47,191,113,.6);color:#8FE0B4;background:rgba(47,191,113,.08)}
 .cli-notes{width:100%;background:var(--ink-900);border:1px solid var(--ink-700);border-radius:7px;padding:10px 12px;color:var(--tx);font-family:var(--sans);font-size:13px;min-height:80px;resize:vertical;line-height:1.55}
 .cli-notes:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,92,.13)}
-/* ═══════════ AGENDA ═══════════ */
 .ag-list{display:grid;gap:8px}
 .ag-row{display:grid;grid-template-columns:115px minmax(0,2fr) 135px auto;gap:12px;align-items:center;background:var(--ink-900);border:1px solid var(--ink-700);border-radius:11px;padding:12px 14px;transition:border-color .25s,background .25s}
 .ag-row:hover{border-color:var(--line)}
@@ -564,6 +563,7 @@ img{display:block;max-width:100%}
 <p class="desc">Registre reuniones, visitas, audiencias o vencimientos. El panel avisará en pantalla cuando falten menos de 24 horas y permitirá enviar un aviso por WhatsApp o email al cliente.</p>
 <div class="grid2">
 <input type="hidden" id="ag-id">
+<input type="hidden" id="ag-cliente-id">
 <div class="field full"><label for="ag-titulo">Título / motivo <b>*</b></label><input class="inp" id="ag-titulo" placeholder="Ej.: Reunión por consulta laboral"></div>
 <div class="field"><label for="ag-cliente">Cliente <b>*</b></label><input class="inp" id="ag-cliente" placeholder="Nombre del cliente"></div>
 <div class="field"><label for="ag-email">Email del cliente</label><input class="inp" id="ag-email" type="email" placeholder="cliente@correo.com"></div>
@@ -578,7 +578,6 @@ img{display:block;max-width:100%}
 <option value="audiencia">Audiencia</option>
 <option value="gestion">Gestión</option>
 <option value="vencimiento">Vencimiento</option>
-<option value="llamada">Llamada Tel / WhatsApp</option>
 <option value="otro">Otro</option>
 </select>
 </div>
@@ -860,6 +859,8 @@ const MAX_ACTS = 400;
 const alarmedClientIds = new Set();
 const agAlarmed = new Set();
 let agAlarmEvent = null;
+let audioCtx = null;
+
 function toast(msg, type){
 const box = $("#toasts");
 if (box.children.length >= 3) box.firstElementChild.remove();
@@ -870,6 +871,58 @@ box.appendChild(t);
 setTimeout(() => { t.classList.add("out"); setTimeout(() => t.remove(), 320); }, 3800);
 }
 const fsErr = e => { console.warn(e); toast("Error de Firestore: " + (e.code || e.message), "err"); };
+
+// Permitir audio en el primer clic del usuario para evitar errores de autoplay
+document.addEventListener('click', () => {
+    if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+}, { once: true });
+
+function playAlarmSound() {
+    try {
+        if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+        const osc1 = audioCtx.createOscillator();
+        const gain1 = audioCtx.createGain();
+        osc1.connect(gain1);
+        gain1.connect(audioCtx.destination);
+        osc1.type = 'sine';
+        osc1.frequency.setValueAtTime(880, audioCtx.currentTime);
+        gain1.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain1.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+        osc1.start();
+        osc1.stop(audioCtx.currentTime + 0.4);
+        setTimeout(() => {
+            const osc2 = audioCtx.createOscillator();
+            const gain2 = audioCtx.createGain();
+            osc2.connect(gain2);
+            gain2.connect(audioCtx.destination);
+            osc2.type = 'sine';
+            osc2.frequency.setValueAtTime(880, audioCtx.currentTime);
+            gain2.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gain2.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+            osc2.start();
+            osc2.stop(audioCtx.currentTime + 0.4);
+        }, 500);
+    } catch(e) {
+        console.warn("No se pudo reproducir el sonido de alarma:", e);
+    }
+}
+
+function showNewClientAlarm(nombre, expediente) {
+$("#alarmMsg").innerHTML = `Ha ingresado una nueva consulta de:<br><b style="font-size:1.2em;color:var(--tx)">${esc(nombre)}</b><br><span style="color:var(--tx-mute)">Expediente: ${esc(expediente)}</span>`;
+$("#alarmRoot").classList.add("open");
+playAlarmSound();
+}
+$("#alarmAckBtn").addEventListener("click", () => {
+$("#alarmRoot").classList.remove("open");
+});
+
 const SEED = {
 inicio:{
 eyebrow:"Estudio Jurídico Multipráctica · Córdoba · Desde 2004",
@@ -1244,9 +1297,10 @@ const estado = c.estado || "nueva";
 const areaTxt = AREA_LABELS[c.area] || c.areaTexto || c.area || "—";
 const urg = c.urgencia || "Media";
 const unread = estado === "nueva" ? " unread" : "";
+const agendadoBadge = c.agendado ? '<span class="chip ch-green" style="margin-left:8px">Agendada</span>' : '';
 return '<div class="cli-row' + unread + '" data-cid="' + esc(c.id) + '">' +
 '<div class="cli-urg ' + esc(urg) + '"><span>' + esc(urg.toUpperCase()) + '</span></div>' +
-'<div class="cli-main"><b>' + esc(c.nombre || "Sin nombre") + '</b>' +
+'<div class="cli-main"><b>' + esc(c.nombre || "Sin nombre") + '</b>' + agendadoBadge +
 '<span class="cli-email">' + esc(c.email || "—") + '</span>' +
 '<span class="cli-det">' + esc((c.detalle||"").slice(0,140)) + (String(c.detalle||"").length > 140 ? "…" : "") + '</span></div>' +
 '<div class="cli-col"><b>' + esc(areaTxt) + '</b><span>' + esc(c.expediente || "—") + '</span></div>' +
@@ -1285,10 +1339,10 @@ finally { b.classList.remove("loading"); }
 $("#cliExport").addEventListener("click", () => {
 const list = applyCliFilters();
 if (!list.length) return toast("No hay consultas para exportar.", "err");
-const headers = ["Expediente","Fecha","Nombre","Email","Teléfono","Área","Urgencia","Estado","Detalle","Notas"];
+const headers = ["Expediente","Fecha","Nombre","Email","Teléfono","Área","Urgencia","Estado","Agendada","Detalle","Notas"];
 const rows = list.map(c => {
 const f = cliFDate(c);
-return [c.expediente||"", f.d + " " + f.h, c.nombre||"", c.email||"", c.telefono||"", AREA_LABELS[c.area] || c.area || "", c.urgencia||"", c.estado||"nueva", (c.detalle||"").replace(/\s+/g," "), (c.notas||"").replace(/\s+/g," ")];
+return [c.expediente||"", f.d + " " + f.h, c.nombre||"", c.email||"", c.telefono||"", AREA_LABELS[c.area] || c.area || "", c.urgencia||"", c.estado||"nueva", c.agendado ? "Sí" : "No", (c.detalle||"").replace(/\s+/g," "), (c.notas||"").replace(/\s+/g," ")];
 });
 const csv = [headers, ...rows].map(r => r.map(x => '"' + String(x).replace(/"/g,'""') + '"').join(",")).join("\n");
 const blob = new Blob(["\ufeff" + csv], {type:"text/csv;charset=utf-8"});
@@ -1312,6 +1366,11 @@ const urg = c.urgencia || "Media";
 const tel = String(c.telefono||"").trim();
 const waN = digits(tel);
 $("#cliDetailTitle").textContent = "Consulta " + (c.expediente || "");
+
+const scheduleBtnHtml = c.agendado 
+    ? `<button type="button" class="btn btn-ghost btn-sm" id="btnScheduleFromClient" style="margin-top:16px"><svg class="ic"><use href="#i-edit"/></svg>Editar en Agenda</button>`
+    : `<button type="button" class="btn btn-primary btn-sm" id="btnScheduleFromClient" style="margin-top:16px"><svg class="ic"><use href="#i-plus"/></svg>Agendar Consulta</button>`;
+
 $("#cliDetailBody").innerHTML =
 '<div class="cli-detail-head">' +
 '<div class="cli-urg ' + esc(urg) + '"><span>' + esc(urg.toUpperCase()) + '</span></div>' +
@@ -1337,9 +1396,25 @@ $("#cliDetailBody").innerHTML =
 '<button type="button" class="cli-state-btn nueva' + (estado === "nueva" ? " active" : "") + '" data-nst="nueva">Nueva</button>' +
 '<button type="button" class="cli-state-btn respondida' + (estado === "respondida" ? " active" : "") + '" data-nst="respondida">Respondida</button>' +
 '<button type="button" class="cli-state-btn cerrada' + (estado === "cerrada" ? " active" : "") + '" data-nst="cerrada">Cerrada</button>' +
-'</div></div>' +
-'</div></div>';
+'</div></div>' + scheduleBtnHtml + '</div></div>';
+
 $("#cliRoot").classList.add("open");
+
+const btn = $("#btnScheduleFromClient");
+if (btn) {
+    btn.addEventListener("click", () => {
+        $("#cliRoot").classList.remove("open");
+        goView("agenda");
+        $("#ag-cliente-id").value = c.id;
+        $("#ag-titulo").value = `Consulta: ${c.nombre}`;
+        $("#ag-cliente").value = c.nombre;
+        $("#ag-email").value = c.email || "";
+        $("#ag-tel").value = c.telefono || "";
+        $("#ag-wa").value = digits(c.telefono) || "";
+        $("#ag-notas").value = `Detalle: ${c.detalle || ''}\nExpediente: ${c.expediente || ''}`;
+        toast("Formulario de agenda prellenado con los datos del cliente.", "gold");
+    });
+}
 }
 async function changeCliState(id, nuevoEstado, btnElement){
 try {
@@ -2294,43 +2369,7 @@ toast("Contenido inicial cargado.");
 } catch(ex){ fsErr(ex); }
 });
 });
-function playAlarmSound() {
-try {
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-const osc1 = audioCtx.createOscillator();
-const gain1 = audioCtx.createGain();
-osc1.connect(gain1);
-gain1.connect(audioCtx.destination);
-osc1.type = 'sine';
-osc1.frequency.setValueAtTime(880, audioCtx.currentTime);
-gain1.gain.setValueAtTime(0.3, audioCtx.currentTime);
-gain1.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
-osc1.start();
-osc1.stop(audioCtx.currentTime + 0.4);
-setTimeout(() => {
-const osc2 = audioCtx.createOscillator();
-const gain2 = audioCtx.createGain();
-osc2.connect(gain2);
-gain2.connect(audioCtx.destination);
-osc2.type = 'sine';
-osc2.frequency.setValueAtTime(880, audioCtx.currentTime);
-gain2.gain.setValueAtTime(0.3, audioCtx.currentTime);
-gain2.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
-osc2.start();
-osc2.stop(audioCtx.currentTime + 0.4);
-}, 500);
-} catch(e) {
-console.warn("No se pudo reproducir el sonido de alarma:", e);
-}
-}
-function showNewClientAlarm(nombre, expediente) {
-$("#alarmMsg").innerHTML = `Ha ingresado una nueva consulta de:<br><b style="font-size:1.2em;color:var(--tx)">${esc(nombre)}</b><br><span style="color:var(--tx-mute)">Expediente: ${esc(expediente)}</span>`;
-$("#alarmRoot").classList.add("open");
-playAlarmSound();
-}
-$("#alarmAckBtn").addEventListener("click", () => {
-$("#alarmRoot").classList.remove("open");
-});
+
 /* ═════════════════════════════════════════════════════════════════
 AGENDA DE VISITAS / EVENTOS + RECORDATORIO 24 HS + WHATSAPP
 ═════════════════════════════════════════════════════════════════ */
@@ -2413,6 +2452,7 @@ ${estado !== "cancelado" ? `<button type="button" class="icon-btn" data-agenda-c
 }
 function resetAgForm(){
 $("#ag-id").value = "";
+$("#ag-cliente-id").value = "";
 $("#ag-titulo").value = "";
 $("#ag-cliente").value = "";
 $("#ag-email").value = "";
@@ -2427,6 +2467,7 @@ $("#ag-recordar").checked = true;
 }
 function fillAgForm(ev){
 $("#ag-id").value = ev.id || "";
+$("#ag-cliente-id").value = ev.clienteId || "";
 $("#ag-titulo").value = ev.titulo || "";
 $("#ag-cliente").value = ev.clienteNombre || "";
 $("#ag-email").value = ev.clienteEmail || "";
@@ -2444,6 +2485,7 @@ const btn = $("#agSave");
 btn.classList.add("loading");
 try{
 const id = $("#ag-id").value;
+const clienteId = $("#ag-cliente-id").value;
 const titulo = $("#ag-titulo").value.trim();
 const clienteNombre = $("#ag-cliente").value.trim();
 const clienteEmail = $("#ag-email").value.trim();
@@ -2484,14 +2526,23 @@ data.aviso24h = false;
 data.whatsappEnviado = false;
 data.emailEnviado = false;
 }
+
+let savedId = id;
 if(id){
 await updateDoc(doc(db,"agenda",id), data);
+if(clienteId) {
+await updateDoc(doc(db,"clientes",clienteId), { agendado: true, agendaId: id });
+}
 await logAction("Editó evento de agenda", `${titulo || clienteNombre} · ${fecha} ${hora}`);
 toast("Evento actualizado.", "gold");
 }else{
 data.createdAt = serverTimestamp();
 data.creadoPor = auth.currentUser?.email || "";
-await addDoc(collection(db,"agenda"), data);
+const ref = await addDoc(collection(db,"agenda"), data);
+savedId = ref.id;
+if(clienteId) {
+await updateDoc(doc(db,"clientes",clienteId), { agendado: true, agendaId: savedId });
+}
 await logAction("Creó evento de agenda", `${titulo || clienteNombre} · ${fecha} ${hora}`);
 toast("Evento guardado en agenda.", "gold");
 }
@@ -2678,6 +2729,7 @@ if(agAlarmEvent) await markAgAlerted(agAlarmEvent);
 $("#agAlarmRoot").classList.remove("open");
 });
 setInterval(checkAgendaReminders, 30000);
+
 const themeToggle = $("#themeToggle");
 const applyTheme = (theme) => {
 document.documentElement.classList.toggle("theme-light", theme === "light");
@@ -2694,6 +2746,7 @@ localStorage.setItem("za-theme", next);
 applyTheme(next);
 toast(next === "light" ? "Modo claro activado" : "Modo oscuro activado", "gold");
 });
+
 renderInicio(); renderContacto(); renderDiag(); renderHistGuard(); renderHist(); renderClientes(); renderAgenda();
 COLS.forEach(renderList);
 </script>
