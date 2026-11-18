@@ -282,18 +282,16 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 .toast.err .ic{color:var(--red)}
 .toast.gold .ic{color:var(--gold)}
 .toast.out{opacity:0;transform:translateY(8px);transition:all .3s}
-
 /* ═══ ALARMA NUEVA CONSULTA ═══ */
 @keyframes pulse-alarm {
-  0% { box-shadow: 0 0 0 0 rgba(240, 166, 60, 0.7); }
-  70% { box-shadow: 0 0 0 20px rgba(240, 166, 60, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(240, 166, 60, 0); }
+0% { box-shadow: 0 0 0 0 rgba(240, 166, 60, 0.7); }
+70% { box-shadow: 0 0 0 20px rgba(240, 166, 60, 0); }
+100% { box-shadow: 0 0 0 0 rgba(240, 166, 60, 0); }
 }
-#alarmRoot .mcard { 
-  animation: pulse-alarm 2s infinite; 
-  border-color: var(--amber); 
+#alarmRoot .mcard {
+animation: pulse-alarm 2s infinite;
+border-color: var(--amber);
 }
-
 /* ═══════════ CLIENTES (nuevos estilos) ═══════════ */
 .cli-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
 .cli-stat{background:linear-gradient(165deg,var(--ink-850),var(--ink-800));border:1px solid var(--line-soft);border-radius:12px;padding:18px 20px;cursor:pointer;transition:border-color .25s,transform .25s}
@@ -432,7 +430,6 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 <symbol id="i-export" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></symbol>
 <symbol id="i-note" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></symbol>
 </defs></svg>
-
 <!-- ══════════ LOGIN ══════════ -->
 <section class="auth" id="authView">
 <div class="glow g1"></div><div class="glow g2"></div>
@@ -450,7 +447,6 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 </form>
 </div>
 </section>
-
 <!-- ══════════ PANEL ══════════ -->
 <div class="shell" id="appView">
 <aside class="side">
@@ -475,7 +471,6 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 <button type="button" class="btn btn-danger btn-sm" id="logoutBtn"><svg class="ic"><use href="#i-out"/></svg>Cerrar sesión</button>
 </div>
 </aside>
-
 <main class="main" id="mainArea">
 <div class="topbar">
 <h2 id="viewTitle">Inicio</h2>
@@ -526,7 +521,6 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 </div>
 <div class="row-actions"><button type="button" class="btn btn-primary" id="saveInicio"><svg class="ic"><use href="#i-save"/></svg>Guardar sección Inicio</button></div>
 </section>
-
 <!-- CLIENTES -->
 <section class="view" id="view-clientes">
 <div class="card">
@@ -546,7 +540,6 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 <div class="cli-list" id="cliList"></div>
 </div>
 </section>
-
 <!-- ÁREAS -->
 <section class="view" id="view-areas">
 <div class="sec-head">
@@ -555,7 +548,6 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 </div>
 <div class="rows" id="list-areas"></div>
 </section>
-
 <!-- EQUIPO -->
 <section class="view" id="view-equipo">
 <div class="sec-head">
@@ -564,7 +556,6 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 </div>
 <div class="rows" id="list-equipo"></div>
 </section>
-
 <!-- BLOG -->
 <section class="view" id="view-blog">
 <div class="sec-head">
@@ -573,7 +564,6 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 </div>
 <div class="rows" id="list-blog"></div>
 </section>
-
 <!-- CONTACTO -->
 <section class="view" id="view-contacto">
 <div class="card">
@@ -601,7 +591,6 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 <div class="row-actions"><button type="button" class="btn btn-primary" id="saveContacto"><svg class="ic"><use href="#i-save"/></svg>Guardar datos de contacto</button></div>
 </div>
 </section>
-
 <!-- HISTORIAL -->
 <section class="view" id="view-historial">
 <div class="card">
@@ -624,7 +613,6 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 <div class="hist-scroll" id="histList" tabindex="0" aria-label="Listado de sesiones"></div>
 </div>
 </section>
-
 <!-- DIAGNÓSTICO -->
 <section class="view" id="view-diagnostico">
 <div class="card">
@@ -657,7 +645,6 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 <div id="impResult"></div>
 </div>
 </section>
-
 <!-- AYUDA -->
 <section class="view" id="view-ayuda">
 <div class="card">
@@ -761,7 +748,6 @@ allow read, write: if false;
 </div>
 </main>
 </div>
-
 <!-- Modal editor -->
 <div class="mroot" id="editorRoot" role="dialog" aria-modal="true">
 <div class="mback" data-close-editor></div>
@@ -774,7 +760,6 @@ allow read, write: if false;
 </div>
 </div>
 </div>
-
 <!-- Modal detalle de sesión -->
 <div class="mroot" id="histRoot" role="dialog" aria-modal="true">
 <div class="mback" data-close-hist></div>
@@ -784,7 +769,6 @@ allow read, write: if false;
 <div class="mfoot"><button type="button" class="btn btn-ghost" data-close-hist>Cerrar</button></div>
 </div>
 </div>
-
 <!-- Modal confirmación -->
 <div class="mroot" id="confirmRoot" role="dialog" aria-modal="true">
 <div class="mback" data-close-confirm></div>
@@ -797,7 +781,6 @@ allow read, write: if false;
 </div>
 </div>
 </div>
-
 <!-- Modal detalle cliente -->
 <div class="mroot" id="cliRoot" role="dialog" aria-modal="true">
 <div class="mback" data-close-cli></div>
@@ -810,47 +793,41 @@ allow read, write: if false;
 </div>
 </div>
 </div>
-
 <!-- Modal Alarma Nueva Consulta -->
 <div class="mroot" id="alarmRoot" role="dialog" aria-modal="true">
-  <div class="mback"></div>
-  <div class="mcard small">
-    <div class="mhead"><h3>🔔 Nueva Consulta Recibida</h3></div>
-    <div class="mbody" style="text-align:center">
-      <svg class="ic" style="width:48px;height:48px;color:var(--amber);margin-bottom:16px"><use href="#i-inbox"/></svg>
-      <p class="confirm-msg" id="alarmMsg">Ha ingresado una nueva consulta a la bandeja de clientes.</p>
-    </div>
-    <div class="mfoot" style="justify-content:center">
-      <button type="button" class="btn btn-primary" id="alarmAckBtn"><svg class="ic"><use href="#i-check"/></svg>Entendido, cerrar alarma</button>
-    </div>
-  </div>
+<div class="mback"></div>
+<div class="mcard small">
+<div class="mhead"><h3>🔔 Nueva Consulta Recibida</h3></div>
+<div class="mbody" style="text-align:center">
+<svg class="ic" style="width:48px;height:48px;color:var(--amber);margin-bottom:16px"><use href="#i-inbox"/></svg>
+<p class="confirm-msg" id="alarmMsg">Ha ingresado una nueva consulta a la bandeja de clientes.</p>
 </div>
-
+<div class="mfoot" style="justify-content:center">
+<button type="button" class="btn btn-primary" id="alarmAckBtn"><svg class="ic"><use href="#i-check"/></svg>Entendido, cerrar alarma</button>
+</div>
+</div>
+</div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
-
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { getFirestore, collection, doc, onSnapshot, setDoc, addDoc, updateDoc, deleteDoc, getDoc, getDocs, serverTimestamp, writeBatch, arrayUnion, increment } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
 const firebaseConfig = {
-  apiKey: "AIzaSyDGx9T9I1ZRV32vby5kaKI1jmps4vbzRKE",
-  authDomain: "zarzaasociados.firebaseapp.com",
-  projectId: "zarzaasociados",
-  storageBucket: "zarzaasociados.firebasestorage.app",
-  messagingSenderId: "177641854130",
-  appId: "1:177641854130:web:f41e67698b40d2992825ab",
-  measurementId: "G-4TH14EY7WP"
+apiKey: "AIzaSyDGx9T9I1ZRV32vby5kaKI1jmps4vbzRKE",
+authDomain: "zarzaasociados.firebaseapp.com",
+projectId: "zarzaasociados",
+storageBucket: "zarzaasociados.firebasestorage.app",
+messagingSenderId: "177641854130",
+appId: "1:177641854130:web:f41e67698b40d2992825ab",
+measurementId: "G-4TH14EY7WP"
 };
-
 const app = initializeApp(firebaseConfig);
 isSupported().then(ok => { if (ok) getAnalytics(app); }).catch(() => {});
 const auth = getAuth(app);
 const db = getFirestore(app);
 const SUPER_EMAIL = "sebagsc2020@gmail.com";
 const isSuper = () => String(auth.currentUser?.email || "").trim().toLowerCase() === SUPER_EMAIL;
-
 const $ = s => document.querySelector(s);
 const $$ = s => Array.from(document.querySelectorAll(s));
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -864,12 +841,11 @@ const pad = n => String(n).padStart(2,"0");
 const fstamp = ms => { if(!ms) return "—"; const d=new Date(ms); return `${pad(d.getDate())} ${MESES[d.getMonth()]} ${d.getFullYear()} · ${pad(d.getHours())}:${pad(d.getMinutes())}`; };
 const fhms = ms => { const t=Math.max(0,Math.floor(ms/1000)); return pad(Math.floor(t/3600))+":"+pad(Math.floor(t%3600/60))+":"+pad(t%60); };
 const fdur = ms => {
-  const t = Math.max(0, Math.floor(ms/1000));
-  if (t < 60) return t + " s";
-  const h = Math.floor(t/3600), m = Math.floor(t%3600/60);
-  return h ? h + " h " + pad(m) + " min" : m + " min " + pad(t%60) + " s";
+const t = Math.max(0, Math.floor(ms/1000));
+if (t < 60) return t + " s";
+const h = Math.floor(t/3600), m = Math.floor(t%3600/60);
+return h ? h + " h " + pad(m) + " min" : m + " min " + pad(t%60) + " s";
 };
-
 const ICONS = [["i-brief","Maletín / Balanza"],["i-doc","Documento con sello"],["i-family","Grupo familiar"],["i-building","Edificio corporativo"],["i-gavel","Mazo de juez"],["i-shieldcart","Escudo / Consumidor"]];
 const CHIP_ICONS = [["i-check","Check · Resuelto"],["i-shield","Escudo · Protección"],["i-scale","Balanza de justicia"],["i-gavel","Mazo de juez"],["i-lock","Candado · Confidencial"],["i-clock","Reloj · 24 hs"],["i-phone","Teléfono"],["i-mail","Email"],["i-cal","Calendario"],["i-user","Persona"],["i-brief","Maletín"],["i-doc","Documento"],["i-pin","Ubicación"]];
 const COLORS = [["gold","Dorado"],["blue","Azul"],["green","Verde"],["amber","Ámbar"],["red","Rojo"],["violet","Violeta"]];
@@ -881,21 +857,18 @@ const byOrden = (a,b) => (a.orden??999)-(b.orden??999);
 const COLS = ["areas","equipo","blog"];
 const MAX_CHIPS = 4;
 const MAX_ACTS = 400;
-
 // Set para evitar alarmas duplicadas de la misma consulta en la misma sesión
 const alarmedClientIds = new Set();
-
 function toast(msg, type){
-  const box = $("#toasts");
-  if (box.children.length >= 3) box.firstElementChild.remove();
-  const t = document.createElement("div");
-  t.className = "toast" + (type ? " " + type : "");
-  t.innerHTML = '<svg class="ic"><use href="#' + (type==="err"?"i-alert":type==="gold"?"i-lock":"i-check") + '"/></svg><span>' + esc(msg) + "</span>";
-  box.appendChild(t);
-  setTimeout(() => { t.classList.add("out"); setTimeout(() => t.remove(), 320); }, 3800);
+const box = $("#toasts");
+if (box.children.length >= 3) box.firstElementChild.remove();
+const t = document.createElement("div");
+t.className = "toast" + (type ? " " + type : "");
+t.innerHTML = '<svg class="ic"><use href="#' + (type==="err"?"i-alert":type==="gold"?"i-lock":"i-check") + '"/></svg><span>' + esc(msg) + "</span>";
+box.appendChild(t);
+setTimeout(() => { t.classList.add("out"); setTimeout(() => t.remove(), 320); }, 3800);
 }
 const fsErr = e => { console.warn(e); toast("Error de Firestore: " + (e.code || e.message), "err"); };
-
 // [SEED DATA OMITTED FOR BREVITY, EXACTLY AS ORIGINAL]
 const SEED = {
 inicio:{
@@ -955,874 +928,825 @@ blog:[
 {id:"sas-srl-2026",titulo:"SAS o SRL: qué sociedad conviene en 2026",categoria:"Empresario",fecha:"2026-09-18",lectura:"6 min",area:"empresario",orden:5,activo:true,extracto:"Capital, velocidad de constitución, administración y costos.",cuerpo:"Elegir el tipo societario no es un trámite."},
 {id:"phishing-bancario",titulo:"Phishing bancario: cómo recuperar el dinero",categoria:"Consumidor",fecha:"2026-09-02",lectura:"6 min",area:"consumidor",orden:6,activo:true,extracto:"El deber de seguridad de los bancos.",cuerpo:"El vaciamiento de cuentas mediante phishing no es una fatalidad."}
 ]};
-
 const state = {
-  inicio:null, contacto:null, areas:[], equipo:[], blog:[], sesiones:[], clientes:[],
-  status:{inicio:"loading",contacto:"loading",areas:"loading",equipo:"loading",blog:"loading",sesiones:"loading",clientes:"loading"},
-  err:{},
-  cliFilter:{state:"",search:"",area:"",urg:"",sort:"fecha-desc"}
+inicio:null, contacto:null, areas:[], equipo:[], blog:[], sesiones:[], clientes:[],
+status:{inicio:"loading",contacto:"loading",areas:"loading",equipo:"loading",blog:"loading",sesiones:"loading",clientes:"loading"},
+err:{},
+cliFilter:{state:"",search:"",area:"",urg:"",sort:"fecha-desc"}
 };
 let unsubs = [], view = "inicio";
 let SESS = null, sessTimer = null, beatTimer = null, logWarned = false;
 const sessKey = uid => "za_sess_" + uid;
 const sessRef = () => SESS ? doc(db,"sesiones",SESS.id) : null;
-
 async function logAction(tipo, detalle){
-  if (!SESS || !auth.currentUser) return;
-  try {
-    const payload = { ultimoMs: Date.now(), totalAcciones: increment(1) };
-    if ((SESS.actCount || 0) < MAX_ACTS){
-      payload.acciones = arrayUnion({ t: Date.now(), n: Math.random().toString(36).slice(2,7), tipo: String(tipo), detalle: String(detalle||"") });
-      SESS.actCount = (SESS.actCount || 0) + 1;
-    }
-    await updateDoc(sessRef(), payload);
-  } catch(e){
-    console.warn("Auditoría:", e);
-    if (!logWarned){ logWarned = true; toast("No se pudo registrar la acción en el historial. Revise las reglas de /sesiones.", "err"); }
-  }
+if (!SESS || !auth.currentUser) return;
+try {
+const payload = { ultimoMs: Date.now(), totalAcciones: increment(1) };
+if ((SESS.actCount || 0) < MAX_ACTS){
+payload.acciones = arrayUnion({ t: Date.now(), n: Math.random().toString(36).slice(2,7), tipo: String(tipo), detalle: String(detalle||"") });
+SESS.actCount = (SESS.actCount || 0) + 1;
 }
-
+await updateDoc(sessRef(), payload);
+} catch(e){
+console.warn("Auditoría:", e);
+if (!logWarned){ logWarned = true; toast("No se pudo registrar la acción en el historial. Revise las reglas de /sesiones.", "err"); }
+}
+}
 async function startSession(user){
-  const key = sessKey(user.uid);
-  let id = null, inicioMs = Date.now(), actCount = 0, resumed = false;
-  try {
-    const saved = sessionStorage.getItem(key);
-    if (saved){
-      const snap = await getDoc(doc(db,"sesiones",saved));
-      if (snap.exists() && snap.data().uid === user.uid && !snap.data().finMs){
-        id = saved; inicioMs = snap.data().inicioMs || Date.now();
-        actCount = (snap.data().acciones || []).length; resumed = true;
-      }
-    }
-  } catch(_){}
-  if (!id){
-    try {
-      const ref = await addDoc(collection(db,"sesiones"), {
-        uid: user.uid, email: user.email || "", inicio: serverTimestamp(),
-        inicioMs: Date.now(), ultimoMs: Date.now(), finMs: null, activo: true,
-        totalAcciones: 0, acciones: [], ua: navigator.userAgent.slice(0,180)
-      });
-      id = ref.id; inicioMs = Date.now(); actCount = 0;
-      sessionStorage.setItem(key, id);
-    } catch(e){
-      console.warn(e);
-      toast("No se pudo abrir el registro de sesión. Publique las reglas de /sesiones.", "err");
-      return;
-    }
-  }
-  SESS = { id, inicioMs, actCount };
-  await logAction(resumed ? "Sesión reanudada" : "Sesión iniciada", resumed ? "Recarga del panel" : "Ingreso al panel de administración");
-  clearInterval(sessTimer); clearInterval(beatTimer);
-  sessTimer = setInterval(paintClock, 1000);
-  beatTimer = setInterval(() => { if (SESS && auth.currentUser) updateDoc(sessRef(), { ultimoMs: Date.now(), activo:true }).catch(()=>{}); }, 30000);
-  paintClock();
+const key = sessKey(user.uid);
+let id = null, inicioMs = Date.now(), actCount = 0, resumed = false;
+try {
+const saved = sessionStorage.getItem(key);
+if (saved){
+const snap = await getDoc(doc(db,"sesiones",saved));
+if (snap.exists() && snap.data().uid === user.uid && !snap.data().finMs){
+id = saved; inicioMs = snap.data().inicioMs || Date.now();
+actCount = (snap.data().acciones || []).length; resumed = true;
 }
-
+}
+} catch(_){}
+if (!id){
+try {
+const ref = await addDoc(collection(db,"sesiones"), {
+uid: user.uid, email: user.email || "", inicio: serverTimestamp(),
+inicioMs: Date.now(), ultimoMs: Date.now(), finMs: null, activo: true,
+totalAcciones: 0, acciones: [], ua: navigator.userAgent.slice(0,180)
+});
+id = ref.id; inicioMs = Date.now(); actCount = 0;
+sessionStorage.setItem(key, id);
+} catch(e){
+console.warn(e);
+toast("No se pudo abrir el registro de sesión. Publique las reglas de /sesiones.", "err");
+return;
+}
+}
+SESS = { id, inicioMs, actCount };
+await logAction(resumed ? "Sesión reanudada" : "Sesión iniciada", resumed ? "Recarga del panel" : "Ingreso al panel de administración");
+clearInterval(sessTimer); clearInterval(beatTimer);
+sessTimer = setInterval(paintClock, 1000);
+beatTimer = setInterval(() => { if (SESS && auth.currentUser) updateDoc(sessRef(), { ultimoMs: Date.now(), activo:true }).catch(()=>{}); }, 30000);
+paintClock();
+}
 async function endSession(){
-  if (!SESS || !auth.currentUser) return;
-  await logAction("Sesión cerrada", "Salida del panel");
-  try { await updateDoc(sessRef(), { finMs: Date.now(), ultimoMs: Date.now(), activo:false }); } catch(_){}
-  try { sessionStorage.removeItem(sessKey(auth.currentUser.uid)); } catch(_){}
-  clearInterval(sessTimer); clearInterval(beatTimer);
-  SESS = null;
+if (!SESS || !auth.currentUser) return;
+await logAction("Sesión cerrada", "Salida del panel");
+try { await updateDoc(sessRef(), { finMs: Date.now(), ultimoMs: Date.now(), activo:false }); } catch(_){}
+try { sessionStorage.removeItem(sessKey(auth.currentUser.uid)); } catch(_){}
+clearInterval(sessTimer); clearInterval(beatTimer);
+SESS = null;
 }
-
 function paintClock(){
-  const el = $("#sessClock"); if (!el) return;
-  el.textContent = SESS ? fhms(Date.now() - SESS.inicioMs) : "00:00:00";
-  if (view === "historial") paintLiveRows();
+const el = $("#sessClock"); if (!el) return;
+el.textContent = SESS ? fhms(Date.now() - SESS.inicioMs) : "00:00:00";
+if (view === "historial") paintLiveRows();
 }
-
 function sessDur(s){
-  const ini = s.inicioMs || 0;
-  if (s.finMs) return Math.max(0, s.finMs - ini);
-  const last = s.ultimoMs || ini;
-  if (s.activo && Date.now() - last < 90000) return Math.max(0, Date.now() - ini);
-  return Math.max(0, last - ini);
+const ini = s.inicioMs || 0;
+if (s.finMs) return Math.max(0, s.finMs - ini);
+const last = s.ultimoMs || ini;
+if (s.activo && Date.now() - last < 90000) return Math.max(0, Date.now() - ini);
+return Math.max(0, last - ini);
 }
 const sessLive = s => !s.finMs && s.activo && (Date.now() - (s.ultimoMs||0) < 90000);
-
 const AUTH_ERRS = {
-  "auth/invalid-credential":"Credenciales incorrectas.",
-  "auth/wrong-password":"Contraseña incorrecta.",
-  "auth/user-not-found":"No existe un usuario con ese email.",
-  "auth/invalid-email":"El email no es válido.",
-  "auth/missing-password":"Ingrese la contraseña.",
-  "auth/user-disabled":"Este usuario fue deshabilitado.",
-  "auth/too-many-requests":"Demasiados intentos. Espere unos minutos.",
-  "auth/network-request-failed":"Sin conexión con Firebase.",
-  "auth/operation-not-allowed":"El proveedor Correo/Contraseña no está habilitado.",
-  "auth/configuration-not-found":"Firebase Authentication no está configurado.",
-  "auth/invalid-api-key":"La clave API del proyecto no es válida."
+"auth/invalid-credential":"Credenciales incorrectas.",
+"auth/wrong-password":"Contraseña incorrecta.",
+"auth/user-not-found":"No existe un usuario con ese email.",
+"auth/invalid-email":"El email no es válido.",
+"auth/missing-password":"Ingrese la contraseña.",
+"auth/user-disabled":"Este usuario fue deshabilitado.",
+"auth/too-many-requests":"Demasiados intentos. Espere unos minutos.",
+"auth/network-request-failed":"Sin conexión con Firebase.",
+"auth/operation-not-allowed":"El proveedor Correo/Contraseña no está habilitado.",
+"auth/configuration-not-found":"Firebase Authentication no está configurado.",
+"auth/invalid-api-key":"La clave API del proyecto no es válida."
 };
-
 $("#loginForm").addEventListener("submit", async e => {
-  e.preventDefault();
-  const btn = $("#loginBtn"), err = $("#loginErr");
-  err.classList.remove("show"); btn.classList.add("loading");
-  try { await signInWithEmailAndPassword(auth, $("#l-email").value.trim(), $("#l-pass").value); }
-  catch(ex){ $("#loginErrMsg").textContent = AUTH_ERRS[ex.code] || ("No se pudo ingresar: " + ex.code); err.classList.add("show"); }
-  finally { btn.classList.remove("loading"); }
+e.preventDefault();
+const btn = $("#loginBtn"), err = $("#loginErr");
+err.classList.remove("show"); btn.classList.add("loading");
+try { await signInWithEmailAndPassword(auth, $("#l-email").value.trim(), $("#l-pass").value); }
+catch(ex){ $("#loginErrMsg").textContent = AUTH_ERRS[ex.code] || ("No se pudo ingresar: " + ex.code); err.classList.add("show"); }
+finally { btn.classList.remove("loading"); }
 });
-
 $("#logoutBtn").addEventListener("click", async () => {
-  const b = $("#logoutBtn"); b.classList.add("loading");
-  await endSession();
-  try { await signOut(auth); } catch(_){}
-  b.classList.remove("loading");
+const b = $("#logoutBtn"); b.classList.add("loading");
+await endSession();
+try { await signOut(auth); } catch(_){}
+b.classList.remove("loading");
 });
-
 addEventListener("pagehide", () => { if (SESS && auth.currentUser) updateDoc(sessRef(), { ultimoMs: Date.now() }).catch(()=>{}); });
 document.addEventListener("visibilitychange", () => { if (!document.hidden && SESS && auth.currentUser) updateDoc(sessRef(), { ultimoMs: Date.now(), activo:true }).catch(()=>{}); });
-
 onAuthStateChanged(auth, async user => {
-  if (user){
-    $("#authView").style.display = "none";
-    $("#appView").classList.add("on");
-    $("#userEmail").innerHTML = "<b>" + esc(user.email) + "</b>" + (isSuper() ? "Super administrador" : "Administrador");
-    $("#sessMail").textContent = user.email;
-    $("#sessMeta").textContent = isSuper() ? "Sesión actual · super administrador (puede eliminar el historial)" : "Sesión actual · solo lectura del historial";
-    subscribe(); renderDiag(); renderHistGuard();
-    await startSession(user);
-  } else {
-    unsubs.forEach(u => { try{u();}catch(_){}} ); unsubs = [];
-    clearInterval(sessTimer); clearInterval(beatTimer); SESS = null;
-    $("#appView").classList.remove("on");
-    $("#authView").style.display = "grid";
-    setConn("", "Conectando…");
-  }
+if (user){
+$("#authView").style.display = "none";
+$("#appView").classList.add("on");
+$("#userEmail").innerHTML = "<b>" + esc(user.email) + "</b>" + (isSuper() ? "Super administrador" : "Administrador");
+$("#sessMail").textContent = user.email;
+$("#sessMeta").textContent = isSuper() ? "Sesión actual · super administrador (puede eliminar el historial)" : "Sesión actual · solo lectura del historial";
+subscribe(); renderDiag(); renderHistGuard();
+await startSession(user);
+} else {
+unsubs.forEach(u => { try{u();}catch(_){}} ); unsubs = [];
+clearInterval(sessTimer); clearInterval(beatTimer); SESS = null;
+$("#appView").classList.remove("on");
+$("#authView").style.display = "grid";
+setConn("", "Conectando…");
+}
 });
-
 function setConn(cls, txt){ const c = $("#conn"); c.className = "conn " + cls; $("#connTxt").textContent = txt; }
 function refreshConn(){
-  const st = Object.values(state.status);
-  if (st.some(s => s === "loading")) return setConn("", "Conectando…");
-  if (st.some(s => s === "error")) return setConn("bad", "Sin acceso — ver Diagnóstico");
-  setConn("ok", "En línea · sincronizado");
+const st = Object.values(state.status);
+if (st.some(s => s === "loading")) return setConn("", "Conectando…");
+if (st.some(s => s === "error")) return setConn("bad", "Sin acceso — ver Diagnóstico");
+setConn("ok", "En línea · sincronizado");
 }
-
 function subscribe(){
-  unsubs.forEach(u => { try{u();}catch(_){}} ); unsubs = [];
-  ["inicio","contacto"].forEach(k => {
-    unsubs.push(onSnapshot(doc(db,"sitio",k), s => {
-      state[k] = s.exists() ? s.data() : null;
-      state.status[k] = "ok"; delete state.err[k];
-      refreshConn(); renderDiag();
-      if (view === k) (k === "inicio" ? renderInicio() : renderContacto());
-    }, e => { state.status[k] = "error"; state.err[k] = e.code || e.message; refreshConn(); renderDiag(); }));
-  });
-  COLS.forEach(col => {
-    unsubs.push(onSnapshot(collection(db,col), qs => {
-      state[col] = qs.docs.map(d => ({ id:d.id, ...d.data() })).sort(byOrden);
-      state.status[col] = "ok"; delete state.err[col];
-      updateCounts(); refreshConn(); renderDiag();
-      if (view === col) renderList(col);
-    }, e => {
-      state.status[col] = "error"; state.err[col] = e.code || e.message;
-      updateCounts(); refreshConn(); renderDiag();
-      if (view === col) renderList(col);
-    }));
-  });
-  unsubs.push(onSnapshot(collection(db,"sesiones"), qs => {
-    state.sesiones = qs.docs.map(d => ({ id:d.id, ...d.data() })).sort((a,b) => (b.inicioMs||0)-(a.inicioMs||0));
-    state.status.sesiones = "ok"; delete state.err.sesiones;
-    updateCounts(); refreshConn(); renderDiag();
-    if (view === "historial") renderHist();
-  }, e => {
-    state.status.sesiones = "error"; state.err.sesiones = e.code || e.message;
-    updateCounts(); refreshConn(); renderDiag();
-    if (view === "historial") renderHist();
-  }));
-  
-  /* ═══ CLIENTES (suscripción en vivo + ALARMA) ═══ */
-  unsubs.push(onSnapshot(collection(db,"clientes"), qs => {
-    // Detectar documentos añadidos para la alarma
-    const newDocs = qs.docChanges().filter(change => change.type === "added");
-    newDocs.forEach(change => {
-      const data = change.doc.data();
-      // Solo alarmar si es nuevo en esta sesión y su estado es "nueva"
-      if (!alarmedClientIds.has(change.doc.id) && (data.estado || "nueva") === "nueva") {
-        alarmedClientIds.add(change.doc.id);
-        showNewClientAlarm(data.nombre || "Un cliente", data.expediente || "Sin expediente");
-      }
-    });
-
-    state.clientes = qs.docs.map(d => ({ id:d.id, ...d.data() }));
-    state.status.clientes = "ok"; delete state.err.clientes;
-    updateCounts(); refreshConn(); renderDiag();
-    if (view === "clientes") renderClientes();
-  }, e => {
-    state.status.clientes = "error"; state.err.clientes = e.code || e.message;
-    updateCounts(); refreshConn(); renderDiag();
-    if (view === "clientes") renderClientes();
-  }));
+unsubs.forEach(u => { try{u();}catch(_){}} ); unsubs = [];
+["inicio","contacto"].forEach(k => {
+unsubs.push(onSnapshot(doc(db,"sitio",k), s => {
+state[k] = s.exists() ? s.data() : null;
+state.status[k] = "ok"; delete state.err[k];
+refreshConn(); renderDiag();
+if (view === k) (k === "inicio" ? renderInicio() : renderContacto());
+}, e => { state.status[k] = "error"; state.err[k] = e.code || e.message; refreshConn(); renderDiag(); }));
+});
+COLS.forEach(col => {
+unsubs.push(onSnapshot(collection(db,col), qs => {
+state[col] = qs.docs.map(d => ({ id:d.id, ...d.data() })).sort(byOrden);
+state.status[col] = "ok"; delete state.err[col];
+updateCounts(); refreshConn(); renderDiag();
+if (view === col) renderList(col);
+}, e => {
+state.status[col] = "error"; state.err[col] = e.code || e.message;
+updateCounts(); refreshConn(); renderDiag();
+if (view === col) renderList(col);
+}));
+});
+unsubs.push(onSnapshot(collection(db,"sesiones"), qs => {
+state.sesiones = qs.docs.map(d => ({ id:d.id, ...d.data() })).sort((a,b) => (b.inicioMs||0)-(a.inicioMs||0));
+state.status.sesiones = "ok"; delete state.err.sesiones;
+updateCounts(); refreshConn(); renderDiag();
+if (view === "historial") renderHist();
+}, e => {
+state.status.sesiones = "error"; state.err.sesiones = e.code || e.message;
+updateCounts(); refreshConn(); renderDiag();
+if (view === "historial") renderHist();
+}));
+/* ═══ CLIENTES (suscripción en vivo + ALARMA) ═══ */
+unsubs.push(onSnapshot(collection(db,"clientes"), qs => {
+// Detectar documentos añadidos para la alarma
+const newDocs = qs.docChanges().filter(change => change.type === "added");
+newDocs.forEach(change => {
+const data = change.doc.data();
+// Solo alarmar si es nuevo en esta sesión y su estado es "nueva"
+if (!alarmedClientIds.has(change.doc.id) && (data.estado || "nueva") === "nueva") {
+alarmedClientIds.add(change.doc.id);
+showNewClientAlarm(data.nombre || "Un cliente", data.expediente || "Sin expediente");
 }
-
+});
+state.clientes = qs.docs.map(d => ({ id:d.id, ...d.data() }));
+state.status.clientes = "ok"; delete state.err.clientes;
+updateCounts(); refreshConn(); renderDiag();
+if (view === "clientes") renderClientes();
+}, e => {
+state.status.clientes = "error"; state.err.clientes = e.code || e.message;
+updateCounts(); refreshConn(); renderDiag();
+if (view === "clientes") renderClientes();
+}));
+}
 function updateCounts(){
-  COLS.forEach(c => {
-    const el = $("#cnt-"+c);
-    el.textContent = state.status[c] === "error" ? "!" : state[c].length;
-    el.classList.toggle("bad", state.status[c] === "error");
-  });
-  const s = $("#cnt-sesiones");
-  s.textContent = state.status.sesiones === "error" ? "!" : state.sesiones.length;
-  s.classList.toggle("bad", state.status.sesiones === "error");
-  const cEl = $("#cnt-clientes");
-  if (state.status.clientes === "error"){ cEl.textContent = "!"; cEl.classList.add("bad"); }
-  else {
-    const nuevas = state.clientes.filter(x => (x.estado||"nueva") === "nueva").length;
-    cEl.textContent = state.clientes.length ? (nuevas > 0 ? nuevas + "/" + state.clientes.length : String(state.clientes.length)) : "0";
-    cEl.classList.toggle("bad", nuevas > 0);
-  }
+COLS.forEach(c => {
+const el = $("#cnt-"+c);
+el.textContent = state.status[c] === "error" ? "!" : state[c].length;
+el.classList.toggle("bad", state.status[c] === "error");
+});
+const s = $("#cnt-sesiones");
+s.textContent = state.status.sesiones === "error" ? "!" : state.sesiones.length;
+s.classList.toggle("bad", state.status.sesiones === "error");
+const cEl = $("#cnt-clientes");
+if (state.status.clientes === "error"){ cEl.textContent = "!"; cEl.classList.add("bad"); }
+else {
+const nuevas = state.clientes.filter(x => (x.estado||"nueva") === "nueva").length;
+cEl.textContent = state.clientes.length ? (nuevas > 0 ? nuevas + "/" + state.clientes.length : String(state.clientes.length)) : "0";
+cEl.classList.toggle("bad", nuevas > 0);
 }
-
+}
 const TITLES = { inicio:"Inicio", clientes:"Bandeja de Clientes", areas:"Áreas de Práctica", equipo:"Equipo / Abogados", blog:"Blog / Publicaciones", contacto:"Contacto", historial:"Historial de sesiones", diagnostico:"Diagnóstico y reparación", ayuda:"Ayuda / Configuración" };
 $("#sideNav").addEventListener("click", e => {
-  const b = e.target.closest("[data-view]"); if (!b) return;
-  view = b.dataset.view;
-  $$(".nav-btn").forEach(x => x.classList.toggle("active", x === b));
-  $$(".view").forEach(v => v.classList.toggle("on", v.id === "view-" + view));
-  $("#viewTitle").textContent = TITLES[view];
-  if (view === "inicio") renderInicio();
-  else if (view === "contacto") renderContacto();
-  else if (view === "clientes") renderClientes();
-  else if (view === "historial"){ renderHistGuard(); renderHist(); paintClock(); }
-  else if (view === "diagnostico") renderDiag();
-  else if (COLS.includes(view)) renderList(view);
+const b = e.target.closest("[data-view]"); if (!b) return;
+view = b.dataset.view;
+$$(".nav-btn").forEach(x => x.classList.toggle("active", x === b));
+$$(".view").forEach(v => v.classList.toggle("on", v.id === "view-" + view));
+$("#viewTitle").textContent = TITLES[view];
+if (view === "inicio") renderInicio();
+else if (view === "contacto") renderContacto();
+else if (view === "clientes") renderClientes();
+else if (view === "historial"){ renderHistGuard(); renderHist(); paintClock(); }
+else if (view === "diagnostico") renderDiag();
+else if (COLS.includes(view)) renderList(view);
 });
 const goView = v => { const b = document.querySelector('[data-view="'+v+'"]'); if (b) b.click(); };
-
 /* ═════════════════════════════════════════════════════════════════
 CLIENTES — Bandeja de consultas
 ═════════════════════════════════════════════════════════════════ */
 const CLI_URGS = { Alta:3, Media:2, Baja:1 };
 const AREA_LABELS = {laboral:"Derecho Laboral",civil:"Derecho Civil y Comercial",familia:"Derecho de Familia",empresario:"Derecho Empresario",penal:"Derecho Penal y Tránsito",consumidor:"Consumidor y Bancario",otra:"Otra consulta"};
-
 function cliFechaMs(c){
-  if (c.fecha && typeof c.fecha.toMillis === "function") return c.fecha.toMillis();
-  if (c.fecha && c.fecha.seconds) return c.fecha.seconds * 1000;
-  if (typeof c.fecha === "number") return c.fecha;
-  return 0;
+if (c.fecha && typeof c.fecha.toMillis === "function") return c.fecha.toMillis();
+if (c.fecha && c.fecha.seconds) return c.fecha.seconds * 1000;
+if (typeof c.fecha === "number") return c.fecha;
+return 0;
 }
 function cliFDate(c){
-  const ms = cliFechaMs(c);
-  if (!ms) return {d:"—",h:"—"};
-  const d = new Date(ms);
-  return {d: pad(d.getDate()) + " " + MESES[d.getMonth()] + " " + d.getFullYear(), h: pad(d.getHours()) + ":" + pad(d.getMinutes())};
+const ms = cliFechaMs(c);
+if (!ms) return {d:"—",h:"—"};
+const d = new Date(ms);
+return {d: pad(d.getDate()) + " " + MESES[d.getMonth()] + " " + d.getFullYear(), h: pad(d.getHours()) + ":" + pad(d.getMinutes())};
 }
-
 function applyCliFilters(){
-  let list = state.clientes.slice();
-  const f = state.cliFilter;
-  if (f.state) list = list.filter(c => (c.estado||"nueva") === f.state);
-  if (f.area) list = list.filter(c => (c.area||"") === f.area);
-  if (f.urg) list = list.filter(c => (c.urgencia||"") === f.urg);
-  if (f.search){
-    const q = f.search.toLowerCase();
-    list = list.filter(c =>
-      String(c.nombre||"").toLowerCase().includes(q) ||
-      String(c.email||"").toLowerCase().includes(q) ||
-      String(c.expediente||"").toLowerCase().includes(q) ||
-      String(c.detalle||"").toLowerCase().includes(q) ||
-      String(c.telefono||"").toLowerCase().includes(q)
-    );
-  }
-  list.sort((a,b) => {
-    switch(f.sort){
-      case "fecha-asc": return cliFechaMs(a) - cliFechaMs(b);
-      case "urg-desc": return (CLI_URGS[b.urgencia]||0) - (CLI_URGS[a.urgencia]||0);
-      case "nombre-asc": return String(a.nombre||"").localeCompare(String(b.nombre||""));
-      default: return cliFechaMs(b) - cliFechaMs(a);
-    }
-  });
-  return list;
+let list = state.clientes.slice();
+const f = state.cliFilter;
+if (f.state) list = list.filter(c => (c.estado||"nueva") === f.state);
+if (f.area) list = list.filter(c => (c.area||"") === f.area);
+if (f.urg) list = list.filter(c => (c.urgencia||"") === f.urg);
+if (f.search){
+const q = f.search.toLowerCase();
+list = list.filter(c =>
+String(c.nombre||"").toLowerCase().includes(q) ||
+String(c.email||"").toLowerCase().includes(q) ||
+String(c.expediente||"").toLowerCase().includes(q) ||
+String(c.detalle||"").toLowerCase().includes(q) ||
+String(c.telefono||"").toLowerCase().includes(q)
+);
 }
-
+list.sort((a,b) => {
+switch(f.sort){
+case "fecha-asc": return cliFechaMs(a) - cliFechaMs(b);
+case "urg-desc": return (CLI_URGS[b.urgencia]||0) - (CLI_URGS[a.urgencia]||0);
+case "nombre-asc": return String(a.nombre||"").localeCompare(String(b.nombre||""));
+default: return cliFechaMs(b) - cliFechaMs(a);
+}
+});
+return list;
+}
 function renderCliStats(){
-  const all = state.clientes;
-  const stats = { total: all.length, nuevas: 0, respondidas: 0, cerradas: 0 };
-  all.forEach(c => { const s = c.estado || "nueva"; if (s === "nueva") stats.nuevas++; else if (s === "respondida") stats.respondidas++; else if (s === "cerrada") stats.cerradas++; });
-  const f = state.cliFilter.state;
-  $("#cliStats").innerHTML =
-    '<div class="cli-stat' + (!f ? " active" : "") + '" data-st=""><b>' + stats.total + '</b><span>Todas</span><small>Total de consultas</small></div>' +
-    '<div class="cli-stat' + (f === "nueva" ? " active" : "") + '" data-st="nueva"><b>' + stats.nuevas + '</b><span>Nuevas</span><small>Sin responder</small></div>' +
-    '<div class="cli-stat' + (f === "respondida" ? " active" : "") + '" data-st="respondida"><b>' + stats.respondidas + '</b><span>Respondidas</span><small>En seguimiento</small></div>' +
-    '<div class="cli-stat' + (f === "cerrada" ? " active" : "") + '" data-st="cerrada"><b>' + stats.cerradas + '</b><span>Cerradas</span><small>Casos resueltos</small></div>';
+const all = state.clientes;
+const stats = { total: all.length, nuevas: 0, respondidas: 0, cerradas: 0 };
+all.forEach(c => { const s = c.estado || "nueva"; if (s === "nueva") stats.nuevas++; else if (s === "respondida") stats.respondidas++; else if (s === "cerrada") stats.cerradas++; });
+const f = state.cliFilter.state;
+$("#cliStats").innerHTML =
+'<div class="cli-stat' + (!f ? " active" : "") + '" data-st=""><b>' + stats.total + '</b><span>Todas</span><small>Total de consultas</small></div>' +
+'<div class="cli-stat' + (f === "nueva" ? " active" : "") + '" data-st="nueva"><b>' + stats.nuevas + '</b><span>Nuevas</span><small>Sin responder</small></div>' +
+'<div class="cli-stat' + (f === "respondida" ? " active" : "") + '" data-st="respondida"><b>' + stats.respondidas + '</b><span>Respondidas</span><small>En seguimiento</small></div>' +
+'<div class="cli-stat' + (f === "cerrada" ? " active" : "") + '" data-st="cerrada"><b>' + stats.cerradas + '</b><span>Cerradas</span><small>Casos resueltos</small></div>';
 }
-
 function renderCliAreaOptions(){
-  const sel = $("#cliArea");
-  const current = sel.value;
-  const areas = [...new Set(state.clientes.map(c => c.area || "").filter(Boolean))].sort();
-  sel.innerHTML = '<option value="">Todas las áreas</option>' +
-    areas.map(a => '<option value="' + esc(a) + '"' + (a === current ? " selected" : "") + '>' + esc(AREA_LABELS[a] || a) + '</option>').join("");
+const sel = $("#cliArea");
+const current = sel.value;
+const areas = [...new Set(state.clientes.map(c => c.area || "").filter(Boolean))].sort();
+sel.innerHTML = '<option value="">Todas las áreas</option>' +
+areas.map(a => '<option value="' + esc(a) + '"' + (a === current ? " selected" : "") + '>' + esc(AREA_LABELS[a] || a) + '</option>').join("");
 }
-
 function renderClientes(){
-  const st = state.status.clientes;
-  const listEl = $("#cliList");
-  renderCliStats();
-  renderCliAreaOptions();
-  if (st === "loading"){
-    listEl.innerHTML = '<div class="skel"><div></div><div></div><div></div></div>';
-    return;
-  }
-  if (st === "error"){
-    listEl.innerHTML = '<div class="empty err"><svg class="ic"><use href="#i-alert"/></svg><span><b style="color:#F49B93">No se pudo leer la colección clientes.</b><br>Código: ' + esc(state.err.clientes||"") + '. Revise las reglas de Firestore en la pestaña Ayuda.</span></div>';
-    return;
-  }
-  const list = applyCliFilters();
-  if (!state.clientes.length){
-    listEl.innerHTML = '<div class="empty"><svg class="ic"><use href="#i-inbox"/></svg><span><b style="color:var(--tx-dim)">Aún no hay consultas recibidas.</b><br>La bandeja se llenará automáticamente cuando los visitantes envíen el formulario del sitio.</span></div>';
-    return;
-  }
-  if (!list.length){
-    listEl.innerHTML = '<div class="empty"><svg class="ic"><use href="#i-search"/></svg><span>Ninguna consulta coincide con los filtros aplicados.</span></div>';
-    return;
-  }
-  listEl.innerHTML = list.map(c => {
-    const fecha = cliFDate(c);
-    const estado = c.estado || "nueva";
-    const areaTxt = AREA_LABELS[c.area] || c.areaTexto || c.area || "—";
-    const urg = c.urgencia || "Media";
-    const unread = estado === "nueva" ? " unread" : "";
-    return '<div class="cli-row' + unread + '" data-cid="' + esc(c.id) + '">' +
-      '<div class="cli-urg ' + esc(urg) + '"><span>' + esc(urg.toUpperCase()) + '</span></div>' +
-      '<div class="cli-main"><b>' + esc(c.nombre || "Sin nombre") + '</b>' +
-      '<span class="cli-email">' + esc(c.email || "—") + '</span>' +
-      '<span class="cli-det">' + esc((c.detalle||"").slice(0,140)) + (String(c.detalle||"").length > 140 ? "…" : "") + '</span></div>' +
-      '<div class="cli-col"><b>' + esc(areaTxt) + '</b><span>' + esc(c.expediente || "—") + '</span></div>' +
-      '<div class="cli-col"><b>' + esc(c.telefono || "—") + '</b>' +
-      (c.telefono ? '<a href="https://wa.me/' + esc(digits(c.telefono)) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()"><svg class="ic" style="width:11px;height:11px"><use href="#i-wa"/></svg>WhatsApp</a>' : '') +
-      '</div>' +
-      '<select class="cli-state-sel ' + esc(estado) + '" data-cst="' + esc(c.id) + '" onclick="event.stopPropagation()">' +
-      '<option value="nueva"' + (estado === "nueva" ? " selected" : "") + '>Nueva</option>' +
-      '<option value="respondida"' + (estado === "respondida" ? " selected" : "") + '>Respondida</option>' +
-      '<option value="cerrada"' + (estado === "cerrada" ? " selected" : "") + '>Cerrada</option></select>' +
-      '<div class="cli-date"><b>' + esc(fecha.d) + '</b>' + esc(fecha.h) + '</div>' +
-      '<div class="cli-acts"><button type="button" class="icon-btn" data-cview="' + esc(c.id) + '" aria-label="Ver detalle"><svg class="ic"><use href="#i-eye"/></svg></button></div>' +
-      '</div>';
-  }).join("");
+const st = state.status.clientes;
+const listEl = $("#cliList");
+renderCliStats();
+renderCliAreaOptions();
+if (st === "loading"){
+listEl.innerHTML = '<div class="skel"><div></div><div></div><div></div></div>';
+return;
 }
-
+if (st === "error"){
+listEl.innerHTML = '<div class="empty err"><svg class="ic"><use href="#i-alert"/></svg><span><b style="color:#F49B93">No se pudo leer la colección clientes.</b><br>Código: ' + esc(state.err.clientes||"") + '. Revise las reglas de Firestore en la pestaña Ayuda.</span></div>';
+return;
+}
+const list = applyCliFilters();
+if (!state.clientes.length){
+listEl.innerHTML = '<div class="empty"><svg class="ic"><use href="#i-inbox"/></svg><span><b style="color:var(--tx-dim)">Aún no hay consultas recibidas.</b><br>La bandeja se llenará automáticamente cuando los visitantes envíen el formulario del sitio.</span></div>';
+return;
+}
+if (!list.length){
+listEl.innerHTML = '<div class="empty"><svg class="ic"><use href="#i-search"/></svg><span>Ninguna consulta coincide con los filtros aplicados.</span></div>';
+return;
+}
+listEl.innerHTML = list.map(c => {
+const fecha = cliFDate(c);
+const estado = c.estado || "nueva";
+const areaTxt = AREA_LABELS[c.area] || c.areaTexto || c.area || "—";
+const urg = c.urgencia || "Media";
+const unread = estado === "nueva" ? " unread" : "";
+return '<div class="cli-row' + unread + '" data-cid="' + esc(c.id) + '">' +
+'<div class="cli-urg ' + esc(urg) + '"><span>' + esc(urg.toUpperCase()) + '</span></div>' +
+'<div class="cli-main"><b>' + esc(c.nombre || "Sin nombre") + '</b>' +
+'<span class="cli-email">' + esc(c.email || "—") + '</span>' +
+'<span class="cli-det">' + esc((c.detalle||"").slice(0,140)) + (String(c.detalle||"").length > 140 ? "…" : "") + '</span></div>' +
+'<div class="cli-col"><b>' + esc(areaTxt) + '</b><span>' + esc(c.expediente || "—") + '</span></div>' +
+'<div class="cli-col"><b>' + esc(c.telefono || "—") + '</b>' +
+(c.telefono ? '<a href="https://wa.me/' + esc(digits(c.telefono)) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()"><svg class="ic" style="width:11px;height:11px"><use href="#i-wa"/></svg>WhatsApp</a>' : '') +
+'</div>' +
+'<select class="cli-state-sel ' + esc(estado) + '" data-cst="' + esc(c.id) + '" onclick="event.stopPropagation()">' +
+'<option value="nueva"' + (estado === "nueva" ? " selected" : "") + '>Nueva</option>' +
+'<option value="respondida"' + (estado === "respondida" ? " selected" : "") + '>Respondida</option>' +
+'<option value="cerrada"' + (estado === "cerrada" ? " selected" : "") + '>Cerrada</option></select>' +
+'<div class="cli-date"><b>' + esc(fecha.d) + '</b>' + esc(fecha.h) + '</div>' +
+'<div class="cli-acts"><button type="button" class="icon-btn" data-cview="' + esc(c.id) + '" aria-label="Ver detalle"><svg class="ic"><use href="#i-eye"/></svg></button></div>' +
+'</div>';
+}).join("");
+}
 $("#cliStats").addEventListener("click", e => {
-  const b = e.target.closest(".cli-stat"); if (!b) return;
-  state.cliFilter.state = b.dataset.st || "";
-  renderClientes();
+const b = e.target.closest(".cli-stat"); if (!b) return;
+state.cliFilter.state = b.dataset.st || "";
+renderClientes();
 });
 $("#cliSearch").addEventListener("input", e => { state.cliFilter.search = e.target.value.trim(); renderClientes(); });
 $("#cliArea").addEventListener("change", e => { state.cliFilter.area = e.target.value; renderClientes(); });
 $("#cliUrg").addEventListener("change", e => { state.cliFilter.urg = e.target.value; renderClientes(); });
 $("#cliSort").addEventListener("change", e => { state.cliFilter.sort = e.target.value; renderClientes(); });
-
 $("#cliReload").addEventListener("click", async () => {
-  const b = $("#cliReload"); b.classList.add("loading");
-  try {
-    const qs = await getDocs(collection(db,"clientes"));
-    state.clientes = qs.docs.map(d => ({ id:d.id, ...d.data() }));
-    state.status.clientes = "ok"; delete state.err.clientes;
-    updateCounts(); renderClientes();
-    toast("Bandeja actualizada.", "gold");
-  } catch(e){ state.status.clientes = "error"; state.err.clientes = e.code || e.message; renderClientes(); fsErr(e); }
-  finally { b.classList.remove("loading"); }
+const b = $("#cliReload"); b.classList.add("loading");
+try {
+const qs = await getDocs(collection(db,"clientes"));
+state.clientes = qs.docs.map(d => ({ id:d.id, ...d.data() }));
+state.status.clientes = "ok"; delete state.err.clientes;
+updateCounts(); renderClientes();
+toast("Bandeja actualizada.", "gold");
+} catch(e){ state.status.clientes = "error"; state.err.clientes = e.code || e.message; renderClientes(); fsErr(e); }
+finally { b.classList.remove("loading"); }
 });
-
 $("#cliExport").addEventListener("click", () => {
-  const list = applyCliFilters();
-  if (!list.length) return toast("No hay consultas para exportar con los filtros actuales.", "err");
-  const headers = ["Expediente","Fecha","Nombre","Email","Teléfono","Área","Urgencia","Estado","Detalle","Notas"];
-  const rows = list.map(c => {
-    const f = cliFDate(c);
-    return [c.expediente||"", f.d + " " + f.h, c.nombre||"", c.email||"", c.telefono||"", AREA_LABELS[c.area] || c.area || "", c.urgencia||"", c.estado||"nueva", (c.detalle||"").replace(/\s+/g," "), (c.notas||"").replace(/\s+/g," ")];
-  });
-  const csv = [headers, ...rows].map(r => r.map(x => '"' + String(x).replace(/"/g,'""') + '"').join(",")).join("\n");
-  const blob = new Blob(["\ufeff" + csv], {type:"text/csv;charset=utf-8"});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "consultas-zarza-" + new Date().toISOString().slice(0,10) + ".csv";
-  a.click();
-  URL.revokeObjectURL(url);
-  toast("Exportadas " + list.length + " consultas a CSV.", "gold");
-  logAction("Exportó clientes", list.length + " consultas");
+const list = applyCliFilters();
+if (!list.length) return toast("No hay consultas para exportar con los filtros actuales.", "err");
+const headers = ["Expediente","Fecha","Nombre","Email","Teléfono","Área","Urgencia","Estado","Detalle","Notas"];
+const rows = list.map(c => {
+const f = cliFDate(c);
+return [c.expediente||"", f.d + " " + f.h, c.nombre||"", c.email||"", c.telefono||"", AREA_LABELS[c.area] || c.area || "", c.urgencia||"", c.estado||"nueva", (c.detalle||"").replace(/\s+/g," "), (c.notas||"").replace(/\s+/g," ")];
 });
-
+const csv = [headers, ...rows].map(r => r.map(x => '"' + String(x).replace(/"/g,'""') + '"').join(",")).join("\n");
+const blob = new Blob(["\ufeff" + csv], {type:"text/csv;charset=utf-8"});
+const url = URL.createObjectURL(blob);
+const a = document.createElement("a");
+a.href = url;
+a.download = "consultas-zarza-" + new Date().toISOString().slice(0,10) + ".csv";
+a.click();
+URL.revokeObjectURL(url);
+toast("Exportadas " + list.length + " consultas a CSV.", "gold");
+logAction("Exportó clientes", list.length + " consultas");
+});
 let currentCliId = null;
-
 function openCliDetail(id){
-  const c = state.clientes.find(x => x.id === id); if (!c) return;
-  currentCliId = id;
-  const fecha = cliFDate(c);
-  const estado = c.estado || "nueva";
-  const areaTxt = AREA_LABELS[c.area] || c.areaTexto || c.area || "—";
-  const urg = c.urgencia || "Media";
-  const tel = String(c.telefono||"").trim();
-  const waN = digits(tel);
-  $("#cliDetailTitle").textContent = "Consulta " + (c.expediente || "");
-  $("#cliDetailBody").innerHTML =
-    '<div class="cli-detail-head">' +
-    '<div class="cli-urg ' + esc(urg) + '"><span>' + esc(urg.toUpperCase()) + '</span></div>' +
-    '<div><h4>' + esc(c.nombre || "Sin nombre") + '</h4>' +
-    '<span class="cli-exp">' + esc(c.expediente || "Sin expediente") + ' · ' + esc(fecha.d) + ' · ' + esc(fecha.h) + '</span></div></div>' +
-    '<div class="cli-detail-grid">' +
-    '<div class="cli-detail-main">' +
-    '<div class="cli-block"><b>Datos de contacto</b>' +
-    '<div class="cli-meta-row"><svg class="ic"><use href="#i-mail"/></svg><a href="mailto:' + esc(c.email||"") + '">' + esc(c.email || "—") + '</a></div>' +
-    (tel ? '<div class="cli-meta-row"><svg class="ic"><use href="#i-phone"/></svg><a href="tel:' + esc(tel) + '">' + esc(tel) + '</a></div>' : "") +
-    (waN ? '<div class="cli-meta-row"><svg class="ic"><use href="#i-wa"/></svg><a href="https://wa.me/' + esc(waN) + '?text=' + encodeURIComponent("Hola " + (c.nombre||"") + ", le escribo desde Zarza & Asociados en relación a su consulta " + (c.expediente||"") + ".") + '" target="_blank" rel="noopener">WhatsApp directo</a></div>' : "") +
-    '</div>' +
-    '<div class="cli-block"><b>Detalle del caso</b><p>' + esc(c.detalle || "(sin detalle)") + '</p></div>' +
-    '<div class="cli-block"><b>Notas internas</b><textarea class="cli-notes" id="cliNotes" placeholder="Escriba aquí notas de seguimiento, asignación de abogado, estrategia, etc. Solo visibles dentro del panel.">' + esc(c.notas || "") + '</textarea></div>' +
-    '</div>' +
-    '<div class="cli-detail-side">' +
-    '<div class="cli-block"><b>Clasificación</b>' +
-    '<div class="cli-meta-row"><svg class="ic"><use href="#i-brief"/></svg><span>' + esc(areaTxt) + '</span></div>' +
-    '<div class="cli-meta-row"><svg class="ic"><use href="#i-clock"/></svg><span>Urgencia: <b>' + esc(urg) + '</b></span></div>' +
-    '</div>' +
-    '<div class="cli-block"><b>Estado del caso</b>' +
-    '<div class="cli-state-flow">' +
-    '<button type="button" class="cli-state-btn nueva' + (estado === "nueva" ? " active" : "") + '" data-nst="nueva">Nueva</button>' +
-    '<button type="button" class="cli-state-btn respondida' + (estado === "respondida" ? " active" : "") + '" data-nst="respondida">Respondida</button>' +
-    '<button type="button" class="cli-state-btn cerrada' + (estado === "cerrada" ? " active" : "") + '" data-nst="cerrada">Cerrada</button>' +
-    '</div></div>' +
-    '</div></div>';
-  $("#cliRoot").classList.add("open");
+const c = state.clientes.find(x => x.id === id); if (!c) return;
+currentCliId = id;
+const fecha = cliFDate(c);
+const estado = c.estado || "nueva";
+const areaTxt = AREA_LABELS[c.area] || c.areaTexto || c.area || "—";
+const urg = c.urgencia || "Media";
+const tel = String(c.telefono||"").trim();
+const waN = digits(tel);
+$("#cliDetailTitle").textContent = "Consulta " + (c.expediente || "");
+$("#cliDetailBody").innerHTML =
+'<div class="cli-detail-head">' +
+'<div class="cli-urg ' + esc(urg) + '"><span>' + esc(urg.toUpperCase()) + '</span></div>' +
+'<div><h4>' + esc(c.nombre || "Sin nombre") + '</h4>' +
+'<span class="cli-exp">' + esc(c.expediente || "Sin expediente") + ' · ' + esc(fecha.d) + ' · ' + esc(fecha.h) + '</span></div></div>' +
+'<div class="cli-detail-grid">' +
+'<div class="cli-detail-main">' +
+'<div class="cli-block"><b>Datos de contacto</b>' +
+'<div class="cli-meta-row"><svg class="ic"><use href="#i-mail"/></svg><a href="mailto:' + esc(c.email||"") + '">' + esc(c.email || "—") + '</a></div>' +
+(tel ? '<div class="cli-meta-row"><svg class="ic"><use href="#i-phone"/></svg><a href="tel:' + esc(tel) + '">' + esc(tel) + '</a></div>' : "") +
+(waN ? '<div class="cli-meta-row"><svg class="ic"><use href="#i-wa"/></svg><a href="https://wa.me/' + esc(waN) + '?text=' + encodeURIComponent("Hola " + (c.nombre||"") + ", le escribo desde Zarza & Asociados en relación a su consulta " + (c.expediente||"") + ".") + '" target="_blank" rel="noopener">WhatsApp directo</a></div>' : "") +
+'</div>' +
+'<div class="cli-block"><b>Detalle del caso</b><p>' + esc(c.detalle || "(sin detalle)") + '</p></div>' +
+'<div class="cli-block"><b>Notas internas</b><textarea class="cli-notes" id="cliNotes" placeholder="Escriba aquí notas de seguimiento, asignación de abogado, estrategia, etc. Solo visibles dentro del panel.">' + esc(c.notas || "") + '</textarea></div>' +
+'</div>' +
+'<div class="cli-detail-side">' +
+'<div class="cli-block"><b>Clasificación</b>' +
+'<div class="cli-meta-row"><svg class="ic"><use href="#i-brief"/></svg><span>' + esc(areaTxt) + '</span></div>' +
+'<div class="cli-meta-row"><svg class="ic"><use href="#i-clock"/></svg><span>Urgencia: <b>' + esc(urg) + '</b></span></div>' +
+'</div>' +
+'<div class="cli-block"><b>Estado del caso</b>' +
+'<div class="cli-state-flow">' +
+'<button type="button" class="cli-state-btn nueva' + (estado === "nueva" ? " active" : "") + '" data-nst="nueva">Nueva</button>' +
+'<button type="button" class="cli-state-btn respondida' + (estado === "respondida" ? " active" : "") + '" data-nst="respondida">Respondida</button>' +
+'<button type="button" class="cli-state-btn cerrada' + (estado === "cerrada" ? " active" : "") + '" data-nst="cerrada">Cerrada</button>' +
+'</div></div>' +
+'</div></div>';
+$("#cliRoot").classList.add("open");
 }
-
 // FIX 1: Actualiza visualmente el botón activo tras guardar
 async function changeCliState(id, nuevoEstado, btnElement){
-  try {
-    await updateDoc(doc(db,"clientes",id), { estado: nuevoEstado, updatedAt: serverTimestamp() });
-    await logAction("Cambió estado de consulta", (state.clientes.find(c=>c.id===id)?.nombre||id) + " → " + nuevoEstado);
-    toast("Estado actualizado a " + nuevoEstado + ".", "gold");
-    
-    // Actualizar clases visuales en el modal
-    if (btnElement) {
-      $$("#cliDetailBody .cli-state-btn").forEach(b => b.classList.remove("active"));
-      btnElement.classList.add("active");
-    }
-  } catch(e){ fsErr(e); }
+try {
+await updateDoc(doc(db,"clientes",id), { estado: nuevoEstado, updatedAt: serverTimestamp() });
+await logAction("Cambió estado de consulta", (state.clientes.find(c=>c.id===id)?.nombre||id) + " → " + nuevoEstado);
+toast("Estado actualizado a " + nuevoEstado + ".", "gold");
+// Actualizar clases visuales en el modal
+if (btnElement) {
+$$("#cliDetailBody .cli-state-btn").forEach(b => b.classList.remove("active"));
+btnElement.classList.add("active");
 }
-
+} catch(e){ fsErr(e); }
+}
 $("#cliList").addEventListener("click", e => {
-  const v = e.target.closest("[data-cview]");
-  if (v){ openCliDetail(v.dataset.cview); return; }
-  const st = e.target.closest("[data-cst]");
-  if (st){ changeCliState(st.dataset.cst, st.value, null); return; }
-  const row = e.target.closest(".cli-row");
-  if (row) openCliDetail(row.dataset.cid);
+const v = e.target.closest("[data-cview]");
+if (v){ openCliDetail(v.dataset.cview); return; }
+const st = e.target.closest("[data-cst]");
+if (st){ changeCliState(st.dataset.cst, st.value, null); return; }
+const row = e.target.closest(".cli-row");
+if (row) openCliDetail(row.dataset.cid);
 });
-
 // FIX 1 (cont.): Pasar el elemento del botón para actualizar su clase
 $("#cliDetailBody").addEventListener("click", e => {
-  const b = e.target.closest("[data-nst]"); if (!b) return;
-  if (!currentCliId) return;
-  changeCliState(currentCliId, b.dataset.nst, b);
+const b = e.target.closest("[data-nst]"); if (!b) return;
+if (!currentCliId) return;
+changeCliState(currentCliId, b.dataset.nst, b);
 });
-
 // FIX 2: Botón unificado que guarda y cierra
 $("#cliSaveAndClose").addEventListener("click", async () => {
-  if (!currentCliId) return;
-  const notas = $("#cliNotes").value.trim();
-  const btn = $("#cliSaveAndClose"); btn.classList.add("loading");
-  try {
-    await updateDoc(doc(db,"clientes",currentCliId), { notas, updatedAt: serverTimestamp() });
-    await logAction("Guardó notas de consulta", state.clientes.find(c=>c.id===currentCliId)?.nombre || currentCliId);
-    toast("Notas guardadas.", "gold");
-    $("#cliRoot").classList.remove("open"); // Cierra la ventana modal
-  } catch(e){ fsErr(e); }
-  finally { btn.classList.remove("loading"); }
+if (!currentCliId) return;
+const notas = $("#cliNotes").value.trim();
+const btn = $("#cliSaveAndClose"); btn.classList.add("loading");
+try {
+await updateDoc(doc(db,"clientes",currentCliId), { notas, updatedAt: serverTimestamp() });
+await logAction("Guardó notas de consulta", state.clientes.find(c=>c.id===currentCliId)?.nombre || currentCliId);
+toast("Notas guardadas.", "gold");
+$("#cliRoot").classList.remove("open"); // Cierra la ventana modal
+} catch(e){ fsErr(e); }
+finally { btn.classList.remove("loading"); }
 });
-
 $("#cliDelete").addEventListener("click", () => {
-  if (!currentCliId) return;
-  if (!isSuper()) return toast("Solo " + SUPER_EMAIL + " puede eliminar consultas del historial.", "err");
-  const c = state.clientes.find(x => x.id === currentCliId);
-  openConfirm("Eliminar consulta",
-    "Se eliminará la consulta de <b>" + esc(c?.nombre || currentCliId) + "</b> (" + esc(c?.expediente||"") + "). Esta acción es irreversible.",
-    async () => {
-      try {
-        await deleteDoc(doc(db,"clientes",currentCliId));
-        await logAction("Eliminó consulta", (c?.nombre||"") + " · " + (c?.expediente||""));
-        $("#cliRoot").classList.remove("open");
-        toast("Consulta eliminada.");
-      } catch(ex){ fsErr(ex); }
-    }, "Eliminar");
+if (!currentCliId) return;
+if (!isSuper()) return toast("Solo " + SUPER_EMAIL + " puede eliminar consultas del historial.", "err");
+const c = state.clientes.find(x => x.id === currentCliId);
+openConfirm("Eliminar consulta",
+"Se eliminará la consulta de <b>" + esc(c?.nombre || currentCliId) + "</b> (" + esc(c?.expediente||"") + "). Esta acción es irreversible.",
+async () => {
+try {
+await deleteDoc(doc(db,"clientes",currentCliId));
+await logAction("Eliminó consulta", (c?.nombre||"") + " · " + (c?.expediente||""));
+$("#cliRoot").classList.remove("open");
+toast("Consulta eliminada.");
+} catch(ex){ fsErr(ex); }
+}, "Eliminar");
 });
-
 $$("[data-close-cli]").forEach(el => el.addEventListener("click", () => $("#cliRoot").classList.remove("open")));
-
 /* ═════════════════════════════════════════════════════════════════
 HISTORIAL
 ═════════════════════════════════════════════════════════════════ */
 function renderHistGuard(){
-  const g = $("#histGuard");
-  $("#histPurge").hidden = !isSuper();
-  if (isSuper()){
-    g.innerHTML = '<div class="warn good" style="margin:0 0 16px"><svg class="ic"><use href="#i-shield"/></svg><span><b>Super administrador activo.</b> Puede eliminar sesiones individuales o vaciar el historial completo.</span></div>';
-  } else {
-    g.innerHTML = '<div class="warn" style="margin:0 0 16px"><svg class="ic"><use href="#i-lock"/></svg><span><b>Historial protegido.</b> Solo <b>' + SUPER_EMAIL + '</b> puede eliminar registros.</span></div>';
-  }
+const g = $("#histGuard");
+$("#histPurge").hidden = !isSuper();
+if (isSuper()){
+g.innerHTML = '<div class="warn good" style="margin:0 0 16px"><svg class="ic"><use href="#i-shield"/></svg><span><b>Super administrador activo.</b> Puede eliminar sesiones individuales o vaciar el historial completo.</span></div>';
+} else {
+g.innerHTML = '<div class="warn" style="margin:0 0 16px"><svg class="ic"><use href="#i-lock"/></svg><span><b>Historial protegido.</b> Solo <b>' + SUPER_EMAIL + '</b> puede eliminar registros.</span></div>';
 }
-
+}
 function histFiltered(){
-  const q = ($("#histFilter").value || "").trim().toLowerCase();
-  if (!q) return state.sesiones;
-  return state.sesiones.filter(s =>
-    String(s.email||"").toLowerCase().includes(q) ||
-    (s.acciones||[]).some(a => String(a.tipo||"").toLowerCase().includes(q) || String(a.detalle||"").toLowerCase().includes(q))
-  );
+const q = ($("#histFilter").value || "").trim().toLowerCase();
+if (!q) return state.sesiones;
+return state.sesiones.filter(s =>
+String(s.email||"").toLowerCase().includes(q) ||
+(s.acciones||[]).some(a => String(a.tipo||"").toLowerCase().includes(q) || String(a.detalle||"").toLowerCase().includes(q))
+);
 }
-
 function initials(email){
-  const n = String(email||"?").split("@")[0].replace(/[^a-zA-Z0-9]+/g," ").trim().split(" ");
-  return ((n[0]?.[0]||"?") + (n[1]?.[0]||"")).toUpperCase();
+const n = String(email||"?").split("@")[0].replace(/[^a-zA-Z0-9]+/g," ").trim().split(" ");
+return ((n[0]?.[0]||"?") + (n[1]?.[0]||"")).toUpperCase();
 }
-
 function histRow(s){
-  const sup = String(s.email||"").toLowerCase() === SUPER_EMAIL;
-  const mine = SESS && s.id === SESS.id;
-  const dur = sessDur(s), live = sessLive(s);
-  const acts = s.totalAcciones ?? (s.acciones||[]).length;
-  const sub = fstamp(s.inicioMs) + (live ? " · en curso" : s.finMs ? " · cerrada" : " · inactiva");
-  const del = isSuper()
-    ? '<button type="button" class="icon-btn danger" data-hdel="' + esc(s.id) + '" aria-label="Eliminar sesión"><svg class="ic"><use href="#i-trash"/></svg></button>'
-    : '<span class="hist-lock" title="Solo ' + SUPER_EMAIL + ' puede eliminar"><svg class="ic"><use href="#i-lock"/></svg></span>';
-  return '<div class="hist-row' + (mine ? " me" : "") + '" data-sid="' + esc(s.id) + '">' +
-    '<span class="hist-av' + (sup ? " sup" : "") + '">' + esc(initials(s.email)) + "</span>" +
-    '<span class="hist-info"><b>' + esc(s.email || "—") + (sup ? '<span class="sup-badge">Super</span>' : "") + "</b>" +
-    '<span class="h-sub">' + esc(sub) + "</span>" +
-    '<span class="h-sub-m">' + esc(fstamp(s.inicioMs) + " · " + fdur(dur) + " · " + acts + " acc.") + "</span></span>" +
-    '<span class="hist-dur" data-dur="' + esc(s.id) + '">' + fdur(dur) + "<small>" + (live ? "en curso" : "logueado") + "</small></span>" +
-    '<span class="hist-acts"><span class="chip ' + (acts ? "ch-gold" : "ch-red") + '">' + acts + " acc.</span></span>" +
-    '<button type="button" class="icon-btn" data-hview="' + esc(s.id) + '" aria-label="Ver acciones"><svg class="ic"><use href="#i-eye"/></svg></button>' +
-    del + "</div>";
+const sup = String(s.email||"").toLowerCase() === SUPER_EMAIL;
+const mine = SESS && s.id === SESS.id;
+const dur = sessDur(s), live = sessLive(s);
+const acts = s.totalAcciones ?? (s.acciones||[]).length;
+const sub = fstamp(s.inicioMs) + (live ? " · en curso" : s.finMs ? " · cerrada" : " · inactiva");
+const del = isSuper()
+? '<button type="button" class="icon-btn danger" data-hdel="' + esc(s.id) + '" aria-label="Eliminar sesión"><svg class="ic"><use href="#i-trash"/></svg></button>'
+: '<span class="hist-lock" title="Solo ' + SUPER_EMAIL + ' puede eliminar"><svg class="ic"><use href="#i-lock"/></svg></span>';
+return '<div class="hist-row' + (mine ? " me" : "") + '" data-sid="' + esc(s.id) + '">' +
+'<span class="hist-av' + (sup ? " sup" : "") + '">' + esc(initials(s.email)) + "</span>" +
+'<span class="hist-info"><b>' + esc(s.email || "—") + (sup ? '<span class="sup-badge">Super</span>' : "") + "</b>" +
+'<span class="h-sub">' + esc(sub) + "</span>" +
+'<span class="h-sub-m">' + esc(fstamp(s.inicioMs) + " · " + fdur(dur) + " · " + acts + " acc.") + "</span></span>" +
+'<span class="hist-dur" data-dur="' + esc(s.id) + '">' + fdur(dur) + "<small>" + (live ? "en curso" : "logueado") + "</small></span>" +
+'<span class="hist-acts"><span class="chip ' + (acts ? "ch-gold" : "ch-red") + '">' + acts + " acc.</span></span>" +
+'<button type="button" class="icon-btn" data-hview="' + esc(s.id) + '" aria-label="Ver acciones"><svg class="ic"><use href="#i-eye"/></svg></button>' +
+del + "</div>";
 }
-
 function renderHist(){
-  const box = $("#histList"), st = state.status.sesiones;
-  $("#histPurge").hidden = !isSuper() || !state.sesiones.length;
-  if (st === "loading"){ box.innerHTML = '<div class="skel"><div></div><div></div><div></div></div>'; $("#histSum").innerHTML = ""; $("#histNote").textContent = "Cargando historial…"; return; }
-  if (st === "error"){
-    box.innerHTML = '<div class="empty err"><svg class="ic"><use href="#i-alert"/></svg><span><b style="color:#F49B93">No se pudo leer el historial.</b><br>Código: ' + esc(state.err.sesiones||"") + '.</span></div>';
-    $("#histSum").innerHTML = ""; $("#histNote").textContent = ""; return;
-  }
-  const list = histFiltered();
-  const totalAct = state.sesiones.reduce((n,s) => n + (s.totalAcciones ?? (s.acciones||[]).length), 0);
-  const totalTime = state.sesiones.reduce((n,s) => n + sessDur(s), 0);
-  $("#histSum").innerHTML =
-    "<div><b>" + state.sesiones.length + "</b><span>Sesiones registradas</span></div>" +
-    "<div><b>" + totalAct + "</b><span>Acciones auditadas</span></div>" +
-    "<div><b>" + fdur(totalTime) + "</b><span>Tiempo total logueado</span></div>";
-  if (!list.length){
-    box.innerHTML = '<div class="empty"><svg class="ic"><use href="#i-history"/></svg><span>' + (state.sesiones.length ? "Ninguna sesión coincide con el filtro." : "Todavía no hay sesiones registradas.") + "</span></div>";
-    $("#histNote").textContent = ""; return;
-  }
-  box.innerHTML = list.map(histRow).join("");
-  $("#histNote").textContent = list.length > 10
-    ? list.length + " sesiones · 10 visibles, desplazá para ver el resto"
-    : list.length + " sesión(es) registrada(s)";
+const box = $("#histList"), st = state.status.sesiones;
+$("#histPurge").hidden = !isSuper() || !state.sesiones.length;
+if (st === "loading"){ box.innerHTML = '<div class="skel"><div></div><div></div><div></div></div>'; $("#histSum").innerHTML = ""; $("#histNote").textContent = "Cargando historial…"; return; }
+if (st === "error"){
+box.innerHTML = '<div class="empty err"><svg class="ic"><use href="#i-alert"/></svg><span><b style="color:#F49B93">No se pudo leer el historial.</b><br>Código: ' + esc(state.err.sesiones||"") + '.</span></div>';
+$("#histSum").innerHTML = ""; $("#histNote").textContent = ""; return;
 }
-
+const list = histFiltered();
+const totalAct = state.sesiones.reduce((n,s) => n + (s.totalAcciones ?? (s.acciones||[]).length), 0);
+const totalTime = state.sesiones.reduce((n,s) => n + sessDur(s), 0);
+$("#histSum").innerHTML =
+"<div><b>" + state.sesiones.length + "</b><span>Sesiones registradas</span></div>" +
+"<div><b>" + totalAct + "</b><span>Acciones auditadas</span></div>" +
+"<div><b>" + fdur(totalTime) + "</b><span>Tiempo total logueado</span></div>";
+if (!list.length){
+box.innerHTML = '<div class="empty"><svg class="ic"><use href="#i-history"/></svg><span>' + (state.sesiones.length ? "Ninguna sesión coincide con el filtro." : "Todavía no hay sesiones registradas.") + "</span></div>";
+$("#histNote").textContent = ""; return;
+}
+box.innerHTML = list.map(histRow).join("");
+$("#histNote").textContent = list.length > 10
+? list.length + " sesiones · 10 visibles, desplazá para ver el resto"
+: list.length + " sesión(es) registrada(s)";
+}
 function paintLiveRows(){
-  state.sesiones.forEach(s => {
-    if (!sessLive(s)) return;
-    const el = document.querySelector('[data-dur="' + s.id + '"]');
-    if (el) el.innerHTML = fdur(sessDur(s)) + "<small>en curso</small>";
-  });
+state.sesiones.forEach(s => {
+if (!sessLive(s)) return;
+const el = document.querySelector('[data-dur="' + s.id + '"]');
+if (el) el.innerHTML = fdur(sessDur(s)) + "<small>en curso</small>";
+});
 }
-
 $("#histFilter").addEventListener("input", () => { if (state.status.sesiones === "ok") renderHist(); });
 $("#histReload").addEventListener("click", async () => {
-  const b = $("#histReload"); b.classList.add("loading");
-  try {
-    const qs = await getDocs(collection(db,"sesiones"));
-    state.sesiones = qs.docs.map(d => ({ id:d.id, ...d.data() })).sort((a,b2) => (b2.inicioMs||0)-(a.inicioMs||0));
-    state.status.sesiones = "ok"; delete state.err.sesiones;
-    updateCounts(); renderHist(); toast("Historial actualizado.", "gold");
-  } catch(e){ state.status.sesiones = "error"; state.err.sesiones = e.code || e.message; renderHist(); fsErr(e); }
-  finally { b.classList.remove("loading"); }
+const b = $("#histReload"); b.classList.add("loading");
+try {
+const qs = await getDocs(collection(db,"sesiones"));
+state.sesiones = qs.docs.map(d => ({ id:d.id, ...d.data() })).sort((a,b2) => (b2.inicioMs||0)-(a.inicioMs||0));
+state.status.sesiones = "ok"; delete state.err.sesiones;
+updateCounts(); renderHist(); toast("Historial actualizado.", "gold");
+} catch(e){ state.status.sesiones = "error"; state.err.sesiones = e.code || e.message; renderHist(); fsErr(e); }
+finally { b.classList.remove("loading"); }
 });
-
 $("#histList").addEventListener("click", e => {
-  const v = e.target.closest("[data-hview]");
-  if (v){ openHistDetail(v.dataset.hview); return; }
-  const d = e.target.closest("[data-hdel]");
-  if (d){
-    if (!isSuper()) return toast("Solo " + SUPER_EMAIL + " puede eliminar el historial.", "err");
-    const s = state.sesiones.find(x => x.id === d.dataset.hdel);
-    openConfirm("Eliminar sesión del historial",
-      "Se eliminará el registro de <b>" + esc(s?.email || d.dataset.hdel) + "</b>.",
-      async () => {
-        try {
-          await deleteDoc(doc(db,"sesiones",d.dataset.hdel));
-          if (SESS && SESS.id === d.dataset.hdel){ SESS = null; clearInterval(sessTimer); clearInterval(beatTimer); paintClock(); }
-          toast("Registro eliminado del historial.");
-        } catch(ex){ fsErr(ex); }
-      }, "Eliminar");
-  }
+const v = e.target.closest("[data-hview]");
+if (v){ openHistDetail(v.dataset.hview); return; }
+const d = e.target.closest("[data-hdel]");
+if (d){
+if (!isSuper()) return toast("Solo " + SUPER_EMAIL + " puede eliminar el historial.", "err");
+const s = state.sesiones.find(x => x.id === d.dataset.hdel);
+openConfirm("Eliminar sesión del historial",
+"Se eliminará el registro de <b>" + esc(s?.email || d.dataset.hdel) + "</b>.",
+async () => {
+try {
+await deleteDoc(doc(db,"sesiones",d.dataset.hdel));
+if (SESS && SESS.id === d.dataset.hdel){ SESS = null; clearInterval(sessTimer); clearInterval(beatTimer); paintClock(); }
+toast("Registro eliminado del historial.");
+} catch(ex){ fsErr(ex); }
+}, "Eliminar");
+}
 });
-
 $("#histPurge").addEventListener("click", () => {
-  if (!isSuper()) return toast("Solo " + SUPER_EMAIL + " puede eliminar el historial.", "err");
-  openConfirm("Vaciar el historial completo",
-    "Se eliminarán <b>" + state.sesiones.length + " sesiones</b> con todas sus acciones.",
-    async () => {
-      try {
-        const qs = await getDocs(collection(db,"sesiones"));
-        let batch = writeBatch(db), n = 0;
-        for (const d of qs.docs){
-          batch.delete(d.ref); n++;
-          if (n % 400 === 0){ await batch.commit(); batch = writeBatch(db); }
-        }
-        await batch.commit();
-        SESS = null; clearInterval(sessTimer); clearInterval(beatTimer); paintClock();
-        toast("Historial vaciado (" + n + " sesiones).");
-      } catch(ex){ fsErr(ex); }
-    }, "Vaciar");
+if (!isSuper()) return toast("Solo " + SUPER_EMAIL + " puede eliminar el historial.", "err");
+openConfirm("Vaciar el historial completo",
+"Se eliminarán <b>" + state.sesiones.length + " sesiones</b> con todas sus acciones.",
+async () => {
+try {
+const qs = await getDocs(collection(db,"sesiones"));
+let batch = writeBatch(db), n = 0;
+for (const d of qs.docs){
+batch.delete(d.ref); n++;
+if (n % 400 === 0){ await batch.commit(); batch = writeBatch(db); }
+}
+await batch.commit();
+SESS = null; clearInterval(sessTimer); clearInterval(beatTimer); paintClock();
+toast("Historial vaciado (" + n + " sesiones).");
+} catch(ex){ fsErr(ex); }
+}, "Vaciar");
 });
-
 const histRoot = $("#histRoot");
 function openHistDetail(id){
-  const s = state.sesiones.find(x => x.id === id); if (!s) return;
-  const acts = (s.acciones || []).slice().sort((a,b) => (a.t||0)-(b.t||0));
-  const total = s.totalAcciones ?? acts.length;
-  $("#histTitle").textContent = "Sesión · " + (s.email || "—");
-  let h = '<div class="hist-sum" style="margin-bottom:16px">' +
-    "<div><b>" + fdur(sessDur(s)) + "</b><span>Tiempo logueado</span></div>" +
-    "<div><b>" + total + "</b><span>Acciones</span></div>" +
-    "<div><b>" + (sessLive(s) ? "En curso" : s.finMs ? "Cerrada" : "Inactiva") + "</b><span>Estado</span></div></div>" +
-    '<p class="hint" style="margin-bottom:14px">Inicio: <code>' + esc(fstamp(s.inicioMs)) + "</code>" +
-    (s.finMs ? " · Cierre: <code>" + esc(fstamp(s.finMs)) + "</code>" : " · Último acceso: <code>" + esc(fstamp(s.ultimoMs)) + "</code>") +
-    "<br>UID: <code>" + esc(s.uid||"") + "</code>" + (s.ua ? "<br>Navegador: " + esc(s.ua) : "") + "</p>";
-  if (!acts.length) h += '<div class="empty"><svg class="ic"><use href="#i-history"/></svg><span>Sin acciones detalladas en este registro.</span></div>';
-  else {
-    h += '<div class="act-list">' + acts.map(a =>
-      '<div class="act-item"><time>' + esc(new Date(a.t||0).toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit",second:"2-digit"})) + "</time>" +
-      "<span><b>" + esc(a.tipo||"Acción") + "</b><span>" + esc(a.detalle||"") + "</span></span></div>").join("") + "</div>";
-    if (total > acts.length) h += '<div class="warn"><svg class="ic"><use href="#i-alert"/></svg><span>Se registraron ' + total + ' acciones; el detalle conserva las primeras ' + acts.length + '.</span></div>';
-  }
-  $("#histBody").innerHTML = h;
-  $("#histBody").scrollTop = 0;
-  histRoot.classList.add("open");
+const s = state.sesiones.find(x => x.id === id); if (!s) return;
+const acts = (s.acciones || []).slice().sort((a,b) => (a.t||0)-(b.t||0));
+const total = s.totalAcciones ?? acts.length;
+$("#histTitle").textContent = "Sesión · " + (s.email || "—");
+let h = '<div class="hist-sum" style="margin-bottom:16px">' +
+"<div><b>" + fdur(sessDur(s)) + "</b><span>Tiempo logueado</span></div>" +
+"<div><b>" + total + "</b><span>Acciones</span></div>" +
+"<div><b>" + (sessLive(s) ? "En curso" : s.finMs ? "Cerrada" : "Inactiva") + "</b><span>Estado</span></div></div>" +
+'<p class="hint" style="margin-bottom:14px">Inicio: <code>' + esc(fstamp(s.inicioMs)) + "</code>" +
+(s.finMs ? " · Cierre: <code>" + esc(fstamp(s.finMs)) + "</code>" : " · Último acceso: <code>" + esc(fstamp(s.ultimoMs)) + "</code>") +
+"<br>UID: <code>" + esc(s.uid||"") + "</code>" + (s.ua ? "<br>Navegador: " + esc(s.ua) : "") + "</p>";
+if (!acts.length) h += '<div class="empty"><svg class="ic"><use href="#i-history"/></svg><span>Sin acciones detalladas en este registro.</span></div>';
+else {
+h += '<div class="act-list">' + acts.map(a =>
+'<div class="act-item"><time>' + esc(new Date(a.t||0).toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit",second:"2-digit"})) + "</time>" +
+"<span><b>" + esc(a.tipo||"Acción") + "</b><span>" + esc(a.detalle||"") + "</span></span></div>").join("") + "</div>";
+if (total > acts.length) h += '<div class="warn"><svg class="ic"><use href="#i-alert"/></svg><span>Se registraron ' + total + ' acciones; el detalle conserva las primeras ' + acts.length + '.</span></div>';
+}
+$("#histBody").innerHTML = h;
+$("#histBody").scrollTop = 0;
+histRoot.classList.add("open");
 }
 $$("[data-close-hist]").forEach(el => el.addEventListener("click", () => histRoot.classList.remove("open")));
-
 /* ───────── INICIO ───────── */
 const selCls = (cls,opts,v) => '<select class="sel ' + cls + '">' + opts.map(o => '<option value="' + esc(o[0]) + '"' + (o[0]===v?" selected":"") + ">" + esc(o[1]) + "</option>").join("") + "</select>";
 function badgeRow(v){
-  const d = document.createElement("div");
-  d.className = "rep-row rep-badge";
-  d.innerHTML = '<div class="field"><label>Texto del sello</label><input class="inp" value="' + esc(v) + '"></div><button type="button" class="icon-btn danger rm" aria-label="Quitar"><svg class="ic"><use href="#i-trash"/></svg></button>';
-  d.querySelector(".rm").addEventListener("click", () => d.remove());
-  return d;
+const d = document.createElement("div");
+d.className = "rep-row rep-badge";
+d.innerHTML = '<div class="field"><label>Texto del sello</label><input class="inp" value="' + esc(v) + '"></div><button type="button" class="icon-btn danger rm" aria-label="Quitar"><svg class="ic"><use href="#i-trash"/></svg></button>';
+d.querySelector(".rm").addEventListener("click", () => d.remove());
+return d;
 }
 function cifraRow(c){
-  c = c || {pref:"",valor:0,suf:"",label:"",desc:"",activo:true};
-  const d = document.createElement("div");
-  d.className = "rep-row rep-cifra";
-  d.innerHTML =
-    '<div class="field"><label>Prefijo</label><input class="inp c-pref" value="' + esc(c.pref) + '"></div>' +
-    '<div class="field"><label>Valor</label><input class="inp c-val" type="number" value="' + esc(c.valor) + '"></div>' +
-    '<div class="field"><label>Sufijo</label><input class="inp c-suf" value="' + esc(c.suf) + '"></div>' +
-    '<div class="field"><label>Rótulo</label><input class="inp c-label" value="' + esc(c.label) + '"></div>' +
-    '<div class="field"><label>Descripción</label><input class="inp c-desc" value="' + esc(c.desc) + '"></div>' +
-    '<div class="rep-check"><em>INCLUIR</em><label class="switch"><input type="checkbox" class="c-act" aria-label="Incluir cifra"' + (c.activo!==false?" checked":"") + '><span></span></label></div>' +
-    '<button type="button" class="icon-btn danger rm" aria-label="Quitar"><svg class="ic"><use href="#i-trash"/></svg></button>';
-  d.querySelector(".rm").addEventListener("click", () => d.remove());
-  return d;
+c = c || {pref:"",valor:0,suf:"",label:"",desc:"",activo:true};
+const d = document.createElement("div");
+d.className = "rep-row rep-cifra";
+d.innerHTML =
+'<div class="field"><label>Prefijo</label><input class="inp c-pref" value="' + esc(c.pref) + '"></div>' +
+'<div class="field"><label>Valor</label><input class="inp c-val" type="number" value="' + esc(c.valor) + '"></div>' +
+'<div class="field"><label>Sufijo</label><input class="inp c-suf" value="' + esc(c.suf) + '"></div>' +
+'<div class="field"><label>Rótulo</label><input class="inp c-label" value="' + esc(c.label) + '"></div>' +
+'<div class="field"><label>Descripción</label><input class="inp c-desc" value="' + esc(c.desc) + '"></div>' +
+'<div class="rep-check"><em>INCLUIR</em><label class="switch"><input type="checkbox" class="c-act" aria-label="Incluir cifra"' + (c.activo!==false?" checked":"") + '><span></span></label></div>' +
+'<button type="button" class="icon-btn danger rm" aria-label="Quitar"><svg class="ic"><use href="#i-trash"/></svg></button>';
+d.querySelector(".rm").addEventListener("click", () => d.remove());
+return d;
 }
 function chipRow(c){
-  c = c || {titulo:"",subtitulo:"",icono:"i-check",color:"green",activo:true};
-  const d = document.createElement("div");
-  d.className = "rep-row rep-chip";
-  d.innerHTML =
-    '<div class="field"><label>Título de la tarjeta</label><input class="inp ch-t" value="' + esc(c.titulo) + '" placeholder="Expediente 1.482/25"></div>' +
-    '<div class="field"><label>Subtítulo</label><input class="inp ch-s" value="' + esc(c.subtitulo) + '" placeholder="RESUELTO FAVORABLEMENTE"></div>' +
-    '<div class="field"><label>Icono</label>' + selCls("ch-i",CHIP_ICONS,c.icono||"i-check") + "</div>" +
-    '<div class="field"><label>Color del icono</label>' + selCls("ch-c",COLORS,c.color||"green") + "</div>" +
-    '<div class="rep-check"><em>INCLUIR</em><label class="switch"><input type="checkbox" class="ch-a" aria-label="Incluir tarjeta"' + (c.activo!==false?" checked":"") + '><span></span></label></div>' +
-    '<button type="button" class="icon-btn danger rm" aria-label="Quitar"><svg class="ic"><use href="#i-trash"/></svg></button>';
-  d.querySelector(".rm").addEventListener("click", () => { d.remove(); renderChipPreview(); });
-  return d;
+c = c || {titulo:"",subtitulo:"",icono:"i-check",color:"green",activo:true};
+const d = document.createElement("div");
+d.className = "rep-row rep-chip";
+d.innerHTML =
+'<div class="field"><label>Título de la tarjeta</label><input class="inp ch-t" value="' + esc(c.titulo) + '" placeholder="Expediente 1.482/25"></div>' +
+'<div class="field"><label>Subtítulo</label><input class="inp ch-s" value="' + esc(c.subtitulo) + '" placeholder="RESUELTO FAVORABLEMENTE"></div>' +
+'<div class="field"><label>Icono</label>' + selCls("ch-i",CHIP_ICONS,c.icono||"i-check") + "</div>" +
+'<div class="field"><label>Color del icono</label>' + selCls("ch-c",COLORS,c.color||"green") + "</div>" +
+'<div class="rep-check"><em>INCLUIR</em><label class="switch"><input type="checkbox" class="ch-a" aria-label="Incluir tarjeta"' + (c.activo!==false?" checked":"") + '><span></span></label></div>' +
+'<button type="button" class="icon-btn danger rm" aria-label="Quitar"><svg class="ic"><use href="#i-trash"/></svg></button>';
+d.querySelector(".rm").addEventListener("click", () => { d.remove(); renderChipPreview(); });
+return d;
 }
 function readChips(){
-  return $$("#i-chips .rep-row").map(r => ({
-    titulo: r.querySelector(".ch-t").value.trim(),
-    subtitulo: r.querySelector(".ch-s").value.trim(),
-    icono: r.querySelector(".ch-i").value,
-    color: r.querySelector(".ch-c").value,
-    activo: r.querySelector(".ch-a").checked
-  }));
+return $$("#i-chips .rep-row").map(r => ({
+titulo: r.querySelector(".ch-t").value.trim(),
+subtitulo: r.querySelector(".ch-s").value.trim(),
+icono: r.querySelector(".ch-i").value,
+color: r.querySelector(".ch-c").value,
+activo: r.querySelector(".ch-a").checked
+}));
 }
 function renderChipPreview(){
-  const box = $("#chipPrev"); if (!box) return;
-  const all = readChips();
-  const globalOn = $("#i-showChips").checked;
-  let h = '<span class="lbl">Vista previa · así se verán sobre el sello</span>';
-  if (!all.length) h += '<span class="cp-empty">Sin tarjetas.</span>';
-  else h += all.map(c =>
-    '<div class="cp' + ((!c.activo || !globalOn) ? " off" : "") + '">' +
-    '<svg class="ic" style="color:' + (CVAR[c.color]||"var(--gold)") + '"><use href="#' + esc(c.icono||"i-check") + '"/></svg>' +
-    "<span><b>" + esc(c.titulo || "(sin título)") + "</b><i>" + esc(c.subtitulo || "") + "</i></span></div>").join("");
-  if (!globalOn && all.length) h += '<span class="cp-empty">El interruptor general está apagado.</span>';
-  box.innerHTML = h;
+const box = $("#chipPrev"); if (!box) return;
+const all = readChips();
+const globalOn = $("#i-showChips").checked;
+let h = '<span class="lbl">Vista previa · así se verán sobre el sello</span>';
+if (!all.length) h += '<span class="cp-empty">Sin tarjetas.</span>';
+else h += all.map(c =>
+'<div class="cp' + ((!c.activo || !globalOn) ? " off" : "") + '">' +
+'<svg class="ic" style="color:' + (CVAR[c.color]||"var(--gold)") + '"><use href="#' + esc(c.icono||"i-check") + '"/></svg>' +
+"<span><b>" + esc(c.titulo || "(sin título)") + "</b><i>" + esc(c.subtitulo || "") + "</i></span></div>").join("");
+if (!globalOn && all.length) h += '<span class="cp-empty">El interruptor general está apagado.</span>';
+box.innerHTML = h;
 }
 $("#i-chips").addEventListener("input", renderChipPreview);
 $("#i-chips").addEventListener("change", renderChipPreview);
 $("#i-showChips").addEventListener("change", renderChipPreview);
 $("#addChip").addEventListener("click", () => {
-  if ($$("#i-chips .rep-row").length >= MAX_CHIPS) return toast("Máximo " + MAX_CHIPS + " tarjetas flotantes.", "err");
-  $("#i-chips").appendChild(chipRow());
-  renderChipPreview();
+if ($$("#i-chips .rep-row").length >= MAX_CHIPS) return toast("Máximo " + MAX_CHIPS + " tarjetas flotantes.", "err");
+$("#i-chips").appendChild(chipRow());
+renderChipPreview();
 });
 function renderInicio(){
-  const d = state.inicio || SEED.inicio;
-  $("#i-eyebrow").value = d.eyebrow || "";
-  $("#i-titulo").value = d.titulo || "";
-  $("#i-subtitulo").value = d.subtitulo || "";
-  $("#i-cta1").value = d.cta1 || "";
-  $("#i-cta2").value = d.cta2 || "";
-  $("#i-imagen").value = d.imagen || "";
-  $("#i-mision").value = d.mision || "";
-  $("#i-marquee").value = (d.marquee || []).join(", ");
-  $("#i-showBadges").checked = d.showBadges !== false;
-  $("#i-showCifras").checked = d.showCifras !== false;
-  $("#i-showMarquee").checked = d.showMarquee !== false;
-  $("#i-showChips").checked = d.showChips !== false;
-  const b = $("#i-badges"); b.innerHTML = ""; (d.badges || []).forEach(x => b.appendChild(badgeRow(x)));
-  const c = $("#i-cifras"); c.innerHTML = ""; (d.cifras || []).forEach(x => c.appendChild(cifraRow(x)));
-  const ch = $("#i-chips"); ch.innerHTML = "";
-  (Array.isArray(d.chips) ? d.chips : SEED.inicio.chips).slice(0,MAX_CHIPS).forEach(x => ch.appendChild(chipRow(x)));
-  renderChipPreview();
+const d = state.inicio || SEED.inicio;
+$("#i-eyebrow").value = d.eyebrow || "";
+$("#i-titulo").value = d.titulo || "";
+$("#i-subtitulo").value = d.subtitulo || "";
+$("#i-cta1").value = d.cta1 || "";
+$("#i-cta2").value = d.cta2 || "";
+$("#i-imagen").value = d.imagen || "";
+$("#i-mision").value = d.mision || "";
+$("#i-marquee").value = (d.marquee || []).join(", ");
+$("#i-showBadges").checked = d.showBadges !== false;
+$("#i-showCifras").checked = d.showCifras !== false;
+$("#i-showMarquee").checked = d.showMarquee !== false;
+$("#i-showChips").checked = d.showChips !== false;
+const b = $("#i-badges"); b.innerHTML = ""; (d.badges || []).forEach(x => b.appendChild(badgeRow(x)));
+const c = $("#i-cifras"); c.innerHTML = ""; (d.cifras || []).forEach(x => c.appendChild(cifraRow(x)));
+const ch = $("#i-chips"); ch.innerHTML = "";
+(Array.isArray(d.chips) ? d.chips : SEED.inicio.chips).slice(0,MAX_CHIPS).forEach(x => ch.appendChild(chipRow(x)));
+renderChipPreview();
 }
 $("#addBadge").addEventListener("click", () => $("#i-badges").appendChild(badgeRow("")));
 $("#addCifra").addEventListener("click", () => $("#i-cifras").appendChild(cifraRow()));
 $("#saveInicio").addEventListener("click", async () => {
-  const titulo = $("#i-titulo").value.trim();
-  if (!titulo) return toast("El titular principal es obligatorio.", "err");
-  const chips = readChips().filter(c => c.titulo).slice(0,MAX_CHIPS);
-  const data = {
-    eyebrow:$("#i-eyebrow").value.trim(), titulo, subtitulo:$("#i-subtitulo").value.trim(),
-    cta1:$("#i-cta1").value.trim() || "Enviar Consulta Gratuita", cta2:$("#i-cta2").value.trim() || "Hablar por WhatsApp",
-    imagen:$("#i-imagen").value.trim(), mision:$("#i-mision").value.trim(),
-    marquee:commas($("#i-marquee").value),
-    showBadges:$("#i-showBadges").checked, showCifras:$("#i-showCifras").checked,
-    showMarquee:$("#i-showMarquee").checked, showChips:$("#i-showChips").checked,
-    badges:$$("#i-badges .rep-row").map(r => r.querySelector("input").value.trim()).filter(Boolean),
-    chips,
-    cifras:$$("#i-cifras .rep-row").map(r => ({
-      pref:r.querySelector(".c-pref").value.trim(), valor:parseInt(r.querySelector(".c-val").value,10)||0,
-      suf:r.querySelector(".c-suf").value.trim(), label:r.querySelector(".c-label").value.trim(),
-      desc:r.querySelector(".c-desc").value.trim(), activo:r.querySelector(".c-act").checked
-    })).filter(c => c.label),
-    updatedAt:serverTimestamp()
-  };
-  try {
-    await setDoc(doc(db,"sitio","inicio"), data);
-    await logAction("Editó Inicio", "Portada, sellos, cifras y " + chips.length + " tarjeta(s)");
-    toast("Sección Inicio guardada y publicada.");
-  } catch(ex){ fsErr(ex); }
+const titulo = $("#i-titulo").value.trim();
+if (!titulo) return toast("El titular principal es obligatorio.", "err");
+const chips = readChips().filter(c => c.titulo).slice(0,MAX_CHIPS);
+const data = {
+eyebrow:$("#i-eyebrow").value.trim(), titulo, subtitulo:$("#i-subtitulo").value.trim(),
+cta1:$("#i-cta1").value.trim() || "Enviar Consulta Gratuita", cta2:$("#i-cta2").value.trim() || "Hablar por WhatsApp",
+imagen:$("#i-imagen").value.trim(), mision:$("#i-mision").value.trim(),
+marquee:commas($("#i-marquee").value),
+showBadges:$("#i-showBadges").checked, showCifras:$("#i-showCifras").checked,
+showMarquee:$("#i-showMarquee").checked, showChips:$("#i-showChips").checked,
+badges:$$("#i-badges .rep-row").map(r => r.querySelector("input").value.trim()).filter(Boolean),
+chips,
+cifras:$$("#i-cifras .rep-row").map(r => ({
+pref:r.querySelector(".c-pref").value.trim(), valor:parseInt(r.querySelector(".c-val").value,10)||0,
+suf:r.querySelector(".c-suf").value.trim(), label:r.querySelector(".c-label").value.trim(),
+desc:r.querySelector(".c-desc").value.trim(), activo:r.querySelector(".c-act").checked
+})).filter(c => c.label),
+updatedAt:serverTimestamp()
+};
+try {
+await setDoc(doc(db,"sitio","inicio"), data);
+await logAction("Editó Inicio", "Portada, sellos, cifras y " + chips.length + " tarjeta(s)");
+toast("Sección Inicio guardada y publicada.");
+} catch(ex){ fsErr(ex); }
 });
-
 /* ───────── CONTACTO ───────── */
 const KMAP = {direccion:"k-direccion",ciudad:"k-ciudad",horario:"k-horario",guardiaNota:"k-guardiaNota",telefono:"k-telefono",email:"k-email",waDisplay:"k-waDisplay",waNum:"k-waNum",waMsg:"k-waMsg",mapa:"k-mapa",linkedin:"k-linkedin",instagram:"k-instagram",cuit:"k-cuit",notaForm:"k-notaForm",badge:"k-badge"};
 function renderContacto(){
-  const d = state.contacto || SEED.contacto;
-  for (const k in KMAP) $("#" + KMAP[k]).value = d[k] || "";
-  $("#k-showMapa").checked = d.showMapa !== false;
-  $("#k-showBadge").checked = d.showBadge !== false;
+const d = state.contacto || SEED.contacto;
+for (const k in KMAP) $("#" + KMAP[k]).value = d[k] || "";
+$("#k-showMapa").checked = d.showMapa !== false;
+$("#k-showBadge").checked = d.showBadge !== false;
 }
 $("#saveContacto").addEventListener("click", async () => {
-  const waNum = digits($("#k-waNum").value);
-  if (!waNum) return toast("El número de WhatsApp (solo dígitos) es obligatorio.", "err");
-  const data = { waNum, showMapa:$("#k-showMapa").checked, showBadge:$("#k-showBadge").checked, updatedAt:serverTimestamp() };
-  for (const k in KMAP) if (k !== "waNum") data[k] = $("#" + KMAP[k]).value.trim();
-  try {
-    await setDoc(doc(db,"sitio","contacto"), data);
-    await logAction("Editó Contacto", "Teléfono " + (data.telefono||"—") + " · WhatsApp " + waNum);
-    toast("Datos de contacto guardados.");
-  } catch(ex){ fsErr(ex); }
+const waNum = digits($("#k-waNum").value);
+if (!waNum) return toast("El número de WhatsApp (solo dígitos) es obligatorio.", "err");
+const data = { waNum, showMapa:$("#k-showMapa").checked, showBadge:$("#k-showBadge").checked, updatedAt:serverTimestamp() };
+for (const k in KMAP) if (k !== "waNum") data[k] = $("#" + KMAP[k]).value.trim();
+try {
+await setDoc(doc(db,"sitio","contacto"), data);
+await logAction("Editó Contacto", "Teléfono " + (data.telefono||"—") + " · WhatsApp " + waNum);
+toast("Datos de contacto guardados.");
+} catch(ex){ fsErr(ex); }
 });
-
 /* ───────── LISTAS CRUD ───────── */
 function listState(col){
-  const st = state.status[col];
-  if (st === "loading") return '<div class="skel"><div></div><div></div><div></div></div>';
-  if (st === "error") return '<div class="empty err"><svg class="ic"><use href="#i-alert"/></svg><span><b style="color:#F49B93">No se pudo leer <span class="mono">' + col + '</span>.</b><br>Código: ' + esc(state.err[col]||"desconocido") + '.</span></div>';
-  if (!state[col].length) return '<div class="empty"><svg class="ic"><use href="#i-db"/></svg><span><b>Firestore no tiene documentos en <span class="mono">' + col + '</span>.</b></span></div>';
-  return "";
+const st = state.status[col];
+if (st === "loading") return '<div class="skel"><div></div><div></div><div></div></div>';
+if (st === "error") return '<div class="empty err"><svg class="ic"><use href="#i-alert"/></svg><span><b style="color:#F49B93">No se pudo leer <span class="mono">' + col + '</span>.</b><br>Código: ' + esc(state.err[col]||"desconocido") + '.</span></div>';
+if (!state[col].length) return '<div class="empty"><svg class="ic"><use href="#i-db"/></svg><span><b>Firestore no tiene documentos en <span class="mono">' + col + '</span>.</b></span></div>';
+return "";
 }
 function rowHTML(col, d){
-  let ico = "", info = "", extra = "";
-  if (col === "areas"){
-    ico = '<svg class="ic"><use href="#' + esc(d.icono || "i-brief") + '"/></svg>';
-    info = "<b>" + esc(d.nombre) + "</b><span>/" + esc(d.id) + " · " + esc((d.tags||[]).join(" · ")) + "</span>";
-  } else if (col === "equipo"){
-    ico = "<b>" + esc(d.iniciales || "··") + "</b>" + (d.foto ? '<img src="' + esc(d.foto) + '" alt="" loading="lazy" onerror="this.remove()">' : "");
-    const ct = [d.telefono ? "☏ " + d.telefono : "", d.whatsapp ? "WA " + d.whatsapp : ""].filter(Boolean).join("  ·  ");
-    info = "<b>" + esc(d.nombre) + "</b><span>" + esc(d.rol || "") + " · " + esc(d.matricula || "") + "</span>" +
-      (ct ? '<span class="ct">' + esc(ct) + "</span>" : '<span>sin teléfono</span>');
-  } else {
-    ico = '<svg class="ic"><use href="#i-post"/></svg>';
-    extra = '<span class="chip ' + (CATCLS[d.categoria] || "ch-gold") + '">' + esc(d.categoria || "General") + "</span>";
-    info = "<b>" + esc(d.titulo) + "</b><span>" + fdate(d.fecha) + " · " + esc(d.lectura || "") + "</span>";
-  }
-  return '<div class="row' + (d.activo === false ? " off" : "") + '">' +
-    '<span class="row-ico">' + ico + "</span>" +
-    '<span class="row-info">' + info + (extra ? "<span style='margin-top:5px'>" + extra + "</span>" : "") + "</span>" +
-    '<span class="row-orden"><label>ORDEN</label><input type="number" value="' + esc(d.orden ?? 99) + '" data-orden="' + col + '" data-id="' + esc(d.id) + '"></span>' +
-    '<span class="row-state"><em>' + (col === "blog" ? "PUBLICADO" : "INCLUIDO") + '</em><label class="switch"><input type="checkbox" aria-label="Incluir o excluir" data-toggle="' + col + '" data-id="' + esc(d.id) + '"' + (d.activo !== false ? " checked" : "") + '><span></span></label></span>' +
-    '<button type="button" class="icon-btn" data-act="edit" data-type="' + col + '" data-id="' + esc(d.id) + '" aria-label="Editar"><svg class="ic"><use href="#i-edit"/></svg></button>' +
-    '<button type="button" class="icon-btn danger" data-act="del" data-type="' + col + '" data-id="' + esc(d.id) + '" aria-label="Eliminar"><svg class="ic"><use href="#i-trash"/></svg></button></div>';
+let ico = "", info = "", extra = "";
+if (col === "areas"){
+ico = '<svg class="ic"><use href="#' + esc(d.icono || "i-brief") + '"/></svg>';
+info = "<b>" + esc(d.nombre) + "</b><span>/" + esc(d.id) + " · " + esc((d.tags||[]).join(" · ")) + "</span>";
+} else if (col === "equipo"){
+ico = "<b>" + esc(d.iniciales || "··") + "</b>" + (d.foto ? '<img src="' + esc(d.foto) + '" alt="" loading="lazy" onerror="this.remove()">' : "");
+const ct = [d.telefono ? "☏ " + d.telefono : "", d.whatsapp ? "WA " + d.whatsapp : ""].filter(Boolean).join("  ·  ");
+info = "<b>" + esc(d.nombre) + "</b><span>" + esc(d.rol || "") + " · " + esc(d.matricula || "") + "</span>" +
+(ct ? '<span class="ct">' + esc(ct) + "</span>" : '<span>sin teléfono</span>');
+} else {
+ico = '<svg class="ic"><use href="#i-post"/></svg>';
+extra = '<span class="chip ' + (CATCLS[d.categoria] || "ch-gold") + '">' + esc(d.categoria || "General") + "</span>";
+info = "<b>" + esc(d.titulo) + "</b><span>" + fdate(d.fecha) + " · " + esc(d.lectura || "") + "</span>";
+}
+return '<div class="row' + (d.activo === false ? " off" : "") + '">' +
+'<span class="row-ico">' + ico + "</span>" +
+'<span class="row-info">' + info + (extra ? "<span style='margin-top:5px'>" + extra + "</span>" : "") + "</span>" +
+'<span class="row-orden"><label>ORDEN</label><input type="number" value="' + esc(d.orden ?? 99) + '" data-orden="' + col + '" data-id="' + esc(d.id) + '"></span>' +
+'<span class="row-state"><em>' + (col === "blog" ? "PUBLICADO" : "INCLUIDO") + '</em><label class="switch"><input type="checkbox" aria-label="Incluir o excluir" data-toggle="' + col + '" data-id="' + esc(d.id) + '"' + (d.activo !== false ? " checked" : "") + '><span></span></label></span>' +
+'<button type="button" class="icon-btn" data-act="edit" data-type="' + col + '" data-id="' + esc(d.id) + '" aria-label="Editar"><svg class="ic"><use href="#i-edit"/></svg></button>' +
+'<button type="button" class="icon-btn danger" data-act="del" data-type="' + col + '" data-id="' + esc(d.id) + '" aria-label="Eliminar"><svg class="ic"><use href="#i-trash"/></svg></button></div>';
 }
 function renderList(col){
-  const el = $("#list-" + col);
-  const s = listState(col);
-  el.innerHTML = s || state[col].map(d => rowHTML(col, d)).join("");
+const el = $("#list-" + col);
+const s = listState(col);
+el.innerHTML = s || state[col].map(d => rowHTML(col, d)).join("");
 }
 const NOMCOL = {areas:"área", equipo:"abogado", blog:"publicación"};
 $("#mainArea").addEventListener("click", e => {
-  const g = e.target.closest("[data-goto]");
-  if (g){ goView(g.dataset.goto); return; }
-  const b = e.target.closest("[data-act]"); if (!b) return;
-  const { act, type, id } = b.dataset;
-  if (act === "new") openEditor(type, null);
-  else if (act === "edit") openEditor(type, id);
-  else if (act === "del"){
-    const d = state[type].find(x => x.id === id);
-    const nom = d ? (d.nombre || d.titulo || id) : id;
-    openConfirm("Eliminar definitivamente", "Se eliminará <b>" + esc(nom) + "</b>.", async () => {
-      try {
-        await deleteDoc(doc(db, type, id));
-        await logAction("Eliminó " + NOMCOL[type], nom + " (/" + id + ")");
-        toast("Documento eliminado.");
-      } catch(ex){ fsErr(ex); }
-    });
-  }
+const g = e.target.closest("[data-goto]");
+if (g){ goView(g.dataset.goto); return; }
+const b = e.target.closest("[data-act]"); if (!b) return;
+const { act, type, id } = b.dataset;
+if (act === "new") openEditor(type, null);
+else if (act === "edit") openEditor(type, id);
+else if (act === "del"){
+const d = state[type].find(x => x.id === id);
+const nom = d ? (d.nombre || d.titulo || id) : id;
+openConfirm("Eliminar definitivamente", "Se eliminará <b>" + esc(nom) + "</b>.", async () => {
+try {
+await deleteDoc(doc(db, type, id));
+await logAction("Eliminó " + NOMCOL[type], nom + " (/" + id + ")");
+toast("Documento eliminado.");
+} catch(ex){ fsErr(ex); }
+});
+}
 });
 $("#mainArea").addEventListener("change", async e => {
-  const t = e.target;
-  if (t.matches("[data-toggle]")){
-    const col = t.dataset.toggle, id = t.dataset.id;
-    const d = state[col].find(x => x.id === id);
-    try {
-      await updateDoc(doc(db, col, id), { activo:t.checked, updatedAt:serverTimestamp() });
-      await logAction((t.checked ? "Incluyó " : "Excluyó ") + NOMCOL[col], (d?.nombre || d?.titulo || id) + " (/" + id + ")");
-      toast(t.checked ? "Incluido en el sitio." : "Excluido del sitio.", "gold");
-    } catch(ex){ fsErr(ex); }
-  }
-  if (t.matches("[data-orden]")){
-    const col = t.dataset.orden, id = t.dataset.id, v = parseInt(t.value,10)||0;
-    const d = state[col].find(x => x.id === id);
-    try {
-      await updateDoc(doc(db, col, id), { orden:v, updatedAt:serverTimestamp() });
-      await logAction("Reordenó " + NOMCOL[col], (d?.nombre || d?.titulo || id) + " → " + v);
-      toast("Orden actualizado.");
-    } catch(ex){ fsErr(ex); }
-  }
+const t = e.target;
+if (t.matches("[data-toggle]")){
+const col = t.dataset.toggle, id = t.dataset.id;
+const d = state[col].find(x => x.id === id);
+try {
+await updateDoc(doc(db, col, id), { activo:t.checked, updatedAt:serverTimestamp() });
+await logAction((t.checked ? "Incluyó " : "Excluyó ") + NOMCOL[col], (d?.nombre || d?.titulo || id) + " (/" + id + ")");
+toast(t.checked ? "Incluido en el sitio." : "Excluido del sitio.", "gold");
+} catch(ex){ fsErr(ex); }
+}
+if (t.matches("[data-orden]")){
+const col = t.dataset.orden, id = t.dataset.id, v = parseInt(t.value,10)||0;
+const d = state[col].find(x => x.id === id);
+try {
+await updateDoc(doc(db, col, id), { orden:v, updatedAt:serverTimestamp() });
+await logAction("Reordenó " + NOMCOL[col], (d?.nombre || d?.titulo || id) + " → " + v);
+toast("Orden actualizado.");
+} catch(ex){ fsErr(ex); }
+}
 });
-
 const editorRoot = $("#editorRoot"), editorBody = $("#editorBody");
 let editorSaveFn = null, editorLog = null;
 const fld = (id,label,html,hint) => '<div class="field"><label for="' + id + '">' + label + "</label>" + html + (hint ? '<span class="hint">' + hint + "</span>" : "") + "</div>";
@@ -1832,598 +1756,585 @@ const sel = (id,opts,v) => '<select class="sel" id="' + id + '">' + opts.map(o =
 const switchFld = (id,v,label) => '<label class="switch-lbl"><span class="switch"><input type="checkbox" id="' + id + '"' + (v!==false?" checked":"") + '><span></span></span>' + label + "</label>";
 const areaOpts = () => [["","— Sin asignar —"]].concat(state.areas.map(a => [a.id, a.nombre]));
 const equipoOpts = () => [["","— Equipo del área —"]].concat(state.equipo.map(l => [l.id, l.nombre]));
-
 function renderEqPrev(){
-  const box = $("#eqPrev"); if (!box) return;
-  const tel = ($("#e-telefono")?.value || "").trim();
-  const waRaw = ($("#e-whatsapp")?.value || "").trim();
-  const waN = digits(waRaw);
-  const mail = ($("#e-email")?.value || "").trim();
-  const li = ($("#e-linkedin")?.value || "").trim();
-  let h = '<span class="lbl">Vista previa</span>';
-  const items = [];
-  if (tel) items.push('<span class="cb tel"><svg class="ic"><use href="#i-phone"/></svg><span>' + esc(tel) + "</span></span>");
-  if (mail) items.push('<span class="cb"><svg class="ic"><use href="#i-mail"/></svg><span>Email</span></span>');
-  if (li) items.push('<span class="cb"><svg class="ic ic-fill"><use href="#i-linkedin"/></svg><span>LinkedIn</span></span>');
-  items.push('<span class="cb wa"><svg class="ic ic-fill"><use href="#i-wa"/></svg><span>' + (waN ? "WhatsApp del profesional" : "WhatsApp general") + "</span></span>");
-  h += items.join("");
-  if (!tel && !mail && !li) h += '<span class="none">Sin teléfono, email ni LinkedIn.</span>';
-  box.innerHTML = h;
+const box = $("#eqPrev"); if (!box) return;
+const tel = ($("#e-telefono")?.value || "").trim();
+const waRaw = ($("#e-whatsapp")?.value || "").trim();
+const waN = digits(waRaw);
+const mail = ($("#e-email")?.value || "").trim();
+const li = ($("#e-linkedin")?.value || "").trim();
+let h = '<span class="lbl">Vista previa</span>';
+const items = [];
+if (tel) items.push('<span class="cb tel"><svg class="ic"><use href="#i-phone"/></svg><span>' + esc(tel) + "</span></span>");
+if (mail) items.push('<span class="cb"><svg class="ic"><use href="#i-mail"/></svg><span>Email</span></span>');
+if (li) items.push('<span class="cb"><svg class="ic ic-fill"><use href="#i-linkedin"/></svg><span>LinkedIn</span></span>');
+items.push('<span class="cb wa"><svg class="ic ic-fill"><use href="#i-wa"/></svg><span>' + (waN ? "WhatsApp del profesional" : "WhatsApp general") + "</span></span>");
+h += items.join("");
+if (!tel && !mail && !li) h += '<span class="none">Sin teléfono, email ni LinkedIn.</span>';
+box.innerHTML = h;
 }
 function bindEqPrev(){
-  ["e-telefono","e-whatsapp","e-email","e-linkedin"].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener("input", renderEqPrev);
-  });
-  renderEqPrev();
+["e-telefono","e-whatsapp","e-email","e-linkedin"].forEach(id => {
+const el = document.getElementById(id);
+if (el) el.addEventListener("input", renderEqPrev);
+});
+renderEqPrev();
 }
-
 function openEditor(type, id){
-  const isEdit = !!id;
-  const d = isEdit ? state[type].find(x => x.id === id) : null;
-  if (isEdit && !d) return;
-  let html = "", title = "";
-  if (type === "areas"){
-    title = isEdit ? "Editar área" : "Nueva área";
-    html = '<div class="grid2">' +
-      fld("e-nombre","Nombre del área <b>*</b>",inp("e-nombre",d?.nombre)) +
-      fld("e-slug","Identificador (slug)",'<input class="inp" id="e-slug" value="' + esc(d?.id || "") + '"' + (isEdit ? " disabled" : "") + '>', isEdit ? "No se modifica." : "Vacío = se genera del nombre.") +
-      fld("e-icono","Icono",sel("e-icono",ICONS,d?.icono||"i-brief")) +
-      fld("e-color","Color",sel("e-color",COLORS,d?.color||"gold")) +
-      '<div class="full">' + fld("e-descripcion","Descripción breve",txa("e-descripcion",d?.descripcion,2)) + "</div>" +
-      fld("e-tags","Etiquetas (coma)",inp("e-tags",(d?.tags||[]).join(", "))) +
-      fld("e-abogado","Abogado a cargo",sel("e-abogado",equipoOpts(),d?.abogadoId||"")) +
-      '<div class="full">' + fld("e-p1","Párrafo 1",txa("e-p1",d?.p1,3)) + "</div>" +
-      '<div class="full">' + fld("e-p2","Párrafo 2",txa("e-p2",d?.p2,3)) + "</div>" +
-      '<div class="full">' + fld("e-alcance","Alcance (uno por línea)",txa("e-alcance",(d?.alcance||[]).join("\n"),5)) + "</div>" +
-      fld("e-orden","Orden",inp("e-orden",d?.orden ?? (state.areas.length+1),"number")) +
-      '<div class="field"><span class="flabel">Visibilidad</span>' + switchFld("e-activo",d?.activo,"Incluida") + "</div></div>";
-    editorSaveFn = async () => {
-      const nombre = $("#e-nombre").value.trim();
-      if (!nombre) return toast("El nombre es obligatorio.","err"), false;
-      const slug = isEdit ? id : (slugify($("#e-slug").value) || slugify(nombre));
-      if (!slug) return toast("Identificador inválido.","err"), false;
-      if (!isEdit && state.areas.some(a => a.id === slug)) return toast("Ya existe un área con ese identificador.","err"), false;
-      const data = { nombre, icono:$("#e-icono").value, color:$("#e-color").value,
-        descripcion:$("#e-descripcion").value.trim(), tags:commas($("#e-tags").value),
-        abogadoId:$("#e-abogado").value, p1:$("#e-p1").value.trim(), p2:$("#e-p2").value.trim(),
-        alcance:lines($("#e-alcance").value), orden:parseInt($("#e-orden").value,10)||0,
-        activo:$("#e-activo").checked, updatedAt:serverTimestamp() };
-      if (isEdit) await updateDoc(doc(db,"areas",id), data);
-      else await setDoc(doc(db,"areas",slug), { ...data, createdAt:serverTimestamp() });
-      editorLog = [(isEdit ? "Editó área" : "Creó área"), nombre + " (/" + slug + ")"];
-      return true;
-    };
-  }
-  else if (type === "equipo"){
-    title = isEdit ? "Editar abogado" : "Nuevo abogado";
-    html = '<div class="grid2">' +
-      fld("e-nombre","Nombre completo <b>*</b>",inp("e-nombre",d?.nombre)) +
-      fld("e-rol","Rol / cargo",inp("e-rol",d?.rol)) +
-      fld("e-matricula","Matrícula",inp("e-matricula",d?.matricula)) +
-      fld("e-iniciales","Iniciales",inp("e-iniciales",d?.iniciales)) +
-      fld("e-areaTexto","Especialidad (texto visible)",inp("e-areaTexto",d?.areaTexto)) +
-      fld("e-areaSlug","Área para consultas",sel("e-areaSlug",areaOpts(),d?.areaSlug||"")) +
-      fld("e-color","Color",sel("e-color",COLORS,d?.color||"gold")) +
-      fld("e-email","Email profesional",inp("e-email",d?.email,"email")) +
-      fld("e-telefono","Teléfono directo",'<input class="inp" id="e-telefono" type="tel" inputmode="tel" value="' + esc(d?.telefono ?? "") + '" placeholder="+54 11 4372-8901">',"Vacío = se oculta.") +
-      fld("e-whatsapp","WhatsApp (solo dígitos)",'<input class="inp mono" id="e-whatsapp" inputmode="numeric" value="' + esc(d?.whatsapp ?? "") + '" placeholder="5491143728901">',"Vacío = WhatsApp general.") +
-      '<div class="full"><div class="eq-prev" id="eqPrev"></div></div>' +
-      '<div class="full">' + fld("e-foto","URL foto",inp("e-foto",d?.foto)) + "</div>" +
-      '<div class="full">' + fld("e-linkedin","URL LinkedIn",inp("e-linkedin",d?.linkedin)) + "</div>" +
-      '<div class="full">' + fld("e-bio","Biografía",txa("e-bio",d?.bio,4)) + "</div>" +
-      '<div class="full">' + fld("e-formacion","Formación (una por línea)",txa("e-formacion",(d?.formacion||[]).join("\n"),4)) + "</div>" +
-      '<div class="full">' + fld("e-trayectoria","Trayectoria (una por línea)",txa("e-trayectoria",(d?.trayectoria||[]).join("\n"),3)) + "</div>" +
-      fld("e-idiomas","Idiomas (coma)",inp("e-idiomas",(d?.idiomas||[]).join(", "))) +
-      fld("e-orden","Orden",inp("e-orden",d?.orden ?? (state.equipo.length+1),"number")) +
-      '<div class="full">' + switchFld("e-activo",d?.activo,"Incluido") + "</div></div>";
-    editorSaveFn = async () => {
-      const nombre = $("#e-nombre").value.trim();
-      if (!nombre) return toast("El nombre es obligatorio.","err"), false;
-      const telefono = $("#e-telefono").value.trim();
-      const waRaw = $("#e-whatsapp").value.trim();
-      const whatsapp = digits(waRaw);
-      if (telefono && digits(telefono).length < 6) return toast("El teléfono parece incompleto.","err"), false;
-      if (waRaw && whatsapp.length < 8) return toast("El WhatsApp debe tener al menos 8 dígitos.","err"), false;
-      const data = { nombre, rol:$("#e-rol").value.trim(), matricula:$("#e-matricula").value.trim(),
-        iniciales:$("#e-iniciales").value.trim().slice(0,3) || nombre.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase(),
-        areaTexto:$("#e-areaTexto").value.trim(), areaSlug:$("#e-areaSlug").value, color:$("#e-color").value,
-        email:$("#e-email").value.trim(), telefono, whatsapp,
-        foto:$("#e-foto").value.trim(), linkedin:$("#e-linkedin").value.trim(),
-        bio:$("#e-bio").value.trim(), formacion:lines($("#e-formacion").value), trayectoria:lines($("#e-trayectoria").value),
-        idiomas:commas($("#e-idiomas").value), orden:parseInt($("#e-orden").value,10)||0,
-        activo:$("#e-activo").checked, updatedAt:serverTimestamp() };
-      if (isEdit) await updateDoc(doc(db,"equipo",id), data);
-      else await addDoc(collection(db,"equipo"), { ...data, createdAt:serverTimestamp() });
-      editorLog = [(isEdit ? "Editó abogado" : "Creó abogado"), nombre + " · tel " + (telefono||"—")];
-      return true;
-    };
-  }
-  else {
-    title = isEdit ? "Editar post" : "Nuevo post";
-    html = '<div class="grid2">' +
-      '<div class="full">' + fld("e-titulo","Título <b>*</b>",inp("e-titulo",d?.titulo)) + "</div>" +
-      fld("e-categoria","Categoría",sel("e-categoria",CATS.map(c=>[c,c]),d?.categoria||"Laboral")) +
-      fld("e-area","Área (CTA)",sel("e-area",areaOpts(),d?.area||"")) +
-      fld("e-fecha","Fecha",inp("e-fecha",d?.fecha || new Date().toISOString().slice(0,10),"date")) +
-      fld("e-lectura","Tiempo de lectura",inp("e-lectura",d?.lectura||"5 min")) +
-      '<div class="full">' + fld("e-extracto","Extracto",txa("e-extracto",d?.extracto,2)) + "</div>" +
-      '<div class="full">' + fld("e-cuerpo","Cuerpo del artículo",txa("e-cuerpo",d?.cuerpo,12),"## Texto = subtítulo · - texto = viñeta · 1. texto = lista · **texto** = negrita.") + "</div>" +
-      fld("e-orden","Orden",inp("e-orden",d?.orden ?? (state.blog.length+1),"number")) +
-      '<div class="field"><span class="flabel">Estado</span>' + switchFld("e-activo",d?.activo,"Publicado") + "</div></div>";
-    editorSaveFn = async () => {
-      const titulo = $("#e-titulo").value.trim();
-      if (!titulo) return toast("El título es obligatorio.","err"), false;
-      const data = { titulo, categoria:$("#e-categoria").value, area:$("#e-area").value,
-        fecha:$("#e-fecha").value, lectura:$("#e-lectura").value.trim(),
-        extracto:$("#e-extracto").value.trim(), cuerpo:$("#e-cuerpo").value,
-        orden:parseInt($("#e-orden").value,10)||0, activo:$("#e-activo").checked, updatedAt:serverTimestamp() };
-      if (isEdit) await updateDoc(doc(db,"blog",id), data);
-      else await addDoc(collection(db,"blog"), { ...data, createdAt:serverTimestamp() });
-      editorLog = [(isEdit ? "Editó publicación" : "Creó publicación"), titulo];
-      return true;
-    };
-  }
-  $("#editorTitle").textContent = title;
-  editorBody.innerHTML = html;
-  editorBody.scrollTop = 0;
-  editorLog = null;
-  editorRoot.classList.add("open");
-  if (type === "equipo") bindEqPrev();
+const isEdit = !!id;
+const d = isEdit ? state[type].find(x => x.id === id) : null;
+if (isEdit && !d) return;
+let html = "", title = "";
+if (type === "areas"){
+title = isEdit ? "Editar área" : "Nueva área";
+html = '<div class="grid2">' +
+fld("e-nombre","Nombre del área <b>*</b>",inp("e-nombre",d?.nombre)) +
+fld("e-slug","Identificador (slug)",'<input class="inp" id="e-slug" value="' + esc(d?.id || "") + '"' + (isEdit ? " disabled" : "") + '>', isEdit ? "No se modifica." : "Vacío = se genera del nombre.") +
+fld("e-icono","Icono",sel("e-icono",ICONS,d?.icono||"i-brief")) +
+fld("e-color","Color",sel("e-color",COLORS,d?.color||"gold")) +
+'<div class="full">' + fld("e-descripcion","Descripción breve",txa("e-descripcion",d?.descripcion,2)) + "</div>" +
+fld("e-tags","Etiquetas (coma)",inp("e-tags",(d?.tags||[]).join(", "))) +
+fld("e-abogado","Abogado a cargo",sel("e-abogado",equipoOpts(),d?.abogadoId||"")) +
+'<div class="full">' + fld("e-p1","Párrafo 1",txa("e-p1",d?.p1,3)) + "</div>" +
+'<div class="full">' + fld("e-p2","Párrafo 2",txa("e-p2",d?.p2,3)) + "</div>" +
+'<div class="full">' + fld("e-alcance","Alcance (uno por línea)",txa("e-alcance",(d?.alcance||[]).join("\n"),5)) + "</div>" +
+fld("e-orden","Orden",inp("e-orden",d?.orden ?? (state.areas.length+1),"number")) +
+'<div class="field"><span class="flabel">Visibilidad</span>' + switchFld("e-activo",d?.activo,"Incluida") + "</div></div>";
+editorSaveFn = async () => {
+const nombre = $("#e-nombre").value.trim();
+if (!nombre) return toast("El nombre es obligatorio.","err"), false;
+const slug = isEdit ? id : (slugify($("#e-slug").value) || slugify(nombre));
+if (!slug) return toast("Identificador inválido.","err"), false;
+if (!isEdit && state.areas.some(a => a.id === slug)) return toast("Ya existe un área con ese identificador.","err"), false;
+const data = { nombre, icono:$("#e-icono").value, color:$("#e-color").value,
+descripcion:$("#e-descripcion").value.trim(), tags:commas($("#e-tags").value),
+abogadoId:$("#e-abogado").value, p1:$("#e-p1").value.trim(), p2:$("#e-p2").value.trim(),
+alcance:lines($("#e-alcance").value), orden:parseInt($("#e-orden").value,10)||0,
+activo:$("#e-activo").checked, updatedAt:serverTimestamp() };
+if (isEdit) await updateDoc(doc(db,"areas",id), data);
+else await setDoc(doc(db,"areas",slug), { ...data, createdAt:serverTimestamp() });
+editorLog = [(isEdit ? "Editó área" : "Creó área"), nombre + " (/" + slug + ")"];
+return true;
+};
 }
-
+else if (type === "equipo"){
+title = isEdit ? "Editar abogado" : "Nuevo abogado";
+html = '<div class="grid2">' +
+fld("e-nombre","Nombre completo <b>*</b>",inp("e-nombre",d?.nombre)) +
+fld("e-rol","Rol / cargo",inp("e-rol",d?.rol)) +
+fld("e-matricula","Matrícula",inp("e-matricula",d?.matricula)) +
+fld("e-iniciales","Iniciales",inp("e-iniciales",d?.iniciales)) +
+fld("e-areaTexto","Especialidad (texto visible)",inp("e-areaTexto",d?.areaTexto)) +
+fld("e-areaSlug","Área para consultas",sel("e-areaSlug",areaOpts(),d?.areaSlug||"")) +
+fld("e-color","Color",sel("e-color",COLORS,d?.color||"gold")) +
+fld("e-email","Email profesional",inp("e-email",d?.email,"email")) +
+fld("e-telefono","Teléfono directo",'<input class="inp" id="e-telefono" type="tel" inputmode="tel" value="' + esc(d?.telefono ?? "") + '" placeholder="+54 11 4372-8901">',"Vacío = se oculta.") +
+fld("e-whatsapp","WhatsApp (solo dígitos)",'<input class="inp mono" id="e-whatsapp" inputmode="numeric" value="' + esc(d?.whatsapp ?? "") + '" placeholder="5491143728901">',"Vacío = WhatsApp general.") +
+'<div class="full"><div class="eq-prev" id="eqPrev"></div></div>' +
+'<div class="full">' + fld("e-foto","URL foto",inp("e-foto",d?.foto)) + "</div>" +
+'<div class="full">' + fld("e-linkedin","URL LinkedIn",inp("e-linkedin",d?.linkedin)) + "</div>" +
+'<div class="full">' + fld("e-bio","Biografía",txa("e-bio",d?.bio,4)) + "</div>" +
+'<div class="full">' + fld("e-formacion","Formación (una por línea)",txa("e-formacion",(d?.formacion||[]).join("\n"),4)) + "</div>" +
+'<div class="full">' + fld("e-trayectoria","Trayectoria (una por línea)",txa("e-trayectoria",(d?.trayectoria||[]).join("\n"),3)) + "</div>" +
+fld("e-idiomas","Idiomas (coma)",inp("e-idiomas",(d?.idiomas||[]).join(", "))) +
+fld("e-orden","Orden",inp("e-orden",d?.orden ?? (state.equipo.length+1),"number")) +
+'<div class="full">' + switchFld("e-activo",d?.activo,"Incluido") + "</div></div>";
+editorSaveFn = async () => {
+const nombre = $("#e-nombre").value.trim();
+if (!nombre) return toast("El nombre es obligatorio.","err"), false;
+const telefono = $("#e-telefono").value.trim();
+const waRaw = $("#e-whatsapp").value.trim();
+const whatsapp = digits(waRaw);
+if (telefono && digits(telefono).length < 6) return toast("El teléfono parece incompleto.","err"), false;
+if (waRaw && whatsapp.length < 8) return toast("El WhatsApp debe tener al menos 8 dígitos.","err"), false;
+const data = { nombre, rol:$("#e-rol").value.trim(), matricula:$("#e-matricula").value.trim(),
+iniciales:$("#e-iniciales").value.trim().slice(0,3) || nombre.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase(),
+areaTexto:$("#e-areaTexto").value.trim(), areaSlug:$("#e-areaSlug").value, color:$("#e-color").value,
+email:$("#e-email").value.trim(), telefono, whatsapp,
+foto:$("#e-foto").value.trim(), linkedin:$("#e-linkedin").value.trim(),
+bio:$("#e-bio").value.trim(), formacion:lines($("#e-formacion").value), trayectoria:lines($("#e-trayectoria").value),
+idiomas:commas($("#e-idiomas").value), orden:parseInt($("#e-orden").value,10)||0,
+activo:$("#e-activo").checked, updatedAt:serverTimestamp() };
+if (isEdit) await updateDoc(doc(db,"equipo",id), data);
+else await addDoc(collection(db,"equipo"), { ...data, createdAt:serverTimestamp() });
+editorLog = [(isEdit ? "Editó abogado" : "Creó abogado"), nombre + " · tel " + (telefono||"—")];
+return true;
+};
+}
+else {
+title = isEdit ? "Editar post" : "Nuevo post";
+html = '<div class="grid2">' +
+'<div class="full">' + fld("e-titulo","Título <b>*</b>",inp("e-titulo",d?.titulo)) + "</div>" +
+fld("e-categoria","Categoría",sel("e-categoria",CATS.map(c=>[c,c]),d?.categoria||"Laboral")) +
+fld("e-area","Área (CTA)",sel("e-area",areaOpts(),d?.area||"")) +
+fld("e-fecha","Fecha",inp("e-fecha",d?.fecha || new Date().toISOString().slice(0,10),"date")) +
+fld("e-lectura","Tiempo de lectura",inp("e-lectura",d?.lectura||"5 min")) +
+'<div class="full">' + fld("e-extracto","Extracto",txa("e-extracto",d?.extracto,2)) + "</div>" +
+'<div class="full">' + fld("e-cuerpo","Cuerpo del artículo",txa("e-cuerpo",d?.cuerpo,12),"## Texto = subtítulo · - texto = viñeta · 1. texto = lista · **texto** = negrita.") + "</div>" +
+fld("e-orden","Orden",inp("e-orden",d?.orden ?? (state.blog.length+1),"number")) +
+'<div class="field"><span class="flabel">Estado</span>' + switchFld("e-activo",d?.activo,"Publicado") + "</div></div>";
+editorSaveFn = async () => {
+const titulo = $("#e-titulo").value.trim();
+if (!titulo) return toast("El título es obligatorio.","err"), false;
+const data = { titulo, categoria:$("#e-categoria").value, area:$("#e-area").value,
+fecha:$("#e-fecha").value, lectura:$("#e-lectura").value.trim(),
+extracto:$("#e-extracto").value.trim(), cuerpo:$("#e-cuerpo").value,
+orden:parseInt($("#e-orden").value,10)||0, activo:$("#e-activo").checked, updatedAt:serverTimestamp() };
+if (isEdit) await updateDoc(doc(db,"blog",id), data);
+else await addDoc(collection(db,"blog"), { ...data, createdAt:serverTimestamp() });
+editorLog = [(isEdit ? "Editó publicación" : "Creó publicación"), titulo];
+return true;
+};
+}
+$("#editorTitle").textContent = title;
+editorBody.innerHTML = html;
+editorBody.scrollTop = 0;
+editorLog = null;
+editorRoot.classList.add("open");
+if (type === "equipo") bindEqPrev();
+}
 $("#editorSave").addEventListener("click", async () => {
-  if (!editorSaveFn) return;
-  const btn = $("#editorSave"); btn.classList.add("loading");
-  try {
-    const ok = await editorSaveFn();
-    if (ok !== false){
-      editorRoot.classList.remove("open");
-      if (editorLog) await logAction(editorLog[0], editorLog[1]);
-      toast("Guardado y publicado.");
-    }
-  } catch(ex){ fsErr(ex); }
-  finally { btn.classList.remove("loading"); }
+if (!editorSaveFn) return;
+const btn = $("#editorSave"); btn.classList.add("loading");
+try {
+const ok = await editorSaveFn();
+if (ok !== false){
+editorRoot.classList.remove("open");
+if (editorLog) await logAction(editorLog[0], editorLog[1]);
+toast("Guardado y publicado.");
+}
+} catch(ex){ fsErr(ex); }
+finally { btn.classList.remove("loading"); }
 });
 $$("[data-close-editor]").forEach(el => el.addEventListener("click", () => editorRoot.classList.remove("open")));
-
 const confirmRoot = $("#confirmRoot");
 let confirmFn = null;
 function openConfirm(title, msg, fn, label){
-  $("#confirmTitle").textContent = title;
-  $("#confirmMsg").innerHTML = msg;
-  $("#confirmYes").textContent = label || "Confirmar";
-  confirmFn = fn;
-  confirmRoot.classList.add("open");
+$("#confirmTitle").textContent = title;
+$("#confirmMsg").innerHTML = msg;
+$("#confirmYes").textContent = label || "Confirmar";
+confirmFn = fn;
+confirmRoot.classList.add("open");
 }
 $("#confirmYes").addEventListener("click", async () => {
-  const fn = confirmFn; if (!fn) return;
-  confirmFn = null; confirmRoot.classList.remove("open");
-  await fn();
+const fn = confirmFn; if (!fn) return;
+confirmFn = null; confirmRoot.classList.remove("open");
+await fn();
 });
 $$("[data-close-confirm]").forEach(el => el.addEventListener("click", () => confirmRoot.classList.remove("open")));
-
 document.addEventListener("keydown", e => {
-  if (e.key !== "Escape") return;
-  if (confirmRoot.classList.contains("open")) confirmRoot.classList.remove("open");
-  else if (histRoot.classList.contains("open")) histRoot.classList.remove("open");
-  else if (editorRoot.classList.contains("open")) editorRoot.classList.remove("open");
-  else if ($("#cliRoot").classList.contains("open")) $("#cliRoot").classList.remove("open");
-  else if ($("#alarmRoot").classList.contains("open")) $("#alarmRoot").classList.remove("open"); // Permitir cerrar alarma con ESC
+if (e.key !== "Escape") return;
+if (confirmRoot.classList.contains("open")) confirmRoot.classList.remove("open");
+else if (histRoot.classList.contains("open")) histRoot.classList.remove("open");
+else if (editorRoot.classList.contains("open")) editorRoot.classList.remove("open");
+else if ($("#cliRoot").classList.contains("open")) $("#cliRoot").classList.remove("open");
+else if ($("#alarmRoot").classList.contains("open")) $("#alarmRoot").classList.remove("open"); // Permitir cerrar alarma con ESC
 });
-
 const pill = (cls,txt) => '<span class="pill ' + cls + '"><i></i>' + esc(txt) + "</span>";
 function renderDiag(){
-  const box = $("#diagBox"); if (!box) return;
-  const u = auth.currentUser;
-  let h = '<div class="diag-row"><b>PROYECTO</b><div class="meta"><strong>' + esc(firebaseConfig.projectId) + '</strong></div>' + pill("p-ok","SDK") + "</div>";
-  h += '<div class="diag-row"><b>SESIÓN</b><div class="meta">' + (u ? "Autenticado como <strong>" + esc(u.email) + "</strong>" : "Sin sesión") + "</div>" + (u ? pill("p-ok","Activa") : pill("p-bad","Sin sesión")) + "</div>";
-  ["inicio","contacto"].forEach(k => {
-    const st = state.status[k];
-    const p = st === "ok" ? pill("p-ok","OK") : st === "error" ? pill("p-bad","Denegado") : pill("p-wait","Leyendo");
-    let meta;
-    if (st === "error") meta = "Error: <strong>" + esc(state.err[k]||"") + "</strong>";
-    else if (state[k]) meta = "Documento <strong>sitio/" + k + "</strong> presente";
-    else meta = "Documento <strong>sitio/" + k + "</strong> inexistente";
-    h += '<div class="diag-row"><b>SITIO/' + k.toUpperCase() + '</b><div class="meta">' + meta + "</div>" + p + "</div>";
-  });
-  COLS.forEach(c => {
-    const st = state.status[c];
-    const p = st === "ok" ? pill("p-ok","OK") : st === "error" ? pill("p-bad","Denegado") : pill("p-wait","Leyendo");
-    const n = state[c].length;
-    let meta = st === "error" ? "Error: <strong>" + esc(state.err[c]||"") + "</strong>"
-      : n ? "<strong>" + n + "</strong> documento(s)"
-      : "Colección <strong>vacía</strong>.";
-    h += '<div class="diag-row"><b>' + c.toUpperCase() + '</b><div class="meta">' + meta + "</div>" + p + "</div>";
-  });
-  const stC = state.status.clientes;
-  const pC = stC === "ok" ? pill("p-ok","OK") : stC === "error" ? pill("p-bad","Denegado") : pill("p-wait","Leyendo");
-  const metaC = stC === "error" ? "Error: <strong>" + esc(state.err.clientes||"") + "</strong>"
-    : "<strong>" + state.clientes.length + "</strong> consulta(s) · <strong>" + state.clientes.filter(x=>(x.estado||"nueva")==="nueva").length + "</strong> nuevas";
-  h += '<div class="diag-row"><b>CLIENTES</b><div class="meta">' + metaC + "</div>" + pC + "</div>";
-  const stS = state.status.sesiones;
-  const pS = stS === "ok" ? pill("p-ok","OK") : stS === "error" ? pill("p-bad","Denegado") : pill("p-wait","Leyendo");
-  const metaS = stS === "error" ? "Error: <strong>" + esc(state.err.sesiones||"") + "</strong>"
-    : "<strong>" + state.sesiones.length + "</strong> sesión(es)";
-  h += '<div class="diag-row"><b>SESIONES</b><div class="meta">' + metaS + "</div>" + pS + "</div>";
-  box.innerHTML = h;
+const box = $("#diagBox"); if (!box) return;
+const u = auth.currentUser;
+let h = '<div class="diag-row"><b>PROYECTO</b><div class="meta"><strong>' + esc(firebaseConfig.projectId) + '</strong></div>' + pill("p-ok","SDK") + "</div>";
+h += '<div class="diag-row"><b>SESIÓN</b><div class="meta">' + (u ? "Autenticado como <strong>" + esc(u.email) + "</strong>" : "Sin sesión") + "</div>" + (u ? pill("p-ok","Activa") : pill("p-bad","Sin sesión")) + "</div>";
+["inicio","contacto"].forEach(k => {
+const st = state.status[k];
+const p = st === "ok" ? pill("p-ok","OK") : st === "error" ? pill("p-bad","Denegado") : pill("p-wait","Leyendo");
+let meta;
+if (st === "error") meta = "Error: <strong>" + esc(state.err[k]||"") + "</strong>";
+else if (state[k]) meta = "Documento <strong>sitio/" + k + "</strong> presente";
+else meta = "Documento <strong>sitio/" + k + "</strong> inexistente";
+h += '<div class="diag-row"><b>SITIO/' + k.toUpperCase() + '</b><div class="meta">' + meta + "</div>" + p + "</div>";
+});
+COLS.forEach(c => {
+const st = state.status[c];
+const p = st === "ok" ? pill("p-ok","OK") : st === "error" ? pill("p-bad","Denegado") : pill("p-wait","Leyendo");
+const n = state[c].length;
+let meta = st === "error" ? "Error: <strong>" + esc(state.err[c]||"") + "</strong>"
+: n ? "<strong>" + n + "</strong> documento(s)"
+: "Colección <strong>vacía</strong>.";
+h += '<div class="diag-row"><b>' + c.toUpperCase() + '</b><div class="meta">' + meta + "</div>" + p + "</div>";
+});
+const stC = state.status.clientes;
+const pC = stC === "ok" ? pill("p-ok","OK") : stC === "error" ? pill("p-bad","Denegado") : pill("p-wait","Leyendo");
+const metaC = stC === "error" ? "Error: <strong>" + esc(state.err.clientes||"") + "</strong>"
+: "<strong>" + state.clientes.length + "</strong> consulta(s) · <strong>" + state.clientes.filter(x=>(x.estado||"nueva")==="nueva").length + "</strong> nuevas";
+h += '<div class="diag-row"><b>CLIENTES</b><div class="meta">' + metaC + "</div>" + pC + "</div>";
+const stS = state.status.sesiones;
+const pS = stS === "ok" ? pill("p-ok","OK") : stS === "error" ? pill("p-bad","Denegado") : pill("p-wait","Leyendo");
+const metaS = stS === "error" ? "Error: <strong>" + esc(state.err.sesiones||"") + "</strong>"
+: "<strong>" + state.sesiones.length + "</strong> sesión(es)";
+h += '<div class="diag-row"><b>SESIONES</b><div class="meta">' + metaS + "</div>" + pS + "</div>";
+box.innerHTML = h;
 }
 $("#diagRead").addEventListener("click", async () => {
-  const btn = $("#diagRead"); btn.classList.add("loading");
-  try {
-    for (const c of COLS.concat(["sesiones","clientes"])){
-      try { const qs = await getDocs(collection(db,c)); state.status[c] = "ok"; delete state.err[c];
-        const arr = qs.docs.map(d => ({ id:d.id, ...d.data() }));
-        state[c] = c === "sesiones" ? arr.sort((a,b) => (b.inicioMs||0)-(a.inicioMs||0)) : arr.sort(byOrden); }
-      catch(e){ state.status[c] = "error"; state.err[c] = e.code || e.message; }
-    }
-    updateCounts(); refreshConn(); renderDiag();
-    if (COLS.includes(view)) renderList(view);
-    if (view === "historial") renderHist();
-    if (view === "clientes") renderClientes();
-    toast("Lecturas reverificadas.", "gold");
-  } finally { btn.classList.remove("loading"); }
+const btn = $("#diagRead"); btn.classList.add("loading");
+try {
+for (const c of COLS.concat(["sesiones","clientes"])){
+try { const qs = await getDocs(collection(db,c)); state.status[c] = "ok"; delete state.err[c];
+const arr = qs.docs.map(d => ({ id:d.id, ...d.data() }));
+state[c] = c === "sesiones" ? arr.sort((a,b) => (b.inicioMs||0)-(a.inicioMs||0)) : arr.sort(byOrden); }
+catch(e){ state.status[c] = "error"; state.err[c] = e.code || e.message; }
+}
+updateCounts(); refreshConn(); renderDiag();
+if (COLS.includes(view)) renderList(view);
+if (view === "historial") renderHist();
+if (view === "clientes") renderClientes();
+toast("Lecturas reverificadas.", "gold");
+} finally { btn.classList.remove("loading"); }
 });
 $("#diagWrite").addEventListener("click", async () => {
-  const btn = $("#diagWrite"), out = $("#diagWriteMsg");
-  btn.classList.add("loading"); out.innerHTML = "";
-  try {
-    const ref = doc(db,"sitio","_diagnostico");
-    await setDoc(ref, { ts:serverTimestamp(), by:auth.currentUser?.email || "" });
-    await deleteDoc(ref);
-    out.innerHTML = '<div class="warn good"><svg class="ic"><use href="#i-check"/></svg><span><b>Escritura correcta.</b></span></div>';
-  } catch(e){
-    out.innerHTML = '<div class="warn bad"><svg class="ic"><use href="#i-alert"/></svg><span><b>Escritura bloqueada (' + esc(e.code||e.message) + ').</b> Publique las reglas.</span></div>';
-  } finally { btn.classList.remove("loading"); }
+const btn = $("#diagWrite"), out = $("#diagWriteMsg");
+btn.classList.add("loading"); out.innerHTML = "";
+try {
+const ref = doc(db,"sitio","_diagnostico");
+await setDoc(ref, { ts:serverTimestamp(), by:auth.currentUser?.email || "" });
+await deleteDoc(ref);
+out.innerHTML = '<div class="warn good"><svg class="ic"><use href="#i-check"/></svg><span><b>Escritura correcta.</b></span></div>';
+} catch(e){
+out.innerHTML = '<div class="warn bad"><svg class="ic"><use href="#i-alert"/></svg><span><b>Escritura bloqueada (' + esc(e.code||e.message) + ').</b> Publique las reglas.</span></div>';
+} finally { btn.classList.remove("loading"); }
 });
-
 /* ───────── IMPORTADOR ───────── */
 const MESES_FULL = {enero:1,febrero:2,marzo:3,abril:4,mayo:5,junio:6,julio:7,agosto:8,septiembre:9,setiembre:9,octubre:10,noviembre:11,diciembre:12};
 function esDateToISO(s){
-  const m = String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").match(/(\d{1,2})\s+de\s+([a-z]+)\s+de\s+(\d{4})/);
-  if (!m) return "";
-  const mo = MESES_FULL[m[2]];
-  return mo ? m[3] + "-" + String(mo).padStart(2,"0") + "-" + String(m[1]).padStart(2,"0") : "";
+const m = String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").match(/(\d{1,2})\s+de\s+([a-z]+)\s+de\s+(\d{4})/);
+if (!m) return "";
+const mo = MESES_FULL[m[2]];
+return mo ? m[3] + "-" + String(mo).padStart(2,"0") + "-" + String(m[1]).padStart(2,"0") : "";
 }
 const BRAND_PAIRS = [["Rossi & Asociados","Zarza & Asociados"],["Rossi y Asociados","Zarza y Asociados"],["ROSSI & ASOCIADOS","ZARZA & ASOCIADOS"],["rossiyasociados","zarzaasociados"],["Alejandro Rossi","Alejandro Zarza"],["a.rossi@","a.zarza@"],["rossi-asociados","zarza-asociados"],["Rossi","Zarza"]];
 const brandify = s => { let t = String(s ?? ""); for (const [a,b] of BRAND_PAIRS) t = t.split(a).join(b); return t; };
 const brandId = s => String(s||"") === "rossi" ? "zarza" : String(s||"");
 function deepBrand(v, on){
-  if (!on) return v;
-  if (typeof v === "string") return brandify(v);
-  if (Array.isArray(v)) return v.map(x => deepBrand(x, on));
-  if (v && typeof v === "object"){ const o = {}; for (const k in v) o[k] = deepBrand(v[k], on); return o; }
-  return v;
+if (!on) return v;
+if (typeof v === "string") return brandify(v);
+if (Array.isArray(v)) return v.map(x => deepBrand(x, on));
+if (v && typeof v === "object"){ const o = {}; for (const k in v) o[k] = deepBrand(v[k], on); return o; }
+return v;
 }
 const T = el => (el?.textContent || "").replace(/\s+/g," ").trim();
 const colorOf = el => { const t = el?.className?.baseVal ?? el?.className ?? ""; for (const k in TAG2COLOR) if (String(t).includes(k)) return TAG2COLOR[k]; return "gold"; };
 function nodeToLite(node){
-  let s = "";
-  node.childNodes.forEach(n => {
-    if (n.nodeType === 3) s += n.nodeValue;
-    else if (n.nodeType === 1){
-      const t = n.tagName.toLowerCase(), inner = nodeToLite(n);
-      if (t === "b" || t === "strong") s += "**" + inner + "**";
-      else if (t === "em" || t === "i") s += "*" + inner + "*";
-      else if (t === "br") s += "\n";
-      else s += inner;
-    }
-  });
-  return s;
+let s = "";
+node.childNodes.forEach(n => {
+if (n.nodeType === 3) s += n.nodeValue;
+else if (n.nodeType === 1){
+const t = n.tagName.toLowerCase(), inner = nodeToLite(n);
+if (t === "b" || t === "strong") s += "**" + inner + "**";
+else if (t === "em" || t === "i") s += "*" + inner + "*";
+else if (t === "br") s += "\n";
+else s += inner;
+}
+});
+return s;
 }
 const lite = el => el ? nodeToLite(el).replace(/[ \t]+/g," ").trim() : "";
 function extractObject(src, name){
-  const m = new RegExp("const\\s+" + name + "\\s*=\\s*\\{").exec(src);
-  if (!m) return null;
-  const start = m.index + m[0].length - 1;
-  let depth = 0, q = null, escp = false;
-  for (let i = start; i < src.length; i++){
-    const c = src[i];
-    if (q){ if (escp) escp = false; else if (c === "\\") escp = true; else if (c === q) q = null; continue; }
-    if (c === '"' || c === "'" || c === "`"){ q = c; continue; }
-    if (c === "{") depth++;
-    else if (c === "}"){ depth--; if (depth === 0){
-      try { return new Function("return (" + src.slice(start, i+1) + ")")(); } catch(_){ return null; }
-    } }
-  }
-  return null;
+const m = new RegExp("const\\s+" + name + "\\s*=\\s*\\{").exec(src);
+if (!m) return null;
+const start = m.index + m[0].length - 1;
+let depth = 0, q = null, escp = false;
+for (let i = start; i < src.length; i++){
+const c = src[i];
+if (q){ if (escp) escp = false; else if (c === "\\") escp = true; else if (c === q) q = null; continue; }
+if (c === '"' || c === "'" || c === "`"){ q = c; continue; }
+if (c === "{") depth++;
+else if (c === "}"){ depth--; if (depth === 0){
+try { return new Function("return (" + src.slice(start, i+1) + ")")(); } catch(_){ return null; }
+} }
+}
+return null;
 }
 let IMPORT = null;
 function parseIndex(src){
-  const dom = new DOMParser().parseFromString(src, "text/html");
-  const LAW = extractObject(src, "LAWYERS");
-  const ARE = extractObject(src, "AREAS");
-  const ART = extractObject(src, "ARTICLES");
-  const out = { proyecto: (src.match(/projectId:\s*["']([^"']+)["']/) || [])[1] || null, conector: /firebase-firestore\.js/.test(src), equipo:[], areas:[], blog:[], inicio:null, contacto:null };
-  const cards = Array.from(dom.querySelectorAll(".team-card"));
-  const cardEq = cards.map((c,i) => ({
-    id: c.querySelector("[data-open-lawyer]")?.getAttribute("data-open-lawyer") || slugify(T(c.querySelector("h3")) || "abogado-"+(i+1)),
-    nombre: T(c.querySelector("h3")), areaTexto: T(c.querySelector(".team-area")), rol: T(c.querySelector(".portrait-role")),
-    foto: c.querySelector(".portrait img")?.getAttribute("src") || "", iniciales: T(c.querySelector(".portrait-fallback b")),
-    matricula: T(c.querySelector(".matricula")), color: colorOf(c.querySelector(".tag")),
-    telefono: T(c.querySelector(".team-tel")), orden: i+1
-  }));
-  const pickTel = l => String(l.telefono || l.tel || l.phone || "").trim();
-  const pickWa  = l => digits(l.whatsapp || l.wa || l.waNum || "");
-  if (LAW && typeof LAW === "object"){
-    out.equipo = Object.keys(LAW).map((k,i) => {
-      const l = LAW[k] || {}, ci = cardEq.find(x => x.id === k);
-      return { id:k, nombre:l.n || ci?.nombre || k, rol:l.role || ci?.rol || "",
-        matricula:l.mat || (ci?.matricula ? "CPACF · " + ci.matricula : ""),
-        areaTexto: ci?.areaTexto || (l.role||"").split("·").slice(1).join("·").trim(),
-        areaSlug: l.area || "", color: TAG2COLOR[l.tag] || ci?.color || "gold",
-        foto: ci?.foto || l.img || "", iniciales: l.ini || ci?.iniciales || "",
-        email: l.email || "", linkedin: l.linkedin || SEED.contacto.linkedin,
-        telefono: pickTel(l) || ci?.telefono || "", whatsapp: pickWa(l),
-        bio: l.bio || "", formacion: l.form || [], trayectoria: l.tray || [], idiomas: l.langs || [],
-        orden: ci?.orden || i+1, activo: true };
-    });
-  } else {
-    out.equipo = cardEq.map(c => ({ ...c, matricula: c.matricula ? "CPACF · " + c.matricula : "",
-      areaSlug:"", email:"", linkedin:SEED.contacto.linkedin, whatsapp:"", bio:"", formacion:[], trayectoria:[], idiomas:[], activo:true }));
-  }
-  const aCards = Array.from(dom.querySelectorAll(".area-card"));
-  const cardAr = aCards.map((c,i) => ({
-    id: c.getAttribute("data-open-area") || slugify(T(c.querySelector("h3")) || "area-"+(i+1)),
-    nombre: T(c.querySelector("h3")), descripcion: T(c.querySelector("p")),
-    color: (TAG2COLOR[(c.querySelector(".tag")?.className||"").split(" ").find(x=>TAG2COLOR[x])] || "gold"),
-    styleColor: (c.getAttribute("style")||"").match(/--c:\s*var\(--([a-z]+)\)/)?.[1] || "",
-    tags: Array.from(c.querySelectorAll(".tag")).map(t => T(t)), orden: i+1
-  }));
-  if (ARE && typeof ARE === "object"){
-    out.areas = Object.keys(ARE).map((k,i) => {
-      const a = ARE[k] || {}, ci = cardAr.find(x => x.id === k);
-      return { id:k, nombre:a.n || ci?.nombre || k, icono:a.icon || "i-brief",
-        color: TAG2COLOR[a.tag] || ci?.styleColor || ci?.color || "gold",
-        descripcion: ci?.descripcion || "", tags: (a.chips || ci?.tags || []).slice(0,3),
-        p1:a.p1 || "", p2:a.p2 || "", alcance:a.items || [], abogadoId:a.leadId || "",
-        orden: ci?.orden || i+1, activo:true };
-    });
-  } else {
-    out.areas = cardAr.map(c => ({ id:c.id, nombre:c.nombre, icono:"i-brief", color:c.styleColor||c.color,
-      descripcion:c.descripcion, tags:c.tags.slice(0,3), p1:"", p2:"", alcance:[], abogadoId:"", orden:c.orden, activo:true }));
-  }
-  const bCards = Array.from(dom.querySelectorAll("[data-open-article]"));
-  const cardBl = bCards.map((c,i) => ({
-    id: c.getAttribute("data-open-article"), titulo: T(c.querySelector("h3")), extracto: T(c.querySelector(".bf-body p, p")),
-    categoria: T(c.querySelector(".chip-cat")), orden: i+1
-  }));
-  if (ART && typeof ART === "object"){
-    out.blog = Object.keys(ART).map((k,i) => {
-      const a = ART[k] || {}, ci = cardBl.find(x => x.id === k);
-      const cuerpo = (a.body || []).map(b => {
-        if (b.p) return String(b.p).replace(/<\/?(b|strong)>/g,"**").replace(/<[^>]+>/g,"");
-        if (b.h) return "## " + b.h;
-        if (b.ol) return b.ol.map(x => "1. " + String(x).replace(/<\/?(b|strong)>/g,"**").replace(/<[^>]+>/g,"")).join("\n");
-        return "";
-      }).filter(Boolean).join("\n");
-      return { id:k, titulo:a.t || ci?.titulo || k, categoria:a.cat || ci?.categoria || "Laboral",
-        fecha: esDateToISO(a.date) || new Date().toISOString().slice(0,10), lectura:a.read || "5 min",
-        area:a.area || "", extracto: ci?.extracto || "", cuerpo, orden: ci?.orden || i+1, activo:true };
-    });
-  } else {
-    out.blog = cardBl.map(c => ({ ...c, fecha:new Date().toISOString().slice(0,10), lectura:"5 min", area:"", cuerpo:"", activo:true }));
-  }
-  const h1 = dom.querySelector(".hero h1");
-  const cifras = Array.from(dom.querySelectorAll(".trust-cell")).map(c => ({
-    pref: T(c.querySelector(".fix")), valor: parseInt(c.querySelector("[data-count]")?.getAttribute("data-count")||"0",10)||0,
-    suf: T(c.querySelector(".suf")), label: T(c.querySelector(".trust-label")), desc: T(c.querySelector(".trust-desc")), activo:true
-  }));
-  const chipColor = c => {
-    const st = (c.getAttribute("style")||"") + " " + (c.querySelector(".ic")?.getAttribute("style")||"");
-    const m = st.match(/color:\s*var\(--([a-z]+)\)/);
-    if (m) return m[1];
-    if (c.classList.contains("cf1")) return "green";
-    return "gold";
-  };
-  const chips = Array.from(dom.querySelectorAll(".chip-float")).slice(0,MAX_CHIPS).map(c => ({
-    titulo: T(c.querySelector("b")), subtitulo: T(c.querySelector("span span")) || T(Array.from(c.querySelectorAll("span")).pop()),
-    icono: (c.querySelector("use")?.getAttribute("href") || "#i-check").replace("#",""), color: chipColor(c), activo:true
-  }));
-  const cta1 = dom.querySelector(".hero-ctas .btn-primary"), cta2 = dom.querySelector(".hero-ctas .btn-wa");
-  const btnLabel = el => { if (!el) return ""; for (const n of el.childNodes) if (n.nodeType === 3 && n.nodeValue.trim()) return n.nodeValue.trim(); return ""; };
-  out.inicio = {
-    eyebrow: T(dom.querySelector(".hero-eyebrow")) || SEED.inicio.eyebrow,
-    titulo: lite(h1) || SEED.inicio.titulo,
-    subtitulo: T(dom.querySelector(".hero-sub")),
-    cta1: btnLabel(cta1) || SEED.inicio.cta1, cta2: btnLabel(cta2) || SEED.inicio.cta2,
-    imagen: dom.querySelector(".hero-bgimg")?.getAttribute("src") || "",
-    mision: T(dom.querySelector(".foot-mission")),
-    badges: Array.from(dom.querySelectorAll(".hero-trust span")).map(s => T(s)).filter(Boolean),
-    chips: chips.length ? chips : SEED.inicio.chips,
-    cifras: cifras.length ? cifras : SEED.inicio.cifras,
-    marquee: Array.from(dom.querySelectorAll(".mq-set")[0]?.querySelectorAll("span") || []).map(s => T(s)).filter(Boolean),
-    showBadges:true, showCifras:true, showMarquee:true, showChips:true
-  };
-  const rowBy = ic => Array.from(dom.querySelectorAll(".info-row")).find(r => r.querySelector('use[href="#'+ic+'"]'));
-  const pinP = rowBy("i-pin")?.querySelector("div p");
-  const pinParts = pinP ? nodeToLite(pinP).split("\n").map(s=>s.trim()).filter(Boolean) : [];
-  const clk = rowBy("i-clock"), ph = rowBy("i-phone"), ml = rowBy("i-mail");
-  const waHref = dom.querySelector('a[href*="wa.me/"]')?.getAttribute("href") || "";
-  const waNum = (waHref.match(/wa\.me\/(\d+)/)||[])[1] || (src.match(/const\s+WA_NUM\s*=\s*["'](\d+)["']/)||[])[1] || SEED.contacto.waNum;
-  const mapaSrc = dom.querySelector(".map-frame iframe")?.getAttribute("src") || "";
-  let mapa = SEED.contacto.mapa;
-  try { const q = new URL(mapaSrc, "https://x.local").searchParams.get("q"); if (q) mapa = q; } catch(_){}
-  out.contacto = {
-    direccion: pinParts[0] || SEED.contacto.direccion, ciudad: pinParts[1] || SEED.contacto.ciudad,
-    horario: T(clk?.querySelector("div p")) || SEED.contacto.horario,
-    guardiaNota: T(clk?.querySelector(".sub")) || SEED.contacto.guardiaNota,
-    telefono: T(ph?.querySelector("a.val")) || SEED.contacto.telefono,
-    email: T(ml?.querySelector("a.val")) || SEED.contacto.email,
-    waDisplay: T(ph?.querySelector(".sub a.val")) || SEED.contacto.waDisplay,
-    waNum, waMsg: SEED.contacto.waMsg, mapa,
-    linkedin: dom.querySelector('a[aria-label="LinkedIn del estudio"]')?.getAttribute("href") || SEED.contacto.linkedin,
-    instagram: dom.querySelector('a[aria-label="Instagram del estudio"]')?.getAttribute("href") || SEED.contacto.instagram,
-    cuit: (T(dom.querySelector(".foot-legal-note")).match(/CUIT[^:]*:\s*([\d-]+)/i)||[])[1] || SEED.contacto.cuit,
-    notaForm: T(dom.querySelector(".form-note")) || SEED.contacto.notaForm,
-    badge: lite(dom.querySelector(".conf-badge span")) || SEED.contacto.badge,
-    showMapa:true, showBadge:true
-  };
-  return out;
+const dom = new DOMParser().parseFromString(src, "text/html");
+const LAW = extractObject(src, "LAWYERS");
+const ARE = extractObject(src, "AREAS");
+const ART = extractObject(src, "ARTICLES");
+const out = { proyecto: (src.match(/projectId:\s*["']([^"']+)["']/) || [])[1] || null, conector: /firebase-firestore\.js/.test(src), equipo:[], areas:[], blog:[], inicio:null, contacto:null };
+const cards = Array.from(dom.querySelectorAll(".team-card"));
+const cardEq = cards.map((c,i) => ({
+id: c.querySelector("[data-open-lawyer]")?.getAttribute("data-open-lawyer") || slugify(T(c.querySelector("h3")) || "abogado-"+(i+1)),
+nombre: T(c.querySelector("h3")), areaTexto: T(c.querySelector(".team-area")), rol: T(c.querySelector(".portrait-role")),
+foto: c.querySelector(".portrait img")?.getAttribute("src") || "", iniciales: T(c.querySelector(".portrait-fallback b")),
+matricula: T(c.querySelector(".matricula")), color: colorOf(c.querySelector(".tag")),
+telefono: T(c.querySelector(".team-tel")), orden: i+1
+}));
+const pickTel = l => String(l.telefono || l.tel || l.phone || "").trim();
+const pickWa  = l => digits(l.whatsapp || l.wa || l.waNum || "");
+if (LAW && typeof LAW === "object"){
+out.equipo = Object.keys(LAW).map((k,i) => {
+const l = LAW[k] || {}, ci = cardEq.find(x => x.id === k);
+return { id:k, nombre:l.n || ci?.nombre || k, rol:l.role || ci?.rol || "",
+matricula:l.mat || (ci?.matricula ? "CPACF · " + ci.matricula : ""),
+areaTexto: ci?.areaTexto || (l.role||"").split("·").slice(1).join("·").trim(),
+areaSlug: l.area || "", color: TAG2COLOR[l.tag] || ci?.color || "gold",
+foto: ci?.foto || l.img || "", iniciales: l.ini || ci?.iniciales || "",
+email: l.email || "", linkedin: l.linkedin || SEED.contacto.linkedin,
+telefono: pickTel(l) || ci?.telefono || "", whatsapp: pickWa(l),
+bio: l.bio || "", formacion: l.form || [], trayectoria: l.tray || [], idiomas: l.langs || [],
+orden: ci?.orden || i+1, activo: true };
+});
+} else {
+out.equipo = cardEq.map(c => ({ ...c, matricula: c.matricula ? "CPACF · " + c.matricula : "",
+areaSlug:"", email:"", linkedin:SEED.contacto.linkedin, whatsapp:"", bio:"", formacion:[], trayectoria:[], idiomas:[], activo:true }));
+}
+const aCards = Array.from(dom.querySelectorAll(".area-card"));
+const cardAr = aCards.map((c,i) => ({
+id: c.getAttribute("data-open-area") || slugify(T(c.querySelector("h3")) || "area-"+(i+1)),
+nombre: T(c.querySelector("h3")), descripcion: T(c.querySelector("p")),
+color: (TAG2COLOR[(c.querySelector(".tag")?.className||"").split(" ").find(x=>TAG2COLOR[x])] || "gold"),
+styleColor: (c.getAttribute("style")||"").match(/--c:\s*var\(--([a-z]+)\)/)?.[1] || "",
+tags: Array.from(c.querySelectorAll(".tag")).map(t => T(t)), orden: i+1
+}));
+if (ARE && typeof ARE === "object"){
+out.areas = Object.keys(ARE).map((k,i) => {
+const a = ARE[k] || {}, ci = cardAr.find(x => x.id === k);
+return { id:k, nombre:a.n || ci?.nombre || k, icono:a.icon || "i-brief",
+color: TAG2COLOR[a.tag] || ci?.styleColor || ci?.color || "gold",
+descripcion: ci?.descripcion || "", tags: (a.chips || ci?.tags || []).slice(0,3),
+p1:a.p1 || "", p2:a.p2 || "", alcance:a.items || [], abogadoId:a.leadId || "",
+orden: ci?.orden || i+1, activo:true };
+});
+} else {
+out.areas = cardAr.map(c => ({ id:c.id, nombre:c.nombre, icono:"i-brief", color:c.styleColor||c.color,
+descripcion:c.descripcion, tags:c.tags.slice(0,3), p1:"", p2:"", alcance:[], abogadoId:"", orden:c.orden, activo:true }));
+}
+const bCards = Array.from(dom.querySelectorAll("[data-open-article]"));
+const cardBl = bCards.map((c,i) => ({
+id: c.getAttribute("data-open-article"), titulo: T(c.querySelector("h3")), extracto: T(c.querySelector(".bf-body p, p")),
+categoria: T(c.querySelector(".chip-cat")), orden: i+1
+}));
+if (ART && typeof ART === "object"){
+out.blog = Object.keys(ART).map((k,i) => {
+const a = ART[k] || {}, ci = cardBl.find(x => x.id === k);
+const cuerpo = (a.body || []).map(b => {
+if (b.p) return String(b.p).replace(/<\/?(b|strong)>/g,"**").replace(/<[^>]+>/g,"");
+if (b.h) return "## " + b.h;
+if (b.ol) return b.ol.map(x => "1. " + String(x).replace(/<\/?(b|strong)>/g,"**").replace(/<[^>]+>/g,"")).join("\n");
+return "";
+}).filter(Boolean).join("\n");
+return { id:k, titulo:a.t || ci?.titulo || k, categoria:a.cat || ci?.categoria || "Laboral",
+fecha: esDateToISO(a.date) || new Date().toISOString().slice(0,10), lectura:a.read || "5 min",
+area:a.area || "", extracto: ci?.extracto || "", cuerpo, orden: ci?.orden || i+1, activo:true };
+});
+} else {
+out.blog = cardBl.map(c => ({ ...c, fecha:new Date().toISOString().slice(0,10), lectura:"5 min", area:"", cuerpo:"", activo:true }));
+}
+const h1 = dom.querySelector(".hero h1");
+const cifras = Array.from(dom.querySelectorAll(".trust-cell")).map(c => ({
+pref: T(c.querySelector(".fix")), valor: parseInt(c.querySelector("[data-count]")?.getAttribute("data-count")||"0",10)||0,
+suf: T(c.querySelector(".suf")), label: T(c.querySelector(".trust-label")), desc: T(c.querySelector(".trust-desc")), activo:true
+}));
+const chipColor = c => {
+const st = (c.getAttribute("style")||"") + " " + (c.querySelector(".ic")?.getAttribute("style")||"");
+const m = st.match(/color:\s*var\(--([a-z]+)\)/);
+if (m) return m[1];
+if (c.classList.contains("cf1")) return "green";
+return "gold";
+};
+const chips = Array.from(dom.querySelectorAll(".chip-float")).slice(0,MAX_CHIPS).map(c => ({
+titulo: T(c.querySelector("b")), subtitulo: T(c.querySelector("span span")) || T(Array.from(c.querySelectorAll("span")).pop()),
+icono: (c.querySelector("use")?.getAttribute("href") || "#i-check").replace("#",""), color: chipColor(c), activo:true
+}));
+const cta1 = dom.querySelector(".hero-ctas .btn-primary"), cta2 = dom.querySelector(".hero-ctas .btn-wa");
+const btnLabel = el => { if (!el) return ""; for (const n of el.childNodes) if (n.nodeType === 3 && n.nodeValue.trim()) return n.nodeValue.trim(); return ""; };
+out.inicio = {
+eyebrow: T(dom.querySelector(".hero-eyebrow")) || SEED.inicio.eyebrow,
+titulo: lite(h1) || SEED.inicio.titulo,
+subtitulo: T(dom.querySelector(".hero-sub")),
+cta1: btnLabel(cta1) || SEED.inicio.cta1, cta2: btnLabel(cta2) || SEED.inicio.cta2,
+imagen: dom.querySelector(".hero-bgimg")?.getAttribute("src") || "",
+mision: T(dom.querySelector(".foot-mission")),
+badges: Array.from(dom.querySelectorAll(".hero-trust span")).map(s => T(s)).filter(Boolean),
+chips: chips.length ? chips : SEED.inicio.chips,
+cifras: cifras.length ? cifras : SEED.inicio.cifras,
+marquee: Array.from(dom.querySelectorAll(".mq-set")[0]?.querySelectorAll("span") || []).map(s => T(s)).filter(Boolean),
+showBadges:true, showCifras:true, showMarquee:true, showChips:true
+};
+const rowBy = ic => Array.from(dom.querySelectorAll(".info-row")).find(r => r.querySelector('use[href="#'+ic+'"]'));
+const pinP = rowBy("i-pin")?.querySelector("div p");
+const pinParts = pinP ? nodeToLite(pinP).split("\n").map(s=>s.trim()).filter(Boolean) : [];
+const clk = rowBy("i-clock"), ph = rowBy("i-phone"), ml = rowBy("i-mail");
+const waHref = dom.querySelector('a[href*="wa.me/"]')?.getAttribute("href") || "";
+const waNum = (waHref.match(/wa\.me\/(\d+)/)||[])[1] || (src.match(/const\s+WA_NUM\s*=\s*["'](\d+)["']/)||[])[1] || SEED.contacto.waNum;
+const mapaSrc = dom.querySelector(".map-frame iframe")?.getAttribute("src") || "";
+let mapa = SEED.contacto.mapa;
+try { const q = new URL(mapaSrc, "https://x.local").searchParams.get("q"); if (q) mapa = q; } catch(_){}
+out.contacto = {
+direccion: pinParts[0] || SEED.contacto.direccion, ciudad: pinParts[1] || SEED.contacto.ciudad,
+horario: T(clk?.querySelector("div p")) || SEED.contacto.horario,
+guardiaNota: T(clk?.querySelector(".sub")) || SEED.contacto.guardiaNota,
+telefono: T(ph?.querySelector("a.val")) || SEED.contacto.telefono,
+email: T(ml?.querySelector("a.val")) || SEED.contacto.email,
+waDisplay: T(ph?.querySelector(".sub a.val")) || SEED.contacto.waDisplay,
+waNum, waMsg: SEED.contacto.waMsg, mapa,
+linkedin: dom.querySelector('a[aria-label="LinkedIn del estudio"]')?.getAttribute("href") || SEED.contacto.linkedin,
+instagram: dom.querySelector('a[aria-label="Instagram del estudio"]')?.getAttribute("href") || SEED.contacto.instagram,
+cuit: (T(dom.querySelector(".foot-legal-note")).match(/CUIT[^:]*:\s*([\d-]+)/i)||[])[1] || SEED.contacto.cuit,
+notaForm: T(dom.querySelector(".form-note")) || SEED.contacto.notaForm,
+badge: lite(dom.querySelector(".conf-badge span")) || SEED.contacto.badge,
+showMapa:true, showBadge:true
+};
+return out;
 }
 function renderImport(){
-  const box = $("#impResult");
-  if (!IMPORT){ box.innerHTML = ""; return; }
-  const d = IMPORT.data;
-  const secs = [["equipo","Equipo",d.equipo.length],["areas","Áreas",d.areas.length],["blog","Blog",d.blog.length],["inicio","Inicio",1],["contacto","Contacto",1]];
-  let h = "";
-  if (d.proyecto && d.proyecto !== firebaseConfig.projectId)
-    h += '<div class="warn bad"><svg class="ic"><use href="#i-alert"/></svg><span><b>Proyecto distinto.</b></span></div>';
-  else h += '<div class="warn good"><svg class="ic"><use href="#i-check"/></svg><span>Sitio leído correctamente.</span></div>';
-  h += '<div class="imp-secs">';
-  secs.forEach(([k,label,n]) => {
-    const off = n === 0;
-    h += '<div class="imp-sec' + (off?" off":"") + '"><label class="switch"><input type="checkbox" class="imp-chk" data-sec="' + k + '"' + (off?" disabled":" checked") + '><span></span></label>' +
-      '<span><b>' + esc(label) + "</b></span>" +
-      '<span class="imp-count">' + n + "</span></div>";
-  });
-  h += "</div>";
-  h += '<div class="row-actions"><button type="button" class="btn btn-ghost" id="impCancel">Descartar</button><button type="button" class="btn btn-primary" id="impWrite"><svg class="ic"><use href="#i-db"/></svg>Escribir en Firestore</button></div>';
-  box.innerHTML = h;
-  $("#impCancel").addEventListener("click", () => { IMPORT = null; renderImport(); $("#impPaste").hidden = true; $("#imp-src").value = ""; });
-  $("#impWrite").addEventListener("click", doImport);
+const box = $("#impResult");
+if (!IMPORT){ box.innerHTML = ""; return; }
+const d = IMPORT.data;
+const secs = [["equipo","Equipo",d.equipo.length],["areas","Áreas",d.areas.length],["blog","Blog",d.blog.length],["inicio","Inicio",1],["contacto","Contacto",1]];
+let h = "";
+if (d.proyecto && d.proyecto !== firebaseConfig.projectId)
+h += '<div class="warn bad"><svg class="ic"><use href="#i-alert"/></svg><span><b>Proyecto distinto.</b></span></div>';
+else h += '<div class="warn good"><svg class="ic"><use href="#i-check"/></svg><span>Sitio leído correctamente.</span></div>';
+h += '<div class="imp-secs">';
+secs.forEach(([k,label,n]) => {
+const off = n === 0;
+h += '<div class="imp-sec' + (off?" off":"") + '"><label class="switch"><input type="checkbox" class="imp-chk" data-sec="' + k + '"' + (off?" disabled":" checked") + '><span></span></label>' +
+'<span><b>' + esc(label) + "</b></span>" +
+'<span class="imp-count">' + n + "</span></div>";
+});
+h += "</div>";
+h += '<div class="row-actions"><button type="button" class="btn btn-ghost" id="impCancel">Descartar</button><button type="button" class="btn btn-primary" id="impWrite"><svg class="ic"><use href="#i-db"/></svg>Escribir en Firestore</button></div>';
+box.innerHTML = h;
+$("#impCancel").addEventListener("click", () => { IMPORT = null; renderImport(); $("#impPaste").hidden = true; $("#imp-src").value = ""; });
+$("#impWrite").addEventListener("click", doImport);
 }
 function analyze(src){
-  try {
-    const data = parseIndex(src);
-    if (!data.equipo.length && !data.areas.length && !data.blog.length){
-      IMPORT = null; renderImport();
-      $("#impPaste").hidden = false;
-      toast("No se detectó contenido.", "err");
-      return;
-    }
-    IMPORT = { data };
-    $("#impPaste").hidden = true;
-    renderImport();
-    toast("Sitio analizado.", "gold");
-  } catch(e){
-    IMPORT = null; renderImport();
-    $("#impPaste").hidden = false;
-    toast("No se pudo analizar.", "err");
-  }
+try {
+const data = parseIndex(src);
+if (!data.equipo.length && !data.areas.length && !data.blog.length){
+IMPORT = null; renderImport();
+$("#impPaste").hidden = false;
+toast("No se detectó contenido.", "err");
+return;
+}
+IMPORT = { data };
+$("#impPaste").hidden = true;
+renderImport();
+toast("Sitio analizado.", "gold");
+} catch(e){
+IMPORT = null; renderImport();
+$("#impPaste").hidden = false;
+toast("No se pudo analizar.", "err");
+}
 }
 $("#impFetch").addEventListener("click", async () => {
-  const btn = $("#impFetch"), url = $("#imp-url").value.trim() || "index.html";
-  btn.classList.add("loading");
-  try {
-    const res = await fetch(url, { cache:"no-store" });
-    if (!res.ok) throw new Error("HTTP " + res.status);
-    analyze(await res.text());
-  } catch(e){
-    IMPORT = null; renderImport();
-    $("#impPaste").hidden = false;
-    toast("Lectura bloqueada. Use el pegado manual.", "err");
-  } finally { btn.classList.remove("loading"); }
+const btn = $("#impFetch"), url = $("#imp-url").value.trim() || "index.html";
+btn.classList.add("loading");
+try {
+const res = await fetch(url, { cache:"no-store" });
+if (!res.ok) throw new Error("HTTP " + res.status);
+analyze(await res.text());
+} catch(e){
+IMPORT = null; renderImport();
+$("#impPaste").hidden = false;
+toast("Lectura bloqueada. Use el pegado manual.", "err");
+} finally { btn.classList.remove("loading"); }
 });
 $("#impParse").addEventListener("click", () => {
-  const src = $("#imp-src").value;
-  if (src.trim().length < 200) return toast("Pegue el código completo.", "err");
-  analyze(src);
+const src = $("#imp-src").value;
+if (src.trim().length < 200) return toast("Pegue el código completo.", "err");
+analyze(src);
 });
 async function doImport(){
-  if (!IMPORT) return;
-  const chosen = $$(".imp-chk:checked").map(c => c.dataset.sec);
-  if (!chosen.length) return toast("Seleccione al menos una sección.", "err");
-  const on = $("#imp-brand").checked;
-  const d = IMPORT.data;
-  const resumen = chosen.map(c => ({equipo:"Equipo",areas:"Áreas",blog:"Blog",inicio:"Inicio",contacto:"Contacto"}[c])).join(", ");
-  openConfirm("Escribir en Firestore",
-    "Se escribirán las secciones <b>" + esc(resumen) + "</b>.",
-    async () => {
-      try {
-        const b = writeBatch(db), ts = serverTimestamp();
-        if (chosen.includes("equipo")) d.equipo.forEach(l => {
-          const { id, ...rest } = deepBrand(l, on);
-          b.set(doc(db,"equipo", brandId(id)), { ...rest, areaSlug: brandId(rest.areaSlug||""), telefono: String(rest.telefono||"").trim(), whatsapp: digits(rest.whatsapp), updatedAt:ts });
-        });
-        if (chosen.includes("areas")) d.areas.forEach(a => {
-          const { id, ...rest } = deepBrand(a, on);
-          b.set(doc(db,"areas", brandId(id)), { ...rest, abogadoId: brandId(rest.abogadoId||""), updatedAt:ts });
-        });
-        if (chosen.includes("blog")) d.blog.forEach(p => {
-          const { id, ...rest } = deepBrand(p, on);
-          b.set(doc(db,"blog", brandId(id)), { ...rest, area: brandId(rest.area||""), updatedAt:ts });
-        });
-        if (chosen.includes("inicio")) b.set(doc(db,"sitio","inicio"), { ...deepBrand(d.inicio, on), updatedAt:ts });
-        if (chosen.includes("contacto")) b.set(doc(db,"sitio","contacto"), { ...deepBrand(d.contacto, on), updatedAt:ts });
-        await b.commit();
-        await logAction("Importó desde el sitio", resumen);
-        IMPORT = null; renderImport();
-        toast("Contenido importado.");
-      } catch(e){ fsErr(e); }
-    }, "Escribir");
+if (!IMPORT) return;
+const chosen = $$(".imp-chk:checked").map(c => c.dataset.sec);
+if (!chosen.length) return toast("Seleccione al menos una sección.", "err");
+const on = $("#imp-brand").checked;
+const d = IMPORT.data;
+const resumen = chosen.map(c => ({equipo:"Equipo",areas:"Áreas",blog:"Blog",inicio:"Inicio",contacto:"Contacto"}[c])).join(", ");
+openConfirm("Escribir en Firestore",
+"Se escribirán las secciones <b>" + esc(resumen) + "</b>.",
+async () => {
+try {
+const b = writeBatch(db), ts = serverTimestamp();
+if (chosen.includes("equipo")) d.equipo.forEach(l => {
+const { id, ...rest } = deepBrand(l, on);
+b.set(doc(db,"equipo", brandId(id)), { ...rest, areaSlug: brandId(rest.areaSlug||""), telefono: String(rest.telefono||"").trim(), whatsapp: digits(rest.whatsapp), updatedAt:ts });
+});
+if (chosen.includes("areas")) d.areas.forEach(a => {
+const { id, ...rest } = deepBrand(a, on);
+b.set(doc(db,"areas", brandId(id)), { ...rest, abogadoId: brandId(rest.abogadoId||""), updatedAt:ts });
+});
+if (chosen.includes("blog")) d.blog.forEach(p => {
+const { id, ...rest } = deepBrand(p, on);
+b.set(doc(db,"blog", brandId(id)), { ...rest, area: brandId(rest.area||""), updatedAt:ts });
+});
+if (chosen.includes("inicio")) b.set(doc(db,"sitio","inicio"), { ...deepBrand(d.inicio, on), updatedAt:ts });
+if (chosen.includes("contacto")) b.set(doc(db,"sitio","contacto"), { ...deepBrand(d.contacto, on), updatedAt:ts });
+await b.commit();
+await logAction("Importó desde el sitio", resumen);
+IMPORT = null; renderImport();
+toast("Contenido importado.");
+} catch(e){ fsErr(e); }
+}, "Escribir");
 }
 $("#copyRules").addEventListener("click", async () => {
-  const txt = $("#rulesPre").textContent;
-  try { await navigator.clipboard.writeText(txt); toast("Reglas copiadas."); }
-  catch(_){ const ta = document.createElement("textarea"); ta.value = txt; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); toast("Reglas copiadas."); }
+const txt = $("#rulesPre").textContent;
+try { await navigator.clipboard.writeText(txt); toast("Reglas copiadas."); }
+catch(_){ const ta = document.createElement("textarea"); ta.value = txt; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); toast("Reglas copiadas."); }
 });
 $("#seedBtn").addEventListener("click", () => {
-  openConfirm("Cargar contenido inicial",
-    "Se escribirán áreas, abogados, publicaciones e inicio/contacto de Zarza & Asociados.",
-    async () => {
-      try {
-        const b = writeBatch(db), ts = serverTimestamp();
-        b.set(doc(db,"sitio","inicio"), { ...SEED.inicio, updatedAt:ts });
-        b.set(doc(db,"sitio","contacto"), { ...SEED.contacto, updatedAt:ts });
-        SEED.areas.forEach(a => b.set(doc(db,"areas",a.slug), { ...a, updatedAt:ts }));
-        SEED.equipo.forEach(l => { const { id, ...rest } = l; b.set(doc(db,"equipo",id), { ...rest, updatedAt:ts }); });
-        SEED.blog.forEach(p => { const { id, ...rest } = p; b.set(doc(db,"blog",id), { ...rest, updatedAt:ts }); });
-        await b.commit();
-        await logAction("Cargó contenido inicial", "seed");
-        toast("Contenido inicial cargado.");
-      } catch(ex){ fsErr(ex); }
-    });
+openConfirm("Cargar contenido inicial",
+"Se escribirán áreas, abogados, publicaciones e inicio/contacto de Zarza & Asociados.",
+async () => {
+try {
+const b = writeBatch(db), ts = serverTimestamp();
+b.set(doc(db,"sitio","inicio"), { ...SEED.inicio, updatedAt:ts });
+b.set(doc(db,"sitio","contacto"), { ...SEED.contacto, updatedAt:ts });
+SEED.areas.forEach(a => b.set(doc(db,"areas",a.slug), { ...a, updatedAt:ts }));
+SEED.equipo.forEach(l => { const { id, ...rest } = l; b.set(doc(db,"equipo",id), { ...rest, updatedAt:ts }); });
+SEED.blog.forEach(p => { const { id, ...rest } = p; b.set(doc(db,"blog",id), { ...rest, updatedAt:ts }); });
+await b.commit();
+await logAction("Cargó contenido inicial", "seed");
+toast("Contenido inicial cargado.");
+} catch(ex){ fsErr(ex); }
 });
-
+});
 /* ═════════════════════════════════════════════════════════════════
 ALARMA DE NUEVA CONSULTA
 ═════════════════════════════════════════════════════════════════ */
 function playAlarmSound() {
-  try {
-    // Usa la API de Audio del navegador para generar un sonido sin depender de archivos externos
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    
-    // Primer beep
-    const osc1 = audioCtx.createOscillator();
-    const gain1 = audioCtx.createGain();
-    osc1.connect(gain1);
-    gain1.connect(audioCtx.destination);
-    osc1.type = 'sine';
-    osc1.frequency.setValueAtTime(880, audioCtx.currentTime);
-    gain1.gain.setValueAtTime(0.3, audioCtx.currentTime);
-    gain1.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
-    osc1.start();
-    osc1.stop(audioCtx.currentTime + 0.4);
-
-    // Segundo beep
-    setTimeout(() => {
-      const osc2 = audioCtx.createOscillator();
-      const gain2 = audioCtx.createGain();
-      osc2.connect(gain2);
-      gain2.connect(audioCtx.destination);
-      osc2.type = 'sine';
-      osc2.frequency.setValueAtTime(880, audioCtx.currentTime);
-      gain2.gain.setValueAtTime(0.3, audioCtx.currentTime);
-      gain2.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
-      osc2.start();
-      osc2.stop(audioCtx.currentTime + 0.4);
-    }, 500);
-  } catch(e) { 
-    console.warn("No se pudo reproducir el sonido de alarma:", e); 
-  }
+try {
+// Usa la API de Audio del navegador para generar un sonido sin depender de archivos externos
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+// Primer beep
+const osc1 = audioCtx.createOscillator();
+const gain1 = audioCtx.createGain();
+osc1.connect(gain1);
+gain1.connect(audioCtx.destination);
+osc1.type = 'sine';
+osc1.frequency.setValueAtTime(880, audioCtx.currentTime);
+gain1.gain.setValueAtTime(0.3, audioCtx.currentTime);
+gain1.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+osc1.start();
+osc1.stop(audioCtx.currentTime + 0.4);
+// Segundo beep
+setTimeout(() => {
+const osc2 = audioCtx.createOscillator();
+const gain2 = audioCtx.createGain();
+osc2.connect(gain2);
+gain2.connect(audioCtx.destination);
+osc2.type = 'sine';
+osc2.frequency.setValueAtTime(880, audioCtx.currentTime);
+gain2.gain.setValueAtTime(0.3, audioCtx.currentTime);
+gain2.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+osc2.start();
+osc2.stop(audioCtx.currentTime + 0.4);
+}, 500);
+} catch(e) {
+console.warn("No se pudo reproducir el sonido de alarma:", e);
 }
-
+}
 function showNewClientAlarm(nombre, expediente) {
-  $("#alarmMsg").innerHTML = `Ha ingresado una nueva consulta de:<br><b style="font-size:1.2em;color:var(--tx)">${esc(nombre)}</b><br><span style="color:var(--tx-mute)">Expediente: ${esc(expediente)}</span>`;
-  $("#alarmRoot").classList.add("open");
-  playAlarmSound();
+$("#alarmMsg").innerHTML = `Ha ingresado una nueva consulta de:<br><b style="font-size:1.2em;color:var(--tx)">${esc(nombre)}</b><br><span style="color:var(--tx-mute)">Expediente: ${esc(expediente)}</span>`;
+$("#alarmRoot").classList.add("open");
+playAlarmSound();
 }
-
 $("#alarmAckBtn").addEventListener("click", () => {
-  $("#alarmRoot").classList.remove("open");
+$("#alarmRoot").classList.remove("open");
 });
-
 // Inicialización
 renderInicio(); renderContacto(); renderDiag(); renderHistGuard(); renderHist(); renderClientes();
 COLS.forEach(renderList);
