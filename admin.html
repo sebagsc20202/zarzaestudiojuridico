@@ -79,6 +79,7 @@ img{display:block;max-width:100%}
 .icon-btn:hover{color:var(--gold-2);border-color:var(--gold)}
 .icon-btn.danger:hover{color:#F49B93;border-color:var(--red)}
 .icon-btn .ic{width:16px;height:16px}
+.icon-btn.agendado{color:#8FE0B4;border-color:rgba(47,191,113,.5);background:rgba(47,191,113,.08);cursor:help}
 .field{display:flex;flex-direction:column;gap:7px}
 .field label,.flabel{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--tx-dim)}
 .field label b{color:var(--gold)}
@@ -371,6 +372,7 @@ img{display:block;max-width:100%}
 .ag-main{min-width:0}
 .ag-main b{display:block;font-size:14.5px;font-weight:600;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ag-main span{display:block;font-size:12px;color:var(--tx-mute);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ag-main .ag-exp{display:inline-block;font-family:var(--mono);font-size:9.5px;color:var(--gold-2);background:rgba(201,162,92,.08);border:1px solid rgba(201,162,92,.3);padding:1px 7px;border-radius:4px;margin-top:3px;letter-spacing:.06em}
 .ag-meta{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
 .ag-acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
 @media (max-width:960px){
@@ -442,12 +444,14 @@ img{display:block;max-width:100%}
 <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></symbol>
 <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
 <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/></symbol>
+<symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v15.5h-4V8zm7.5 0h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1v9.4h-4v-8.5c0-2.03-.04-4.64-2.83-4.64-2.83 0-3.26 2.2-3.26 4.48v8.66H8V8z"/></symbol>
 <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></symbol>
 <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></symbol>
 <symbol id="i-export" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></symbol>
 <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></symbol>
 <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
 </defs></svg>
+
 <section class="auth" id="authView">
 <div class="glow g1"></div><div class="glow g2"></div>
 <div class="auth-card">
@@ -464,6 +468,7 @@ img{display:block;max-width:100%}
 </form>
 </div>
 </section>
+
 <div class="shell" id="appView">
 <aside class="side">
 <div class="side-brand">
@@ -488,6 +493,7 @@ img{display:block;max-width:100%}
 <button type="button" class="btn btn-danger btn-sm" id="logoutBtn"><svg class="ic"><use href="#i-out"/></svg>Cerrar sesión</button>
 </div>
 </aside>
+
 <main class="main" id="mainArea">
 <div class="topbar">
 <h2 id="viewTitle">Inicio</h2>
@@ -496,7 +502,9 @@ img{display:block;max-width:100%}
 <svg class="ic"><use href="#i-moon"/></svg>
 </button>
 </div>
+
 <div class="views">
+
 <section class="view on" id="view-inicio">
 <div class="card">
 <h3><svg class="ic"><use href="#i-home"/></svg>Portada (Hero)</h3>
@@ -540,6 +548,7 @@ img{display:block;max-width:100%}
 </div>
 <div class="row-actions"><button type="button" class="btn btn-primary" id="saveInicio"><svg class="ic"><use href="#i-save"/></svg>Guardar sección Inicio</button></div>
 </section>
+
 <section class="view" id="view-clientes">
 <div class="card">
 <h3><svg class="ic"><use href="#i-inbox"/></svg>Bandeja de consultas</h3>
@@ -558,6 +567,7 @@ img{display:block;max-width:100%}
 <div class="cli-list" id="cliList"></div>
 </div>
 </section>
+
 <section class="view" id="view-agenda">
 <div class="card">
 <h3><svg class="ic"><use href="#i-cal"/></svg>Agenda de visitas / eventos</h3>
@@ -575,7 +585,6 @@ img{display:block;max-width:100%}
 <div class="field"><label for="ag-hora">Hora <b>*</b></label><input class="inp" id="ag-hora" type="time"></div>
 <div class="field"><label for="ag-tipo">Tipo</label>
 <select class="sel" id="ag-tipo">
-<option value="reunion">Llamada Tel/WhatsApp</option>
 <option value="reunion">Reunión</option>
 <option value="visita">Visita</option>
 <option value="audiencia">Audiencia</option>
@@ -601,6 +610,7 @@ img{display:block;max-width:100%}
 <div class="ag-list" id="agList"></div>
 </div>
 </section>
+
 <section class="view" id="view-areas">
 <div class="sec-head">
 <p>Departamentos jurídicos. El interruptor incluye o excluye el área del sitio público.</p>
@@ -608,6 +618,7 @@ img{display:block;max-width:100%}
 </div>
 <div class="rows" id="list-areas"></div>
 </section>
+
 <section class="view" id="view-equipo">
 <div class="sec-head">
 <p>Abogados del estudio. Cada ficha admite teléfono directo y WhatsApp propios.</p>
@@ -615,6 +626,7 @@ img{display:block;max-width:100%}
 </div>
 <div class="rows" id="list-equipo"></div>
 </section>
+
 <section class="view" id="view-blog">
 <div class="sec-head">
 <p>Publicaciones. El interruptor equivale a Publicado / Borrador.</p>
@@ -622,6 +634,7 @@ img{display:block;max-width:100%}
 </div>
 <div class="rows" id="list-blog"></div>
 </section>
+
 <section class="view" id="view-contacto">
 <div class="card">
 <h3><svg class="ic"><use href="#i-phone"/></svg>Datos de contacto</h3>
@@ -648,6 +661,7 @@ img{display:block;max-width:100%}
 <div class="row-actions"><button type="button" class="btn btn-primary" id="saveContacto"><svg class="ic"><use href="#i-save"/></svg>Guardar datos de contacto</button></div>
 </div>
 </section>
+
 <section class="view" id="view-historial">
 <div class="card">
 <h3><svg class="ic"><use href="#i-history"/></svg>Historial de sesiones</h3>
@@ -669,6 +683,7 @@ img{display:block;max-width:100%}
 <div class="hist-scroll" id="histList" tabindex="0" aria-label="Listado de sesiones"></div>
 </div>
 </section>
+
 <section class="view" id="view-diagnostico">
 <div class="card">
 <h3><svg class="ic"><use href="#i-pulse"/></svg>Estado de la conexión</h3>
@@ -700,6 +715,7 @@ img{display:block;max-width:100%}
 <div id="impResult"></div>
 </div>
 </section>
+
 <section class="view" id="view-ayuda">
 <div class="card">
 <h3><svg class="ic"><use href="#i-history"/></svg>Historial de sesiones y super administrador</h3>
@@ -727,7 +743,7 @@ img{display:block;max-width:100%}
 <li>La agenda guarda eventos en la colección <code class="mono">agenda</code>.</li>
 <li>Cuando falten menos de 24 horas, el panel mostrará una alarma visual.</li>
 <li>El botón WhatsApp abre el chat del cliente con el mensaje listo para enviar.</li>
-<li>El envío automático real requiere WhatsApp Business API + backend.</li>
+<li>Al crear un evento vinculado a una consulta, aparece un ícono verde de calendario en la bandeja.</li>
 </ol>
 <div class="warn info"><svg class="ic"><use href="#i-shield"/></svg><span>El modo incluido es manual asistido: genera el mensaje y abre WhatsApp.</span></div>
 </div>
@@ -738,9 +754,11 @@ img{display:block;max-width:100%}
 <button type="button" class="btn btn-primary" id="seedBtn"><svg class="ic"><use href="#i-db"/></svg>Cargar contenido inicial de Zarza &amp; Asociados</button>
 </div>
 </section>
+
 </div>
 </main>
 </div>
+
 <div class="mroot" id="editorRoot" role="dialog" aria-modal="true">
 <div class="mback" data-close-editor></div>
 <div class="mcard">
@@ -752,6 +770,7 @@ img{display:block;max-width:100%}
 </div>
 </div>
 </div>
+
 <div class="mroot" id="histRoot" role="dialog" aria-modal="true">
 <div class="mback" data-close-hist></div>
 <div class="mcard">
@@ -760,6 +779,7 @@ img{display:block;max-width:100%}
 <div class="mfoot"><button type="button" class="btn btn-ghost" data-close-hist>Cerrar</button></div>
 </div>
 </div>
+
 <div class="mroot" id="confirmRoot" role="dialog" aria-modal="true">
 <div class="mback" data-close-confirm></div>
 <div class="mcard small">
@@ -771,6 +791,7 @@ img{display:block;max-width:100%}
 </div>
 </div>
 </div>
+
 <div class="mroot" id="cliRoot" role="dialog" aria-modal="true">
 <div class="mback" data-close-cli></div>
 <div class="mcard wide">
@@ -782,6 +803,7 @@ img{display:block;max-width:100%}
 </div>
 </div>
 </div>
+
 <div class="mroot" id="alarmRoot" role="dialog" aria-modal="true">
 <div class="mback"></div>
 <div class="mcard small">
@@ -795,6 +817,7 @@ img{display:block;max-width:100%}
 </div>
 </div>
 </div>
+
 <div class="mroot" id="agAlarmRoot" role="dialog" aria-modal="true">
 <div class="mback"></div>
 <div class="mcard small">
@@ -809,7 +832,9 @@ img{display:block;max-width:100%}
 </div>
 </div>
 </div>
+
 <div class="toasts" id="toasts" aria-live="polite"></div>
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
@@ -872,6 +897,7 @@ box.appendChild(t);
 setTimeout(() => { t.classList.add("out"); setTimeout(() => t.remove(), 320); }, 3800);
 }
 const fsErr = e => { console.warn(e); toast("Error de Firestore: " + (e.code || e.message), "err"); };
+
 const SEED = {
 inicio:{
 eyebrow:"Estudio Jurídico Multipráctica · Córdoba · Desde 2004",
@@ -930,6 +956,7 @@ blog:[
 {id:"sas-srl-2026",titulo:"SAS o SRL: qué sociedad conviene en 2026",categoria:"Empresario",fecha:"2026-09-18",lectura:"6 min",area:"empresario",orden:5,activo:true,extracto:"Capital, velocidad de constitución, administración y costos.",cuerpo:"Elegir el tipo societario no es un trámite."},
 {id:"phishing-bancario",titulo:"Phishing bancario: cómo recuperar el dinero",categoria:"Consumidor",fecha:"2026-09-02",lectura:"6 min",area:"consumidor",orden:6,activo:true,extracto:"El deber de seguridad de los bancos.",cuerpo:"El vaciamiento de cuentas mediante phishing no es una fatalidad."}
 ]};
+
 const state = {
 inicio:null, contacto:null, areas:[], equipo:[], blog:[], sesiones:[], clientes:[], agenda:[],
 status:{inicio:"loading",contacto:"loading",areas:"loading",equipo:"loading",blog:"loading",sesiones:"loading",clientes:"loading",agenda:"loading"},
@@ -940,6 +967,7 @@ let unsubs = [], view = "inicio";
 let SESS = null, sessTimer = null, beatTimer = null, logWarned = false;
 const sessKey = uid => "za_sess_" + uid;
 const sessRef = () => SESS ? doc(db,"sesiones",SESS.id) : null;
+
 async function logAction(tipo, detalle){
 if (!SESS || !auth.currentUser) return;
 try {
@@ -954,6 +982,7 @@ console.warn("Auditoría:", e);
 if (!logWarned){ logWarned = true; toast("No se pudo registrar la acción en el historial.", "err"); }
 }
 }
+
 async function startSession(user){
 const key = sessKey(user.uid);
 let id = null, inicioMs = Date.now(), actCount = 0, resumed = false;
@@ -989,6 +1018,7 @@ sessTimer = setInterval(paintClock, 1000);
 beatTimer = setInterval(() => { if (SESS && auth.currentUser) updateDoc(sessRef(), { ultimoMs: Date.now(), activo:true }).catch(()=>{}); }, 30000);
 paintClock();
 }
+
 async function endSession(){
 if (!SESS || !auth.currentUser) return;
 await logAction("Sesión cerrada", "Salida del panel");
@@ -997,6 +1027,7 @@ try { sessionStorage.removeItem(sessKey(auth.currentUser.uid)); } catch(_){}
 clearInterval(sessTimer); clearInterval(beatTimer);
 SESS = null;
 }
+
 function paintClock(){
 const el = $("#sessClock"); if (!el) return;
 el.textContent = SESS ? fhms(Date.now() - SESS.inicioMs) : "00:00:00";
@@ -1023,6 +1054,7 @@ const AUTH_ERRS = {
 "auth/configuration-not-found":"Firebase Authentication no está configurado.",
 "auth/invalid-api-key":"La clave API del proyecto no es válida."
 };
+
 $("#loginForm").addEventListener("submit", async e => {
 e.preventDefault();
 const btn = $("#loginBtn"), err = $("#loginErr");
@@ -1039,6 +1071,7 @@ b.classList.remove("loading");
 });
 addEventListener("pagehide", () => { if (SESS && auth.currentUser) updateDoc(sessRef(), { ultimoMs: Date.now() }).catch(()=>{}); });
 document.addEventListener("visibilitychange", () => { if (!document.hidden && SESS && auth.currentUser) updateDoc(sessRef(), { ultimoMs: Date.now(), activo:true }).catch(()=>{}); });
+
 onAuthStateChanged(auth, async user => {
 if (user){
 $("#authView").style.display = "none";
@@ -1056,6 +1089,7 @@ $("#authView").style.display = "grid";
 setConn("", "Conectando…");
 }
 });
+
 function setConn(cls, txt){ const c = $("#conn"); c.className = "conn " + cls; $("#connTxt").textContent = txt; }
 function refreshConn(){
 const st = Object.values(state.status);
@@ -1063,6 +1097,7 @@ if (st.some(s => s === "loading")) return setConn("", "Conectando…");
 if (st.some(s => s === "error")) return setConn("bad", "Sin acceso — ver Diagnóstico");
 setConn("ok", "En línea · sincronizado");
 }
+
 function subscribe(){
 unsubs.forEach(u => { try{u();}catch(_){}} ); unsubs = [];
 ["inicio","contacto"].forEach(k => {
@@ -1118,14 +1153,17 @@ state.agenda = qs.docs.map(d => ({ id:d.id, ...d.data() })).sort((a,b) => (agend
 state.status.agenda = "ok"; delete state.err.agenda;
 updateCounts(); refreshConn(); renderDiag();
 if (view === "agenda") renderAgenda();
+if (view === "clientes") renderClientes();
 checkAgendaReminders();
 }, e => {
 state.status.agenda = "error"; state.err.agenda = e.code || e.message;
 state.agenda = [];
 updateCounts(); refreshConn(); renderDiag();
 if (view === "agenda") renderAgenda();
+if (view === "clientes") renderClientes();
 }));
 }
+
 function updateCounts(){
 COLS.forEach(c => {
 const el = $("#cnt-"+c);
@@ -1156,6 +1194,7 @@ agEl.classList.toggle("bad", upcoming > 0);
 }
 }
 }
+
 const TITLES = { inicio:"Inicio", clientes:"Bandeja de Clientes", agenda:"Agenda de visitas y eventos", areas:"Áreas de Práctica", equipo:"Equipo / Abogados", blog:"Blog / Publicaciones", contacto:"Contacto", historial:"Historial de sesiones", diagnostico:"Diagnóstico", ayuda:"Ayuda" };
 $("#sideNav").addEventListener("click", e => {
 const b = e.target.closest("[data-view]"); if (!b) return;
@@ -1172,6 +1211,7 @@ else if (view === "diagnostico") renderDiag();
 else if (COLS.includes(view)) renderList(view);
 });
 const goView = v => { const b = document.querySelector('[data-view="'+v+'"]'); if (b) b.click(); };
+
 const CLI_URGS = { Alta:3, Media:2, Baja:1 };
 const AREA_LABELS = {laboral:"Derecho Laboral",civil:"Derecho Civil y Comercial",familia:"Derecho de Familia",empresario:"Derecho Empresario",penal:"Derecho Penal y Tránsito",consumidor:"Consumidor y Bancario",otra:"Otra consulta"};
 function cliFechaMs(c){
@@ -1246,6 +1286,7 @@ const estado = c.estado || "nueva";
 const areaTxt = AREA_LABELS[c.area] || c.areaTexto || c.area || "—";
 const urg = c.urgencia || "Media";
 const unread = estado === "nueva" ? " unread" : "";
+const agendadoIcon = c.agendado ? `<span class="icon-btn agendado" title="Agendado${c.eventoFecha ? ': ' + esc(c.eventoFecha) : ''}"><svg class="ic"><use href="#i-cal"/></svg></span>` : '';
 return '<div class="cli-row' + unread + '" data-cid="' + esc(c.id) + '">' +
 '<div class="cli-urg ' + esc(urg) + '"><span>' + esc(urg.toUpperCase()) + '</span></div>' +
 '<div class="cli-main"><b>' + esc(c.nombre || "Sin nombre") + '</b>' +
@@ -1260,7 +1301,7 @@ return '<div class="cli-row' + unread + '" data-cid="' + esc(c.id) + '">' +
 '<option value="respondida"' + (estado === "respondida" ? " selected" : "") + '>Respondida</option>' +
 '<option value="cerrada"' + (estado === "cerrada" ? " selected" : "") + '>Cerrada</option></select>' +
 '<div class="cli-date"><b>' + esc(fecha.d) + '</b>' + esc(fecha.h) + '</div>' +
-'<div class="cli-acts"><button type="button" class="icon-btn" data-cview="' + esc(c.id) + '" aria-label="Ver detalle"><svg class="ic"><use href="#i-eye"/></svg></button></div>' +
+'<div class="cli-acts">' + agendadoIcon + '<button type="button" class="icon-btn" data-cview="' + esc(c.id) + '" aria-label="Ver detalle"><svg class="ic"><use href="#i-eye"/></svg></button></div>' +
 '</div>';
 }).join("");
 }
@@ -1287,10 +1328,10 @@ finally { b.classList.remove("loading"); }
 $("#cliExport").addEventListener("click", () => {
 const list = applyCliFilters();
 if (!list.length) return toast("No hay consultas para exportar.", "err");
-const headers = ["Expediente","Fecha","Nombre","Email","Teléfono","Área","Urgencia","Estado","Detalle","Notas"];
+const headers = ["Expediente","Fecha","Nombre","Email","Teléfono","Área","Urgencia","Estado","Agendado","Detalle","Notas"];
 const rows = list.map(c => {
 const f = cliFDate(c);
-return [c.expediente||"", f.d + " " + f.h, c.nombre||"", c.email||"", c.telefono||"", AREA_LABELS[c.area] || c.area || "", c.urgencia||"", c.estado||"nueva", (c.detalle||"").replace(/\s+/g," "), (c.notas||"").replace(/\s+/g," ")];
+return [c.expediente||"", f.d + " " + f.h, c.nombre||"", c.email||"", c.telefono||"", AREA_LABELS[c.area] || c.area || "", c.urgencia||"", c.estado||"nueva", c.agendado ? "Sí: " + (c.eventoFecha||"") : "No", (c.detalle||"").replace(/\s+/g," "), (c.notas||"").replace(/\s+/g," ")];
 });
 const csv = [headers, ...rows].map(r => r.map(x => '"' + String(x).replace(/"/g,'""') + '"').join(",")).join("\n");
 const blob = new Blob(["\ufeff" + csv], {type:"text/csv;charset=utf-8"});
@@ -1333,6 +1374,7 @@ $("#cliDetailBody").innerHTML =
 '<div class="cli-block"><b>Clasificación</b>' +
 '<div class="cli-meta-row"><svg class="ic"><use href="#i-brief"/></svg><span>' + esc(areaTxt) + '</span></div>' +
 '<div class="cli-meta-row"><svg class="ic"><use href="#i-clock"/></svg><span>Urgencia: <b>' + esc(urg) + '</b></span></div>' +
+(c.agendado ? '<div class="cli-meta-row"><svg class="ic" style="color:#8FE0B4"><use href="#i-cal"/></svg><span style="color:#8FE0B4">✓ Agendado' + (c.eventoFecha ? ': <b>' + esc(c.eventoFecha) + '</b>' : '') + '</span></div>' : '') +
 '</div>' +
 '<div class="cli-block"><b>Estado del caso</b>' +
 '<div class="cli-state-flow">' +
@@ -1344,7 +1386,6 @@ $("#cliDetailBody").innerHTML =
 '</div></div>';
 $("#cliRoot").classList.add("open");
 
-// Lógica para vincular con la agenda
 const btnAgendar = $("#btnAgendarCliente");
 if(btnAgendar) {
     btnAgendar.onclick = () => {
@@ -1352,6 +1393,7 @@ if(btnAgendar) {
         $("#ag-cliente").value = c.nombre || "";
         $("#ag-tel").value = c.telefono || "";
         $("#ag-wa").value = digits(c.telefono) || "";
+        $("#ag-email").value = c.email || "";
         $("#ag-expediente").value = c.expediente || "";
         $("#ag-titulo").value = `Seguimiento: ${c.expediente || 'Consulta'}`;
         $("#ag-notas").value = `Detalle: ${c.detalle || ''}\nÁrea: ${c.areaTexto || c.area || ''}`;
@@ -1413,6 +1455,7 @@ toast("Consulta eliminada.");
 }, "Eliminar");
 });
 $$("[data-close-cli]").forEach(el => el.addEventListener("click", () => $("#cliRoot").classList.remove("open")));
+
 function renderHistGuard(){
 const g = $("#histGuard");
 $("#histPurge").hidden = !isSuper();
@@ -1556,6 +1599,7 @@ $("#histBody").scrollTop = 0;
 histRoot.classList.add("open");
 }
 $$("[data-close-hist]").forEach(el => el.addEventListener("click", () => histRoot.classList.remove("open")));
+
 const selCls = (cls,opts,v) => '<select class="sel ' + cls + '">' + opts.map(o => '<option value="' + esc(o[0]) + '"' + (o[0]===v?" selected":"") + ">" + esc(o[1]) + "</option>").join("") + "</select>";
 function badgeRow(v){
 const d = document.createElement("div");
@@ -1671,6 +1715,7 @@ await logAction("Editó Inicio", "Portada, sellos, cifras y " + chips.length + "
 toast("Sección Inicio guardada y publicada.");
 } catch(ex){ fsErr(ex); }
 });
+
 const KMAP = {direccion:"k-direccion",ciudad:"k-ciudad",horario:"k-horario",guardiaNota:"k-guardiaNota",telefono:"k-telefono",email:"k-email",waDisplay:"k-waDisplay",waNum:"k-waNum",waMsg:"k-waMsg",mapa:"k-mapa",linkedin:"k-linkedin",instagram:"k-instagram",cuit:"k-cuit",notaForm:"k-notaForm",badge:"k-badge"};
 function renderContacto(){
 const d = state.contacto || SEED.contacto;
@@ -1689,6 +1734,7 @@ await logAction("Editó Contacto", "Teléfono " + (data.telefono||"—") + " · 
 toast("Datos de contacto guardados.");
 } catch(ex){ fsErr(ex); }
 });
+
 function listState(col){
 const st = state.status[col];
 if (st === "loading") return '<div class="skel"><div></div><div></div><div></div></div>';
@@ -1765,6 +1811,7 @@ toast("Orden actualizado.");
 } catch(ex){ fsErr(ex); }
 }
 });
+
 const editorRoot = $("#editorRoot"), editorBody = $("#editorBody");
 let editorSaveFn = null, editorLog = null;
 const fld = (id,label,html,hint) => '<div class="field"><label for="' + id + '">' + label + "</label>" + html + (hint ? '<span class="hint">' + hint + "</span>" : "") + "</div>";
@@ -1949,6 +1996,7 @@ else if ($("#cliRoot").classList.contains("open")) $("#cliRoot").classList.remov
 else if ($("#alarmRoot").classList.contains("open")) $("#alarmRoot").classList.remove("open");
 else if ($("#agAlarmRoot").classList.contains("open")) $("#agAlarmRoot").classList.remove("open");
 });
+
 const pill = (cls,txt) => '<span class="pill ' + cls + '"><i></i>' + esc(txt) + "</span>";
 function renderDiag(){
 const box = $("#diagBox"); if (!box) return;
@@ -2022,6 +2070,7 @@ out.innerHTML = '<div class="warn good"><svg class="ic"><use href="#i-check"/></
 out.innerHTML = '<div class="warn bad"><svg class="ic"><use href="#i-alert"/></svg><span><b>Escritura bloqueada (' + esc(e.code||e.message) + ').</b></span></div>';
 } finally { btn.classList.remove("loading"); }
 });
+
 const MESES_FULL = {enero:1,febrero:2,marzo:3,abril:4,mayo:5,junio:6,julio:7,agosto:8,septiembre:9,setiembre:9,octubre:10,noviembre:11,diciembre:12};
 function esDateToISO(s){
 const m = String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").match(/(\d{1,2})\s+de\s+([a-z]+)\s+de\s+(\d{4})/);
@@ -2314,6 +2363,7 @@ toast("Contenido inicial cargado.");
 } catch(ex){ fsErr(ex); }
 });
 });
+
 function playAlarmSound() {
 try {
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -2351,8 +2401,10 @@ playAlarmSound();
 $("#alarmAckBtn").addEventListener("click", () => {
 $("#alarmRoot").classList.remove("open");
 });
+
 /* ═════════════════════════════════════════════════════════════════
 AGENDA DE VISITAS / EVENTOS + RECORDATORIO 24 HS + WHATSAPP
++ VINCULACIÓN CON CLIENTES (expediente, clienteId, flag agendado)
 ═════════════════════════════════════════════════════════════════ */
 function agendaDateMs(ev){
 if(!ev || !ev.fecha) return 0;
@@ -2404,7 +2456,8 @@ const estadoChip = estado === "realizado" ? "ch-green" : estado === "cancelado" 
 const due = agDue24(ev);
 const waChip = ev.whatsappEnviado ? '<span class="chip ch-green">WA enviado</span>' : (due ? '<span class="chip ch-amber">24h</span>' : '');
 const mailChip = ev.emailEnviado ? '<span class="chip ch-green">Email enviado</span>' : '';
-const expTxt = ev.expediente ? `EXP: ${esc(ev.expediente)}` : (ev.tipo || "evento");
+const expHtml = ev.expediente ? `<span class="ag-exp">EXP: ${esc(ev.expediente)}</span>` : '';
+const tipoTxt = ev.tipo || "evento";
 return `<div class="ag-row${due ? " due24" : ""}">
 <div class="ag-when">
 <b>${esc(dateTxt)}</b>
@@ -2414,7 +2467,8 @@ return `<div class="ag-row${due ? " due24" : ""}">
 <div class="ag-main">
 <b>${esc(ev.titulo || "(Sin título)")}</b>
 <span>${esc(ev.clienteNombre || "Sin cliente")}</span>
-<span>${esc(expTxt)}${ev.lugar ? " · " + esc(ev.lugar) : ""}</span>
+<span>${esc(tipoTxt)}${ev.lugar ? " · " + esc(ev.lugar) : ""}</span>
+${expHtml}
 </div>
 <div class="ag-meta">
 <span class="chip ${estadoChip}">${esc(estado)}</span>
@@ -2471,13 +2525,14 @@ try{
 const id = $("#ag-id").value;
 const titulo = $("#ag-titulo").value.trim();
 const clienteNombre = $("#ag-cliente").value.trim();
-const expediente = $("#ag-expediente").value.trim();
-const clienteId = $("#ag-cliente-id").value.trim();
 const clienteEmail = $("#ag-email").value.trim();
 const telefono = $("#ag-tel").value.trim();
 const whatsappRaw = $("#ag-wa").value.trim();
 const fecha = $("#ag-fecha").value;
 const hora = $("#ag-hora").value;
+const expediente = $("#ag-expediente").value.trim();
+const clienteId = $("#ag-cliente-id").value.trim();
+
 if(!clienteNombre || !fecha || !hora){
 toast("Cliente, fecha y hora son obligatorios.", "err");
 return;
@@ -2513,6 +2568,9 @@ data.aviso24h = false;
 data.whatsappEnviado = false;
 data.emailEnviado = false;
 }
+
+let savedEventId = id;
+
 if(id){
 await updateDoc(doc(db,"agenda",id), data);
 await logAction("Editó evento de agenda", `${titulo || clienteNombre} · ${fecha} ${hora}`);
@@ -2520,10 +2578,24 @@ toast("Evento actualizado.", "gold");
 }else{
 data.createdAt = serverTimestamp();
 data.creadoPor = auth.currentUser?.email || "";
-await addDoc(collection(db,"agenda"), data);
+const ref = await addDoc(collection(db,"agenda"), data);
+savedEventId = ref.id;
 await logAction("Creó evento de agenda", `${titulo || clienteNombre} · ${fecha} ${hora}`);
 toast("Evento guardado en agenda.", "gold");
 }
+
+// ═══ SINCRONIZAR FLAG "agendado" EN EL CLIENTE ═══
+if(clienteId){
+try{
+await updateDoc(doc(db,"clientes",clienteId), {
+agendado: true,
+eventoId: savedEventId,
+eventoFecha: `${fecha} ${hora}`,
+updatedAt: serverTimestamp()
+});
+}catch(e){ console.warn("No se pudo marcar cliente como agendado:", e); }
+}
+
 resetAgForm();
 renderAgenda();
 }catch(e){
@@ -2534,7 +2606,21 @@ btn.classList.remove("loading");
 }
 async function changeAgEstado(id, estado){
 try{
+const ev = state.agenda.find(x => x.id === id);
 await updateDoc(doc(db,"agenda",id), { estado, updatedAt: serverTimestamp() });
+
+// Si se cancela, limpiar flag del cliente vinculado
+if(estado === "cancelado" && ev?.clienteId){
+try{
+await updateDoc(doc(db,"clientes",ev.clienteId), {
+agendado: false,
+eventoId: null,
+eventoFecha: null,
+updatedAt: serverTimestamp()
+});
+}catch(e){ console.warn("No se pudo limpiar flag del cliente:", e); }
+}
+
 await logAction("Cambió estado de agenda", `${id} → ${estado}`);
 toast("Estado actualizado.", "gold");
 }catch(e){ fsErr(e); }
@@ -2550,7 +2636,7 @@ const d = t ? new Date(t) : new Date();
 const fechaTxt = d.toLocaleDateString("es-AR", { weekday:"long", day:"numeric", month:"long", year:"numeric" });
 const msg = `Hola ${ev.clienteNombre || ""}, le escribimos desde Zarza & Asociados.
 
-Le recordamos su compromiso${ev.titulo ? ` "${ev.titulo}"` : ""} programado para el ${fechaTxt} a las ${ev.hora || ""} hs${ev.lugar ? " en " + ev.lugar : ""}.
+Le recordamos su compromiso${ev.titulo ? ` "${ev.titulo}"` : ""}${ev.expediente ? ` (EXP: ${ev.expediente})` : ""} programado para el ${fechaTxt} a las ${ev.hora || ""} hs${ev.lugar ? " en " + ev.lugar : ""}.
 
 Por favor, responda este mensaje para confirmar.
 Muchas gracias.`;
@@ -2576,12 +2662,12 @@ return;
 const t = agendaDateMs(ev);
 const d = t ? new Date(t) : new Date();
 const fechaTxt = d.toLocaleDateString("es-AR", { weekday:"long", day:"numeric", month:"long", year:"numeric" });
-const subject = `Recordatorio de compromiso - Zarza & Asociados`;
+const subject = `Recordatorio de compromiso - Zarza & Asociados${ev.expediente ? ' (EXP: ' + ev.expediente + ')' : ''}`;
 const body = `Hola ${ev.clienteNombre || ""},
 
 Le escribimos desde Zarza & Asociados.
 
-Le recordamos su compromiso${ev.titulo ? ` "${ev.titulo}"` : ""} programado para el ${fechaTxt} a las ${ev.hora || ""} hs${ev.lugar ? " en " + ev.lugar : ""}.
+Le recordamos su compromiso${ev.titulo ? ` "${ev.titulo}"` : ""}${ev.expediente ? ` (EXP: ${ev.expediente})` : ""} programado para el ${fechaTxt} a las ${ev.hora || ""} hs${ev.lugar ? " en " + ev.lugar : ""}.
 
 Por favor, responda este correo para confirmar.
 
@@ -2618,6 +2704,7 @@ const num = digits(ev.whatsapp || ev.telefono || "");
 $("#agAlarmMsg").innerHTML =
 `Faltan menos de 24 horas para el evento <b>${esc(ev.titulo || "sin título")}</b> de <b>${esc(ev.clienteNombre || "cliente")}</b>.` +
 `<br><br><span class="mono">${esc(fechaTxt)} · ${esc(ev.hora || "")} hs</span>` +
+(ev.expediente ? `<br><span style="color:var(--gold-2)">EXP: ${esc(ev.expediente)}</span>` : '') +
 (num ? `<br><span style="color:var(--tx-mute)">Podés enviarle el aviso por WhatsApp al cliente.</span>`
 : `<br><span style="color:#F49B93">Este evento no tiene WhatsApp cargado.</span>`);
 $("#agAlarmRoot").classList.add("open");
@@ -2691,6 +2778,17 @@ openConfirm("Eliminar evento",
 `Se eliminará el evento <b>${esc(ev?.titulo || ev?.clienteNombre || id)}</b>. Esta acción es irreversible.`,
 async () => {
 try{
+// ═══ LIMPIAR FLAG DEL CLIENTE ANTES DE BORRAR ═══
+if(ev?.clienteId){
+try{
+await updateDoc(doc(db,"clientes",ev.clienteId), {
+agendado: false,
+eventoId: null,
+eventoFecha: null,
+updatedAt: serverTimestamp()
+});
+}catch(e){ console.warn("No se pudo limpiar flag del cliente:", e); }
+}
 await deleteDoc(doc(db,"agenda",id));
 await logAction("Eliminó evento de agenda", ev?.titulo || id);
 toast("Evento eliminado.");
@@ -2707,6 +2805,7 @@ if(agAlarmEvent) await markAgAlerted(agAlarmEvent);
 $("#agAlarmRoot").classList.remove("open");
 });
 setInterval(checkAgendaReminders, 30000);
+
 const themeToggle = $("#themeToggle");
 const applyTheme = (theme) => {
 document.documentElement.classList.toggle("theme-light", theme === "light");
@@ -2723,6 +2822,7 @@ localStorage.setItem("za-theme", next);
 applyTheme(next);
 toast(next === "light" ? "Modo claro activado" : "Modo oscuro activado", "gold");
 });
+
 renderInicio(); renderContacto(); renderDiag(); renderHistGuard(); renderHist(); renderClientes(); renderAgenda();
 COLS.forEach(renderList);
 </script>
