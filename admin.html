@@ -596,6 +596,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 <input class="inp" id="histFilter" placeholder="Filtrar por usuario o acción…" aria-label="Filtrar historial">
 <span class="grow"></span>
 <button type="button" class="btn btn-ghost btn-sm" id="histReload"><svg class="ic"><use href="#i-refresh"/></svg>Actualizar</button>
+<!-- BOTÓN ELIMINAR TODO: oculto por defecto, solo visible para super admin -->
 <button type="button" class="btn btn-danger btn-sm" id="histPurge" hidden><svg class="ic"><use href="#i-trash"/></svg>Eliminar todo</button>
 </div>
 <div id="histGuard"></div>
@@ -731,7 +732,6 @@ service cloud.firestore {
 </div>
 </div>
 
-<!-- Modal detalle cliente (con botón unificado Guardar y cerrar) -->
 <div class="mroot" id="cliRoot" role="dialog" aria-modal="true">
 <div class="mback" data-close-cli></div>
 <div class="mcard wide">
@@ -744,7 +744,6 @@ service cloud.firestore {
 </div>
 </div>
 
-<!-- Modal Alarma Nueva Consulta -->
 <div class="mroot" id="alarmRoot" role="dialog" aria-modal="true">
   <div class="mback"></div>
   <div class="mcard small">
@@ -815,7 +814,6 @@ const COLS = ["areas","equipo","blog"];
 const MAX_CHIPS = 4;
 const MAX_ACTS = 400;
 
-// Set para evitar alarmas duplicadas
 const alarmedClientIds = new Set();
 
 function toast(msg, type){
@@ -1066,9 +1064,7 @@ function subscribe(){
     if (view === "historial") renderHist();
   }));
   
-  /* ═══ CLIENTES (suscripción en vivo + ALARMA) ═══ */
   unsubs.push(onSnapshot(collection(db,"clientes"), qs => {
-    // Detectar documentos añadidos para la alarma
     const newDocs = qs.docChanges().filter(change => change.type === "added");
     newDocs.forEach(change => {
       const data = change.doc.data();
@@ -1196,7 +1192,7 @@ function renderClientes(){
     return;
   }
   if (st === "error"){
-    listEl.innerHTML = '<div class="empty err"><svg class="ic"><use href="#i-alert"/></svg><span><b style="color:#F49B93">No se pudo leer la colección clientes.</b><br>Código: ' + esc(state.err.clientes||"") + '</span></div>';
+    listEl.innerHTML = '<div class="empty err"><svg class="ic"><use href="#i-alert"/></svg><span><b style="color:#F49B93">No se pudo leer la colección clientes.</b></span></div>';
     return;
   }
   const list = applyCliFilters();
@@ -1317,14 +1313,12 @@ function openCliDetail(id){
   $("#cliRoot").classList.add("open");
 }
 
-// FIX 1: Actualiza visualmente el botón activo tras guardar
 async function changeCliState(id, nuevoEstado, btnElement){
   try {
     await updateDoc(doc(db,"clientes",id), { estado: nuevoEstado, updatedAt: serverTimestamp() });
     await logAction("Cambió estado de consulta", (state.clientes.find(c=>c.id===id)?.nombre||id) + " → " + nuevoEstado);
     toast("Estado actualizado a " + nuevoEstado + ".", "gold");
     
-    // Actualizar clases visuales en el modal
     if (btnElement) {
       $$("#cliDetailBody .cli-state-btn").forEach(b => b.classList.remove("active"));
       btnElement.classList.add("active");
@@ -1341,14 +1335,12 @@ $("#cliList").addEventListener("click", e => {
   if (row) openCliDetail(row.dataset.cid);
 });
 
-// FIX 1 (cont.): Pasar el elemento del botón para actualizar su clase
 $("#cliDetailBody").addEventListener("click", e => {
   const b = e.target.closest("[data-nst]"); if (!b) return;
   if (!currentCliId) return;
   changeCliState(currentCliId, b.dataset.nst, b);
 });
 
-// FIX 2: Botón unificado que guarda y cierra
 $("#cliSaveAndClose").addEventListener("click", async () => {
   if (!currentCliId) return;
   const notas = $("#cliNotes").value.trim();
@@ -1357,7 +1349,7 @@ $("#cliSaveAndClose").addEventListener("click", async () => {
     await updateDoc(doc(db,"clientes",currentCliId), { notas, updatedAt: serverTimestamp() });
     await logAction("Guardó notas de consulta", state.clientes.find(c=>c.id===currentCliId)?.nombre || currentCliId);
     toast("Notas guardadas.", "gold");
-    $("#cliRoot").classList.remove("open"); // Cierra la ventana modal
+    $("#cliRoot").classList.remove("open");
   } catch(e){ fsErr(e); }
   finally { btn.classList.remove("loading"); }
 });
@@ -1380,13 +1372,22 @@ $("#cliDelete").addEventListener("click", () => {
 
 $$("[data-close-cli]").forEach(el => el.addEventListener("click", () => $("#cliRoot").classList.remove("open")));
 
+// ═════════════════════════════════════════════════════════════════
+// HISTORIAL - Control estricto del botón "Eliminar todo"
+// ═════════════════════════════════════════════════════════════════
 function renderHistGuard(){
   const g = $("#histGuard");
-  $("#histPurge").hidden = !isSuper();
+  const purgeBtn = $("#histPurge");
+  
+  // Control estricto: el botón solo es visible si es super admin Y hay sesiones
+  const canPurge = isSuper() && state.sesiones.length > 0;
+  purgeBtn.hidden = !canPurge;
+  
+  // Mensaje contextual
   if (isSuper()){
-    g.innerHTML = '<div class="warn good" style="margin:0 0 16px"><svg class="ic"><use href="#i-shield"/></svg><span><b>Super administrador activo.</b></span></div>';
+    g.innerHTML = '<div class="warn good" style="margin:0 0 16px"><svg class="ic"><use href="#i-shield"/></svg><span><b>Super administrador activo.</b> Puede eliminar sesiones individuales o vaciar el historial completo.</span></div>';
   } else {
-    g.innerHTML = '<div class="warn" style="margin:0 0 16px"><svg class="ic"><use href="#i-lock"/></svg><span><b>Historial protegido.</b></span></div>';
+    g.innerHTML = '<div class="warn" style="margin:0 0 16px"><svg class="ic"><use href="#i-lock"/></svg><span><b>Historial protegido.</b> Solo lectura.</span></div>';
   }
 }
 
@@ -1426,7 +1427,10 @@ function histRow(s){
 
 function renderHist(){
   const box = $("#histList"), st = state.status.sesiones;
-  $("#histPurge").hidden = !isSuper() || !state.sesiones.length;
+  
+  // Actualizar visibilidad del botón "Eliminar todo" cada vez que se renderiza
+  renderHistGuard();
+  
   if (st === "loading"){ box.innerHTML = '<div class="skel"><div></div><div></div><div></div></div>'; $("#histSum").innerHTML = ""; $("#histNote").textContent = "Cargando historial…"; return; }
   if (st === "error"){
     box.innerHTML = '<div class="empty err"><svg class="ic"><use href="#i-alert"/></svg><span><b style="color:#F49B93">No se pudo leer el historial.</b></span></div>';
@@ -1489,7 +1493,11 @@ $("#histList").addEventListener("click", e => {
 });
 
 $("#histPurge").addEventListener("click", () => {
-  if (!isSuper()) return toast("Solo " + SUPER_EMAIL + " puede eliminar el historial.", "err");
+  // Doble verificación de seguridad
+  if (!isSuper()) {
+    toast("Acción no autorizada.", "err");
+    return;
+  }
   openConfirm("Vaciar el historial completo",
     "Se eliminarán <b>" + state.sesiones.length + " sesiones</b>.",
     async () => {
@@ -1798,7 +1806,7 @@ function openEditor(type, id){
       '<div class="full">' + fld("e-p2","Párrafo 2",txa("e-p2",d?.p2,3)) + "</div>" +
       '<div class="full">' + fld("e-alcance","Alcance (uno por línea)",txa("e-alcance",(d?.alcance||[]).join("\n"),5)) + "</div>" +
       fld("e-orden","Orden",inp("e-orden",d?.orden ?? (state.areas.length+1),"number")) +
-      '<div class="field"><span class="flabel">Visibilidad</span>' + switchFld("e-activo",d?.activo,"Incluida") + "</div></div>";
+      '<div class="field"><span class="flabel">Visibilidad</span>' + switchFld("e-activo",d?.activo,"Incluida") + "</div></div>';
     editorSaveFn = async () => {
       const nombre = $("#e-nombre").value.trim();
       if (!nombre) return toast("El nombre es obligatorio.","err"), false;
@@ -1837,7 +1845,7 @@ function openEditor(type, id){
       '<div class="full">' + fld("e-trayectoria","Trayectoria (una por línea)",txa("e-trayectoria",(d?.trayectoria||[]).join("\n"),3)) + "</div>" +
       fld("e-idiomas","Idiomas (coma)",inp("e-idiomas",(d?.idiomas||[]).join(", "))) +
       fld("e-orden","Orden",inp("e-orden",d?.orden ?? (state.equipo.length+1),"number")) +
-      '<div class="full">' + switchFld("e-activo",d?.activo,"Incluido") + "</div></div>";
+      '<div class="full">' + switchFld("e-activo",d?.activo,"Incluido") + "</div></div>';
     editorSaveFn = async () => {
       const nombre = $("#e-nombre").value.trim();
       if (!nombre) return toast("El nombre es obligatorio.","err"), false;
@@ -1871,7 +1879,7 @@ function openEditor(type, id){
       '<div class="full">' + fld("e-extracto","Extracto",txa("e-extracto",d?.extracto,2)) + "</div>" +
       '<div class="full">' + fld("e-cuerpo","Cuerpo del artículo",txa("e-cuerpo",d?.cuerpo,12),"## Texto = subtítulo · - texto = viñeta · 1. texto = lista · **texto** = negrita.") + "</div>" +
       fld("e-orden","Orden",inp("e-orden",d?.orden ?? (state.blog.length+1),"number")) +
-      '<div class="field"><span class="flabel">Estado</span>' + switchFld("e-activo",d?.activo,"Publicado") + "</div></div>";
+      '<div class="field"><span class="flabel">Estado</span>' + switchFld("e-activo",d?.activo,"Publicado") + "</div></div>';
     editorSaveFn = async () => {
       const titulo = $("#e-titulo").value.trim();
       if (!titulo) return toast("El título es obligatorio.","err"), false;
@@ -2296,14 +2304,9 @@ $("#seedBtn").addEventListener("click", () => {
     });
 });
 
-/* ═════════════════════════════════════════════════════════════════
-ALARMA DE NUEVA CONSULTA
-═════════════════════════════════════════════════════════════════ */
 function playAlarmSound() {
   try {
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    
-    // Primer beep
     const osc1 = audioCtx.createOscillator();
     const gain1 = audioCtx.createGain();
     osc1.connect(gain1);
@@ -2315,7 +2318,6 @@ function playAlarmSound() {
     osc1.start();
     osc1.stop(audioCtx.currentTime + 0.4);
 
-    // Segundo beep
     setTimeout(() => {
       try {
         const osc2 = audioCtx.createOscillator();
