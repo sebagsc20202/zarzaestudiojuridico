@@ -351,7 +351,6 @@ linear-gradient(180deg,rgba(6,9,15,.62) 0%,rgba(6,9,15,.82) 55%,var(--ink-950) 1
 #contacto .g-c1{width:520px;height:520px;top:-10%;right:-12%;background:rgba(201,162,92,.09)}
 #contacto .g-c2{width:420px;height:420px;bottom:-16%;left:-8%;background:rgba(226,72,61,.07)}
 #contacto .wm{left:-30px;top:-50px}
-/* ── Contacto: columnas que pueden encogerse por debajo de su contenido ── */
 .contact-grid{position:relative;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:26px;align-items:start}
 .contact-grid>*{min-width:0}
 .form-card{position:relative;background:linear-gradient(165deg,var(--ink-800),var(--ink-850));border:1px solid var(--line);border-radius:15px;padding:36px;min-width:0}
@@ -527,6 +526,47 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 .mat-table .mono{font-family:var(--mono);font-size:12.5px;color:var(--gold-2)}
 .js [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
 .js [data-reveal].revealed{opacity:1;transform:none}
+
+/* ═══ INDICADOR DE SINCRONIZACIÓN FIREBASE ═══ */
+.fb-sync{
+  position:fixed;
+  bottom:22px;
+  left:22px;
+  z-index:80;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:9px 14px;
+  background:rgba(13,20,36,.92);
+  border:1px solid var(--line);
+  border-radius:10px;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  font-family:var(--mono);
+  font-size:10.5px;
+  letter-spacing:.1em;
+  color:var(--tx-mute);
+  text-transform:uppercase;
+  transition:all .3s var(--ease);
+  pointer-events:none;
+}
+.fb-sync i{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--amber);font-style:normal;
+  transition:background .3s;
+  flex:none;
+}
+.fb-sync.ok{color:#8FE0B4;border-color:rgba(47,191,113,.4)}
+.fb-sync.ok i{background:var(--green);box-shadow:0 0 10px rgba(47,191,113,.7)}
+.fb-sync.err{color:#F49B93;border-color:rgba(226,72,61,.5)}
+.fb-sync.err i{background:var(--red);box-shadow:0 0 10px rgba(226,72,61,.7)}
+.fb-sync.pulse{animation:syncPulse 1.2s ease-in-out}
+@keyframes syncPulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.05);border-color:var(--gold)}
+  100%{transform:scale(1)}
+}
+
 @media (max-width:1180px){
 .hero-vertical{display:none}
 .cf1{left:-2%}.cf2{right:-2%}
@@ -572,6 +612,7 @@ html{scroll-padding-top:calc(var(--nav-h) + 16px)}
 .lw-head{grid-template-columns:110px minmax(0,1fr);gap:16px}
 .toasts{left:14px;bottom:14px}
 .stamp{right:2px;bottom:44px}
+.fb-sync{bottom:14px;left:14px;font-size:9.5px;padding:7px 11px}
 }
 @media (max-width:640px){
 .nav{gap:12px}
@@ -907,7 +948,7 @@ html{scroll-behavior:auto}
 </div>
 </div>
 </section>
-<!-- ══════════ 5. EL ESTUDIO / POR QUÉ ELEGIRNOS ══════════ -->
+<!-- ══════════ 5. EL ESTUDIO ══════════ -->
 <section class="sec estudio" id="estudio">
 <div class="bg-layer"><span class="wm" data-plx="0.07">Ius</span></div>
 <div class="container estudio-grid">
@@ -938,7 +979,7 @@ html{scroll-behavior:auto}
 <div><h3>Visión Multidisciplinaria</h3><p>Abordaje integral cuando un conflicto abarca más de una rama del derecho.</p></div>
 </div>
 <blockquote class="estudio-quote" data-reveal>
-<p>“El derecho se ejerce con estrategia, pero se gana con confianza.”</p>
+<p>"El derecho se ejerce con estrategia, pero se gana con confianza."</p>
 <cite>— Dr. Javier Zarza · Socio Fundador</cite>
 </blockquote>
 <div class="process" data-reveal>
@@ -1022,7 +1063,7 @@ html{scroll-behavior:auto}
 </div>
 </div>
 </section>
-<!-- ══════════ 7. BLOG / NOVEDADES ══════════ -->
+<!-- ══════════ 7. BLOG ══════════ -->
 <section class="sec" id="blog">
 <div class="bg-layer"><div class="glow g-b"></div><span class="wm" data-plx="0.08">Prensa</span></div>
 <div class="container" id="blogWrap">
@@ -1095,7 +1136,7 @@ html{scroll-behavior:auto}
 </div>
 </div>
 </section>
-<!-- ══════════ 8. CONTACTO & MAPA ══════════ -->
+<!-- ══════════ 8. CONTACTO ══════════ -->
 <section class="sec" id="contacto">
 <div class="bg-layer"><div class="glow g-c1"></div><div class="glow g-c2"></div><span class="wm" data-plx="0.07">Vox</span></div>
 <div class="container">
@@ -1188,7 +1229,7 @@ html{scroll-behavior:auto}
 <div class="info-card">
 <div class="info-row">
 <span class="info-tile"><svg class="ic"><use href="#i-pin"/></svg></span>
-<div><b>Dirección</b><p>Av. Corrientes 1234, Piso 7, Oficina “B”<br>C1043 · Córdoba, Argentina</p></div>
+<div><b>Dirección</b><p>Av. Corrientes 1234, Piso 7, Oficina "B"<br>C1043 · Córdoba, Argentina</p></div>
 <button type="button" class="copy-btn" data-copy="Av. Corrientes 1234, Piso 7, Of. B, Córdoba" aria-label="Copiar dirección"><svg class="ic"><use href="#i-copy"/></svg></button>
 </div>
 <div class="info-row">
@@ -1208,7 +1249,7 @@ html{scroll-behavior:auto}
 </div>
 <div class="map-frame">
 <div class="map-fallback"><span><svg class="ic"><use href="#i-pin"/></svg>AV. CORRIENTES 1234 · Córdoba<br>EL MAPA SE CARGA CON CONEXIÓN</span></div>
-<iframe title="Mapa — Oficina de Zarza y Asociados, Av. Corrientes 1234, Córdoba" src="https://www.google.com/maps?q=Av.+Corrientes+1234,+C1043+Córdoba,+Argentina&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+<iframe title="Mapa — Oficina de Zarza y Asociados" src="https://www.google.com/maps?q=Av.+Corrientes+1234,+C1043+Córdoba,+Argentina&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
 </div>
 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Av.+Corrientes+1234+Córdoba+Argentina" target="_blank" rel="noopener">Cómo llegar — Abrir en Google Maps <svg class="ic"><use href="#i-external"/></svg></a>
 <div class="conf-badge"><svg class="ic"><use href="#i-shield"/></svg><span><b style="color:var(--gold-2)">Confidencialidad garantizada.</b> Sus datos se tratan bajo secreto profesional y la Ley 25.326 de Protección de Datos Personales.</span></div>
@@ -1276,6 +1317,13 @@ html{scroll-behavior:auto}
 <div class="modal-scroll" id="modalBody"></div>
 </div>
 </div>
+
+<!-- ═══ INDICADOR DE SINCRONIZACIÓN ═══ -->
+<div class="fb-sync" id="fbSync" title="Estado de sincronización con Firebase">
+<i></i>
+<span id="fbSyncTxt">Conectando…</span>
+</div>
+
 <script>
 /* ════════════════════════════════════════════════════════════
 ZARZA & ASOCIADOS — Lógica de interacción (vanilla JS)
@@ -1774,100 +1822,88 @@ el.addEventListener("input", () => wrap(id).classList.remove("invalid"));
 });
 fArea.addEventListener("change", () => wrap("w-area").classList.remove("invalid"));
 fConsent.addEventListener("change", () => wrap("w-consent").classList.remove("invalid"));
-
-/* ═══════════ ENVÍO: EMAIL + GUARDADO EN FIRESTORE ═══════════
-   - Envia por email a sebagsc2020@gmail.com via FormSubmit (AJAX, sin recargar)
-   - Guarda el cliente en Firestore (coleccion "clientes")
-════════════════════════════════════════════════════════════ */
 form.addEventListener("submit", async e => {
-  e.preventDefault();
-  let ok = true, firstBad = null;
-  checks.forEach(([id, fn]) => {
-    const good = invalid(id, !fn());
-    if (!good && !firstBad) firstBad = id;
-    ok = ok && good;
-  });
-  if (!ok){
-    const el = wrap(firstBad).querySelector("input,select,textarea");
-    if (el) el.focus();
-    toast("Revise los campos marcados en rojo.", true);
-    return;
-  }
-  submitBtn.classList.add("loading");
-  submitBtn.disabled = true;
-
-  const rad = "ZA-2026-" + Math.floor(1000 + Math.random() * 9000);
-  const areaTxt = fArea.options[fArea.selectedIndex].text;
-  const urg = form.querySelector('input[name="urgencia"]:checked').value;
-  const urgTag = urg === "Alta" ? "tag-red" : urg === "Media" ? "tag-amber" : "tag-green";
-
-  /* 1) Guardar en Firestore (coleccion "clientes") */
-  (async () => {
-    try {
-      const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
-      const { getFirestore, collection, addDoc, serverTimestamp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
-      const app = initializeApp({
-        apiKey: "AIzaSyDGx9T9I1ZRV32vby5kaKI1jmps4vbzRKE",
-        authDomain: "zarzaasociados.firebaseapp.com",
-        projectId: "zarzaasociados",
-        storageBucket: "zarzaasociados.firebasestorage.app",
-        messagingSenderId: "177641854130",
-        appId: "1:177641854130:web:f41e67698b40d2992825ab"
-      });
-      const db = getFirestore(app);
-      await addDoc(collection(db, "clientes"), {
-        nombre: fNombre.value.trim(),
-        email: fEmail.value.trim(),
-        telefono: fTel.value.trim(),
-        area: fArea.value,
-        areaTexto: areaTxt,
-        urgencia: urg,
-        detalle: fDet.value.trim(),
-        expediente: rad,
-        fecha: serverTimestamp(),
-        estado: "nueva",
-        origen: "formulario-web"
-      });
-    } catch (err) {
-      console.warn("No se pudo guardar en Firestore:", err);
-    }
-  })();
-
-  /* 2) Enviar por email via FormSubmit (AJAX) a sebagsc2020@gmail.com */
-  try {
-    const fd = new FormData();
-    fd.append("nombre", fNombre.value.trim());
-    fd.append("email", fEmail.value.trim());
-    fd.append("telefono", fTel.value.trim());
-    fd.append("area", areaTxt);
-    fd.append("urgencia", urg);
-    fd.append("detalle", fDet.value.trim());
-    fd.append("expediente", rad);
-    fd.append("_subject", "Nueva consulta " + rad + " — " + fNombre.value.trim() + " (" + areaTxt + ")");
-    fd.append("_template", "table");
-    fd.append("_captcha", "false");
-    fd.append("_next", window.location.href);
-    await fetch("https://formsubmit.co/ajax/sebagsc2020@gmail.com", {
-      method: "POST",
-      headers: { "Accept": "application/json" },
-      body: fd
-    });
-  } catch (err) {
-    console.warn("No se pudo enviar el email:", err);
-  }
-
-  /* 3) Mostrar pantalla de exito (sin recargar la pagina) */
-  $("#fsRad").textContent = "EXP · " + rad;
-  $("#fsSummary").innerHTML =
-    '<span class="tag tag-gold">' + areaTxt + '</span>' +
-    '<span class="tag ' + urgTag + '">Urgencia ' + urg + '</span>' +
-    '<span class="tag tag-blue">' + fEmail.value.trim() + '</span>';
-  $("#fsWa").href = wa("Consulta " + rad + " — " + fNombre.value.trim() + ". Área: " + areaTxt + ". Urgencia: " + urg + ". " + fDet.value.trim().slice(0, 320));
-  form.hidden = true;
-  success.hidden = false;
-  submitBtn.classList.remove("loading");
-  submitBtn.disabled = false;
-  toast("Consulta " + rad + " registrada y enviada al estudio.");
+e.preventDefault();
+let ok = true, firstBad = null;
+checks.forEach(([id, fn]) => {
+const good = invalid(id, !fn());
+if (!good && !firstBad) firstBad = id;
+ok = ok && good;
+});
+if (!ok){
+const el = wrap(firstBad).querySelector("input,select,textarea");
+if (el) el.focus();
+toast("Revise los campos marcados en rojo.", true);
+return;
+}
+submitBtn.classList.add("loading");
+submitBtn.disabled = true;
+const rad = "ZA-2026-" + Math.floor(1000 + Math.random() * 9000);
+const areaTxt = fArea.options[fArea.selectedIndex].text;
+const urg = form.querySelector('input[name="urgencia"]:checked').value;
+const urgTag = urg === "Alta" ? "tag-red" : urg === "Media" ? "tag-amber" : "tag-green";
+(async () => {
+try {
+const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+const { getFirestore, collection, addDoc, serverTimestamp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+const app = initializeApp({
+apiKey: "AIzaSyDGx9T9I1ZRV32vby5kaKI1jmps4vbzRKE",
+authDomain: "zarzaasociados.firebaseapp.com",
+projectId: "zarzaasociados",
+storageBucket: "zarzaasociados.firebasestorage.app",
+messagingSenderId: "177641854130",
+appId: "1:177641854130:web:f41e67698b40d2992825ab"
+});
+const db = getFirestore(app);
+await addDoc(collection(db, "clientes"), {
+nombre: fNombre.value.trim(),
+email: fEmail.value.trim(),
+telefono: fTel.value.trim(),
+area: fArea.value,
+areaTexto: areaTxt,
+urgencia: urg,
+detalle: fDet.value.trim(),
+expediente: rad,
+fecha: serverTimestamp(),
+estado: "nueva",
+origen: "formulario-web"
+});
+} catch (err) {
+console.warn("No se pudo guardar en Firestore:", err);
+}
+})();
+try {
+const fd = new FormData();
+fd.append("nombre", fNombre.value.trim());
+fd.append("email", fEmail.value.trim());
+fd.append("telefono", fTel.value.trim());
+fd.append("area", areaTxt);
+fd.append("urgencia", urg);
+fd.append("detalle", fDet.value.trim());
+fd.append("expediente", rad);
+fd.append("_subject", "Nueva consulta " + rad + " — " + fNombre.value.trim() + " (" + areaTxt + ")");
+fd.append("_template", "table");
+fd.append("_captcha", "false");
+fd.append("_next", window.location.href);
+await fetch("https://formsubmit.co/ajax/sebagsc2020@gmail.com", {
+method: "POST",
+headers: { "Accept": "application/json" },
+body: fd
+});
+} catch (err) {
+console.warn("No se pudo enviar el email:", err);
+}
+$("#fsRad").textContent = "EXP · " + rad;
+$("#fsSummary").innerHTML =
+'<span class="tag tag-gold">' + areaTxt + '</span>' +
+'<span class="tag ' + urgTag + '">Urgencia ' + urg + '</span>' +
+'<span class="tag tag-blue">' + fEmail.value.trim() + '</span>';
+$("#fsWa").href = wa("Consulta " + rad + " — " + fNombre.value.trim() + ". Área: " + areaTxt + ". Urgencia: " + urg + ". " + fDet.value.trim().slice(0, 320));
+form.hidden = true;
+success.hidden = false;
+submitBtn.classList.remove("loading");
+submitBtn.disabled = false;
+toast("Consulta " + rad + " registrada y enviada al estudio.");
 });
 $("#fsReset").addEventListener("click", () => {
 success.hidden = true;
@@ -1882,26 +1918,28 @@ fNombre.focus();
 });
 })();
 </script>
+
 <!-- ════════════════════════════════════════════════════════════
-CONECTOR FIREBASE — ZARZA & ASOCIADOS · proyecto zarzaasociados
-Sincroniza en vivo Inicio (tarjetas flotantes), Áreas, Equipo
-(teléfono y WhatsApp propios), Blog y Contacto.
+CONECTOR FIREBASE MEJORADO — Sincronización en tiempo real
+Con indicador visual de estado y reporte de errores
 ════════════════════════════════════════════════════════════ -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
 import { getFirestore, collection, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
 const app = initializeApp({
-apiKey: "AIzaSyDGx9T9I1ZRV32vby5kaKI1jmps4vbzRKE",
-authDomain: "zarzaasociados.firebaseapp.com",
-projectId: "zarzaasociados",
-storageBucket: "zarzaasociados.firebasestorage.app",
-messagingSenderId: "177641854130",
-appId: "1:177641854130:web:f41e67698b40d2992825ab",
-measurementId: "G-4TH14EY7WP"
+  apiKey: "AIzaSyDGx9T9I1ZRV32vby5kaKI1jmps4vbzRKE",
+  authDomain: "zarzaasociados.firebaseapp.com",
+  projectId: "zarzaasociados",
+  storageBucket: "zarzaasociados.firebasestorage.app",
+  messagingSenderId: "177641854130",
+  appId: "1:177641854130:web:f41e67698b40d2992825ab",
+  measurementId: "G-4TH14EY7WP"
 });
 isSupported().then(ok => { if (ok) getAnalytics(app); }).catch(() => {});
 const db = getFirestore(app);
+
 const $ = s => document.querySelector(s);
 const $$ = s => Array.from(document.querySelectorAll(s));
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -1920,7 +1958,40 @@ let C = { ...DEFAULTS };
 const S = { areas:[], equipo:[], blog:[], has:{areas:false,equipo:false,blog:false} };
 const waLink = txt => "https://wa.me/" + C.waNum + "?text=" + encodeURIComponent(txt || C.waMsg);
 const telHref = v => "tel:" + String(v||"").replace(/[^\d+]/g,"");
-/* ── Reemplazo global de datos de contacto (respeta los WhatsApp personales) ── */
+
+/* ═══ INDICADOR DE SINCRONIZACIÓN ═══ */
+const syncEl = $("#fbSync");
+const syncTxt = $("#fbSyncTxt");
+let syncCount = 0;
+let hasError = false;
+
+function setSync(status, msg){
+  if (!syncEl) return;
+  syncEl.classList.remove("ok","err","pulse");
+  if (status === "ok"){
+    syncEl.classList.add("ok");
+    syncTxt.textContent = msg || "Sincronizado";
+    // Pulso breve al actualizar
+    void syncEl.offsetWidth;
+    syncEl.classList.add("pulse");
+  } else if (status === "err"){
+    syncEl.classList.add("err");
+    syncTxt.textContent = msg || "Error de conexión";
+    hasError = true;
+  } else {
+    syncTxt.textContent = msg || "Conectando…";
+  }
+}
+
+function reportSync(){
+  syncCount++;
+  const total = 5; // inicio, contacto, areas, equipo, blog
+  if (syncCount >= total && !hasError){
+    setSync("ok", "En vivo · " + new Date().toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit"}));
+  }
+}
+
+/* ── Reemplazo global de datos de contacto ── */
 function replaceContact(prev, next){
 const pairs = [[prev.telefono,next.telefono],[prev.waDisplay,next.waDisplay],[prev.email,next.email]].filter(p => p[0] && p[1] && p[0] !== p[1]);
 if (pairs.length){
@@ -1939,6 +2010,7 @@ else if (h === "tel:+"+prev.waNum) a.href = "tel:+"+next.waNum;
 $$('a[href*="wa.me/"]:not([data-wa-lawyer])').forEach(a => a.href = a.getAttribute("href").replace(/wa\.me\/\d+/, "wa.me/"+next.waNum));
 $$('a[href^="mailto:"]').forEach(a => { if (a.getAttribute("href") === "mailto:"+prev.email) a.href = "mailto:"+next.email; });
 }
+
 /* ── Reveals y contadores para contenido inyectado ── */
 const rio = ("IntersectionObserver" in window && !REDUCED) ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("revealed"); rio.unobserve(e.target); } }), { threshold:.12 }) : null;
 function reveal(scope){
@@ -1973,7 +2045,8 @@ function show(sel, on){ const el = $(sel); if (el) el.style.display = on ? "" : 
 function hideNav(href, hide){
 $$('a[href="'+href+'"]').forEach(a => { const li = a.closest("li"); if (li) li.style.display = hide ? "none" : ""; else a.style.display = hide ? "none" : ""; });
 }
-/* ── INICIO (incluye tarjetas flotantes editables del sello) ── */
+
+/* ── INICIO ── */
 function applyInicio(d){
 if (!d) return;
 const eb = $(".hero-eyebrow"); if (eb && d.eyebrow) eb.textContent = d.eyebrow;
@@ -1987,7 +2060,6 @@ else if (img) img.remove();
 const mis = $(".foot-mission"); if (mis && d.mision) mis.textContent = d.mision;
 const ht = $(".hero-trust");
 if (ht){ ht.style.display = d.showBadges === false ? "none" : ""; ht.innerHTML = (d.badges||[]).map(b => '<span><svg class="ic"><use href="#i-check"/></svg>' + esc(b) + "</span>").join(""); }
-/* Tarjetas flotantes: “Expediente … / Resuelto …” y “Guardia penal …” */
 const sw = $(".seal-wrap");
 if (sw){
 if (Array.isArray(d.chips)){
@@ -2027,6 +2099,7 @@ const set = '<div class="mq-set">' + d.marquee.map(t => "<span>" + esc(t) + "</s
 track.innerHTML = set + set;
 }
 }
+
 /* ── CONTACTO ── */
 function applyContacto(raw){
 if (!raw) return;
@@ -2066,12 +2139,14 @@ $$("a[data-wa]").forEach(a => { a.href = waLink(); a.target = "_blank"; a.rel = 
 const ld = document.querySelector('script[type="application/ld+json"]');
 if (ld){ try { const j = JSON.parse(ld.textContent); j.name = "Zarza & Asociados — Estudio Jurídico Integral"; j.telephone = d.telefono; j.email = d.email; if (j.address){ j.address.streetAddress = d.direccion; j.address.addressLocality = d.ciudad || j.address.addressLocality; } ld.textContent = JSON.stringify(j); } catch(_){} }
 }
+
 new MutationObserver(() => { const a = $("#fsWa"); if (a) a.href = a.getAttribute("href").replace(/wa\.me\/\d+/, "wa.me/"+C.waNum); }).observe($("#fsWa"), { attributes:true, attributeFilter:["href"] });
 new MutationObserver(() => { const h = $("#uHint"); if (!h) return;
 h.querySelectorAll('a[href^="tel:"]').forEach(a => a.href = telHref(C.waDisplay));
 const w = document.createTreeWalker(h, NodeFilter.SHOW_TEXT); const ns = []; while (w.nextNode()) ns.push(w.currentNode);
 ns.forEach(n => { n.nodeValue = n.nodeValue.split(DEFAULTS.waDisplay).join(C.waDisplay); });
 }).observe($("#uHint"), { childList:true, subtree:true });
+
 /* ── ÁREAS ── */
 function renderAreas(){
 const list = S.areas.filter(a => a.activo !== false).sort(byOrden);
@@ -2108,7 +2183,8 @@ list.map(a => '<option value="' + esc(a.id) + '">' + esc(a.nombre) + "</option>"
 if (v && sel.querySelector('option[value="'+v+'"]')) sel.value = v;
 }
 }
-/* ── EQUIPO (teléfono directo por profesional) ── */
+
+/* ── EQUIPO ── */
 function renderEquipo(){
 const list = S.equipo.filter(l => l.activo !== false).sort(byOrden);
 const empty = S.has.equipo && list.length === 0;
@@ -2131,10 +2207,10 @@ reveal(".team-grid");
 }
 const si = $("#equipo .sec-index"); if (si) si.innerHTML = "<b>" + String(list.length).padStart(2,"0") + "</b> / PROFESIONALES · CPACF";
 }
+
 /* ── BLOG ── */
 function parseBody(text){
-const lines = String(text||"").split("
-");
+const lines = String(text||"").split("\n");
 let out = "", para = [], list = null;
 const flushP = () => { if (para.length){ out += "<p>" + inline(para.join(" ")) + "</p>"; para = []; } };
 const flushL = () => { if (list){ out += "<" + list.tag + ">" + list.items.map(i => "<li>" + inline(i) + "</li>").join("") + "</" + list.tag + ">"; list = null; } };
@@ -2182,17 +2258,7 @@ tg.innerHTML = 'Ver todas las publicaciones (' + list.length + ') <svg class="ic
 tg.setAttribute("aria-expanded","false"); }
 const si = $("#blog .sec-index"); if (si) si.innerHTML = "<b>" + String(list.length).padStart(2,"0") + "</b> / ARTÍCULOS · ACTUALIZADO " + (f && f.fecha ? MESES[parseInt(String(f.fecha).split("-")[1],10)-1] + " " + String(f.fecha).split("-")[0] : "2026");
 }
-const bt = $("#blogToggle");
-if (bt) bt.addEventListener("click", e => {
-if (!S.has.blog) return;
-e.stopImmediatePropagation(); e.preventDefault();
-const wrap = $("#blogWrap"); if (!wrap) return;
-const open = !wrap.classList.contains("blog-expanded");
-wrap.classList.toggle("blog-expanded", open);
-bt.setAttribute("aria-expanded", String(open));
-bt.innerHTML = open ? 'Mostrar menos <svg class="ic" style="transform:rotate(180deg)"><use href="#i-chev"/></svg>' : 'Ver todas las publicaciones (' + blogCount + ') <svg class="ic"><use href="#i-chev"/></svg>';
-if (open) $$(".blog-extra [data-reveal]").forEach((el,i) => { el.style.setProperty("--d",(i*.1)+"s"); requestAnimationFrame(() => el.classList.add("revealed")); });
-}, true);
+
 /* ── Modales propios con datos de Firebase ── */
 const root = $("#modalRoot"), mbody = $("#modalBody"), mclose = $("#modalClose"), mback = $("#modalBackdrop");
 let cOpen = false;
@@ -2217,6 +2283,7 @@ setTimeout(() => { root.classList.remove("open","closing"); mbody.innerHTML = ""
 mclose.addEventListener("click", () => { if (cOpen) closeZ(); });
 mback.addEventListener("click", () => { if (cOpen) closeZ(); });
 document.addEventListener("keydown", e => { if (e.key === "Escape" && cOpen){ e.stopImmediatePropagation(); closeZ(); } }, true);
+
 const chipsZ = (arr, cls) => '<div class="m-chips">' + (arr||[]).map(c => '<span class="tag ' + cls + '">' + esc(c) + "</span>").join("") + "</div>";
 function areaModalZ(id){
 const a = S.areas.find(x => x.id === id); if (!a) return "";
@@ -2264,7 +2331,7 @@ const a = S.blog.find(x => x.id === id); if (!a) return "";
 return '<p class="m-eyebrow">§ Actualidad jurídica</p>' +
 '<div class="art-meta"><span class="chip-cat ' + (CATCLS[a.categoria]||"cat-laboral") + '">' + esc(a.categoria||"General") + "</span><span>" + esc(fdate(a.fecha)) + "</span><span>·</span><span>" + esc((a.lectura||"").toUpperCase()) + " DE LECTURA</span></div>" +
 '<h3 class="m-title">' + esc(a.titulo) + '</h3><div class="art-body">' + parseBody(a.cuerpo) + "</div>" +
-'<div class="art-disclaimer"><b style="color:#F7C780">Nota:</b> este artículo es informativo y no constituye asesoramiento legal para un caso concreto. Los plazos y criterios citados deben verificarse para su situación particular.</div>' +
+'<div class="art-disclaimer"><b style="color:#F7C780">Nota:</b> este artículo es informativo y no constituye asesoramiento legal para un caso concreto.</div>' +
 '<div class="m-cta-row">' + (a.area ? '<button type="button" class="btn btn-primary" data-consult="' + esc(a.area) + '">Consultar sobre este tema <svg class="ic ic-shift"><use href="#i-arrow"/></svg></button>' : "") +
 '<button type="button" class="btn btn-ghost" data-copy="https://zarzaasociados.com.ar/blog/' + esc(id) + '"><svg class="ic"><use href="#i-copy"/></svg>Copiar enlace</button></div>';
 }
@@ -2274,22 +2341,21 @@ if (kind === "privacidad") return '<p class="m-eyebrow">§ Información legal</p
 '<p class="m-p"><b style="color:var(--tx)">Responsable:</b> Zarza &amp; Asociados — Estudio Jurídico Integral, ' + dir + ". CUIT " + esc(C.cuit||"") + ".</p>" +
 '<p class="m-p"><b style="color:var(--tx)">Datos que recolectamos:</b> nombre, teléfono, email, área de consulta y el detalle del caso que usted nos proporciona voluntariamente.</p>' +
 '<p class="m-p"><b style="color:var(--tx)">Finalidad:</b> responder su consulta y contactar al área correspondiente. No cedemos datos a terceros con fines comerciales.</p>' +
-'<p class="m-p"><b style="color:var(--tx)">Secreto profesional:</b> toda la información remitida queda amparada por el secreto profesional del abogado, incluso si no se inicia una relación profesional.</p>' +
-'<p class="m-p"><b style="color:var(--tx)">Ley 25.326:</b> puede ejercer los derechos de acceso, rectificación, actualización y supresión escribiendo a <b style="color:var(--gold-2)">' + esc(C.email) + "</b>. La Agencia de Acceso a la Información Pública es el órgano de control.</p>" +
+'<p class="m-p"><b style="color:var(--tx)">Secreto profesional:</b> toda la información remitida queda amparada por el secreto profesional del abogado.</p>' +
+'<p class="m-p"><b style="color:var(--tx)">Ley 25.326:</b> puede ejercer los derechos de acceso, rectificación, actualización y supresión escribiendo a <b style="color:var(--gold-2)">' + esc(C.email) + "</b>.</p>" +
 '<div class="m-plate">Última actualización: enero de 2026.</div><div class="m-cta-row"><button type="button" class="btn btn-ghost" data-modal-close>Volver al sitio</button></div>';
 if (kind === "terminos") return '<p class="m-eyebrow">§ Información legal</p><h3 class="m-title">Términos del servicio</h3>' +
-'<p class="m-p"><b style="color:var(--tx)">Carácter del sitio:</b> contenido exclusivamente informativo; no constituye asesoramiento legal para un caso concreto.</p>' +
-'<p class="m-p"><b style="color:var(--tx)">Relación profesional:</b> se constituye únicamente con aceptación expresa del caso y convenio de honorarios por escrito (Ley 27.423 y normas del CPACF). El envío de un formulario no genera dicha relación.</p>' +
-'<p class="m-p"><b style="color:var(--tx)">Propiedad intelectual:</b> textos, artículos e identidad visual pertenecen al estudio; su reproducción requiere autorización, salvo cita breve con atribución.</p>' +
-'<p class="m-p"><b style="color:var(--tx)">Enlaces externos:</b> WhatsApp, Google Maps y LinkedIn se rigen por sus propias políticas.</p>' +
-'<p class="m-p"><b style="color:var(--tx)">Jurisdicción:</b> leyes de la República Argentina; tribunales ordinarios de la ciudad de Córdoba.</p>' +
+'<p class="m-p"><b style="color:var(--tx)">Carácter del sitio:</b> contenido exclusivamente informativo; no constituye asesoramiento legal.</p>' +
+'<p class="m-p"><b style="color:var(--tx)">Relación profesional:</b> se constituye únicamente con aceptación expresa del caso y convenio de honorarios por escrito (Ley 27.423 y normas del CPACF).</p>' +
+'<p class="m-p"><b style="color:var(--tx)">Propiedad intelectual:</b> textos, artículos e identidad visual pertenecen al estudio.</p>' +
+'<p class="m-p"><b style="color:var(--tx)">Jurisdicción:</b> leyes de la República Argentina; tribunales ordinarios de Córdoba.</p>' +
 '<div class="m-plate">Última actualización: enero de 2026.</div><div class="m-cta-row"><button type="button" class="btn btn-ghost" data-modal-close>Volver al sitio</button></div>';
 const rows = S.equipo.filter(l => l.activo !== false).sort(byOrden).map(l =>
 "<tr><td>" + esc(l.nombre) + '</td><td class="mono">' + esc((l.matricula||"").replace("CPACF · ","")) + "</td><td>" + esc((l.rol||"").split("·")[0].trim()) + "</td></tr>").join("");
 return '<p class="m-eyebrow">§ Información legal</p><h3 class="m-title">Matrículas profesionales del estudio</h3>' +
-'<p class="m-p">Todos los profesionales se encuentran matriculados ante el <b style="color:var(--gold-2)">Colegio Público de la Abogacía de la Capital Federal (CPACF)</b>, con matrícula vigente.</p>' +
+'<p class="m-p">Todos los profesionales se encuentran matriculados ante el <b style="color:var(--gold-2)">CPACF</b>, con matrícula vigente.</p>' +
 '<table class="mat-table"><thead><tr><th>Profesional</th><th>Matrícula</th><th>Rol</th></tr></thead><tbody>' + rows + "</tbody></table>" +
-'<p class="m-p">Las matrículas pueden verificarse en el padrón público del CPACF. CUIT del estudio: <b style="color:var(--gold-2)">' + esc(C.cuit||"") + "</b>.</p>" +
+'<p class="m-p">CUIT del estudio: <b style="color:var(--gold-2)">' + esc(C.cuit||"") + "</b>.</p>" +
 '<div class="m-plate"><b>Ejercicio responsable:</b> honorarios pactados por escrito (Ley 27.423), secreto profesional y seguro de responsabilidad civil vigente.</div>' +
 '<div class="m-cta-row"><button type="button" class="btn btn-ghost" data-modal-close>Volver al sitio</button></div>';
 }
@@ -2306,6 +2372,7 @@ const a = areaId ? S.areas.find(x => x.id === areaId) : null;
 toastZ(a ? "Formulario listo para su consulta de " + a.nombre + "." : "Formulario listo para su consulta.", true);
 }, 260);
 }
+
 document.addEventListener("click", e => {
 const t = e.target;
 const oa = t.closest("[data-open-area]");
@@ -2323,13 +2390,44 @@ if (c && cOpen){ e.preventDefault(); e.stopPropagation(); prefillZ(c.dataset.con
 const cl = t.closest("[data-consult-lawyer]");
 if (cl && cOpen){ e.preventDefault(); e.stopPropagation(); const l = S.equipo.find(x => x.id === cl.dataset.consultLawyer); prefillZ(l ? l.areaSlug : null, cl.dataset.consultLawyer); return; }
 }, true);
-/* ── Suscripciones en vivo ── */
-const silent = () => {};
-onSnapshot(doc(db,"sitio","inicio"), s => { if (s.exists()) applyInicio(s.data()); }, silent);
-onSnapshot(doc(db,"sitio","contacto"), s => { if (s.exists()) applyContacto(s.data()); }, silent);
-onSnapshot(collection(db,"areas"), qs => { S.has.areas = !qs.empty; if (!qs.empty){ S.areas = qs.docs.map(d => ({ id:d.id, ...d.data() })); renderAreas(); } }, silent);
-onSnapshot(collection(db,"equipo"), qs => { S.has.equipo = !qs.empty; if (!qs.empty){ S.equipo = qs.docs.map(d => ({ id:d.id, ...d.data() })); renderEquipo(); } }, silent);
-onSnapshot(collection(db,"blog"), qs => { S.has.blog = !qs.empty; if (!qs.empty){ S.blog = qs.docs.map(d => ({ id:d.id, ...d.data() })); renderBlog(); } }, silent);
+
+/* ═══ SUSCRIPCIONES EN VIVO CON REPORTE DE ERRORES ═══ */
+function errHandler(collectionName){
+  return (err) => {
+    console.error("Error Firebase en " + collectionName + ":", err);
+    setSync("err", "Error: " + (err.code || "conexión"));
+    toastZ("No se pudo sincronizar " + collectionName + ". Revise las reglas de Firestore.", false);
+  };
+}
+
+onSnapshot(doc(db,"sitio","inicio"), 
+  s => { if (s.exists()){ applyInicio(s.data()); reportSync(); } },
+  errHandler("inicio")
+);
+onSnapshot(doc(db,"sitio","contacto"), 
+  s => { if (s.exists()){ applyContacto(s.data()); reportSync(); } },
+  errHandler("contacto")
+);
+onSnapshot(collection(db,"areas"), 
+  qs => { S.has.areas = !qs.empty; if (!qs.empty){ S.areas = qs.docs.map(d => ({ id:d.id, ...d.data() })); renderAreas(); } reportSync(); },
+  errHandler("áreas")
+);
+onSnapshot(collection(db,"equipo"), 
+  qs => { S.has.equipo = !qs.empty; if (!qs.empty){ S.equipo = qs.docs.map(d => ({ id:d.id, ...d.data() })); renderEquipo(); } reportSync(); },
+  errHandler("equipo")
+);
+onSnapshot(collection(db,"blog"), 
+  qs => { S.has.blog = !qs.empty; if (!qs.empty){ S.blog = qs.docs.map(d => ({ id:d.id, ...d.data() })); renderBlog(); } reportSync(); },
+  errHandler("blog")
+);
+
+// Mensaje inicial
+setSync(null, "Conectando con Firebase…");
+setTimeout(() => {
+  if (syncCount === 0 && !hasError){
+    setSync("err", "Sin respuesta de Firebase");
+  }
+}, 8000);
 </script>
 </body>
 </html>
