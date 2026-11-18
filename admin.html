@@ -701,60 +701,6 @@ border-color: var(--amber);
 <div class="warn info"><svg class="ic"><use href="#i-shield"/></svg><span>Regla clave: <code>allow create: if true</code> y <code>allow update, delete: if request.auth != null</code>.</span></div>
 </div>
 <div class="card">
-<h3><svg class="ic"><use href="#i-lock"/></svg>Reglas de seguridad de Firestore</h3>
-<p class="desc">Incluyen la protección del historial y el acceso a la bandeja de clientes.</p>
-<pre class="rules" id="rulesPre">rules_version = '2';
-service cloud.firestore {
-match /databases/{database}/documents {
-match /sitio/{documento} {
-allow read: if true;
-allow write: if request.auth != null;
-}
-match /areas/{documento} {
-allow read: if true;
-allow write: if request.auth != null;
-}
-match /equipo/{documento} {
-allow read: if true;
-allow write: if request.auth != null;
-}
-match /blog/{documento} {
-allow read: if true;
-allow write: if request.auth != null;
-}
-match /clientes/{documento} {
-allow read: if request.auth != null;
-allow create: if true
-&amp;&amp; request.resource.data.nombre is string
-&amp;&amp; request.resource.data.email is string
-&amp;&amp; request.resource.data.telefono is string;
-allow update: if request.auth != null;
-allow delete: if request.auth != null
-&amp;&amp; request.auth.token.email == 'sebagsc2020@gmail.com';
-}
-match /sesiones/{documento} {
-allow read: if request.auth != null;
-allow create: if request.auth != null
-&amp;&amp; request.resource.data.uid == request.auth.uid
-&amp;&amp; request.resource.data.email == request.auth.token.email;
-allow update: if request.auth != null
-&amp;&amp; resource.data.uid == request.auth.uid
-&amp;&amp; request.resource.data.uid == resource.data.uid
-&amp;&amp; request.resource.data.email == resource.data.email
-&amp;&amp; request.resource.data.inicioMs == resource.data.inicioMs
-&amp;&amp; request.resource.data.acciones.size() &gt;= resource.data.acciones.size()
-&amp;&amp; request.resource.data.totalAcciones &gt;= resource.data.totalAcciones;
-allow delete: if request.auth != null
-&amp;&amp; request.auth.token.email == 'sebagsc2020@gmail.com';
-}
-match /{document=**} {
-allow read, write: if false;
-}
-}
-}</pre>
-<button type="button" class="btn btn-ghost btn-sm" id="copyRules"><svg class="ic"><use href="#i-copy"/></svg>Copiar reglas</button>
-</div>
-<div class="card">
 <h3><svg class="ic"><use href="#i-db"/></svg>Contenido inicial</h3>
 <p class="desc">Escribe en Firestore el contenido completo del sitio.</p>
 <div class="warn" style="margin:0 0 14px"><svg class="ic"><use href="#i-alert"/></svg><span>Sobrescribe los documentos con los identificadores iniciales.</span></div>
@@ -1399,7 +1345,7 @@ $("#histPurge").hidden = !isSuper();
 if (isSuper()){
 g.innerHTML = '<div class="warn good" style="margin:0 0 14px"><svg class="ic"><use href="#i-shield"/></svg><span><b>Super administrador activo.</b> Puede eliminar sesiones.</span></div>';
 } else {
-g.innerHTML = '<div class="warn" style="margin:0 0 14px"><svg class="ic"><use href="#i-lock"/></svg><span><b>Historial protegido.</span></div>';
+g.innerHTML = '<div class="warn" style="margin:0 0 14px"><svg class="ic"><use href="#i-lock"/></svg><span><b>Historial protegido.</b></span></div>';
 }
 }
 function histFiltered(){
@@ -2267,11 +2213,6 @@ toast("Contenido importado.");
 } catch(e){ fsErr(e); }
 }, "Escribir");
 }
-$("#copyRules").addEventListener("click", async () => {
-const txt = $("#rulesPre").textContent;
-try { await navigator.clipboard.writeText(txt); toast("Reglas copiadas."); }
-catch(_){ const ta = document.createElement("textarea"); ta.value = txt; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); toast("Reglas copiadas."); }
-});
 $("#seedBtn").addEventListener("click", () => {
 openConfirm("Cargar contenido inicial",
 "Se escribirán áreas, abogados, publicaciones e inicio/contacto de Zarza & Asociados.",
