@@ -13,7 +13,7 @@
 :root{
   --ink-950:#06090F;--ink-900:#0A0F1C;--ink-850:#0D1424;--ink-800:#111A2E;--ink-700:#1B2742;
   --gold:#C9A25C;--gold-2:#E9CF9A;--gold-deep:#8C6D2F;
-  --blue:#3E7BFA;--red:#E2483D;--amber:#F0A63C;--green:#2FBF71;--violet:#9A6BFF;
+  --blue:#3E7BFA;--red:#E2483D;--amber:#F0A63C;--green:#2FBF71;--violet:#9A6BFF;--wa:#25D366;
   --tx:#EDE7DA;--tx-dim:#A9B2C6;--tx-mute:#6E7890;
   --line:rgba(201,162,92,.22);--line-soft:rgba(201,162,92,.12);
   --serif:"Fraunces",Georgia,serif;--sans:"Archivo",system-ui,sans-serif;--mono:"IBM Plex Mono",monospace;
@@ -150,6 +150,7 @@ img{display:block;max-width:100%}
 .row-info{min-width:0}
 .row-info b{display:block;font-size:14.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .row-info span{display:block;font-family:var(--mono);font-size:10px;color:var(--tx-mute);letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.row-info span.ct{color:var(--gold-2)}
 .row-orden{display:flex;flex-direction:column;gap:3px;align-items:center}
 .row-orden label{font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;color:var(--tx-mute)}
 .row-orden input{width:58px;background:var(--ink-850);border:1px solid var(--ink-700);border-radius:7px;color:var(--tx);font-family:var(--mono);font-size:13px;text-align:center;padding:6px 4px}
@@ -183,6 +184,16 @@ img{display:block;max-width:100%}
 .cp .ic{width:22px;height:22px}
 .cp.off{opacity:.38}
 .cp-empty{font-size:13px;color:var(--tx-mute)}
+/* Vista previa de contacto del profesional */
+.eq-prev{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:15px 16px;border:1px dashed var(--line);border-radius:11px;background:radial-gradient(circle at 20% 10%,rgba(201,162,92,.07),transparent 60%),var(--ink-950)}
+.eq-prev .lbl{width:100%;font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--tx-mute);margin-bottom:2px}
+.cb{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:8px;border:1px solid rgba(237,231,218,.25);font-size:13px;font-weight:600;color:var(--tx);animation:up .3s var(--ease);max-width:100%}
+.cb span{min-width:0;overflow-wrap:anywhere}
+.cb .ic{width:15px;height:15px}
+.cb.tel{border-color:rgba(201,162,92,.45);background:rgba(201,162,92,.08);color:var(--gold-2)}
+.cb.wa{border-color:rgba(37,211,102,.5);background:rgba(37,211,102,.1);color:#8FE9B4}
+.cb.wa .ic{color:var(--wa)}
+.eq-prev .none{font-size:12.5px;color:var(--tx-mute)}
 .steps{counter-reset:p;display:grid;gap:14px;margin:6px 0 4px}
 .steps li{counter-increment:p;position:relative;padding-left:46px;font-size:14px;color:var(--tx-dim);line-height:1.7}
 .steps li::before{content:counter(p,decimal-leading-zero);position:absolute;left:0;top:2px;font-family:var(--mono);font-size:12px;font-weight:600;color:var(--gold);border:1px solid var(--line);border-radius:7px;width:32px;height:26px;display:grid;place-items:center;background:rgba(201,162,92,.06)}
@@ -270,6 +281,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-5.5 6.5-5.5s6.5 2 6.5 5.5M16 4.6a3.5 3.5 0 0 1 0 6.8M17.5 14.7c2.3.6 4 2.3 4 5.3"/></symbol>
 <symbol id="i-post" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h5"/></symbol>
 <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></symbol>
 <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></symbol>
 <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
 <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></symbol>
@@ -294,6 +306,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
 <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></symbol>
 <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
 <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/></symbol>
+<symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v15.5h-4V8zm7.5 0h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1v9.4h-4v-8.5c0-2.03-.04-4.64-2.83-4.64-2.83 0-3.26 2.2-3.26 4.48v8.66H8V8z"/></symbol>
 </defs></svg>
 
 <!-- ══════════ LOGIN ══════════ -->
@@ -406,7 +419,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
       <!-- EQUIPO -->
       <section class="view" id="view-equipo">
         <div class="sec-head">
-          <p>Abogados del estudio. Excluya un profesional para ocultarlo sin eliminar su ficha.</p>
+          <p>Abogados del estudio. Cada ficha admite <b style="color:var(--gold-2)">teléfono directo y WhatsApp propios</b>. Excluya un profesional para ocultarlo sin eliminar su ficha.</p>
           <button type="button" class="btn btn-primary btn-sm" data-act="new" data-type="equipo"><svg class="ic"><use href="#i-plus"/></svg>Nuevo abogado</button>
         </div>
         <div class="rows" id="list-equipo"></div>
@@ -425,7 +438,7 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
       <section class="view" id="view-contacto">
         <div class="card">
           <h3><svg class="ic"><use href="#i-phone"/></svg>Datos de contacto</h3>
-          <p class="desc">Se aplican al encabezado, formulario, mapa, pie de página y todos los enlaces del sitio.</p>
+          <p class="desc">Se aplican al encabezado, formulario, mapa, pie de página y todos los enlaces del sitio. Son los datos <b>generales del estudio</b>; el teléfono de cada abogado se edita en la pestaña Equipo.</p>
           <div class="grid2">
             <div class="field"><label for="k-direccion">Dirección</label><input class="inp" id="k-direccion"></div>
             <div class="field"><label for="k-ciudad">Ciudad / Código postal</label><input class="inp" id="k-ciudad"></div>
@@ -491,7 +504,15 @@ pre.rules{background:var(--ink-950);border:1px solid var(--ink-700);border-radiu
             <li>El <b>index.html</b> trae el contenido escrito en su propio HTML como base. Si Firestore está vacío, el sitio <b>igual se ve completo</b>, pero el panel —que solo lee Firestore— muestra la lista vacía.</li>
             <li>Solución definitiva: abra <b>Diagnóstico → Importar desde el sitio publicado</b>. El panel lee el index online y escribe ese contenido en las colecciones. A partir de ahí se edita, incluye y excluye desde aquí.</li>
             <li>Si el diagnóstico marca <b>permiso denegado</b>, pegue las reglas de abajo en Firestore. Si marca <b>otro proyecto</b>, el index publicado apunta a una base distinta.</li>
-            <li>Alternativa rápida: use <b>Cargar contenido inicial</b> para escribir todo el contenido de Zarza &amp; Asociados, incluidas las tarjetas flotantes del sello.</li>
+            <li>Alternativa rápida: use <b>Cargar contenido inicial</b> para escribir todo el contenido de Zarza &amp; Asociados, incluidas las tarjetas flotantes del sello y los teléfonos directos de cada abogado.</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3><svg class="ic"><use href="#i-phone"/></svg>Teléfono y WhatsApp por abogado</h3>
+          <ol class="steps">
+            <li>Abra <b>Equipo → editar</b> (icono lápiz). Complete <b>Teléfono directo</b> con el número tal como quiere que se lea, por ejemplo <code class="mono">+54 11 4372-8901</code>.</li>
+            <li>En <b>WhatsApp del profesional</b> cargue solo dígitos: país + área + número, por ejemplo <code class="mono">5491143728901</code>. Si lo deja vacío, la ficha usa el WhatsApp general del estudio.</li>
+            <li>La vista previa del editor muestra los botones exactos que verá el visitante en la ficha del profesional. Al guardar, se publican al instante.</li>
           </ol>
         </div>
         <div class="card">
@@ -595,6 +616,7 @@ const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt
 const slugify = s => String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,60);
 const lines = t => String(t||"").split("\n").map(x=>x.trim()).filter(Boolean);
 const commas = t => String(t||"").split(",").map(x=>x.trim()).filter(Boolean);
+const digits = t => String(t||"").replace(/\D/g,"");
 const MESES = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
 const fdate = iso => { if(!iso) return "—"; const p=String(iso).split("-"); return p.length===3 ? `${p[2]} · ${MESES[parseInt(p[1],10)-1]||""} · ${p[0]}` : "—"; };
 const ICONS = [["i-brief","Maletín / Balanza"],["i-doc","Documento con sello"],["i-family","Grupo familiar"],["i-building","Edificio corporativo"],["i-gavel","Mazo de juez"],["i-shieldcart","Escudo / Consumidor"]];
@@ -699,6 +721,7 @@ equipo:[
   areaTexto:"Derecho Laboral · Relaciones colectivas",areaSlug:"laboral",color:"gold",orden:1,activo:true,
   foto:"https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&crop=faces&w=700&h=840&q=75",iniciales:"AZ",
   email:"a.zarza@zarzaasociados.com.ar",linkedin:"https://www.linkedin.com/company/zarza-asociados-estudio-juridico",
+  telefono:"+54 11 4372-8901", whatsapp:"5491143728901",
   bio:"Fundó el estudio en 2004 tras una década de litigio laboral en tribunales de la Nación. Dirigió más de 600 procesos individuales y colectivos, y negocia convenios y conflictos sindicales para empresas de servicios e industria. Es docente de Derecho del Trabajo y conferencista sobre registración laboral.",
   formacion:["Abogado — Universidad de Córdoba (UBA)","Especialista en Derecho del Trabajo — UBA","Maestría en Relaciones Laborales — UNTreF","Docente universitario · Derecho del Trabajo"],
   trayectoria:["+600 procesos laborales dirigidos desde 2004","Negociación colectiva en actividad servicios e industria","Litigio ante CNAT y justicia laboral bonaerense"],
@@ -707,6 +730,7 @@ equipo:[
   areaTexto:"Civil, Comercial y Empresario",areaSlug:"civil",color:"blue",orden:2,activo:true,
   foto:"https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&crop=faces&w=700&h=840&q=75",iniciales:"VS",
   email:"v.santamarina@zarzaasociados.com.ar",linkedin:"https://www.linkedin.com/company/zarza-asociados-estudio-juridico",
+  telefono:"+54 11 4372-8902", whatsapp:"5491143728902",
   bio:"Lidera los departamentos Civil-Comercial y Empresario. Asesora a pymes y grupos familiares en estructuración societaria, contratos y prevención de conflictos, con más de 450 sucesiones y contratos complejos gestionados. Su enfoque: documentos claros hoy para evitar juicios mañana.",
   formacion:["Abogada — Universidad Católica Argentina (UCA)","Maestría en Derecho Empresario — Universidad de San Andrés","Posgrado en Compliance — Universidad Austral"],
   trayectoria:["+450 sucesiones y procesos patrimoniales","Asesoramiento permanente a pymes y grupos familiares","Diseño de programas de cumplimiento normativo"],
@@ -715,6 +739,7 @@ equipo:[
   areaTexto:"Penal y Tránsito · Guardia 24 hs",areaSlug:"penal",color:"red",orden:3,activo:true,
   foto:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&crop=faces&w=700&h=840&q=75",iniciales:"MI",
   email:"m.iglesias@zarzaasociados.com.ar",linkedin:"https://www.linkedin.com/company/zarza-asociados-estudio-juridico",
+  telefono:"+54 11 4372-8903", whatsapp:"5491143728903",
   bio:"Tras diez años en la justicia penal, se sumó al estudio para dirigir el departamento Penal y la guardia de urgencias 24 hs. Litigó más de 300 causas y juicios orales, con especial dedicación a delitos informáticos y a la doble vía penal-civil de los accidentes de tránsito.",
   formacion:["Abogado — Universidad de Córdoba (UBA)","Especialista en Derecho Penal — UBA","Posgrado en Criminología — UCASAL"],
   trayectoria:["10 años de función judicial penal","+300 causas y juicios orales litigados","Director de la guardia de urgencias 24 hs"],
@@ -723,6 +748,7 @@ equipo:[
   areaTexto:"Familia · Consumidor y Bancario",areaSlug:"familia",color:"green",orden:4,activo:true,
   foto:"https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&crop=faces&w=700&h=840&q=75",iniciales:"LF",
   email:"l.ferreyra@zarzaasociados.com.ar",linkedin:"https://www.linkedin.com/company/zarza-asociados-estudio-juridico",
+  telefono:"+54 11 4372-8904", whatsapp:"5491143728904",
   bio:"Mediadora registrada ante el Ministerio de Justicia, combina un enfoque conciliador con litigio firme cuando es necesario. Lleva más de 400 convenios reguladores homologados y dirige la práctica de consumidor y bancario del estudio, con foco en fraude digital y reclamos a aseguradoras.",
   formacion:["Abogada — Universidad Nacional de La Plata (UNLP)","Especialista en Derecho de Familia — UBA","Diplomatura en Derecho del Consumidor — UCA","Mediadora registrada — Ministerio de Justicia"],
   trayectoria:["+400 convenios reguladores homologados","Especialista en recupero por fraude bancario digital","Mediación familiar y de consumo (COPREC)"],
@@ -971,7 +997,7 @@ function renderContacto(){
   $("#k-showBadge").checked = d.showBadge !== false;
 }
 $("#saveContacto").addEventListener("click", async () => {
-  const waNum = $("#k-waNum").value.replace(/\D/g,"");
+  const waNum = digits($("#k-waNum").value);
   if (!waNum) return toast("El número de WhatsApp (solo dígitos) es obligatorio.", "err");
   const data = { waNum, showMapa:$("#k-showMapa").checked, showBadge:$("#k-showBadge").checked, updatedAt:serverTimestamp() };
   for (const k in KMAP) if (k !== "waNum") data[k] = $("#" + KMAP[k]).value.trim();
@@ -993,7 +1019,9 @@ function rowHTML(col, d){
     info = "<b>" + esc(d.nombre) + "</b><span>/" + esc(d.id) + " · " + esc((d.tags||[]).join(" · ")) + "</span>";
   } else if (col === "equipo"){
     ico = "<b>" + esc(d.iniciales || "··") + "</b>" + (d.foto ? '<img src="' + esc(d.foto) + '" alt="" loading="lazy" onerror="this.remove()">' : "");
-    info = "<b>" + esc(d.nombre) + "</b><span>" + esc(d.rol || "") + " · " + esc(d.matricula || "") + "</span>";
+    const ct = [d.telefono ? "☏ " + d.telefono : "", d.whatsapp ? "WA " + d.whatsapp : ""].filter(Boolean).join("  ·  ");
+    info = "<b>" + esc(d.nombre) + "</b><span>" + esc(d.rol || "") + " · " + esc(d.matricula || "") + "</span>" +
+      (ct ? '<span class="ct">' + esc(ct) + "</span>" : '<span>sin teléfono directo cargado</span>');
   } else {
     ico = '<svg class="ic"><use href="#i-post"/></svg>';
     extra = '<span class="chip ' + (CATCLS[d.categoria] || "ch-gold") + '">' + esc(d.categoria || "General") + "</span>";
@@ -1049,6 +1077,33 @@ const switchFld = (id,v,label) => '<label class="switch-lbl"><span class="switch
 const areaOpts = () => [["","— Sin asignar —"]].concat(state.areas.map(a => [a.id, a.nombre]));
 const equipoOpts = () => [["","— Equipo del área —"]].concat(state.equipo.map(l => [l.id, l.nombre]));
 
+/* Vista previa de los botones de contacto del profesional */
+function renderEqPrev(){
+  const box = $("#eqPrev"); if (!box) return;
+  const tel = ($("#e-telefono")?.value || "").trim();
+  const waRaw = ($("#e-whatsapp")?.value || "").trim();
+  const waN = digits(waRaw);
+  const mail = ($("#e-email")?.value || "").trim();
+  const li = ($("#e-linkedin")?.value || "").trim();
+  let h = '<span class="lbl">Vista previa · botones de la ficha del profesional</span>';
+  const items = [];
+  if (tel) items.push('<span class="cb tel"><svg class="ic"><use href="#i-phone"/></svg><span>' + esc(tel) + "</span></span>");
+  if (mail) items.push('<span class="cb"><svg class="ic"><use href="#i-mail"/></svg><span>Email</span></span>');
+  if (li) items.push('<span class="cb"><svg class="ic ic-fill"><use href="#i-linkedin"/></svg><span>LinkedIn</span></span>');
+  items.push('<span class="cb wa"><svg class="ic ic-fill"><use href="#i-wa"/></svg><span>' + (waN ? "WhatsApp del profesional" : "WhatsApp general del estudio") + "</span></span>");
+  h += items.join("");
+  if (!tel && !mail && !li) h += '<span class="none">Sin teléfono, email ni LinkedIn: la ficha mostrará únicamente el WhatsApp.</span>';
+  if (waRaw && waN.length < 8) h += '<span class="none" style="color:#F49B93">El WhatsApp parece incompleto: use país + área + número.</span>';
+  box.innerHTML = h;
+}
+function bindEqPrev(){
+  ["e-telefono","e-whatsapp","e-email","e-linkedin"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener("input", renderEqPrev);
+  });
+  renderEqPrev();
+}
+
 function openEditor(type, id){
   const isEdit = !!id;
   const d = isEdit ? state[type].find(x => x.id === id) : null;
@@ -1096,6 +1151,9 @@ function openEditor(type, id){
       fld("e-areaSlug","Área para consultas",sel("e-areaSlug",areaOpts(),d?.areaSlug||"")) +
       fld("e-color","Color de acento",sel("e-color",COLORS,d?.color||"gold")) +
       fld("e-email","Email profesional",inp("e-email",d?.email,"email")) +
+      fld("e-telefono","Teléfono directo (visible)",'<input class="inp" id="e-telefono" type="tel" inputmode="tel" value="' + esc(d?.telefono ?? "") + '" placeholder="+54 11 4372-8901">',"Se muestra como botón «Llamar» en la ficha. Vacío = se oculta.") +
+      fld("e-whatsapp","WhatsApp del profesional (solo dígitos)",'<input class="inp mono" id="e-whatsapp" inputmode="numeric" value="' + esc(d?.whatsapp ?? "") + '" placeholder="5491143728901">',"País + área + número. Vacío = la ficha usa el WhatsApp general del estudio.") +
+      '<div class="full"><div class="eq-prev" id="eqPrev"></div></div>' +
       '<div class="full">' + fld("e-foto","URL de fotografía",inp("e-foto",d?.foto),"Vacío = se muestran las iniciales.") + "</div>" +
       '<div class="full">' + fld("e-linkedin","URL LinkedIn",inp("e-linkedin",d?.linkedin)) + "</div>" +
       '<div class="full">' + fld("e-bio","Biografía",txa("e-bio",d?.bio,4)) + "</div>" +
@@ -1107,10 +1165,16 @@ function openEditor(type, id){
     editorSaveFn = async () => {
       const nombre = $("#e-nombre").value.trim();
       if (!nombre) return toast("El nombre es obligatorio.","err"), false;
+      const telefono = $("#e-telefono").value.trim();
+      const waRaw = $("#e-whatsapp").value.trim();
+      const whatsapp = digits(waRaw);
+      if (telefono && digits(telefono).length < 6) return toast("El teléfono directo parece incompleto.","err"), false;
+      if (waRaw && whatsapp.length < 8) return toast("El WhatsApp del profesional debe tener al menos 8 dígitos.","err"), false;
       const data = { nombre, rol:$("#e-rol").value.trim(), matricula:$("#e-matricula").value.trim(),
         iniciales:$("#e-iniciales").value.trim().slice(0,3) || nombre.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase(),
         areaTexto:$("#e-areaTexto").value.trim(), areaSlug:$("#e-areaSlug").value, color:$("#e-color").value,
-        email:$("#e-email").value.trim(), foto:$("#e-foto").value.trim(), linkedin:$("#e-linkedin").value.trim(),
+        email:$("#e-email").value.trim(), telefono, whatsapp,
+        foto:$("#e-foto").value.trim(), linkedin:$("#e-linkedin").value.trim(),
         bio:$("#e-bio").value.trim(), formacion:lines($("#e-formacion").value), trayectoria:lines($("#e-trayectoria").value),
         idiomas:commas($("#e-idiomas").value), orden:parseInt($("#e-orden").value,10)||0,
         activo:$("#e-activo").checked, updatedAt:serverTimestamp() };
@@ -1148,6 +1212,7 @@ function openEditor(type, id){
   editorBody.innerHTML = html;
   editorBody.scrollTop = 0;
   editorRoot.classList.add("open");
+  if (type === "equipo") bindEqPrev();
 }
 $("#editorSave").addEventListener("click", async () => {
   if (!editorSaveFn) return;
@@ -1200,9 +1265,13 @@ function renderDiag(){
     const st = state.status[c];
     const p = st === "ok" ? pill("p-ok","Lectura OK") : st === "error" ? pill("p-bad","Denegado") : pill("p-wait","Leyendo");
     const n = state[c].length, act = state[c].filter(x => x.activo !== false).length;
-    const meta = st === "error" ? "Error: <strong>" + esc(state.err[c]||"") + "</strong>"
+    let meta = st === "error" ? "Error: <strong>" + esc(state.err[c]||"") + "</strong>"
       : n ? "<strong>" + n + "</strong> documento(s) · <strong>" + act + "</strong> incluidos en el sitio"
       : "Colección <strong>vacía</strong>. El sitio muestra su contenido base: use el importador de abajo.";
+    if (c === "equipo" && st === "ok" && n){
+      const conTel = state[c].filter(x => String(x.telefono||"").trim()).length;
+      meta += " · <strong>" + conTel + "</strong> con teléfono directo";
+    }
     h += '<div class="diag-row"><b>' + c.toUpperCase() + '</b><div class="meta">' + meta + "</div>" + p + "</div>";
   });
   box.innerHTML = h;
@@ -1308,6 +1377,8 @@ function parseIndex(src){
     color: colorOf(c.querySelector(".tag")),
     orden: i+1
   }));
+  const pickTel = l => String(l.telefono || l.tel || l.phone || "").trim();
+  const pickWa  = l => digits(l.whatsapp || l.wa || l.waNum || "");
   if (LAW && typeof LAW === "object"){
     out.equipo = Object.keys(LAW).map((k,i) => {
       const l = LAW[k] || {}, ci = cardEq.find(x => x.id === k);
@@ -1317,14 +1388,16 @@ function parseIndex(src){
         areaTexto: ci?.areaTexto || (l.role||"").split("·").slice(1).join("·").trim(),
         areaSlug: l.area || "", color: TAG2COLOR[l.tag] || ci?.color || "gold",
         foto: ci?.foto || l.img || "", iniciales: l.ini || ci?.iniciales || "",
-        email: l.email || "", linkedin: SEED.contacto.linkedin,
+        email: l.email || "", linkedin: l.linkedin || SEED.contacto.linkedin,
+        telefono: pickTel(l), whatsapp: pickWa(l),
         bio: l.bio || "", formacion: l.form || [], trayectoria: l.tray || [], idiomas: l.langs || [],
         orden: ci?.orden || i+1, activo: true
       };
     });
   } else {
     out.equipo = cardEq.map(c => ({ ...c, matricula: c.matricula ? "CPACF · " + c.matricula : "",
-      areaSlug:"", email:"", linkedin:SEED.contacto.linkedin, bio:"", formacion:[], trayectoria:[], idiomas:[], activo:true }));
+      areaSlug:"", email:"", linkedin:SEED.contacto.linkedin, telefono:"", whatsapp:"",
+      bio:"", formacion:[], trayectoria:[], idiomas:[], activo:true }));
   }
   /* ÁREAS */
   const aCards = Array.from(dom.querySelectorAll(".area-card"));
@@ -1461,7 +1534,9 @@ function renderImport(){
   h += "</div>";
   if (d.equipo.length){
     h += '<div class="imp-prev"><b>Abogados detectados:</b><br>' +
-      d.equipo.map(l => "· <b>" + esc(brandify(l.nombre)) + "</b> — " + esc(brandify(l.rol||"—")) + " · " + esc(brandify(l.matricula||"sin matrícula")) + (l.bio ? " · ficha completa" : " · solo tarjeta")).join("<br>") + "</div>";
+      d.equipo.map(l => "· <b>" + esc(brandify(l.nombre)) + "</b> — " + esc(brandify(l.rol||"—")) + " · " + esc(brandify(l.matricula||"sin matrícula")) +
+        " · " + (l.telefono ? "teléfono " + esc(brandify(l.telefono)) : "sin teléfono directo") +
+        (l.bio ? " · ficha completa" : " · solo tarjeta")).join("<br>") + "</div>";
   }
   if (d.inicio && d.inicio.chips && d.inicio.chips.length){
     h += '<div class="imp-prev" style="margin-top:10px"><b>Tarjetas flotantes detectadas:</b><br>' +
@@ -1528,7 +1603,11 @@ async function doImport(){
         const b = writeBatch(db), ts = serverTimestamp();
         if (chosen.includes("equipo")) d.equipo.forEach(l => {
           const { id, ...rest } = deepBrand(l, on);
-          b.set(doc(db,"equipo", brandId(id)), { ...rest, areaSlug: brandId(rest.areaSlug||""), updatedAt:ts });
+          b.set(doc(db,"equipo", brandId(id)), { ...rest,
+            areaSlug: brandId(rest.areaSlug||""),
+            telefono: String(rest.telefono||"").trim(),
+            whatsapp: digits(rest.whatsapp),
+            updatedAt:ts });
         });
         if (chosen.includes("areas")) d.areas.forEach(a => {
           const { id, ...rest } = deepBrand(a, on);
@@ -1560,7 +1639,7 @@ $("#copyRules").addEventListener("click", async () => {
 });
 $("#seedBtn").addEventListener("click", () => {
   openConfirm("Cargar contenido inicial",
-    "Se escribirán <b>6 áreas, 4 abogados, 6 publicaciones</b> y los documentos de <b>Inicio y Contacto</b> (incluidas las tarjetas flotantes del sello) con el contenido de Zarza &amp; Asociados, sobrescribiendo los documentos con esos identificadores. ¿Continuar?",
+    "Se escribirán <b>6 áreas, 4 abogados</b> (con teléfono directo y WhatsApp propios), <b>6 publicaciones</b> y los documentos de <b>Inicio y Contacto</b> con el contenido de Zarza &amp; Asociados, sobrescribiendo los documentos con esos identificadores. ¿Continuar?",
     async () => {
       try {
         const b = writeBatch(db), ts = serverTimestamp();
